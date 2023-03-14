@@ -6,3 +6,7 @@
     --font-size-h3: 24px;
     --font-size-base: 16px;
 }
+
+body {
+    font-family: var(--global-font-family);
+}
