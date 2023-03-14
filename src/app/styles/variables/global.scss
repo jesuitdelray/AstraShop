@@ -1,16 +1,4 @@
 :root {
-    // Old Fonts
-    // --font-family-main: consolas, "Times New Roman", serif;
-    // --font-size-m: 16px;
-    // --font-line-m: 24px;
-    // --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
-    // --font-size-l: 24px;
-    // --font-line-l: 32px;
-    // --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
-    // --font-size-xl: 32px;
-    // --font-line-xl: 40px;
-    // --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
-
     // Colors
     --header-color: #0c1f31;
     --text-color: #657380;
@@ -27,4 +15,6 @@
     --medium-header-height: 34px;
     --small-header-size: 24px; // H3
     --small-header-height: 30px;
+    --text-size: 16px; // p
+    --text-height: 24px;
 }
