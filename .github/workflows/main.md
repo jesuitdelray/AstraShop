@@ -1,15 +1,15 @@
 name: linting, testing, building
 on:
-    push:
-        branches: [main, develop]
-    pull_request:
-        branches: [main, develop]
+push:
+branches: [main, develop]
+pull_request:
+branches: [main, develop]
 jobs:
-    pipeline:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [17.x]
+pipeline:
+runs-on: ubuntu-latest
+strategy:
+matrix:
+node-version: [17.x]
 
         steps:
             - uses: actions/checkout@v2
@@ -30,3 +30,9 @@ jobs:
             - name: unit testing
               if: always()
               run: npm run test:unit
+            - name: build storybook
+              run: npm run storybook:build
+              if: always()
+            - name: screenshot testing
+              run: npm run test:ui:ci
+              if: always()
