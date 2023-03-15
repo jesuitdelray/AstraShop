@@ -1,23 +1,19 @@
 .variantH1 {
-    font-size: 36px;
-    font-weight: 400;
-    color: black;
+    font-size: var(--font-size-h1);
+    color: var(--color-base);
 }
 
 .variantH2 {
-    font-size: 28px;
-    font-weight: 400;
-    color: black;
+    font-size: var(--font-size-h2);
+    color: var(--color-base);
 }
 
 .variantH3 {
-    font-size: 24px;
-    font-weight: 400;
-    color: black;
+    font-size: var(--font-size-h3);
+    color: var(--color-base);
 }
 
 .variantP {
-    font-size: 16px;
-    font-weight: 400;
-    color: gray;
+    font-size: var(--font-size-base);
+    color: var(--color-dark-gray);
 }
