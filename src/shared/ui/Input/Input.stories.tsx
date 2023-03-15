@@ -7,9 +7,6 @@ export default {
     argTypes: {
         backgroundColor: { control: "color" },
     },
-    args: {
-        to: "/",
-    },
 } as ComponentMeta<typeof Input>
 
 const Template: ComponentStory<typeof Input> = (args: any) => (
