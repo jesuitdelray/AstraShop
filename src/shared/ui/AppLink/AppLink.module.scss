@@ -1,0 +1,10 @@
+.AppLink {
+    font-size: var(--font-size-base);
+    color: var(--color-dark-gray);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--color-accent);
+        text-decoration: underline;
+    }
+}
