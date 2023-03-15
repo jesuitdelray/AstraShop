@@ -1,6 +1,6 @@
-import styles from "./Input.module.scss"
 import { classNames } from "shared/lib/classNames/classNames"
 import { ChangeEvent, InputHTMLAttributes } from "react"
+import styles from "./Input.module.scss"
 
 type HtmlInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -16,30 +16,31 @@ export enum InputType {
 
 interface InputProps extends HtmlInputProps {
     type?: InputType
-    placeholder: string
     label?: string
     isRequired?: boolean
     className?: string
-    isIncorrect?: boolean
+    error?: string
     value: string | number
+    id?: string
     onChange: (value: string) => void
 }
 
 export function Input(props: InputProps) {
     const {
         type = "text",
-        placeholder,
         label,
         isRequired = false,
         className,
-        isIncorrect = false,
+        error,
         value,
+        id,
         onChange,
+        ...otherProps
     } = props
 
     const containerClassName = classNames(
         styles.container,
-        { [styles.incorrect]: isIncorrect },
+        { [styles.incorrect]: error },
         [className]
     )
 
@@ -49,17 +50,19 @@ export function Input(props: InputProps) {
 
     return (
         <div className={containerClassName}>
-            <label className={styles.label}>
+            <label htmlFor={id} className={styles.label}>
                 {label}
                 {isRequired && <span className={styles.required}>*</span>}
             </label>
             <input
+                id={id}
                 onChange={changeHandler}
                 value={value}
                 type={type}
-                placeholder={placeholder}
                 className={styles.input}
+                {...otherProps}
             />
+            {error && <p className={styles.error}>{error}</p>}
         </div>
     )
 }

@@ -1,4 +1,3 @@
-import React from "react"
 import { Suspense, useState } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppRouter } from "app/providers/router"
@@ -18,6 +17,17 @@ function App() {
                     label="Имя, Фамилия"
                     value={inputs}
                     onChange={(value: string) => setInputs(value)}
+                    error="Please Enter Correct Name!!!"
+                    id="123"
+                />
+                <Input
+                    type={InputType.PASSWORD}
+                    placeholder="Enter your name"
+                    label="Имя, Фамилия"
+                    value={inputs}
+                    onChange={(value: string) => setInputs(value)}
+                    error="Please Enter Correct Name!!!"
+                    id="124"
                 />
                 <div className="content-page">
                     <AppRouter />
