@@ -30,7 +30,7 @@
     opacity: 0;
 }
 
-.checked {
+.checked .checkbox {
     border-color: var(--color-accent);
 
     .checkboxTick::after {

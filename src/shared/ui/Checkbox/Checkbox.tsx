@@ -1,26 +1,39 @@
-import { useRef, useState } from "react"
+import { InputHTMLAttributes } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./Checkbox.module.scss"
 
-export function Checkbox({ label, checked, onChange, id }: any) {
-    const ref = useRef(null)
+type HtmlInputProps = Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    "onChange" | "type"
+>
+
+interface inputProps extends HtmlInputProps {
+    label: string
+    checked: boolean
+    onChange: () => void
+    id: string
+    className?: string
+}
+
+export function Checkbox(props: inputProps) {
+    const { label, checked, onChange, id, className, ...otherProps } = props
     return (
-        // @ts-ignore
-        <label className={styles.checkboxWrapper} htmlFor={id}>
-            <div
-                className={classNames(
-                    styles.checkbox,
-                    { [styles.checked]: checked },
-                    []
-                )}
-            >
+        <label
+            className={classNames(
+                styles.checkboxWrapper,
+                { [styles.checked]: checked },
+                [className]
+            )}
+            htmlFor={id}
+        >
+            <div className={styles.checkbox}>
                 <input
                     className={styles.checkboxInput}
                     type="checkbox"
                     id={id}
-                    ref={ref}
                     checked={checked}
                     onChange={onChange}
+                    {...otherProps}
                 />
                 <div className={styles.checkboxTick} />
             </div>
