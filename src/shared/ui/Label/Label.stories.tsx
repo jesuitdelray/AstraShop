@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Label> = (args: any) => (
 
 export const LabelDefault = Template.bind({})
 LabelDefault.args = {
-    value: "NEW",
+    value: "новый",
     fontSize: LabelFontSize.FONT_SMALL,
 }
 
