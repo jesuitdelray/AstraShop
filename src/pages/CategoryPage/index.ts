@@ -1,3 +1,3 @@
-import { CategoryPage } from "./ui/Categorypage"
+import { CategoryPage } from "./ui/CategoryPage"
 
 export { CategoryPage }
