@@ -1,22 +1,23 @@
-import {classNames} from "shared/lib/classNames/classNames";
-import {InputHTMLAttributes} from "react";
-import styles from "./RadioButton.module.scss";
+import { classNames } from "shared/lib/classNames/classNames"
+import { InputHTMLAttributes, memo } from "react"
+import styles from "./RadioButton.module.scss"
 
-export interface IRadioButton extends InputHTMLAttributes<HTMLInputElement> {
+export interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     id?: string;
     className?: string;
 }
 
-export const RadioButton = ({
-                                name,
-                                id,
-                                value,
-                                onChange,
-                                checked,
-                                label,
-                                className,
-                            }: IRadioButton) => {
+export const RadioButton = memo((props: RadioButtonProps) => {
+    const {
+        name,
+        id,
+        value,
+        onChange,
+        checked,
+        label,
+        className,
+    } = props
     return (
         <div className={classNames(styles.radio, {}, [className])}>
             <input
@@ -28,9 +29,7 @@ export const RadioButton = ({
                 onChange={onChange}
                 checked={checked}
             />
-            <label htmlFor={id} className={styles.label}>
-                {!!label && label}
-            </label>
+            {!!label && <label htmlFor={id} className={styles.label}>{label}</label>}
         </div>
-    );
-};
+    )
+})
