@@ -1,0 +1,30 @@
+@media (min-width: 481px) {
+    .list {
+        display: flex;
+        align-items: center;
+        margin-right: 44px;
+
+        .link {
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+
+            .menuItem {
+                fill: var(--color-dark-gray);
+                cursor: pointer;
+                margin-right: 16px;
+            }
+
+            &:hover {
+                .menuItem {
+                    fill: var(--color-accent);
+                }
+            }
+        }
+
+        .link:last-child {
+            margin-right: 0;
+        }
+    }
+}

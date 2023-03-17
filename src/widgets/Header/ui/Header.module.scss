@@ -1,0 +1,60 @@
+.container {
+    padding: 16px 24px;
+    width: 100%;
+    color: var(--color-dark-gray);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "burger basket";
+}
+
+.search {
+    grid-area: search;
+    display: none;
+}
+
+.navlist {
+    grid-area: navlist;
+    display: none;
+}
+
+.burger {
+    grid-area: burger;
+    fill: var(--color-dark-gray);
+    cursor: pointer;
+}
+
+.basket {
+    grid-area: basket;
+}
+
+.navlist {
+    display: none;
+}
+
+@media (min-width: 481px) {
+    .container {
+        padding: 20px 36px;
+        grid-template-areas: "search navlist basket";
+    }
+
+    .search {
+        grid-area: search;
+        max-width: 444px;
+        width: 100%;
+        display: flex;
+    }
+
+    .navlist {
+        grid-area: navlist;
+        display: flex;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    .basket {
+        grid-area: basket;
+    }
+}

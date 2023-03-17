@@ -1,0 +1,13 @@
+.container {
+    display: none;
+}
+
+.navlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.open {
+    display: block;
+}

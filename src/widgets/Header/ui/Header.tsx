@@ -1,23 +1,26 @@
-import { useMemo } from "react"
 import { SmallBasket } from "entities/SmallBasket"
 import { SearchProduct } from "features/SearchProduct"
-import { headerItemsList } from "../model/items"
+import { useState } from "react"
+import { MobileBurgerIcon } from "shared/assets/icons/others"
+import { BurgerMenu } from "./BurgerMenu/BurgerMenu"
 import styles from "./Header.module.scss"
+import { NavigationList } from "../../../entities/NavigationList/NavigationList"
+import { desktopItemsList } from "../model/items"
 
 export function Header() {
-    const itemList = useMemo(
-        () =>
-            headerItemsList.map((item, index) => (
-                <div key={index}>{item.text}</div>
-            )),
-        []
-    )
+    const [burgerOpen, setBurgerOpen] = useState(false)
+
+    function burgerClickHandler() {
+        setBurgerOpen(prev => !prev)
+    }
 
     return (
-        <div>
-            <SearchProduct />
-            <SmallBasket />
-            {itemList}
+        <div className={styles.container}>
+            <SearchProduct className={styles.search} />
+            <NavigationList className={styles.navlist} list={desktopItemsList} />
+            <MobileBurgerIcon className={styles.burger} onClick={burgerClickHandler} />
+            <SmallBasket className={styles.basket} />
+            <BurgerMenu isOpen={burgerOpen} />
         </div>
     )
 }

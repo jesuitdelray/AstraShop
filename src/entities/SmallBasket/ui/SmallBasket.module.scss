@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon {
+    fill: var(--color-dark-gray);
+    margin-right: 16px;
+
+    &:hover {
+        fill: var(--color-accent);
+    }
+}
