@@ -50,10 +50,12 @@ export function Input(props: InputProps) {
 
     return (
         <div className={containerClassName}>
-            <label htmlFor={id} className={styles.label}>
-                {label}
-                {isRequired && <span className={styles.required}>*</span>}
-            </label>
+            {!!label && (
+                <label htmlFor={id} className={styles.label}>
+                    {label}
+                    {isRequired && <span className={styles.required}>*</span>}
+                </label>
+            )}
             <input
                 id={id}
                 onChange={changeHandler}
@@ -62,7 +64,7 @@ export function Input(props: InputProps) {
                 className={styles.input}
                 {...otherProps}
             />
-            {error && <p className={styles.error}>{error}</p>}
+            {!!error && <p className={styles.error}>{error}</p>}
         </div>
     )
 }
