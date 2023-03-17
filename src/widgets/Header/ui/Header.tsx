@@ -1,7 +1,7 @@
 import { SmallBasket } from "entities/SmallBasket"
 import { SearchProduct } from "features/SearchProduct"
 import { useState } from "react"
-import { MobileBurgerIcon } from "shared/assets/icons/others"
+import { CrossIcon, MobileBurgerIcon } from "shared/assets/icons/others"
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu"
 import styles from "./Header.module.scss"
 import { NavigationList } from "../../../entities/NavigationList/NavigationList"
@@ -15,12 +15,19 @@ export function Header() {
     }
 
     return (
-        <div className={styles.container}>
-            <SearchProduct className={styles.search} />
-            <NavigationList className={styles.navlist} list={desktopItemsList} />
-            <MobileBurgerIcon className={styles.burger} onClick={burgerClickHandler} />
-            <SmallBasket className={styles.basket} />
+        <>
+            <div className={styles.container}>
+                <SearchProduct className={styles.search} />
+                <NavigationList className={styles.navlist} list={desktopItemsList} />
+                {burgerOpen ? (
+                    <CrossIcon onClick={burgerClickHandler} />
+                ) : (
+                    <MobileBurgerIcon className={styles.burger} onClick={burgerClickHandler} />
+                )}
+
+                <SmallBasket className={styles.basket} />
+            </div>
             <BurgerMenu isOpen={burgerOpen} />
-        </div>
+        </>
     )
 }

@@ -21,8 +21,8 @@ export function BurgerMenu({ isOpen }: BurgerMenuProps) {
 
     return (
         <div className={containerClassName}>
-            <Logo />
-            <SearchProduct />
+            <Logo className={styles.logo} />
+            <SearchProduct className={styles.searchbar} />
             <NavigationList className={styles.navlist} list={mobileItemsList} />
             <Copyright />
         </div>

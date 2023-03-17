@@ -1,13 +1,41 @@
 .container {
-    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    max-height: 80vh;
+    background-color: white;
+    width: 100%;
+    padding: 24px;
+    z-index: 1;
+    transform: translateY(-100%);
+    transition: transform 0.25s ease;
+}
+
+.open {
+    transform: translateY(0);
+}
+
+.logo {
+    margin-bottom: 24px;
+}
+
+.searchbar {
+    margin-bottom: 40px;
 }
 
 .navlist {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
 
-.open {
-    display: block;
+    a {
+        margin-bottom: 24px;
+    }
+
+    a:last-child {
+        margin-bottom: 0;
+    }
+
+    margin-bottom: 60px;
 }

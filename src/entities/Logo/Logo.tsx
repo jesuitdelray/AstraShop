@@ -10,7 +10,7 @@ export function Logo({ className }: LogoProps) {
     return (
         <div className={classNames(styles.container, {}, [className])}>
             <ShoppingBagIcon className={styles.icon} />
-            <p className={styles.name}>Astra Shop</p>
+            <p className={styles.name}>AstraShop</p>
         </div>
     )
 }

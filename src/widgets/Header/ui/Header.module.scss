@@ -2,10 +2,12 @@
     padding: 16px 24px;
     width: 100%;
     color: var(--color-dark-gray);
-
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: "burger basket";
+    z-index: 2;
+    position: relative;
+    background-color: var(--color-white);
 }
 
 .search {
@@ -26,10 +28,6 @@
 
 .basket {
     grid-area: basket;
-}
-
-.navlist {
-    display: none;
 }
 
 @media (min-width: 481px) {
