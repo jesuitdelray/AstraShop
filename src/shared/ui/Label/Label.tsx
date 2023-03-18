@@ -19,7 +19,12 @@ interface InputProps {
 }
 
 export function Label(props: InputProps) {
-    const { color = "red", fontSize = "small", value, className } = props
+    const {
+        color = LabelColor.RED,
+        fontSize = LabelFontSize.FONT_SMALL,
+        value,
+        className,
+    } = props
     return (
         <div
             className={classNames(styles.labelContainer, {}, [
