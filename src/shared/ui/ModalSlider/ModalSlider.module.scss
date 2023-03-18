@@ -7,24 +7,52 @@
     left: 0;
     right: 0;
     pointer-events: none;
+    z-index: 3;
 }
 
 .container {
     position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    height: fit-content;
-    max-height: 80vh;
     background-color: white;
-    width: 100%;
-    padding: 24px;
-    z-index: 1;
-    transform: translateY(-100%);
     transition: transform 0.25s ease;
 }
 
-.open {
+.right {
+    .container {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        min-width: 30vw;
+        max-width: fit-content;
+        padding: 24px;
+        transform: translateX(100%);
+    }
+}
+
+.top {
+    .container {
+        top: 64px;
+        left: 0;
+        right: 0;
+        height: fit-content;
+        max-height: 80vh;
+        width: 100%;
+        padding: 24px;
+        transform: translateY(-100%);
+    }
+}
+
+.right.open {
+    &.wrapper {
+        background-color: var(--color-modal-overlay);
+        pointer-events: auto;
+    }
+
+    .container {
+        transform: translateX(0);
+    }
+}
+
+.top.open {
     &.wrapper {
         background-color: var(--color-modal-overlay);
         pointer-events: auto;

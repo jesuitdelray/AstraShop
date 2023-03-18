@@ -7,11 +7,12 @@ const BASKET_COUNT = 0
 
 interface SmallBasketProps {
     className?: string
+    onClick: () => void
 }
 
-export function SmallBasket({ className }: SmallBasketProps) {
+export function SmallBasket({ className, onClick }: SmallBasketProps) {
     return (
-        <div className={classNames(styles.container, {}, [className])}>
+        <div className={classNames(styles.container, {}, [className])} onClick={onClick}>
             <ShoppingBagIcon className={styles.icon} />
             <Label
                 value={BASKET_COUNT}

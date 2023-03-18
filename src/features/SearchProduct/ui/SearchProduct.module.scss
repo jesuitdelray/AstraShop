@@ -30,16 +30,23 @@
 }
 
 .btn {
-    transform: translateX(calc(-100% - 10px));
-    height: 100%;
-    left: calc(100% + 10px);
-    border-radius: 100px;
-    padding: 0 20px;
-    transition: transform 0.2s ease;
-    position: absolute;
-    border: 0px solid gray;
+    display: none;
 }
 
-.btnActive {
-    transform: translateX(0);
+@media (min-width: 481px) {
+    .btn {
+        display: block;
+        transform: translateX(calc(-100% - 10px));
+        height: 100%;
+        left: calc(100% + 10px);
+        border-radius: 100px;
+        padding: 0 20px;
+        transition: transform 0.2s ease;
+        position: absolute;
+        border: 0;
+    }
+
+    .btnActive {
+        transform: translateX(0);
+    }
 }

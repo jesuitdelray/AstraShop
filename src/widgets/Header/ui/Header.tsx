@@ -1,33 +1,25 @@
-import { SmallBasket } from "entities/SmallBasket"
 import { SearchProduct } from "features/SearchProduct"
-import { useState } from "react"
-import { CrossIcon, MobileBurgerIcon } from "shared/assets/icons/others"
-import { BurgerMenu } from "./BurgerMenu/BurgerMenu"
+import { NavigationList, NavigationListVariant } from "entities/NavigationList"
 import styles from "./Header.module.scss"
-import { NavigationList } from "../../../entities/NavigationList/NavigationList"
-import { desktopItemsList } from "../model/items"
+import { HeaderLeft } from "./HeaderLeft/HeaderLeft"
+import { HeaderRight } from "./HeaderRight/HeaderRight"
 
-export function Header() {
-    const [burgerOpen, setBurgerOpen] = useState(false)
+const isMobile = false
 
-    function burgerClickHandler() {
-        setBurgerOpen(prev => !prev)
-    }
-
+export function Header({ modalOpen, setModalOpen }: any) {
     return (
-        <>
-            <div className={styles.container}>
-                <SearchProduct className={styles.search} />
-                <NavigationList className={styles.navlist} list={desktopItemsList} />
-                {burgerOpen ? (
-                    <CrossIcon onClick={burgerClickHandler} />
-                ) : (
-                    <MobileBurgerIcon className={styles.burger} onClick={burgerClickHandler} />
-                )}
+        <div className={styles.container}>
+            <SearchProduct className={styles.search} />
 
-                <SmallBasket className={styles.basket} />
-            </div>
-            <BurgerMenu isOpen={burgerOpen} onClose={() => setBurgerOpen(false)} />
-        </>
+            <NavigationList className={styles.navlist} variant={NavigationListVariant.DESKTOP} />
+
+            <HeaderLeft
+                modalOpen={modalOpen}
+                setModalOpen={setModalOpen}
+                className={styles.headerLeft}
+            />
+
+            <HeaderRight setModalOpen={setModalOpen} modalOpen={modalOpen} />
+        </div>
     )
 }

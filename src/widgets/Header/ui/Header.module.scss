@@ -4,8 +4,8 @@
     color: var(--color-dark-gray);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas: "burger basket";
-    z-index: 2;
+    grid-template-areas: "headerLeft basket";
+    z-index: 100;
     position: relative;
     background-color: var(--color-white);
 }
@@ -20,20 +20,17 @@
     display: none;
 }
 
-.burger {
-    grid-area: burger;
-    fill: var(--color-dark-gray);
-    cursor: pointer;
-}
-
-.basket {
-    grid-area: basket;
+.headerLeft {
+    grid-area: headerLeft;
+    display: flex;
+    align-items: center;
 }
 
 @media (min-width: 481px) {
     .container {
         padding: 20px 36px;
         grid-template-areas: "search navlist basket";
+        z-index: 3;
     }
 
     .search {
@@ -48,11 +45,7 @@
         display: flex;
     }
 
-    .burger {
+    .headerLeft {
         display: none;
-    }
-
-    .basket {
-        grid-area: basket;
     }
 }

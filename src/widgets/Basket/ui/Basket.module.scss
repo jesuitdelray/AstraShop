@@ -1,0 +1,25 @@
+.slideModal {
+    display: block;
+}
+
+.normalModal {
+    display: none;
+}
+
+@media (min-width: 481px) {
+    .slideModal {
+        display: none;
+    }
+
+    .normalModal {
+        display: block;
+        z-index: 5;
+    }
+}
+
+.slideContainer {
+    min-height: 236px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

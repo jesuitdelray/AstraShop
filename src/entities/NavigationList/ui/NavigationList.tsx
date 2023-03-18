@@ -1,16 +1,24 @@
 import { memo } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
+import { desktopItemsList, mobileItemsList } from "../model/list"
 import styles from "./NavigationList.module.scss"
+
+export enum NavigationListVariant {
+    MOBILE = "mobile",
+    DESKTOP = "desktop",
+}
 
 interface NavigationListProps {
     className?: string
-    list: any
+    variant: NavigationListVariant
     onLinkClick?: () => void
 }
 
 export const NavigationList = memo((props: NavigationListProps) => {
-    const { className, list, onLinkClick } = props
+    const { className, onLinkClick, variant } = props
+
+    const list = variant === NavigationListVariant.MOBILE ? mobileItemsList : desktopItemsList
 
     return (
         <div className={classNames(styles.list, {}, [className])}>
