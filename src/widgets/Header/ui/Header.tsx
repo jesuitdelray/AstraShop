@@ -27,7 +27,7 @@ export function Header() {
 
                 <SmallBasket className={styles.basket} />
             </div>
-            <BurgerMenu isOpen={burgerOpen} />
+            <BurgerMenu isOpen={burgerOpen} onClose={() => setBurgerOpen(false)} />
         </>
     )
 }
