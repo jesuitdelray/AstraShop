@@ -3,10 +3,14 @@
     align-items: center;
     color: var(--color-base);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .icon {
     fill: var(--color-accent);
     margin-right: 5px;
+}
+
+.name {
+    margin-top: 4px;
 }

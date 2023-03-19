@@ -16,7 +16,14 @@ export function HeaderLeft({ modalOpen, setModalOpen, className }: HeaderLeftPro
             case "burger":
                 return <CrossIcon onClick={() => setModalOpen("")} />
             case "basket":
-                return <Typography variant={TypographyVariant.H3}>Корзина</Typography>
+                return window.innerWidth < 769 ? (
+                    <Typography variant={TypographyVariant.H3}>Корзина</Typography>
+                ) : (
+                    <MobileBurgerIcon
+                        className={styles.burger}
+                        onClick={() => setModalOpen("burger")}
+                    />
+                )
             default:
                 return (
                     <MobileBurgerIcon

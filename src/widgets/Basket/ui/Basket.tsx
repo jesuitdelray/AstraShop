@@ -24,7 +24,7 @@ export function Basket({ isOpen, onClose }: BasketProps) {
                 variant={ModalSliderVariant.RIGHT}
                 className={styles.slideRight}
             >
-                <CrossIcon onClick={onClose} />
+                <CrossIcon onClick={onClose} className={styles.cross} />
                 <Typography variant={TypographyVariant.H3} color={TypographyColor.DARK_GRAY}>
                     Пусто
                 </Typography>

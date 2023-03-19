@@ -8,7 +8,7 @@ interface HeaderRightProps {
 }
 
 export function HeaderRight({ setModalOpen, modalOpen }: HeaderRightProps) {
-    return modalOpen === "basket" && window.innerWidth < 481 ? (
+    return modalOpen === "basket" && window.innerWidth < 769 ? (
         <CrossIcon onClick={() => setModalOpen("")} className={styles.cross} />
     ) : (
         <SmallBasket className={styles.basket} onClick={() => setModalOpen("basket")} />
