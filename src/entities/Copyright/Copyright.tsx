@@ -7,8 +7,6 @@ interface CopyrightProps {
 
 export function Copyright({ className }: CopyrightProps) {
     return (
-        <div className={classNames(styles.container, {}, [className])}>
-            © 7e-Commerce™ 2007–2020
-        </div>
+        <div className={classNames(styles.container, {}, [className])}>© AstraShop™ 2018–2023</div>
     )
 }
