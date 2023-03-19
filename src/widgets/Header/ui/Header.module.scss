@@ -26,7 +26,23 @@
     align-items: center;
 }
 
-@media (min-width: 481px) {
+@media (min-width: 769px) {
+    .container {
+        padding: 20px 36px;
+        grid-template-columns: 1fr;
+        grid-template-areas: "search headerLeft basket";
+        z-index: 3;
+    }
+
+    .search {
+        grid-area: search;
+        max-width: 444px;
+        width: 100%;
+        display: flex;
+    }
+}
+
+@media (min-width: 1300px) {
     .container {
         padding: 20px 36px;
         grid-template-areas: "search navlist basket";

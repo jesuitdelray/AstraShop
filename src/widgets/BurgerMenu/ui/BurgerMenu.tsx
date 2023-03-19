@@ -14,15 +14,17 @@ export function BurgerMenu(props: BurgerMenuProps) {
     const { isOpen, onClose } = props
 
     return (
-        <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.container}>
-            <Logo className={styles.logo} onClick={onClose} />
-            <SearchProduct className={styles.searchbar} />
-            <NavigationList
-                className={styles.navlist}
-                onLinkClick={onClose}
-                variant={NavigationListVariant.MOBILE}
-            />
-            <Copyright />
+        <ModalSlider isOpen={isOpen} onClose={onClose}>
+            <div className={styles.container}>
+                <Logo className={styles.logo} onClick={onClose} />
+                <SearchProduct className={styles.searchbar} />
+                <NavigationList
+                    className={styles.navlist}
+                    onLinkClick={onClose}
+                    variant={NavigationListVariant.MOBILE}
+                />
+                <Copyright />
+            </div>
         </ModalSlider>
     )
 }

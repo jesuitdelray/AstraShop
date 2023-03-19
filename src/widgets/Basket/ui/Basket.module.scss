@@ -1,23 +1,23 @@
-.slideModal {
+.slideTop {
     display: block;
 }
 
-.normalModal {
+.slideRight {
     display: none;
 }
 
 @media (min-width: 481px) {
-    .slideModal {
+    .slideTop {
         display: none;
     }
 
-    .normalModal {
+    .slideRight {
         display: block;
         z-index: 5;
     }
 }
 
-.slideContainer {
+.slideTopContainer {
     min-height: 236px;
     display: flex;
     align-items: center;

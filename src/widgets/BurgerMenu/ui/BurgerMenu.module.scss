@@ -21,7 +21,13 @@
     margin-bottom: 60px;
 }
 
-@media (min-width: 481px) {
+@media (min-width: 769px) {
+    .searchbar {
+        display: none;
+    }
+}
+
+@media (min-width: 1300px) {
     .container {
         display: none;
     }

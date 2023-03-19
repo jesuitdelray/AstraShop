@@ -4,7 +4,13 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./HeaderLeft.module.scss"
 
-export function HeaderLeft({ modalOpen, setModalOpen, className }: any) {
+interface HeaderLeftProps {
+    modalOpen: string
+    setModalOpen: (value: string) => void
+    className?: string
+}
+
+export function HeaderLeft({ modalOpen, setModalOpen, className }: HeaderLeftProps) {
     const switcher = useMemo(() => {
         switch (modalOpen) {
             case "burger":

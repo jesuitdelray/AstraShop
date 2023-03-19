@@ -30,7 +30,7 @@
 
 .top {
     .container {
-        top: 64px;
+        top: var(--navbar-height);
         left: 0;
         right: 0;
         height: fit-content;
