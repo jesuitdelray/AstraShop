@@ -13,11 +13,9 @@
       color: var(--color-white);
       border-color: var(--color-accent);
     }
-
-
   }
 
-  &.fullfilled-red {
+  &.filled-red {
     border: unset;
     background: var(--color-accent);
     color: var(--color-white);
@@ -27,7 +25,7 @@
     }
   }
 
-  &.fullfilled-grey {
+  &.filled-grey {
     border: unset;
     background: var(--color-dark-gray);
     color: var(--color-white);

@@ -1,5 +1,5 @@
-import {render, screen} from "@testing-library/react"
-import {Button, ButtonSize, ButtonTheme} from "shared/ui/Button/Button";
+import { render, screen } from "@testing-library/react"
+import { Button, ButtonSize, ButtonVariant } from "shared/ui/Button/Button"
 
 describe("Button test", () => {
     test("Test render", () => {
@@ -7,15 +7,15 @@ describe("Button test", () => {
         expect(screen.getByText("Submit")).toBeInTheDocument()
     })
 
-    test("Test fullfilled red theme", () => {
-        render(<Button theme={ButtonTheme.FULLFILLED_RED}>Submit</Button>)
-        expect(screen.getByText("Submit")).toHaveClass("fullfilled-red")
+    test("Test filled red theme", () => {
+        render(<Button variant={ButtonVariant.FILLED_RED}>Submit</Button>)
+        expect(screen.getByText("Submit")).toHaveClass("filled-red")
         screen.debug()
     })
 
-    test("Test fullfilled grey theme", () => {
-        render(<Button theme={ButtonTheme.FULLFILLED_GREY}>Submit</Button>)
-        expect(screen.getByText("Submit")).toHaveClass("fullfilled-grey")
+    test("Test filled grey theme", () => {
+        render(<Button variant={ButtonVariant.FILLED_GREY}>Submit</Button>)
+        expect(screen.getByText("Submit")).toHaveClass("filled-grey")
         screen.debug()
     })
 
@@ -31,4 +31,3 @@ describe("Button test", () => {
         screen.debug()
     })
 })
-

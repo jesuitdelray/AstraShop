@@ -1,11 +1,11 @@
 import { classNames, Mods } from "shared/lib/classNames/classNames"
-import { ButtonHTMLAttributes, memo, ReactNode } from "react";
+import { ButtonHTMLAttributes, memo, ReactNode } from "react"
 import styles from "./Button.module.scss"
 
-export enum ButtonTheme {
+export enum ButtonVariant {
     OUTLINE = "outline",
-    FULLFILLED_RED = "fullfilled-red",
-    FULLFILLED_GREY = "fullfilled-grey"
+    FILLED_RED = "filled-red",
+    FILLED_GREY = "filled-grey"
 }
 
 export enum ButtonSize {
@@ -15,7 +15,7 @@ export enum ButtonSize {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
-    theme?: ButtonTheme
+    variant?: ButtonVariant
     size?: ButtonSize
     disabled?: boolean
     children?: ReactNode
@@ -24,7 +24,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = memo((props: ButtonProps) => {
     const {
         className,
-        theme = ButtonTheme.OUTLINE,
+        variant = ButtonVariant.OUTLINE,
         size = ButtonSize.LARGE,
         disabled,
         children,
@@ -32,7 +32,7 @@ export const Button = memo((props: ButtonProps) => {
     } = props
 
     const mods: Mods = {
-        [styles[theme]]: true,
+        [styles[variant]]: true,
         [styles[size]]: true,
         [styles.disabled]: disabled,
     }

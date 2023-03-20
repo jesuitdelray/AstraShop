@@ -1,8 +1,8 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {Button, ButtonSize, ButtonTheme} from "./Button"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { Button, ButtonSize, ButtonVariant } from "./Button"
 
-const buttonText = "Submit";
+const buttonText = "Submit"
 
 export default {
     title: "shared/Button",
@@ -19,34 +19,34 @@ OutlineLarge.args = {
     children: buttonText,
 }
 
-export const FullfilledRedLarge = Template.bind({})
-FullfilledRedLarge.args = {
+export const FilledRedLarge = Template.bind({})
+FilledRedLarge.args = {
     children: buttonText,
-    theme: ButtonTheme.FULLFILLED_RED,
+    variant: ButtonVariant.FILLED_RED,
 }
 
-export const FullfilledGreyLarge = Template.bind({})
-FullfilledGreyLarge.args = {
+export const FilledGreyLarge = Template.bind({})
+FilledGreyLarge.args = {
     children: buttonText,
-    theme: ButtonTheme.FULLFILLED_GREY,
+    variant: ButtonVariant.FILLED_GREY,
 }
 
 export const OutlineSmall = Template.bind({})
 OutlineSmall.args = {
     children: buttonText,
-    size: ButtonSize.SMALL
+    size: ButtonSize.SMALL,
 }
 
-export const FullfilledRedSmall = Template.bind({})
-FullfilledRedSmall.args = {
+export const FilledRedSmall = Template.bind({})
+FilledRedSmall.args = {
     children: buttonText,
-    theme: ButtonTheme.FULLFILLED_RED,
-    size: ButtonSize.SMALL
+    variant: ButtonVariant.FILLED_RED,
+    size: ButtonSize.SMALL,
 }
 
-export const FullfilledGreySmall = Template.bind({})
-FullfilledGreySmall.args = {
+export const FilledGreySmall = Template.bind({})
+FilledGreySmall.args = {
     children: buttonText,
-    theme: ButtonTheme.FULLFILLED_GREY,
-    size: ButtonSize.SMALL
+    variant: ButtonVariant.FILLED_GREY,
+    size: ButtonSize.SMALL,
 }
