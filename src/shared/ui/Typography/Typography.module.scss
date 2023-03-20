@@ -13,6 +13,11 @@
     color: var(--color-base);
 }
 
+.variantH4 {
+    font-size: var(--font-size-h4);
+    color: var(--color-base);
+}
+
 .variantP {
     font-size: var(--font-size-base);
     color: var(--color-base);
@@ -22,6 +27,7 @@
     &.variantH1,
     &.variantH2,
     &.variantH3,
+    &.variantH4,
     &.variantP {
         color: var(--color-base);
     }
@@ -31,6 +37,7 @@
     &.variantH1,
     &.variantH2,
     &.variantH3,
+    &.variantH4,
     &.variantP {
         color: var(--color-dark-gray);
     }
@@ -40,6 +47,7 @@
     &.variantH1,
     &.variantH2,
     &.variantH3,
+    &.variantH4,
     &.variantP {
         font-weight: 700;
     }
