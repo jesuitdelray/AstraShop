@@ -1,7 +1,11 @@
+import { OrderInfo } from "entities/OrderIfo"
 import { CrossIcon } from "shared/assets/icons/others"
+import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { ModalSlider, ModalSliderVariant } from "shared/ui/ModalSlider/ModalSlider"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { basketItemsList } from "../model/list"
 import styles from "./Basket.module.scss"
+import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 
 interface BasketProps {
     isOpen: boolean
@@ -13,9 +17,16 @@ export function Basket({ isOpen, onClose }: BasketProps) {
         <>
             <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.slideTop}>
                 <div className={styles.slideTopContainer}>
-                    <Typography variant={TypographyVariant.H3} color={TypographyColor.DARK_GRAY}>
-                        Пусто
-                    </Typography>
+                    {basketItemsList.length ? (
+                        <BasketItemsList list={basketItemsList} />
+                    ) : (
+                        <Typography
+                            variant={TypographyVariant.H3}
+                            color={TypographyColor.DARK_GRAY}
+                        >
+                            Пусто
+                        </Typography>
+                    )}
                 </div>
             </ModalSlider>
             <ModalSlider
@@ -24,10 +35,36 @@ export function Basket({ isOpen, onClose }: BasketProps) {
                 variant={ModalSliderVariant.RIGHT}
                 className={styles.slideRight}
             >
-                <CrossIcon onClick={onClose} className={styles.cross} />
-                <Typography variant={TypographyVariant.H3} color={TypographyColor.DARK_GRAY}>
-                    Пусто
-                </Typography>
+                <div className={styles.slideRightContainer}>
+                    <CrossIcon onClick={onClose} className={styles.cross} />
+                    <Typography variant={TypographyVariant.H3} className={styles.slideRightTitle}>
+                        Корзина
+                    </Typography>
+
+                    {basketItemsList.length ? (
+                        <>
+                            <BasketItemsList list={basketItemsList} />
+                            <OrderInfo />
+                        </>
+                    ) : (
+                        <div className={styles.emptyBasketContainer}>
+                            <Typography
+                                variant={TypographyVariant.H3}
+                                color={TypographyColor.DARK_GRAY}
+                                className={styles.emptyBasketText}
+                            >
+                                Пусто
+                            </Typography>
+                            <Button
+                                className={styles.btn}
+                                variant={ButtonVariant.FILLED_RED}
+                                onClick={onClose}
+                            >
+                                Продолжить покупки
+                            </Button>
+                        </div>
+                    )}
+                </div>
             </ModalSlider>
         </>
     )
