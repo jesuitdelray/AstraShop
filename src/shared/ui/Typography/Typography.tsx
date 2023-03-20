@@ -19,14 +19,15 @@ interface TextProps {
     children: ReactNode
     variant: TypographyVariant
     color?: TypographyColor
+    isBold?: boolean
 }
 
 export const Typography = memo((props: TextProps) => {
-    const { className, children, variant, color = "" } = props
+    const { className, children, variant, color = "", isBold = false } = props
 
     return (
         <div
-            className={classNames(styles.Text, { [styles[color]]: color }, [
+            className={classNames(styles.Text, { [styles[color]]: color, [styles.bold]: isBold }, [
                 className,
                 styles[variant],
             ])}
