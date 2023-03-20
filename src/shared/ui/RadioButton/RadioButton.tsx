@@ -18,6 +18,7 @@ export const RadioButton = (props: RadioButtonProps) => {
         label,
         className,
     } = props
+
     return (
         <div className={classNames(styles.radio, {}, [className])}>
             <input

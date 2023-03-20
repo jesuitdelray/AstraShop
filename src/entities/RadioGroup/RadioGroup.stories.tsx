@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { RadioDirection, RadioGroup } from "entities/RadioGroup/RadioGroup"
+import { RadioGroupDirection, RadioGroup } from "entities/RadioGroup/RadioGroup"
 
 const drinks = [
     { label: "Coffee", value: "Coffee" },
@@ -24,7 +24,7 @@ HorizontalDirectionWithLabel.args = {
     name: "test",
     label: "Some label text",
     options: drinks,
-    direction: RadioDirection.HORIZONTAL,
+    direction: RadioGroupDirection.HORIZONTAL,
     onChange: value => console.log(value),
 }
 
@@ -33,7 +33,7 @@ VerticalDirectionWithLabel.args = {
     name: "test",
     label: "Some label text",
     options: drinks,
-    direction: RadioDirection.VERTICAL,
+    direction: RadioGroupDirection.VERTICAL,
     onChange: value => console.log(value),
 }
 
@@ -41,7 +41,7 @@ export const HorizontalDirectionWithoutLabel = Template.bind({})
 HorizontalDirectionWithoutLabel.args = {
     name: "test",
     options: drinks,
-    direction: RadioDirection.HORIZONTAL,
+    direction: RadioGroupDirection.HORIZONTAL,
     onChange: value => console.log(value),
 }
 
@@ -49,7 +49,7 @@ export const VerticalDirectionWithoutLabel = Template.bind({})
 VerticalDirectionWithoutLabel.args = {
     name: "test",
     options: drinks,
-    direction: RadioDirection.VERTICAL,
+    direction: RadioGroupDirection.VERTICAL,
     onChange: value => console.log(value),
 }
 
@@ -57,7 +57,7 @@ export const VerticalDirectionWithSelectedValue = Template.bind({})
 VerticalDirectionWithSelectedValue.args = {
     name: "test",
     options: drinks,
-    direction: RadioDirection.VERTICAL,
+    direction: RadioGroupDirection.VERTICAL,
     onChange: value => console.log(value),
     selectedValue: "Tea",
 }

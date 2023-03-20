@@ -6,13 +6,13 @@ import styles from "./RadioGroup.module.scss"
 
 type valueType = string | undefined | readonly string[] | number
 
-export enum RadioDirection {
+export enum RadioGroupDirection {
     HORIZONTAL = "horizontal",
     VERTICAL = "vertical",
 }
 
 export interface RadioGroupProps {
-    direction?: RadioDirection
+    direction?: RadioGroupDirection
     className?: string
     label?: string
     name: string
@@ -30,7 +30,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
         selectedValue,
         onChange,
         className,
-        direction = RadioDirection.HORIZONTAL,
+        direction = RadioGroupDirection.HORIZONTAL,
         required = false,
     } = props
     const [currentValue, setCurrentValue] = useState<valueType>(selectedValue)
@@ -43,7 +43,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     }, [currentValue, onChange])
 
     return (
-        <fieldset className={classNames(styles["radio-group"], {}, [className])}>
+        <fieldset className={classNames(styles["radioGroup"], {}, [className])}>
             <legend className={styles.legend}>
                 {label}
                 {required && <span className={styles.required}>*</span>}
