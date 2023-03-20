@@ -43,7 +43,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     }, [currentValue, onChange])
 
     return (
-        <fieldset className={classNames(styles["radioGroup"], {}, [className])}>
+        <fieldset className={classNames(styles.radioGroup, {}, [className])}>
             <legend className={styles.legend}>
                 {label}
                 {required && <span className={styles.required}>*</span>}

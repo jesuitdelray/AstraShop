@@ -1,34 +1,33 @@
 .radio {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .input {
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--color-accent);
-  border-radius: 50%;
-  cursor: pointer;
-
-  &::after {
-    content: "";
-    display: block;
+    appearance: none;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-accent);
     border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    margin: 3px;
-  }
+    cursor: pointer;
 
-  &:checked::after {
-    background-color: var(--color-accent);
-  }
+    &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        margin: 3px;
+    }
+
+    &:checked::after {
+        background-color: var(--color-accent);
+    }
 }
 
 .label {
-  cursor: pointer;
-  color: var(--color-dark-gray);
+    cursor: pointer;
+    color: var(--color-dark-gray);
 }
