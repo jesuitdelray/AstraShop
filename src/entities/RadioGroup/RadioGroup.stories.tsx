@@ -25,6 +25,7 @@ HorizontalDirectionWithLabel.args = {
     label: "Some label text",
     options: drinks,
     direction: RadioDirection.HORIZONTAL,
+    onChange: value => console.log(value),
 }
 
 export const VerticalDirectionWithLabel = Template.bind({})
@@ -33,6 +34,7 @@ VerticalDirectionWithLabel.args = {
     label: "Some label text",
     options: drinks,
     direction: RadioDirection.VERTICAL,
+    onChange: value => console.log(value),
 }
 
 export const HorizontalDirectionWithoutLabel = Template.bind({})
@@ -40,6 +42,7 @@ HorizontalDirectionWithoutLabel.args = {
     name: "test",
     options: drinks,
     direction: RadioDirection.HORIZONTAL,
+    onChange: value => console.log(value),
 }
 
 export const VerticalDirectionWithoutLabel = Template.bind({})
@@ -47,4 +50,14 @@ VerticalDirectionWithoutLabel.args = {
     name: "test",
     options: drinks,
     direction: RadioDirection.VERTICAL,
+    onChange: value => console.log(value),
+}
+
+export const VerticalDirectionWithSelectedValue = Template.bind({})
+VerticalDirectionWithSelectedValue.args = {
+    name: "test",
+    options: drinks,
+    direction: RadioDirection.VERTICAL,
+    onChange: value => console.log(value),
+    selectedValue: "Tea",
 }

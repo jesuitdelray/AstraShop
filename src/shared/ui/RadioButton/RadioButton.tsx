@@ -8,7 +8,7 @@ export interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> 
     className?: string;
 }
 
-export const RadioButton = memo((props: RadioButtonProps) => {
+export const RadioButton = (props: RadioButtonProps) => {
     const {
         name,
         id,
@@ -32,4 +32,4 @@ export const RadioButton = memo((props: RadioButtonProps) => {
             {!!label && <label htmlFor={id} className={styles.label}>{label}</label>}
         </div>
     )
-})
+}
