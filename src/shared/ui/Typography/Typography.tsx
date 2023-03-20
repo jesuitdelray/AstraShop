@@ -11,6 +11,7 @@ export enum TypographyVariant {
     H1 = "variantH1",
     H2 = "variantH2",
     H3 = "variantH3",
+    H4 = "variantH4",
     P = "variantP",
 }
 
