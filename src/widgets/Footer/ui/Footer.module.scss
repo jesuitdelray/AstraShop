@@ -1,0 +1,19 @@
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
+.commerceContainer {
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+    background-color: pink;
+}
+
+.infoContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: purple;
+    margin: 10px;
+    column-gap: 10px;
+}
