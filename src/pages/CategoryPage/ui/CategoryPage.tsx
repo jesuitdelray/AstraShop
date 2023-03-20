@@ -1,3 +1,10 @@
+import { LinksSidebar } from "widgets/LinksSidebar"
+
 export function CategoryPage() {
-    return <div>CategoryPage</div>
+    return (
+        <div>
+            <LinksSidebar />
+            CategoryPage
+        </div>
+    )
 }

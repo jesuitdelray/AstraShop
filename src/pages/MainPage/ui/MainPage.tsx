@@ -1,3 +1,10 @@
+import { LinksSidebar } from "widgets/LinksSidebar"
+
 export function MainPage() {
-    return <div>MainPage</div>
+    return (
+        <div>
+            <LinksSidebar />
+            MainPage
+        </div>
+    )
 }
