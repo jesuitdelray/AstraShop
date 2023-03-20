@@ -15,5 +15,41 @@
 
 .variantP {
     font-size: var(--font-size-base);
-    color: var(--color-dark-gray);
+    color: var(--color-base);
+}
+
+.base {
+    &.variantH1 {
+        color: var(--color-base);
+    }
+
+    &.variantH2 {
+        color: var(--color-base);
+    }
+
+    &.variantH3 {
+        color: var(--color-base);
+    }
+
+    &.variantP {
+        color: var(--color-base);
+    }
+}
+
+.darkGray {
+    &.variantH1 {
+        color: var(--color-dark-gray);
+    }
+
+    &.variantH2 {
+        color: var(--color-dark-gray);
+    }
+
+    &.variantH3 {
+        color: var(--color-dark-gray);
+    }
+
+    .variantP {
+        color: var(--color-dark-gray);
+    }
 }
