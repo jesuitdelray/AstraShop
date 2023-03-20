@@ -1,0 +1,10 @@
+.icon {
+    fill: var(--color-dark-gray);
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .icon {
+        margin-right: 10px;
+    }
+}
