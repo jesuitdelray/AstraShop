@@ -14,20 +14,20 @@ export function HeaderLeft({ modalOpen, setModalOpen, className }: HeaderLeftPro
     const switcher = useMemo(() => {
         switch (modalOpen) {
             case "burger":
-                return <CrossIcon onClick={() => setModalOpen("")} />
+                return <CrossIcon onClick={() => setModalOpen("")} className={styles.icon} />
             case "basket":
                 return window.innerWidth < 769 ? (
                     <Typography variant={TypographyVariant.H3}>Корзина</Typography>
                 ) : (
                     <MobileBurgerIcon
-                        className={styles.burger}
+                        className={styles.icon}
                         onClick={() => setModalOpen("burger")}
                     />
                 )
             default:
                 return (
                     <MobileBurgerIcon
-                        className={styles.burger}
+                        className={styles.icon}
                         onClick={() => setModalOpen("burger")}
                     />
                 )

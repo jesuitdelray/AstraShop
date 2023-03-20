@@ -6,8 +6,8 @@
     grid-template-columns: 1fr;
     grid-template-areas: "headerLeft basket";
     z-index: 100;
-    position: relative;
     background-color: var(--color-white);
+    position: fixed;
 }
 
 .search {
