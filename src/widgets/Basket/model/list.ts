@@ -9,7 +9,7 @@ export interface basketItemsType {
 
 export const basketItemsList: basketItemsType[] = [
     { productName: "Yamaha YSP-5600 Black", productPrice: "1 931 грн", img, id: "1" },
-    { productName: "Yamaha YSP-5600 Black", productPrice: "1 931 грн", img, id: "1" },
-    { productName: "Yamaha YSP-5600 Black", productPrice: "1 931 грн", img, id: "1" },
-    { productName: "Yamaha YSP-5600 Black", productPrice: "1 931 грн", img, id: "1" },
+    { productName: "Yamaha YSP-5600 Black", productPrice: "1 931 грн", img, id: "2" },
+    { productName: "Yamaha YSP-5600 Black", productPrice: "1 931 грн", img, id: "3" },
+    { productName: "Yamaha YSP-5600 Black", productPrice: "1 931 грн", img, id: "4" },
 ]
