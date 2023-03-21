@@ -18,7 +18,10 @@ export function Basket({ isOpen, onClose }: BasketProps) {
             <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.slideTop}>
                 <div className={styles.slideTopContainer}>
                     {basketItemsList.length ? (
-                        <BasketItemsList list={basketItemsList} />
+                        <>
+                            <BasketItemsList list={basketItemsList} />
+                            <OrderInfo />
+                        </>
                     ) : (
                         <Typography
                             variant={TypographyVariant.H3}

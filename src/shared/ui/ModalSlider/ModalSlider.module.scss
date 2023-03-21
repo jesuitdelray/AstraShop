@@ -12,7 +12,7 @@
 
 .container {
     position: fixed;
-    background-color: white;
+    background-color: var(--color-white);
     transition: transform 0.25s ease;
 }
 
@@ -21,9 +21,9 @@
         top: 0;
         right: 0;
         bottom: 0;
-        min-width: 35vw;
-        max-width: fit-content;
-        padding: 24px;
+        min-width: 550px;
+        width: 100%;
+        max-width: 40vw;
         transform: translateX(100%);
     }
 }
@@ -33,10 +33,10 @@
         top: var(--navbar-height);
         left: 0;
         right: 0;
+        overflow-y: auto;
         height: fit-content;
-        max-height: 80vh;
+        max-height: calc(100vh - var(--navbar-height));
         width: 100%;
-        padding: 24px;
         transform: translateY(-100%);
     }
 }

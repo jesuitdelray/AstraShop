@@ -4,6 +4,10 @@
     grid-template-areas: "img delete" "info ." "counter .";
     border-bottom: 1px solid var(--color-light-gray);
     height: 200px;
+
+    &:last-child {
+        border-bottom: 0;
+    }
 }
 
 .img {
@@ -40,6 +44,7 @@
     .container {
         grid-template-columns: auto auto auto auto;
         grid-template-areas: "img info counter delete";
+        column-gap: 20px;
         height: 130px;
         align-items: center;
         justify-items: center;

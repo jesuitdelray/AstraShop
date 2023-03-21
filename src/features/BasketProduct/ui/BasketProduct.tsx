@@ -17,7 +17,9 @@ export function BasketProduct(props: BasketProductProps) {
             <img src={img} alt="" className={styles.img} />
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.P}>{productName}</Typography>
-                <Typography variant={TypographyVariant.H3}>{productPrice}</Typography>
+                <Typography variant={TypographyVariant.H3} isBold>
+                    {productPrice}
+                </Typography>
             </div>
             <BasketProductCounter className={styles.counter} />
             <DeleteBucketIcon className={styles.delete} />
