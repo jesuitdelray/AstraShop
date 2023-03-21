@@ -1,3 +1,10 @@
+import { LinksSidebar } from "widgets/LinksSidebar"
+
 export function ContactsPage() {
-    return <div>ContactsPage</div>
+    return (
+        <div>
+            <LinksSidebar />
+            ContactsPage
+        </div>
+    )
 }

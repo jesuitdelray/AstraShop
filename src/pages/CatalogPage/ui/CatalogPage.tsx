@@ -1,3 +1,10 @@
+import { FiltersSidebar } from "widgets/FiltersSidebar"
+
 export function CatalogPage() {
-    return <div>CatalogPage</div>
+    return (
+        <div>
+            <FiltersSidebar />
+            CatalogPage
+        </div>
+    )
 }

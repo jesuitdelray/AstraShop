@@ -1,3 +1,10 @@
+import { LinksSidebar } from "widgets/LinksSidebar"
+
 export function OrderPage() {
-    return <div>OrderPage</div>
+    return (
+        <div>
+            <LinksSidebar />
+            OrderPage
+        </div>
+    )
 }

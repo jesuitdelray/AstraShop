@@ -11,6 +11,7 @@ export enum TypographyVariant {
     H1 = "variantH1",
     H2 = "variantH2",
     H3 = "variantH3",
+    H4 = "variantH4",
     P = "variantP",
 }
 
@@ -19,14 +20,15 @@ interface TextProps {
     children: ReactNode
     variant: TypographyVariant
     color?: TypographyColor
+    isBold?: boolean
 }
 
 export const Typography = memo((props: TextProps) => {
-    const { className, children, variant, color = "" } = props
+    const { className, children, variant, color = "", isBold = false } = props
 
     return (
         <div
-            className={classNames(styles.Text, { [styles[color]]: color }, [
+            className={classNames(styles.Text, { [styles[color]]: color, [styles.bold]: isBold }, [
                 className,
                 styles[variant],
             ])}

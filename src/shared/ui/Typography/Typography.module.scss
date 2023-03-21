@@ -13,43 +13,42 @@
     color: var(--color-base);
 }
 
+.variantH4 {
+    font-size: var(--font-size-h4);
+    color: var(--color-base);
+}
+
 .variantP {
     font-size: var(--font-size-base);
     color: var(--color-base);
 }
 
 .base {
-    &.variantH1 {
-        color: var(--color-base);
-    }
-
-    &.variantH2 {
-        color: var(--color-base);
-    }
-
-    &.variantH3 {
-        color: var(--color-base);
-    }
-
+    &.variantH1,
+    &.variantH2,
+    &.variantH3,
+    &.variantH4,
     &.variantP {
         color: var(--color-base);
     }
 }
 
 .darkGray {
-    &.variantH1 {
+    &.variantH1,
+    &.variantH2,
+    &.variantH3,
+    &.variantH4,
+    &.variantP {
         color: var(--color-dark-gray);
     }
+}
 
-    &.variantH2 {
-        color: var(--color-dark-gray);
-    }
-
-    &.variantH3 {
-        color: var(--color-dark-gray);
-    }
-
-    .variantP {
-        color: var(--color-dark-gray);
+.bold {
+    &.variantH1,
+    &.variantH2,
+    &.variantH3,
+    &.variantH4,
+    &.variantP {
+        font-weight: 700;
     }
 }
