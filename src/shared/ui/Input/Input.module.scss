@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     max-width: 443px;
-    padding-bottom: 20px;
     position: relative;
 }
 
@@ -38,6 +37,6 @@
     position: absolute;
     color: var(--color-error);
     font-size: var(--font-size-small);
-    bottom: 0;
+    bottom: -20px;
     left: 28px;
 }
