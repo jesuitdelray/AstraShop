@@ -15,5 +15,13 @@
     grid-template-columns: auto auto auto;
     background-color: purple;
     margin: 10px;
-    column-gap: 10px;
+    column-gap: 121px;
+
+    .title {
+        color: var(--color-base);
+    }
+
+    .content {
+        color: var(--dark-gray-color);
+    }
 }
