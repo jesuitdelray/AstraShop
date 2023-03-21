@@ -1,0 +1,14 @@
+.title {
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+
+    .input {
+        input {
+            height: 36px !important;
+        }
+    }
+}
