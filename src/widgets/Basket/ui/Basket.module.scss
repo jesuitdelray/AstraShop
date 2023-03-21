@@ -14,7 +14,7 @@
     display: none;
 }
 
-@media (min-width: 769px) {
+@include tablet {
     .container {
         align-items: stretch;
         height: 100%;

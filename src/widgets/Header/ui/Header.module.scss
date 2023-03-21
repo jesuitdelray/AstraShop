@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-@media (min-width: 769px) {
+@include tablet {
     .container {
         padding: 20px 36px;
         grid-template-columns: 1fr;
@@ -42,7 +42,7 @@
     }
 }
 
-@media (min-width: 1300px) {
+@include desktop {
     .container {
         padding: 20px 36px;
         grid-template-areas: "search navlist basket";
