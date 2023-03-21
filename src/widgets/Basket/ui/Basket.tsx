@@ -1,74 +1,44 @@
 import { OrderInfo } from "entities/OrderIfo"
 import { CrossIcon } from "shared/assets/icons/others"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { ModalSlider, ModalSliderVariant } from "shared/ui/ModalSlider/ModalSlider"
-import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { basketItemsList } from "../model/list"
 import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
+import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
 interface BasketProps {
     isOpen: boolean
     onClose: () => void
 }
 
+const isSlideTop = window.innerWidth < 769
+
 export function Basket({ isOpen, onClose }: BasketProps) {
     return (
-        <>
-            <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.slideTop}>
-                <div className={styles.slideTopContainer}>
-                    {basketItemsList.length ? (
-                        <>
-                            <BasketItemsList list={basketItemsList} />
-                            <OrderInfo />
-                        </>
-                    ) : (
-                        <Typography
-                            variant={TypographyVariant.H3}
-                            color={TypographyColor.DARK_GRAY}
-                        >
-                            Пусто
-                        </Typography>
-                    )}
-                </div>
-            </ModalSlider>
-            <ModalSlider
-                isOpen={isOpen}
-                onClose={onClose}
-                variant={ModalSliderVariant.RIGHT}
-                className={styles.slideRight}
-            >
-                <div className={styles.slideRightContainer}>
+        <ModalSlider
+            isOpen={isOpen}
+            onClose={onClose}
+            variant={isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT}
+            className={styles.wrapper}
+        >
+            <div className={styles.container}>
+                <div className={styles.slideRightHeader}>
                     <CrossIcon onClick={onClose} className={styles.cross} />
                     <Typography variant={TypographyVariant.H3} className={styles.slideRightTitle}>
                         Корзина
                     </Typography>
-
-                    {basketItemsList.length ? (
-                        <>
-                            <BasketItemsList list={basketItemsList} />
-                            <OrderInfo />
-                        </>
-                    ) : (
-                        <div className={styles.emptyBasketContainer}>
-                            <Typography
-                                variant={TypographyVariant.H3}
-                                color={TypographyColor.DARK_GRAY}
-                                className={styles.emptyBasketText}
-                            >
-                                Пусто
-                            </Typography>
-                            <Button
-                                className={styles.btn}
-                                variant={ButtonVariant.FILLED_RED}
-                                onClick={onClose}
-                            >
-                                Продолжить покупки
-                            </Button>
-                        </div>
-                    )}
                 </div>
-            </ModalSlider>
-        </>
+
+                {basketItemsList.length ? (
+                    <>
+                        <BasketItemsList list={basketItemsList} />
+                        <OrderInfo />
+                    </>
+                ) : (
+                    <EmptyBasket onClose={onClose} />
+                )}
+            </div>
+        </ModalSlider>
     )
 }
