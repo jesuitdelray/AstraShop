@@ -5,15 +5,10 @@
 .app {
     background: var(--bg-color);
     min-height: 100vh;
+    display: flex;
 }
 
 .content-page {
-    padding-top: var(--navbar-height);
-}
-
-.page-wrapper {
-    flex-grow: 1;
-    padding: 20px 20px 20px 45px;
-    overflow-y: auto;
+    position: relative;
     width: 100%;
 }

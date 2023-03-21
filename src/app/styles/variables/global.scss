@@ -14,6 +14,12 @@
     --color-error: #f82929;
 }
 
+@media (min-width: 769px) {
+    :root {
+        --navbar-height: 86px;
+    }
+}
+
 body {
     font-family: var(--global-font-family);
 }
