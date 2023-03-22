@@ -59,7 +59,7 @@ function FooterContacts() {
 
 function Icons() {
     return (
-        <div>
+        <div className={styles.icons}>
             <MasterCardIcon />
             <VisaIcon />
         </div>
