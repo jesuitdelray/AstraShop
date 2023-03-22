@@ -52,4 +52,11 @@
             filter: unset;
         }
     }
+
+    &.clearInverted {
+        border: 0;
+        color: var(--color-white);
+        padding: 0;
+        background: none;
+    }
 }
