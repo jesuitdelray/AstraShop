@@ -43,6 +43,16 @@
     }
 }
 
+.inverted {
+    &.variantH1,
+    &.variantH2,
+    &.variantH3,
+    &.variantH4,
+    &.variantP {
+        color: var(--color-white);
+    }
+}
+
 .bold {
     &.variantH1,
     &.variantH2,
