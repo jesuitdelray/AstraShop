@@ -21,13 +21,13 @@
     margin-bottom: 60px;
 }
 
-@media (min-width: 769px) {
+@include tablet {
     .searchbar {
         display: none;
     }
 }
 
-@media (min-width: 1300px) {
+@include desktop {
     .container {
         display: none;
     }
