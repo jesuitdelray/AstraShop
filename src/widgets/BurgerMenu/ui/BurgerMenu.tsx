@@ -14,7 +14,7 @@ export function BurgerMenu(props: BurgerMenuProps) {
     const { isOpen, onClose } = props
 
     return (
-        <ModalSlider isOpen={isOpen} onClose={onClose}>
+        <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.wrapper}>
             <div className={styles.container}>
                 <Logo className={styles.logo} onClick={onClose} />
                 <SearchProduct className={styles.searchbar} />

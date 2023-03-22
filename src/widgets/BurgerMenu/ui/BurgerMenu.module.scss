@@ -1,3 +1,7 @@
+.container {
+    padding: 32px;
+}
+
 .logo {
     margin-bottom: 24px;
 }
@@ -25,10 +29,16 @@
     .searchbar {
         display: none;
     }
+
+    .wrapper {
+        div {
+            left: var(--sidebar-width) !important;
+        }
+    }
 }
 
-@include desktop {
-    .container {
+@media (min-width: 1300px) {
+    .wrapper {
         display: none;
     }
 }
