@@ -1,27 +1,26 @@
 .footer {
     display: flex;
     justify-content: center;
+    column-gap: 120px;
 }
 
-.commerceContainer {
-    flex-direction: column;
-    margin: 10px;
-    padding: 20px;
-    background-color: pink;
+.logotext {
+    color: var(--color-dark-gray);
+    font-size: (--font-size-base);
+    margin-top: 35px;
+    line-height: 28px;
 }
 
-.infoContainer {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: purple;
-    margin: 10px;
-    column-gap: 121px;
+.text {
+    color: var(--color-dark-gray);
+    font-size: var(--font-size-base);
 
-    .title {
-        color: var(--color-base);
+    p {
+        margin-bottom: 12px;
     }
+}
 
-    .content {
-        color: var(--dark-gray-color);
-    }
+.title {
+    color: var(--color-base);
+    margin-bottom: 24px;
 }
