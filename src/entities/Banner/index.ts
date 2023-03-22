@@ -1,3 +1,3 @@
-import { Banner } from "./ui/Banner"
+import { Banner, BannerColor, BannerVariant } from "./ui/Banner"
 
-export { Banner }
+export { Banner, BannerColor, BannerVariant }

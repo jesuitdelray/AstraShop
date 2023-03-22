@@ -5,6 +5,10 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+
+    &.colorInverted {
+        background: var(--color-banner-bg);
+    }
 }
 
 .content {
@@ -40,6 +44,12 @@
     }
 }
 
+.top {
+    .img {
+        max-height: 30%;
+    }
+}
+
 @media (min-width: 481px) {
     .content {
         padding-left: 30px;
@@ -47,6 +57,12 @@
     }
 
     .main {
+        .img {
+            max-height: 35%;
+        }
+    }
+
+    .top {
         .img {
             max-height: 35%;
         }
@@ -69,6 +85,13 @@
     .main {
         .img {
             max-height: 100%;
+        }
+    }
+
+    .top {
+        .img {
+            max-height: 100%;
+            max-width: 50%;
         }
     }
 

@@ -3,29 +3,63 @@ import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typogr
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./Banner.module.scss"
 
+export enum BannerVariant {
+    TOP = "top",
+    MAIN = "main",
+    NORMAL = "normal",
+}
+
+export enum BannerColor {
+    NORMAL = "colorNormal",
+    INVERTED = "colorInverted",
+}
+
 interface BannerProps {
     className?: string
-    isMain?: boolean
     title: string
     desc: string
     img: string
+    variant?: BannerVariant
+    color?: BannerColor
 }
 
 export function Banner(props: BannerProps) {
-    const { className, isMain = false, title, desc, img } = props
+    const {
+        className,
+        title,
+        desc,
+        img,
+        variant = BannerVariant.NORMAL,
+        color = BannerColor.NORMAL,
+    } = props
+
+    const isMain = variant === BannerVariant.MAIN || variant === BannerVariant.TOP
 
     return (
-        <div className={classNames(styles.wrapper, { [styles.main]: isMain }, [className])}>
+        <div
+            className={classNames(styles.wrapper, {}, [className, styles[variant], styles[color]])}
+        >
             <div className={styles.content}>
                 <Typography
                     variant={TypographyVariant.H1}
-                    color={TypographyColor.INVERTED}
+                    color={
+                        color === BannerColor.NORMAL
+                            ? TypographyColor.INVERTED
+                            : TypographyColor.BASE
+                    }
                     className={styles.title}
                 >
                     {title}
                 </Typography>
                 {isMain && (
-                    <Typography color={TypographyColor.INVERTED} className={styles.description}>
+                    <Typography
+                        color={
+                            color === BannerColor.NORMAL
+                                ? TypographyColor.INVERTED
+                                : TypographyColor.DARK_GRAY
+                        }
+                        className={styles.description}
+                    >
                         {desc}
                     </Typography>
                 )}
