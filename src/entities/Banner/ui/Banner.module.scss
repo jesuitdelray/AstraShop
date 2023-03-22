@@ -13,6 +13,7 @@
     text-align: center;
     padding: 47px 15px 0;
     height: 100%;
+    z-index: 1;
 
     .title {
         margin-bottom: 12px;
@@ -63,7 +64,6 @@
         bottom: auto;
         right: 0;
         max-height: 100%;
-        z-index: 0;
     }
 
     .main {
@@ -79,11 +79,6 @@
         padding: 0;
         height: auto;
         max-width: 300px;
-        z-index: 1;
-
-        .title {
-            margin-bottom: 12px;
-        }
 
         .description {
             display: block;
@@ -105,27 +100,7 @@
 
     .content {
         margin-left: 47px;
-        text-align: start;
-        display: block;
-        padding: 0;
-        height: auto;
         max-width: 450px;
-        position: relative;
-
-        .title {
-            margin-bottom: 12px;
-        }
-
-        .description {
-            display: block;
-            margin-bottom: 36px;
-        }
-
-        .btn {
-            height: 48px;
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-        }
     }
 
     .main {

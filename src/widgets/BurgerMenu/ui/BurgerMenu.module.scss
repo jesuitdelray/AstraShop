@@ -29,7 +29,9 @@
     .searchbar {
         display: none;
     }
+}
 
+@media (min-width: 1200px) {
     .wrapper {
         div {
             left: var(--sidebar-width) !important;
