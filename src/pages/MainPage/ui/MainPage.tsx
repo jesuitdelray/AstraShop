@@ -1,3 +1,9 @@
+import { BannersRow } from "widgets/BannersRow"
+
 export function MainPage() {
-    return <div>MainPage</div>
+    return (
+        <div>
+            <BannersRow />
+        </div>
+    )
 }
