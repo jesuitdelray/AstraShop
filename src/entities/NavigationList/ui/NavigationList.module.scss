@@ -1,4 +1,4 @@
-@media (min-width: 1300px) {
+@include desktop {
     .list {
         display: flex;
         align-items: center;

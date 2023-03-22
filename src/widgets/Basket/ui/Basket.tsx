@@ -1,34 +1,44 @@
+import { OrderInfo } from "entities/OrderIfo"
 import { CrossIcon } from "shared/assets/icons/others"
 import { ModalSlider, ModalSliderVariant } from "shared/ui/ModalSlider/ModalSlider"
-import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
+import { basketItemsList } from "../model/list"
 import styles from "./Basket.module.scss"
+import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
+import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
 interface BasketProps {
     isOpen: boolean
     onClose: () => void
 }
 
+const isSlideTop = window.innerWidth < 769
+
 export function Basket({ isOpen, onClose }: BasketProps) {
     return (
-        <>
-            <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.slideTop}>
-                <div className={styles.slideTopContainer}>
-                    <Typography variant={TypographyVariant.H3} color={TypographyColor.DARK_GRAY}>
-                        Пусто
+        <ModalSlider
+            isOpen={isOpen}
+            onClose={onClose}
+            variant={isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT}
+            className={styles.wrapper}
+        >
+            <div className={styles.container}>
+                <div className={styles.slideRightHeader}>
+                    <CrossIcon onClick={onClose} className={styles.cross} />
+                    <Typography variant={TypographyVariant.H3} className={styles.slideRightTitle}>
+                        Корзина
                     </Typography>
                 </div>
-            </ModalSlider>
-            <ModalSlider
-                isOpen={isOpen}
-                onClose={onClose}
-                variant={ModalSliderVariant.RIGHT}
-                className={styles.slideRight}
-            >
-                <CrossIcon onClick={onClose} className={styles.cross} />
-                <Typography variant={TypographyVariant.H3} color={TypographyColor.DARK_GRAY}>
-                    Пусто
-                </Typography>
-            </ModalSlider>
-        </>
+
+                {basketItemsList.length ? (
+                    <>
+                        <BasketItemsList list={basketItemsList} />
+                        <OrderInfo />
+                    </>
+                ) : (
+                    <EmptyBasket onClose={onClose} />
+                )}
+            </div>
+        </ModalSlider>
     )
 }

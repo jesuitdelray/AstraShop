@@ -55,7 +55,7 @@ module.exports = {
         "operator-linebreak": [
             "error",
             "none",
-            { overrides: { "=": "after", "?": "before", ":": "before" } },
+            { overrides: { "=": "after", "?": "before", ":": "before", "&&": "after" } },
         ],
         "max-len": ["error", { ignoreComments: true, code: 120 }],
         "jsx-a11y/no-static-element-interactions": "off",

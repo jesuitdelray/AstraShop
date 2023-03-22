@@ -1,13 +1,15 @@
 .container {
     padding: 16px 24px;
-    width: 100%;
     color: var(--color-dark-gray);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: "headerLeft basket";
     z-index: 100;
     background-color: var(--color-white);
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .search {
@@ -26,7 +28,7 @@
     align-items: center;
 }
 
-@media (min-width: 769px) {
+@include tablet {
     .container {
         padding: 20px 36px;
         grid-template-columns: 1fr;
@@ -42,7 +44,7 @@
     }
 }
 
-@media (min-width: 1300px) {
+@include desktop {
     .container {
         padding: 20px 36px;
         grid-template-areas: "search navlist basket";

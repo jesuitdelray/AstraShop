@@ -5,6 +5,7 @@ import styles from "./Typography.module.scss"
 export enum TypographyColor {
     BASE = "base",
     DARK_GRAY = "darkGray",
+    INVERTED = "inverted",
 }
 
 export enum TypographyVariant {
@@ -18,13 +19,13 @@ export enum TypographyVariant {
 interface TextProps {
     className?: string
     children: ReactNode
-    variant: TypographyVariant
+    variant?: TypographyVariant
     color?: TypographyColor
     isBold?: boolean
 }
 
 export const Typography = memo((props: TextProps) => {
-    const { className, children, variant, color = "", isBold = false } = props
+    const { className, children, variant = TypographyVariant.P, color = "", isBold = false } = props
 
     return (
         <div

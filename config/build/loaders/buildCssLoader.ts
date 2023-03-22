@@ -17,6 +17,14 @@ export function buildCssLoader(isDev: boolean) {
                 },
             },
             "sass-loader",
+            {
+                loader: "sass-resources-loader",
+                options: {
+                    resources: [
+                        "./src/app/styles/resources/**/*.scss",
+                    ],
+                },
+            },
         ],
     }
 }

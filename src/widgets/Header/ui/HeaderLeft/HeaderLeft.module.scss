@@ -3,7 +3,7 @@
     cursor: pointer;
 }
 
-@media (min-width: 768px) {
+@include tablet {
     .icon {
         margin-right: 10px;
     }
