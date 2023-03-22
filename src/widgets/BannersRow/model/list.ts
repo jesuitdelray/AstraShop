@@ -5,7 +5,6 @@ interface bannersRowListType {
     title: string
     desc?: string
     link: string
-    isMain?: boolean
     img: string
 }
 
@@ -18,20 +17,17 @@ export const bannersRowList: bannersRowListType[] = [
     устройства`,
         img: image4,
         link: "/",
-        isMain: true,
     },
     {
         id: "2",
         title: "Мужчинам",
         img: image5,
         link: "/",
-        isMain: false,
     },
     {
         id: "3",
         title: "Женщинам",
         img: image6,
         link: "/",
-        isMain: false,
     },
 ]
