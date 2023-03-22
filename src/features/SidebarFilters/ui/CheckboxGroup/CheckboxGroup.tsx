@@ -16,11 +16,20 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
             <Typography className={styles.title}>{title}</Typography>
             <div className={styles.list}>
                 {list.map(item => {
-                    const { label, id, products } = item
+                    const { label, id, products, isChecked } = item
                     return (
                         <div className={styles.item} key={id}>
-                            <Checkbox label={label} id={id} checked onChange={() => null} />
-                            <Typography color={TypographyColor.DARK_GRAY}>{products}</Typography>
+                            <Checkbox
+                                label={label}
+                                id={id}
+                                checked={isChecked || false}
+                                onChange={() => null}
+                            />
+                            {!isChecked && (
+                                <Typography color={TypographyColor.DARK_GRAY}>
+                                    {products}
+                                </Typography>
+                            )}
                         </div>
                     )
                 })}

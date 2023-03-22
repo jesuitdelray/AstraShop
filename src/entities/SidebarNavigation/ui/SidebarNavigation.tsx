@@ -58,22 +58,26 @@ export function SidebarNavigation() {
                 {sidebarNavigationList.map((item: sidebarNavigationItemsType) => {
                     const { id, path, text, Icon, subMenu = [] } = item
                     return (
-                        <AppLink
+                        <div
                             key={id}
-                            to={path}
-                            className={styles.link}
-                            onClick={() => setHovered("")}
                             onMouseEnter={() => mouseEnterHandler(id)}
                             onMouseLeave={mouseLeaveHandler}
+                            className={styles.linkContainer}
                         >
-                            <Icon className={styles.icon} />
-                            {text}
+                            <AppLink
+                                to={path}
+                                onClick={() => setHovered("")}
+                                className={styles.link}
+                            >
+                                <Icon className={styles.icon} />
+                                {text}
+                            </AppLink>
                             <SubMenu
                                 list={subMenu}
                                 isOpen={hovered === id && !!subMenu && subMenu?.length > 0}
                                 onLinkClick={() => setHovered("")}
                             />
-                        </AppLink>
+                        </div>
                     )
                 })}
             </div>
