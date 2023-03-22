@@ -7,13 +7,14 @@ interface RangeSliderProps {
     maxRef: any
     total: number
     gap: number
+    minimum: number
     left: string
     right: string
 }
 
 export function RangeSlider(props: RangeSliderProps) {
-    const { setPriceSort, minRef, maxRef, setPosition, total, left, right, gap } = props
-    console.log(maxRef.current?.value)
+    const { setPriceSort, minRef, maxRef, setPosition, total, left, right, gap, minimum } = props
+
     function changeHandler(name: string) {
         if (minRef.current && maxRef.current) {
             const min = +minRef.current.value
@@ -24,20 +25,24 @@ export function RangeSlider(props: RangeSliderProps) {
                     const min = Number(max - gap).toString()
                     minRef.current.value = min
                     setPriceSort((prev: any) => ({ ...prev, min }))
-                    const left = `${(+minRef.current.value / total) * 100}%`
-                    const right = `${100 - (+maxRef.current.value / total) * 100}%`
+                    const left = `${((+minRef.current.value - minimum) / (total - minimum)) * 100}%`
+                    const right = `${
+                        100 - ((+maxRef.current.value - minimum) / (total - minimum)) * 100
+                    }%`
                     setPosition({ left, right })
                 } else {
                     const max = Number(min + gap).toString()
                     maxRef.current.value = max
                     setPriceSort((prev: any) => ({ ...prev, max }))
-                    const left = `${(+minRef.current.value / total) * 100}%`
-                    const right = `${100 - (+maxRef.current.value / total) * 100}%`
+                    const left = `${((+minRef.current.value - minimum) / (total - minimum)) * 100}%`
+                    const right = `${
+                        100 - ((+maxRef.current.value - minimum) / (total - minimum)) * 100
+                    }%`
                     setPosition({ left, right })
                 }
             } else {
-                const left = `${(min / total) * 100}%`
-                const right = `${100 - (max / total) * 100}%`
+                const left = `${((min - minimum) / (total - minimum)) * 100}%`
+                const right = `${100 - ((max - minimum) / (total - minimum)) * 100}%`
                 setPosition({ left, right })
                 setPriceSort({ min, max })
             }
@@ -54,7 +59,7 @@ export function RangeSlider(props: RangeSliderProps) {
                     type="range"
                     ref={minRef}
                     className={styles.min}
-                    min="0"
+                    min={minimum.toString()}
                     max={total}
                     onInput={() => changeHandler("min")}
                 />
@@ -62,7 +67,7 @@ export function RangeSlider(props: RangeSliderProps) {
                     type="range"
                     ref={maxRef}
                     className={styles.max}
-                    min="0"
+                    min={minimum.toString()}
                     max={total}
                     onInput={() => changeHandler("max")}
                 />
