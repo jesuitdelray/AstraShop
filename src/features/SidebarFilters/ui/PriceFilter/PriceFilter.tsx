@@ -37,11 +37,11 @@ export function PriceFilter() {
         const { min, max } = priceSort
 
         if (side === "min") {
-            if (priceSort.max - +value < GAP) {
+            if (max - +value < GAP) {
                 setPriceSort(prev => ({ ...prev, min: prev.max - GAP }))
-                if (minRef.current) minRef.current.value = (priceSort.max - GAP).toString()
+                if (minRef.current) minRef.current.value = (max - GAP).toString()
                 const left = `${
-                    ((+priceSort.max - GAP - MINIMUM_PRICE) / (MAXIMUM_PRICE - MINIMUM_PRICE)) * 100
+                    ((+max - GAP - MINIMUM_PRICE) / (MAXIMUM_PRICE - MINIMUM_PRICE)) * 100
                 }%`
                 setPosition(prev => ({ ...prev, left }))
             } else if (+value < MINIMUM_PRICE) {
@@ -57,14 +57,13 @@ export function PriceFilter() {
                 if (minRef.current) minRef.current.value = value
             }
         } else if (side === "max") {
-            if (+value - priceSort.min < GAP) {
+            if (+value - min < GAP) {
                 setPriceSort(prev => ({ ...prev, max: +value }))
                 if (maxRef.current) {
-                    maxRef.current.value = (priceSort.min + GAP).toString()
+                    maxRef.current.value = (min + GAP).toString()
                 }
                 const right = `${
-                    100 -
-                    ((priceSort.min + GAP - MINIMUM_PRICE) / (MAXIMUM_PRICE - MINIMUM_PRICE)) * 100
+                    100 - ((min + GAP - MINIMUM_PRICE) / (MAXIMUM_PRICE - MINIMUM_PRICE)) * 100
                 }%`
                 setPosition(prev => ({ ...prev, right }))
             } else if (+value > MAXIMUM_PRICE) {
