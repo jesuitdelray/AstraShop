@@ -1,6 +1,5 @@
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
-import img from "shared/assets/images/banners/image4.png"
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./Banner.module.scss"
 
@@ -9,7 +8,7 @@ interface BannerProps {
     isMain?: boolean
     title: string
     desc: string
-    img: any
+    img: string
 }
 
 export function Banner(props: BannerProps) {

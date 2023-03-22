@@ -1,6 +1,15 @@
 import { image4, image5, image6 } from "shared/assets/images/banners"
 
-export const bannersRowList = [
+interface bannersRowListType {
+    id: string
+    title: string
+    desc?: string
+    link: string
+    isMain?: boolean
+    img: string
+}
+
+export const bannersRowList: bannersRowListType[] = [
     {
         id: "1",
         title: "Компьютерная периферия и аксессуары",
