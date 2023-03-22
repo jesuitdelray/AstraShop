@@ -1,7 +1,7 @@
-import { filterListsItemType } from "features/SidebarFilters/model/lists"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import styles from "./CheckboxGroup.module.scss"
+import { filterListsItemType } from "../../model/lists"
 
 interface CheckboxGroupProps {
     title: string

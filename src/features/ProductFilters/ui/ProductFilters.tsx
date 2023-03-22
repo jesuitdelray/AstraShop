@@ -1,11 +1,15 @@
+import { classNames } from "shared/lib/classNames/classNames"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import { filterListsData as list } from "../model/lists"
-import styles from "./SidebarFilters.module.scss"
 
-export function SidebarFilters() {
+interface ProductFiltersProps {
+    className?: string
+}
+
+export function ProductFilters({ className }: ProductFiltersProps) {
     return (
-        <div>
+        <div className={classNames("", {}, [className])}>
             <PriceFilter />
             {list.map(item => (
                 <CheckboxGroup key={item.id} list={item.list} title={item.title} />

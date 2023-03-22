@@ -7,7 +7,7 @@ import { Modals } from "processes/Modals"
 import { Sidebar } from "widgets/Sidebar"
 
 function App() {
-    const [modalOpen, setModalOpen] = useState("")
+    const [modalOpen, setModalOpen] = useState("filters")
 
     return (
         <div className={classNames("app", {}, [])}>
