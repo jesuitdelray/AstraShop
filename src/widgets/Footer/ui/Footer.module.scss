@@ -1,86 +1,131 @@
-.footer {
-    margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    column-gap: 5%;
-}
+.wrapper {
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "slogan"
+        "info"
+        "schedule"
+        "contacts"
+        "icons"
+        "copyright";
 
-.logo {
-    display: block;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
+    .slogan {
+        grid-area: slogan;
+        margin-bottom: 50px;
 
-.logotext {
-    color: var(--color-dark-gray);
-    font-size: (--font-size-base);
-    margin-top: 10px;
-    line-height: 28px;
-}
+        .logo {
+            margin-bottom: 20px;
+        }
 
-.text {
-    color: var(--color-dark-gray);
-    font-size: var(--font-size-base);
-
-    .content {
-        margin-bottom: 12px;
-    }
-}
-
-.title {
-    color: var(--color-base);
-    margin-bottom: 24px;
-}
-
-.icons {
-    display: inline-flex;
-
-    .visaIcon {
-        max-width: 50%;
-        padding: 0;
-        margin: 0;
+        .sloganText {
+            max-width: 350px;
+        }
     }
 
-    .masterCardIcon {
-        padding: 0;
-        margin: 0;
+    .info {
+        grid-area: info;
+        margin-bottom: 35px;
     }
-}
 
-@media screen and (max-width: 1785px) {
+    .schedule {
+        grid-area: schedule;
+        margin-bottom: 35px;
+    }
+
+    .contacts {
+        grid-area: contacts;
+        margin-bottom: 35px;
+    }
+
     .icons {
-        display: inline-flexbox;
+        grid-area: icons;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+
+    .copyright {
+        grid-area: copyright;
     }
 }
 
-@media screen and (max-width: 1400px) {
-    .footer {
-        column-gap: 2%;
-    }
-}
-
-@media screen and (max-width: 985px) {
-    .footer {
-        display: grid;
-        grid-template-columns: (1, 1fr);
-    }
-}
-
-/*         display: grid;
+@media (min-width: 481px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr;
         grid-template-areas:
-            "main main main"
-            "links contacts schedule"; */
+            "slogan slogan"
+            "info schedule"
+            "contacts icons"
+            "copyright copyright";
 
-/*
-@media screen and (max-width: 1575px) {
-    .footer {
-        column-gap: 80px;
+        .copyright {
+            align-self: flex-end;
+        }
+
+        .icons {
+            justify-content: flex-start;
+        }
     }
 }
 
-@media screen and (max-width: 1475px) {
-    .footer {
-        column-gap: 70px;
+@media (min-width: 601px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "slogan slogan ."
+            "info schedule contacts"
+            "copyright . icons";
+
+        .copyright {
+            align-self: start;
+        }
+
+        .info,
+        .schedule,
+        .contacts,
+        .icons {
+            margin-bottom: 0;
+        }
+
+        .icons {
+            justify-content: flex-end;
+            align-self: flex-end;
+        }
     }
 }
- */
+
+@media (min-width: 1001px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "slogan info schedule contacts"
+            "copyright . . icons";
+        justify-items: center;
+
+        .slogan {
+            margin-bottom: 0;
+            justify-self: start;
+        }
+
+        .copyright {
+            align-self: flex-end;
+            justify-self: start;
+        }
+    }
+}
+
+@media (min-width: 1500px) {
+    .wrapper {
+        grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+        grid-template-areas:
+            "slogan info schedule contacts ."
+            "copyright . . . icons";
+
+        .icons {
+            margin-bottom: 0;
+            justify-content: flex-end;
+            align-self: flex-end;
+        }
+    }
+}

@@ -1,49 +1,35 @@
 import { Logo } from "entities/Logo/Logo"
 import { MasterCardIcon, VisaIcon } from "shared/assets/icons/others"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
-import { Contacts } from "entities/Contacts/ui/Contacts"
-import { Schedule } from "entities/Schedule/ui/Schedule"
-import { LinksList } from "entities/LinksList/LinksList"
+import { Contacts } from "entities/Contacts"
+import { Schedule } from "entities/Schedule"
+import { LinksList } from "entities/LinksList"
+import { Copyright } from "entities/Copyright/Copyright"
 import styles from "./Footer.module.scss"
-
-function FooterLogo() {
-    return (
-        <div className={styles.logo}>
-            <Logo />
-            <Typography className={styles.logotext}>
-                Большой выбор товаров самых различных
-                <br />
-                категорий, отнадувных матрасов до
-                <br />
-                планшетных компьютеров
-            </Typography>
-        </div>
-    )
-}
-
-function Icons() {
-    return (
-        <div className={styles.icons}>
-            <div className={styles.masterCardIcon}>
-                <MasterCardIcon />
-            </div>
-            <div className={styles.visaIcon}>
-                <VisaIcon />
-            </div>
-        </div>
-    )
-}
+import { footerLinksData } from "../model/list"
 
 export function Footer() {
     return (
-        <div>
-            <div className={styles.footer}>
-                <FooterLogo />
-                <LinksList />
-                <Schedule />
-                <Contacts />
-                <Icons />
+        <div className={styles.wrapper}>
+            <div className={styles.slogan}>
+                <Logo className={styles.logo} />
+                <Typography color={TypographyColor.DARK_GRAY} className={styles.sloganText}>
+                    Большой выбор товаров самых различных категорий, отнадувных матрасов до
+                    планшетных компьютеров
+                </Typography>
             </div>
+            <LinksList data={footerLinksData} className={styles.info} />
+            <Schedule className={styles.schedule} />
+            <Contacts className={styles.contacts} />
+            <div className={styles.icons}>
+                <div className={styles.masterCardIcon}>
+                    <MasterCardIcon />
+                </div>
+                <div className={styles.visaIcon}>
+                    <VisaIcon />
+                </div>
+            </div>
+            <Copyright className={styles.copyright} />
         </div>
     )
 }
