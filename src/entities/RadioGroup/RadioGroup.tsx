@@ -16,7 +16,7 @@ export interface RadioGroupProps {
     className?: string
     label?: string
     name: string
-    required?: boolean
+    isRequired?: boolean
     options: Array<RadioButtonProps>
     onChange?: (value: valueType) => void
     selectedValue?: valueType
@@ -31,12 +31,13 @@ export const RadioGroup = (props: RadioGroupProps) => {
         onChange,
         className,
         direction = RadioGroupDirection.HORIZONTAL,
-        required = false,
+        isRequired = false,
     } = props
+
     const [currentValue, setCurrentValue] = useState<valueType>(selectedValue)
-    const changeHandler = ((e: ChangeEvent<HTMLInputElement>): void => {
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
         setCurrentValue(e.target.value)
-    })
+    }
 
     useEffect(() => {
         if (currentValue) onChange?.(currentValue)
@@ -46,26 +47,24 @@ export const RadioGroup = (props: RadioGroupProps) => {
         <fieldset className={classNames(styles.radioGroup, {}, [className])}>
             <legend className={styles.legend}>
                 {label}
-                {required && <span className={styles.required}>*</span>}
+                {isRequired && <span className={styles.required}>*</span>}
             </legend>
             <div className={styles[direction]}>
-                {
-                    options.map((props: RadioButtonProps) => {
-                        const { label, value, id, checked, ...rest } = props
-                        return (
-                            <RadioButton
-                                value={value}
-                                label={label}
-                                key={id || uuidv4()}
-                                id={id}
-                                name={name}
-                                onChange={changeHandler}
-                                checked={value === currentValue}
-                                {...rest}
-                            />
-                        )
-                    })
-                }
+                {options.map((props: RadioButtonProps) => {
+                    const { label, value, id, checked, ...rest } = props
+                    return (
+                        <RadioButton
+                            value={value}
+                            label={label}
+                            key={id || uuidv4()}
+                            id={id}
+                            name={name}
+                            onChange={changeHandler}
+                            checked={value === currentValue}
+                            {...rest}
+                        />
+                    )
+                })}
             </div>
         </fieldset>
     )
