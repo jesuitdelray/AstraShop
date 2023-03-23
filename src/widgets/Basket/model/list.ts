@@ -1,4 +1,4 @@
-import img from "./img3.png"
+import img from "shared/assets/images/img3.png"
 
 export interface basketItemsType {
     productName: string
