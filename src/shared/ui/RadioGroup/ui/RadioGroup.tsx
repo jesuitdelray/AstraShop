@@ -1,6 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames"
-import { RadioButton } from "shared/ui/RadioGroup/ui/RadioButton/RadioButton"
 import { Typography } from "shared/ui/Typography/Typography"
+import { RadioButton } from "./RadioButton/RadioButton"
 import styles from "./RadioGroup.module.scss"
 
 export interface RadioGroupOptios {
