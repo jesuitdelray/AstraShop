@@ -2,15 +2,11 @@ import { useState } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
-
-import { RadioGroup, RadioGroupDirection } from "entities/RadioGroup/RadioGroup"
+import { classNames } from "shared/lib/classNames/classNames"
+import { RadioGroup } from "shared/ui/RadioGroup"
+import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
+import { OrderInfo, OrderInfoVariant } from "entities/OrderInfo"
 import styles from "./OrderForm.module.scss"
-
-const options = [
-    { label: "Новая почта", id: "1" },
-    { label: "Интайм", id: "2" },
-    { label: "Автолюкс", id: "3" },
-]
 
 export function OrderForm() {
     const [formData, setFormData] = useState({
@@ -23,8 +19,12 @@ export function OrderForm() {
         isConsent: true,
     })
 
-    function inputChangeHandler(value: string, input: any) {
-        setFormData((prev: any) => ({ ...prev, [input]: value }))
+    function inputChangeHandler(value: string, input: string) {
+        setFormData(prev => ({ ...prev, [input]: value }))
+    }
+
+    function radioChangeHandler(value: string) {
+        setFormData(prev => ({ ...prev, delivery: value }))
     }
 
     return (
@@ -32,14 +32,14 @@ export function OrderForm() {
             <Typography variant={TypographyVariant.H3} className={styles.title}>
                 Оформление заказа
             </Typography>
-            <form action="submit">
+            <form action="submit" className={styles.form}>
                 <Input
                     value={formData.name}
                     onChange={value => inputChangeHandler(value, "name")}
                     label="Имя, Фамилия"
                     placeholder="Александр Иванов"
                     isRequired
-                    className={styles.input}
+                    className={classNames(styles.input, {}, [styles.name])}
                 />
                 <Input
                     value={formData.phone}
@@ -47,7 +47,7 @@ export function OrderForm() {
                     label="Номер телефона"
                     placeholder="+38 228 322 13 37"
                     isRequired
-                    className={styles.input}
+                    className={classNames(styles.input, {}, [styles.phone])}
                 />
                 <Input
                     value={formData.email}
@@ -55,7 +55,7 @@ export function OrderForm() {
                     label="Email"
                     placeholder="example@mail.com"
                     isRequired
-                    className={styles.input}
+                    className={classNames(styles.input, {}, [styles.email])}
                 />
                 <Input
                     value={formData.city}
@@ -63,38 +63,32 @@ export function OrderForm() {
                     label="Город"
                     placeholder="Будапешт"
                     isRequired
-                    className={styles.input}
-                />
-                <Input
-                    value={formData.city}
-                    onChange={value => inputChangeHandler(value, "city")}
-                    label="Город"
-                    placeholder="Будапешт"
-                    isRequired
-                    className={styles.input}
+                    className={classNames(styles.input, {}, [styles.city])}
                 />
                 <RadioGroup
-                    label="Тип доставки"
+                    title="Тип доставки"
                     isRequired
                     options={options}
-                    name="delivery"
-                    direction={RadioGroupDirection.VERTICAL}
-                    className={styles.radioGroup}
+                    activeInput={formData.delivery}
+                    onChange={radioChangeHandler}
+                    className={styles.radios}
                 />
                 <Input
-                    value={formData.city}
+                    value={formData.department}
                     onChange={value => inputChangeHandler(value, "department")}
                     label="Отделение Новой почты"
                     placeholder="№21 Олександрівський пр..."
                     isRequired
-                    className={styles.input}
+                    className={classNames(styles.input, {}, [styles.department])}
                 />
                 <Checkbox
                     id="checkbox1"
                     checked={formData.isConsent}
                     onChange={() => setFormData(prev => ({ ...prev, isConsent: !prev.isConsent }))}
                     label="Я согласен (согласна) на обработку моих персональных данных"
+                    className={styles.consent}
                 />
+                <OrderInfo className={styles.orderInfo} variant={OrderInfoVariant.VERTICAL} />
             </form>
         </div>
     )
