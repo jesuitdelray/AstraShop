@@ -1,3 +1,11 @@
+import { BannersRow } from "widgets/BannersRow"
+import { TopBanner } from "widgets/TopBanner"
+
 export function MainPage() {
-    return <div>MainPage</div>
+    return (
+        <div>
+            <TopBanner />
+            <BannersRow />
+        </div>
+    )
 }

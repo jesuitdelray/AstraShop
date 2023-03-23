@@ -3,17 +3,26 @@ import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./OrderInfo.module.scss"
 
+export enum OrderInfoVariant {
+    DEFAULT = "default",
+    VERTICAL = "vertical",
+}
+
 interface OrderInfoProps {
     isCentered?: boolean
     className?: string
+    variant?: OrderInfoVariant
 }
 
 export function OrderInfo(props: OrderInfoProps) {
-    const { isCentered = false, className } = props
+    const { isCentered = false, className, variant = OrderInfoVariant.DEFAULT } = props
 
     return (
         <div
-            className={classNames(styles.container, { [styles.centered]: isCentered }, [className])}
+            className={classNames(styles.container, { [styles.centered]: isCentered }, [
+                className,
+                styles[variant],
+            ])}
         >
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.H4} isBold>

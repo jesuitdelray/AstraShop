@@ -73,3 +73,23 @@
         }
     }
 }
+
+@media (min-width: 901px) {
+    .vertical {
+        width: 100%;
+        max-width: 444px;
+        border: 1px solid var(--color-light-gray) !important;
+
+        .info {
+            grid-template-columns: 1fr;
+
+            > * {
+                justify-self: center;
+            }
+        }
+
+        .buttons {
+            flex-direction: column;
+        }
+    }
+}

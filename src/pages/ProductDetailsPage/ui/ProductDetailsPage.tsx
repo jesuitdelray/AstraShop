@@ -1,3 +1,9 @@
+import { ProductDescription } from "entities/ProductDescription"
+
 export function ProductDetailsPage() {
-    return <div>ProductDetailsPage</div>
+    return (
+        <div>
+            <ProductDescription />
+        </div>
+    )
 }

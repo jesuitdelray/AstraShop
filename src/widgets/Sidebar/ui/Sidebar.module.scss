@@ -9,6 +9,7 @@
         padding: 42px 36px;
         display: block;
         border-right: 1px solid var(--color-light-gray);
+        flex-shrink: 0;
     }
 
     .container {

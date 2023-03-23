@@ -1,4 +1,4 @@
-import { OrderInfo } from "entities/OrderIfo"
+import { OrderInfo } from "entities/OrderInfo"
 import { CrossIcon } from "shared/assets/icons/others"
 import { ModalSlider, ModalSliderVariant } from "shared/ui/ModalSlider/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
