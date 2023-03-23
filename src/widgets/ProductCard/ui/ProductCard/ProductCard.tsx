@@ -1,0 +1,51 @@
+import styles from "widgets/ProductCard/ui/ProductCard/ProductCard.module.scss"
+import { Button, ButtonSize, ButtonVariant } from "shared/ui/Button/Button"
+import { classNames } from "shared/lib/classNames/classNames"
+import img from "../../model/keyboard.png"
+
+export interface ProductCardProps {
+    isNew?: boolean,
+    newText?: string,
+    className?: string,
+    image?: string,
+    description?: string,
+    price?: number,
+    currency?: string
+    onClick?: () => void
+}
+
+export const ProductCard = (props: ProductCardProps): JSX.Element => {
+    const {
+        isNew,
+        newText = "новый",
+        image = img,
+        className,
+        description,
+        price,
+        currency,
+        onClick,
+    } = props
+
+    return (
+        <div className={styles.container} onClick={onClick}>
+            <div className={classNames(styles.header, {}, [className])}>
+                {!!isNew && (
+                    <div className={styles.button}>
+                        <Button variant={ButtonVariant.FILLED_RED} size={ButtonSize.SMALL}>{newText}</Button>
+                    </div>
+                )}
+                {!!image && <img className={styles.image} src={image} alt={newText} decoding="async" />}
+            </div>
+            <div className={styles.footer}>
+                {!!description && <div className={styles.footerDescription}>{description}</div>}
+                {!!price && !!currency && (
+                    <div className={styles.footerPrice}>
+                        {price}
+                        {" "}
+                        {currency}
+                    </div>
+                )}
+            </div>
+        </div>
+    )
+}

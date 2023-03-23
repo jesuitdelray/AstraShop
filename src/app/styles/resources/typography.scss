@@ -1,0 +1,36 @@
+@mixin typographyBold {
+	font-weight: 700;
+}
+
+@mixin typographyColorBase {
+	color: var(--color-base);
+}
+
+@mixin typographyColorDarkGrey {
+	color: var(--color-dark-gray);
+}
+
+@mixin typographySizeBase {
+	font-size: var(--font-size-base);
+	color: var(--color-base);
+}
+
+@mixin typographySizeH1 {
+	font-size: var(--font-size-h1);
+	color: var(--color-base);
+}
+
+@mixin typographySizeH2 {
+	font-size: var(--font-size-h2);
+	color: var(--color-base);
+}
+
+@mixin typographySizeH3 {
+	font-size: var(--font-size-h3);
+	color: var(--color-base);
+}
+
+@mixin typographySizeH4 {
+	font-size: var(--font-size-h4);
+	color: var(--color-base);
+}
