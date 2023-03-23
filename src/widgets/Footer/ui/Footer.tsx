@@ -1,58 +1,22 @@
 import { Logo } from "entities/Logo/Logo"
 import { MasterCardIcon, VisaIcon } from "shared/assets/icons/others"
-import { information } from "../model/list"
+import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
+import { Contacts } from "entities/Contacts/ui/Contacts"
+import { Schedule } from "entities/Schedule/ui/Schedule"
+import { LinksList } from "entities/LinksList/LinksList"
 import styles from "./Footer.module.scss"
 
-function Logotype() {
+function FooterLogo() {
     return (
-        <div className={styles.logotype}>
+        <div className={styles.logo}>
             <Logo />
-            <p className={styles.logotext}>
+            <Typography className={styles.logotext}>
                 Большой выбор товаров самых различных
                 <br />
                 категорий, отнадувных матрасов до
                 <br />
                 планшетных компьютеров
-            </p>
-        </div>
-    )
-}
-
-function FooterInformation() {
-    return (
-        <div>
-            <p className={styles.title}>Информация</p>
-            {information.map(text => (
-                <div className={styles.text}>
-                    <p>{text.text}</p>
-                </div>
-            ))}
-        </div>
-    )
-}
-
-function FooterSchedule() {
-    return (
-        <div>
-            <p className={styles.title}>График работы</p>
-            <div className={styles.text}>
-                <p>Пн-Пт: 8.00 - 20.00</p>
-                <p>Сб: 8.00 - 16.00</p>
-                <p>Вс: Выходной</p>
-            </div>
-        </div>
-    )
-}
-
-function FooterContacts() {
-    return (
-        <div>
-            <p className={styles.title}>Контакты</p>
-            <div className={styles.text}>
-                <p>(093) 892-22-26</p>
-                <p>(096) 997-50-58</p>
-                <p>tovar-7km.office@gmail.com</p>
-            </div>
+            </Typography>
         </div>
     )
 }
@@ -60,8 +24,12 @@ function FooterContacts() {
 function Icons() {
     return (
         <div className={styles.icons}>
-            <MasterCardIcon />
-            <VisaIcon />
+            <div className={styles.masterCardIcon}>
+                <MasterCardIcon />
+            </div>
+            <div className={styles.visaIcon}>
+                <VisaIcon />
+            </div>
         </div>
     )
 }
@@ -70,10 +38,10 @@ export function Footer() {
     return (
         <div>
             <div className={styles.footer}>
-                <Logotype />
-                <FooterInformation />
-                <FooterSchedule />
-                <FooterContacts />
+                <FooterLogo />
+                <LinksList />
+                <Schedule />
+                <Contacts />
                 <Icons />
             </div>
         </div>
