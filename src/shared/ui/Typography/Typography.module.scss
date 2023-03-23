@@ -53,6 +53,16 @@
     }
 }
 
+.accent {
+    &.variantH1,
+    &.variantH2,
+    &.variantH3,
+    &.variantH4,
+    &.variantP {
+        color: var(--color-accent);
+    }
+}
+
 .bold {
     &.variantH1,
     &.variantH2,

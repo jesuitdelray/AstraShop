@@ -7,7 +7,6 @@ import { MainPage } from "pages/MainPage"
 import { NotFoundPage } from "pages/NotFoundPage"
 import { OrderPage } from "pages/OrderPage"
 import { ProductDetailsPage } from "pages/ProductDetailsPage"
-import { TestPage } from "pages/TestPage"
 import { RouteProps } from "react-router-dom"
 
 export type AppRoutesProps = RouteProps & {
@@ -23,7 +22,6 @@ export enum AppRoutes {
     ORDER = "order",
     CATEGORY = "category",
     PRODUCT_DETAILS = "product_details",
-    TEST = "test",
     NOT_FOUND = "not_found",
 }
 
@@ -36,7 +34,6 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ORDER]: "/order",
     [AppRoutes.CATEGORY]: "/category",
     [AppRoutes.PRODUCT_DETAILS]: "/category/product",
-    [AppRoutes.TEST]: "/test",
     [AppRoutes.NOT_FOUND]: "*",
 }
 
@@ -72,10 +69,6 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PRODUCT_DETAILS]: {
         path: RoutePath.product_details,
         element: <ProductDetailsPage />,
-    },
-    [AppRoutes.TEST]: {
-        path: RoutePath.test,
-        element: <TestPage />,
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath.not_found,
