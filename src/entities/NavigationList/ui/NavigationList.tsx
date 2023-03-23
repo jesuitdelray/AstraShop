@@ -18,14 +18,22 @@ interface NavigationListProps {
 export const NavigationList = memo((props: NavigationListProps) => {
     const { className, onLinkClick, variant } = props
 
-    const list = variant === NavigationListVariant.MOBILE ? mobileItemsList : desktopItemsList
+    const list =
+        variant === NavigationListVariant.MOBILE
+            ? mobileItemsList
+            : desktopItemsList
 
     return (
         <div className={classNames(styles.list, {}, [className])}>
             {list.map((item: any) => {
                 const { id, path, text, Icon } = item
                 return (
-                    <AppLink key={id} to={path} className={styles.link} onClick={onLinkClick}>
+                    <AppLink
+                        key={id}
+                        to={path}
+                        className={styles.link}
+                        onClick={onLinkClick}
+                    >
                         {!!Icon && <Icon className={styles.menuItem} />}
                         {text}
                     </AppLink>

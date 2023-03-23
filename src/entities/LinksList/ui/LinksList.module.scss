@@ -1,0 +1,16 @@
+.title {
+    margin-bottom: 24px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+
+    a {
+        margin-bottom: 12px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

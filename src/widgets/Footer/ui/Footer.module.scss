@@ -1,0 +1,131 @@
+.wrapper {
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "slogan"
+        "info"
+        "schedule"
+        "contacts"
+        "icons"
+        "copyright";
+
+    .slogan {
+        grid-area: slogan;
+        margin-bottom: 50px;
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .sloganText {
+            max-width: 350px;
+        }
+    }
+
+    .info {
+        grid-area: info;
+        margin-bottom: 35px;
+    }
+
+    .schedule {
+        grid-area: schedule;
+        margin-bottom: 35px;
+    }
+
+    .contacts {
+        grid-area: contacts;
+        margin-bottom: 35px;
+    }
+
+    .icons {
+        grid-area: icons;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+
+    .copyright {
+        grid-area: copyright;
+    }
+}
+
+@media (min-width: 481px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "slogan slogan"
+            "info schedule"
+            "contacts icons"
+            "copyright copyright";
+
+        .copyright {
+            align-self: flex-end;
+        }
+
+        .icons {
+            justify-content: flex-start;
+        }
+    }
+}
+
+@media (min-width: 601px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "slogan slogan ."
+            "info schedule contacts"
+            "copyright . icons";
+
+        .copyright {
+            align-self: start;
+        }
+
+        .info,
+        .schedule,
+        .contacts,
+        .icons {
+            margin-bottom: 0;
+        }
+
+        .icons {
+            justify-content: flex-end;
+            align-self: flex-end;
+        }
+    }
+}
+
+@media (min-width: 1001px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "slogan info schedule contacts"
+            "copyright . . icons";
+        justify-items: center;
+
+        .slogan {
+            margin-bottom: 0;
+            justify-self: start;
+        }
+
+        .copyright {
+            align-self: flex-end;
+            justify-self: start;
+        }
+    }
+}
+
+@media (min-width: 1500px) {
+    .wrapper {
+        grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+        grid-template-areas:
+            "slogan info schedule contacts ."
+            "copyright . . . icons";
+
+        .icons {
+            margin-bottom: 0;
+            justify-content: flex-end;
+            align-self: flex-end;
+        }
+    }
+}
