@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { RadioButton } from "shared/ui/RadioButton/RadioButton"
+import { RadioButton } from "shared/ui/RadioGroup/ui/RadioButton/RadioButton"
 
 export default {
     title: "shared/RadioButton",
@@ -9,9 +9,7 @@ export default {
     },
 } as ComponentMeta<typeof RadioButton>
 
-const Template: ComponentStory<typeof RadioButton> = (args: any) => (
-    <RadioButton {...args} />
-)
+const Template: ComponentStory<typeof RadioButton> = (args: any) => <RadioButton {...args} />
 
 export const UncheckedWithoutLabel = Template.bind({})
 UncheckedWithoutLabel.args = {
