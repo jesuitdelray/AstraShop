@@ -2,6 +2,7 @@ import { productDescriptionDataType } from "entities/ProductDescription/model/li
 import { useMemo } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
+import { v4 as uuid } from "uuid"
 import styles from "./ProductInfo.module.scss"
 
 interface ArticleProps {
@@ -23,7 +24,7 @@ function Article({ data }: ArticleProps) {
                 return (
                     <ul className={styles.list}>
                         {list?.map(item => (
-                            <li className={styles.text}>
+                            <li key={uuid()} className={styles.text}>
                                 <Typography color={TypographyColor.DARK_GRAY}>{item}</Typography>
                             </li>
                         ))}
@@ -31,7 +32,11 @@ function Article({ data }: ArticleProps) {
                 )
             case !!list:
                 return list?.map(item => (
-                    <Typography color={TypographyColor.DARK_GRAY} className={styles.text}>
+                    <Typography
+                        key={uuid()}
+                        color={TypographyColor.DARK_GRAY}
+                        className={styles.text}
+                    >
                         {item}
                     </Typography>
                 ))
@@ -57,7 +62,7 @@ export function ProductInfo({ className, data }: ProductInfoProps) {
     return (
         <div className={classNames(styles.info, {}, [className])}>
             {data.map(item => (
-                <Article data={item} />
+                <Article key={item.id} data={item} />
             ))}
         </div>
     )
