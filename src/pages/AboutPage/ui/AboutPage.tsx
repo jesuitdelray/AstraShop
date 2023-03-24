@@ -8,7 +8,7 @@ export function AboutPage() {
     return (
         <div>
             <Typography variant={TypographyVariant.H1} className={styles.title}>
-                Контакты
+                О нас
             </Typography>
             <Typography color={TypographyColor.DARK_GRAY} className={styles.text}>
                 Завозить товары напрямую из Китая совсем не так удобно, как сотрудничать с

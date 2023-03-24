@@ -11,6 +11,9 @@ import MasterCardIcon from "./mastercard.svg"
 import VisaIcon from "./visa.svg"
 import FilterIcon from "./filter.svg"
 import SortIcon from "./sort.svg"
+import NovaPochtaIcon from "./novapochta.svg"
+import IntimeIcon from "./intime.svg"
+import AutoluxIcon from "./autolux.svg"
 
 export {
     MinusIcon,
@@ -26,4 +29,7 @@ export {
     VisaIcon,
     FilterIcon,
     SortIcon,
+    NovaPochtaIcon,
+    IntimeIcon,
+    AutoluxIcon,
 }
