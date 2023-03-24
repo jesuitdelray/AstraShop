@@ -1,3 +1,4 @@
+import { ErrorPage } from "pages/ErrorPage"
 import React, { ErrorInfo, ReactNode, Suspense } from "react"
 
 interface ErrorBoundaryProps {
@@ -8,10 +9,7 @@ interface ErrorBoundaryState {
     hasError: boolean
 }
 
-class ErrorBoundary extends React.Component<
-    ErrorBoundaryProps,
-    ErrorBoundaryState
-> {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
         super(props)
         this.state = { hasError: false }
@@ -33,7 +31,11 @@ class ErrorBoundary extends React.Component<
 
         if (hasError) {
             // You can render any custom fallback UI
-            return <Suspense fallback="">Error</Suspense>
+            return (
+                <Suspense fallback="">
+                    <ErrorPage />
+                </Suspense>
+            )
         }
 
         return children
