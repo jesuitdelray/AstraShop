@@ -1,0 +1,25 @@
+.contacts {
+    display: flex;
+    padding: 80px 0;
+    justify-content: space-between;
+
+    .schedule,
+    .contact {
+        width: 100%;
+    }
+}
+
+@media (min-width: 500px) {
+    .contacts {
+        justify-content: flex-start;
+
+        .schedule {
+            margin-right: 80px;
+        }
+
+        .schedule,
+        .contact {
+            width: fit-content;
+        }
+    }
+}
