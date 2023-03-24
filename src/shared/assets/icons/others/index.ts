@@ -9,6 +9,8 @@ import MobileBurgerIcon from "./mobile-burger.svg"
 import CrossIcon from "./cross.svg"
 import MasterCardIcon from "./mastercard.svg"
 import VisaIcon from "./visa.svg"
+import FilterIcon from "./filter.svg"
+import SortIcon from "./sort.svg"
 
 export {
     MinusIcon,
@@ -22,4 +24,6 @@ export {
     CrossIcon,
     MasterCardIcon,
     VisaIcon,
+    FilterIcon,
+    SortIcon,
 }
