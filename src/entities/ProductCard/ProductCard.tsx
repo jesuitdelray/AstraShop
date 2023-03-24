@@ -46,7 +46,8 @@ export const ProductCard = (props: ProductCardProps): ReactElement => {
                 {!!description && <div className={styles.footerDescription}>{description}</div>}
                 {!!price && !!currency && (
                     <div className={styles.footerPrice}>
-                        {price} {currency}
+                        {price}
+                        {currency}
                     </div>
                 )}
             </div>

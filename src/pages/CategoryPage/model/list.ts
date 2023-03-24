@@ -4,7 +4,6 @@ import img from "shared/assets/images/img3.png"
 export const ProductCardList: ProductCardProps[] = [
     {
         id: "1",
-
         price: 1200,
         currency: "usd",
         // eslint-disable-next-line max-len
