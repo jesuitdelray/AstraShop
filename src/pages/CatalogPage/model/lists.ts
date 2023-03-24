@@ -1,0 +1,153 @@
+import { LinksListItem } from "entities/LinksList"
+import {
+    BabyCarriageIcon,
+    BoxIcon,
+    CarIcon,
+    FemaleIcon,
+    HouseIcon,
+    LampIcon,
+    LaptopIcon,
+    MaleIcon,
+    ShopBagIcon,
+    SoundIcon,
+    TabletIcon,
+} from "shared/assets/icons/list"
+
+export const catalogList: LinksListItem[] = [
+    {
+        id: "1",
+        title: "Дом",
+        Icon: HouseIcon,
+        list: [
+            { id: "1", text: "Часы", path: "/" },
+            { id: "2", text: "Android приставки", path: "/" },
+            { id: "3", text: "Видеорегистраторы, камеры, домофоны", path: "/" },
+            { id: "4", text: "Телевизоры", path: "/" },
+            { id: "5", text: "Обогреватели", path: "/" },
+            { id: "6", text: "Чайники", path: "/" },
+            { id: "7", text: "Тестеры мультиметры", path: "/" },
+            { id: "8", text: "Вентиляторы", path: "/" },
+        ],
+    },
+    {
+        id: "2",
+        title: "Автомобиль",
+        Icon: CarIcon,
+        list: [
+            { id: "1", text: "Часы", path: "/" },
+            { id: "2", text: "Android приставки", path: "/" },
+            { id: "3", text: "Видеорегистраторы, камеры, домофоны", path: "/" },
+            { id: "4", text: "Телевизоры", path: "/" },
+            { id: "5", text: "Обогреватели", path: "/" },
+            { id: "6", text: "Чайники", path: "/" },
+            { id: "7", text: "Тестеры мультиметры", path: "/" },
+            { id: "8", text: "Вентиляторы", path: "/" },
+        ],
+    },
+    {
+        id: "3",
+        title: "Световое оборудование",
+        Icon: LampIcon,
+        list: [
+            { id: "1", text: "LED ленты, Гирлянды, Контролеры", path: "/" },
+            { id: "2", text: "Лазеры, Брелки, Лампы", path: "/" },
+            { id: "3", text: "Светодиодные LED вывески", path: "/" },
+            { id: "4", text: "Фонарики", path: "/" },
+        ],
+    },
+    {
+        id: "4",
+        title: "Телефоны и планшеты",
+        Icon: TabletIcon,
+        list: [
+            { id: "1", text: "Мобильные телефоны", path: "/" },
+            { id: "2", text: "Планшетные ПК", path: "/" },
+            { id: "3", text: "Аккумуляторы и зарядные устройства", path: "/" },
+            { id: "4", text: "Power Bank", path: "/" },
+            { id: "5", text: "Моноподы для селфи", path: "/" },
+            { id: "6", text: "Кабеля и переходники", path: "/" },
+            { id: "7", text: "Наушники и гарнитуры", path: "/" },
+            { id: "8", text: "Мобильные колонки", path: "/" },
+        ],
+    },
+    {
+        id: "5",
+        title: "Компьютерная переферия",
+        Icon: LaptopIcon,
+        list: [
+            { id: "1", text: "Клавиатуры", path: "/" },
+            { id: "2", text: "Мыши", path: "/" },
+            { id: "3", text: "Адаптеры", path: "/" },
+            { id: "4", text: "Кабеля и переходники", path: "/" },
+        ],
+    },
+    {
+        id: "6",
+        title: "Звуковое оборудование",
+        Icon: SoundIcon,
+        list: [
+            { id: "1", text: "Усилители звука", path: "/" },
+            { id: "2", text: "MP3 Плееры и флешки", path: "/" },
+            { id: "3", text: "Автомобильные магнитолы", path: "/" },
+            { id: "4", text: "Автомобильные колонки", path: "/" },
+            { id: "5", text: "Наушники и гарнитуры", path: "/" },
+        ],
+    },
+    {
+        id: "7",
+        title: "Мужчинам",
+        Icon: MaleIcon,
+        list: [
+            { id: "1", text: "Бритвы, тримеры, для стрижки", path: "/" },
+            { id: "2", text: "Электронные сигареты", path: "/" },
+        ],
+    },
+    {
+        id: "8",
+        title: "Женщинам",
+        Icon: FemaleIcon,
+        list: [
+            { id: "1", text: "Бритвы, эпиляторы, стрижки", path: "/" },
+            { id: "2", text: "Косметика", path: "/" },
+            { id: "3", text: "Фены, плойки, бигуди, утюжки", path: "/" },
+            { id: "4", text: "Швейные машинки", path: "/" },
+        ],
+    },
+    {
+        id: "9",
+        title: "Детям",
+        Icon: BabyCarriageIcon,
+        list: [
+            { id: "1", text: "Спинер, волчок", path: "/" },
+            { id: "2", text: "Гироборды", path: "/" },
+            { id: "3", text: "Лазеры, Лампы, Брелки", path: "/" },
+            { id: "4", text: "Тетрисы, тамагочи, карманные приставки", path: "/" },
+            { id: "5", text: "Наборы резинок для плетения браслетов", path: "/" },
+        ],
+    },
+    {
+        id: "10",
+        title: "Торговля",
+        Icon: ShopBagIcon,
+        list: [
+            { id: "1", text: "Спинер, волчок", path: "/" },
+            { id: "2", text: "Гироборды", path: "/" },
+            { id: "3", text: "Лазеры, Лампы, Брелки", path: "/" },
+        ],
+    },
+    {
+        id: "11",
+        title: "Чехлы и плёнки",
+        Icon: TabletIcon,
+        list: [
+            { id: "1", text: "Чехлы для телефонов и планшетов", path: "/" },
+            { id: "2", text: "Защитные стёкла", path: "/" },
+        ],
+    },
+    {
+        id: "12",
+        title: "Разное",
+        Icon: BoxIcon,
+        list: [{ id: "1", text: "Кошельки и портмоне", path: "/" }],
+    },
+]
