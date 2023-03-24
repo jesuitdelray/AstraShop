@@ -13,14 +13,14 @@ function App() {
     return (
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                {/* <Modals modalOpen={modalOpen} setModalOpen={setModalOpen} />
+                <Modals modalOpen={modalOpen} setModalOpen={setModalOpen} />
                 <Sidebar />
                 <div className="content-page">
                     <Header modalOpen={modalOpen} setModalOpen={setModalOpen} />
                     <AppRouter />
                     <Footer />
-                </div> */}
-                <OrderInfo />
+                    <OrderInfo />
+                </div>
             </Suspense>
         </div>
     )
