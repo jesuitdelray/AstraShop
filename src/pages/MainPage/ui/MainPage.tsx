@@ -2,12 +2,10 @@ import { BannersRow } from "widgets/BannersRow"
 import { TopBanner } from "widgets/TopBanner"
 import { ProductCardList } from "widgets/ProductCarousel/model/list"
 import { ProductCarousel } from "widgets/ProductCarousel/ProductCarousel"
-import { BugButton } from "app/providers/ErrorBoundary"
 
 export function MainPage() {
     return (
         <div>
-            <BugButton />
             <TopBanner />
             <ProductCarousel list={ProductCardList} title="Топовые позиции" />
             <BannersRow />
