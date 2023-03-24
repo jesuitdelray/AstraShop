@@ -7,7 +7,6 @@ export function ProductDetailsPage() {
     return (
         <div>
             <ProductDescription />
-            <ProductCarousel />
             <ProductCarousel list={ProductCardList} title="Топовые позиции" />
             <BannersRow />
         </div>
