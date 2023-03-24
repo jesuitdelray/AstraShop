@@ -1,9 +1,10 @@
 import styles from "widgets/ProductCarousel/ProductCarousel.module.scss"
 import { ProductCard, ProductCardProps } from "entities/ProductCard/ProductCard"
 import Slider, { Settings, ResponsiveObject } from "react-slick"
+import { v4 as uuid4 } from "uuid"
+import { classNames } from "shared/lib/classNames/classNames"
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"
-import { v4 as uuid4 } from "uuid"
 
 interface IProductCarouselProps extends Settings {
     list?: ProductCardProps[],
@@ -32,6 +33,15 @@ export const ProductCarousel = (props: ProductCarouselProps) => {
     } = props
 
     const settings: ResponsiveSettings = [
+        {
+            breakpoint: 1300,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true,
+            },
+        },
         {
             breakpoint: 1024,
             settings: {
@@ -62,7 +72,7 @@ export const ProductCarousel = (props: ProductCarouselProps) => {
     ]
 
     return (
-        <div className={className}>
+        <div className={classNames(styles.container, {}, [className])}>
             {!!title && <div className={styles.title}>{title}</div>}
             <Slider
                 dots={dots}
