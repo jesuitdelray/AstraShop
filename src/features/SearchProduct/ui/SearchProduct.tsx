@@ -32,9 +32,6 @@ export function SearchProduct({ className }: SearchProductProps) {
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
             />
-            <button className={classNames(styles.btn, { [styles.btnActive]: value || active }, [])}>
-                Искать
-            </button>
         </div>
     )
 }
