@@ -5,7 +5,6 @@ import { Header } from "widgets/Header"
 import { Footer } from "widgets/Footer"
 import { Modals } from "processes/Modals"
 import { Sidebar } from "widgets/Sidebar"
-import { OrderInfo } from "widgets/SuccessOrder/ui/SuccessOrder"
 
 function App() {
     const [modalOpen, setModalOpen] = useState("")
@@ -19,7 +18,6 @@ function App() {
                     <Header modalOpen={modalOpen} setModalOpen={setModalOpen} />
                     <AppRouter />
                     <Footer />
-                    <OrderInfo />
                 </div>
             </Suspense>
         </div>

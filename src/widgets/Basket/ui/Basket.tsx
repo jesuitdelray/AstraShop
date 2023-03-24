@@ -12,9 +12,9 @@ interface BasketProps {
     onClose: () => void
 }
 
-const isSlideTop = window.innerWidth < 769
-
 export function Basket({ isOpen, onClose }: BasketProps) {
+    const isSlideTop = window.innerWidth < 769
+
     return (
         <ModalSlider
             isOpen={isOpen}

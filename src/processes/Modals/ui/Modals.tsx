@@ -1,6 +1,7 @@
 import { Basket } from "widgets/Basket"
 import { BurgerMenu } from "widgets/BurgerMenu"
 import { FiltersModalSlider } from "widgets/FiltersModalSlider"
+import { SuccessOrder } from "widgets/SuccessOrder"
 
 interface ModalsProps {
     modalOpen: string
@@ -17,6 +18,7 @@ export function Modals({ modalOpen, setModalOpen }: ModalsProps) {
             <BurgerMenu isOpen={modalOpen === "burger"} onClose={closeModalHandler} />
             <Basket isOpen={modalOpen === "basket"} onClose={closeModalHandler} />
             <FiltersModalSlider isOpen={modalOpen === "filters"} onClose={closeModalHandler} />
+            <SuccessOrder isOpen={modalOpen === "success"} onClose={closeModalHandler} />
         </>
     )
 }
