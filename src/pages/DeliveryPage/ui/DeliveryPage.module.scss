@@ -1,0 +1,26 @@
+.content {
+    margin-bottom: 80px;
+}
+
+.title {
+    margin-bottom: 80px;
+}
+
+.deliveryTitle,
+.returnTitle {
+    margin-bottom: 40px;
+    margin-top: 80px;
+}
+
+.returnTitle {
+    margin-top: 60px;
+}
+
+.icon {
+    margin-right: 80px;
+    margin-bottom: 20px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
