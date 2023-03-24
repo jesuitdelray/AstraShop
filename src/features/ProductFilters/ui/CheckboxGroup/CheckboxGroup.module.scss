@@ -1,0 +1,20 @@
+.container {
+    margin-bottom: 34px;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.list {
+    .item {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

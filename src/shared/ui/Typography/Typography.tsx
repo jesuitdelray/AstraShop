@@ -5,6 +5,8 @@ import styles from "./Typography.module.scss"
 export enum TypographyColor {
     BASE = "base",
     DARK_GRAY = "darkGray",
+    INVERTED = "inverted",
+    ACCENT = "accent",
 }
 
 export enum TypographyVariant {

@@ -1,10 +1,9 @@
-import { LinksSidebar } from "widgets/LinksSidebar"
+import { ProductDescription } from "entities/ProductDescription"
 
 export function ProductDetailsPage() {
     return (
         <div>
-            <LinksSidebar />
-            ProductDetailsPage
+            <ProductDescription />
         </div>
     )
 }

@@ -1,0 +1,15 @@
+.wrapper {
+    > div {
+        padding: 32px;
+    }
+}
+
+.btn {
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        display: none;
+    }
+}

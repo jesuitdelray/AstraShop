@@ -1,20 +1,19 @@
-import { LinksSidebar } from "widgets/LinksSidebar"
-import { ProductCardList } from "widgets/ProductCard/model/list"
-import { ProductCard, ProductCarousel } from "widgets/ProductCard"
-import styles from "widgets/ProductCard/ui/ProductCarousel/ProductCarousel.module.scss"
+import { BannersRow } from "widgets/BannersRow"
+import { TopBanner } from "widgets/TopBanner"
+import { ProductCardList } from "widgets/ProductCarousel/model/list"
+import { ProductCarousel } from "widgets/ProductCarousel/ProductCarousel"
+import styles from "widgets/ProductCarousel/ProductCarousel.module.scss"
 
 export function MainPage() {
     return (
         <div>
-            <LinksSidebar />
+            <TopBanner />
+            <BannersRow />
             <ProductCarousel
                 list={ProductCardList}
                 className={styles.maxWidth1200}
                 title="Новые поступления"
             />
-            <div style={{ width: "260px" }}>
-                <ProductCard {...ProductCardList[0]} />
-            </div>
         </div>
     )
 }

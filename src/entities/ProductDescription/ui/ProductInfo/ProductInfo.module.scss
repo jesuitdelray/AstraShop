@@ -1,0 +1,26 @@
+.article {
+    margin-bottom: 20px;
+
+    .title {
+        margin-bottom: 8px;
+    }
+
+    .text {
+        margin-bottom: 8px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .list {
+        padding-left: 2px;
+        text-indent: 5px;
+
+        li::marker {
+            content: "•";
+            font-size: var(--font-size-base);
+            color: var(--color-dark-gray);
+        }
+    }
+}

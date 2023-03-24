@@ -1,0 +1,20 @@
+.radiosContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 12px;
+}
+
+.radio {
+    margin-bottom: 10px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.required {
+    color: var(--color-accent);
+}

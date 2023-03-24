@@ -7,6 +7,8 @@ import PlusIcon from "./plus.svg"
 import MinusIcon from "./minus.svg"
 import MobileBurgerIcon from "./mobile-burger.svg"
 import CrossIcon from "./cross.svg"
+import MasterCardIcon from "./mastercard.svg"
+import VisaIcon from "./visa.svg"
 
 export {
     MinusIcon,
@@ -18,4 +20,6 @@ export {
     ShoppingBagIcon,
     MobileBurgerIcon,
     CrossIcon,
+    MasterCardIcon,
+    VisaIcon,
 }

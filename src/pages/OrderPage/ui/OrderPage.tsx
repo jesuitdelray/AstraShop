@@ -1,10 +1,9 @@
-import { LinksSidebar } from "widgets/LinksSidebar"
+import { SubmitOrder } from "features/SubmitOrder"
 
 export function OrderPage() {
     return (
         <div>
-            <LinksSidebar />
-            OrderPage
+            <SubmitOrder />
         </div>
     )
 }

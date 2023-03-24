@@ -1,6 +1,5 @@
 .container {
     padding: 16px 24px;
-    width: 100%;
     color: var(--color-dark-gray);
     display: grid;
     grid-template-columns: 1fr;
@@ -8,6 +7,9 @@
     z-index: 100;
     background-color: var(--color-white);
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .search {
@@ -63,5 +65,11 @@
 
     .headerLeft {
         display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        left: var(--sidebar-width);
     }
 }
