@@ -4,6 +4,7 @@
     grid-template-rows: 572px 272px 272px;
     grid-template-areas: "first" "second" "third";
     row-gap: 23px;
+    margin-bottom: 81px;
 
     div:nth-child(1) {
         grid-area: first;
