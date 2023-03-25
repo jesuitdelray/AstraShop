@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
@@ -6,6 +7,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { RadioGroup } from "shared/ui/RadioGroup"
 import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
 import { OrderInfo, OrderInfoVariant } from "entities/OrderInfo"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import styles from "./OrderForm.module.scss"
 
 export function OrderForm() {
@@ -18,6 +20,8 @@ export function OrderForm() {
         delivery: "option1",
         isConsent: true,
     })
+
+    const navigate = useNavigate()
 
     function inputChangeHandler(value: string, input: string) {
         setFormData(prev => ({ ...prev, [input]: value }))
@@ -88,7 +92,12 @@ export function OrderForm() {
                     label="Я согласен (согласна) на обработку моих персональных данных"
                     className={styles.consent}
                 />
-                <OrderInfo className={styles.orderInfo} variant={OrderInfoVariant.VERTICAL} />
+                <OrderInfo
+                    onOrderClick={() => navigate(RoutePath.delivery)}
+                    onExitClick={() => null}
+                    className={styles.orderInfo}
+                    variant={OrderInfoVariant.VERTICAL}
+                />
             </form>
         </div>
     )
