@@ -1,7 +1,7 @@
-import styles from "entities/ProductCard/ProductCard.module.scss"
+import { ReactElement } from "react"
 import { Button, ButtonSize, ButtonVariant } from "shared/ui/Button/Button"
 import { classNames } from "shared/lib/classNames/classNames"
-import { ReactElement } from "react"
+import styles from "./ProductCard.module.scss"
 
 export interface ProductCardProps {
     id?: string

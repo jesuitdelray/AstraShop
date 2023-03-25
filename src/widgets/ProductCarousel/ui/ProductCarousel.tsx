@@ -1,23 +1,27 @@
-import styles from "widgets/ProductCarousel/ProductCarousel.module.scss"
-import { ProductCard, ProductCardProps } from "entities/ProductCard/ProductCard"
+import { ProductCard, ProductCardProps } from "entities/ProductCard"
 import Slider, { Settings, ResponsiveObject } from "react-slick"
 import { v4 as uuid4 } from "uuid"
 import { classNames } from "shared/lib/classNames/classNames"
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"
+import { ProductCardList } from "../model/list"
+import styles from "./ProductCarousel.module.scss"
+
+export enum ProductCarouselVariant {
+    TOP_PRODUCTS = "top",
+    NEW_PRODUCTS = "new",
+}
 
 interface IProductCarouselProps extends Settings {
-    list?: ProductCardProps[],
-    className?: string,
-    title?: string,
+    className?: string
+    variant: ProductCarouselVariant
 }
 type ProductCarouselProps = Readonly<IProductCarouselProps>
 type ResponsiveSettings = ResponsiveObject[]
 
 export const ProductCarousel = (props: ProductCarouselProps) => {
     const {
-        title,
-        list = [],
+        variant,
         className,
         dots = true,
         slidesToShow = 5,
@@ -71,9 +75,26 @@ export const ProductCarousel = (props: ProductCarouselProps) => {
         },
     ]
 
+    let title
+    let list: ProductCardProps[]
+
+    switch (variant) {
+        case ProductCarouselVariant.NEW_PRODUCTS:
+            title = "Новые поступления"
+            list = ProductCardList
+            break
+        case ProductCarouselVariant.TOP_PRODUCTS:
+            title = "Топовые позиции"
+            list = ProductCardList
+            break
+        default:
+            title = "Топовые позиции"
+            list = []
+    }
+
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            {!!title && <div className={styles.title}>{title}</div>}
+            <div className={styles.title}>{title}</div>
             <Slider
                 dots={dots}
                 slidesToShow={slidesToShow}
@@ -87,7 +108,6 @@ export const ProductCarousel = (props: ProductCarouselProps) => {
                 dotsClass={dotsClass}
                 responsive={settings}
                 {...rest}
-
             >
                 {list.map((props: ProductCardProps) => {
                     const { id, onClick, ...rest } = props

@@ -1,7 +1,6 @@
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { NovaPochtaIcon, IntimeIcon, AutoluxIcon } from "shared/assets/icons/others"
-import { ProductCarousel } from "widgets/ProductCarousel/ProductCarousel"
-import { ProductCardList } from "widgets/ProductCarousel/model/list"
+import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { BannersRow } from "widgets/BannersRow"
 import styles from "./DeliveryPage.module.scss"
 
@@ -41,7 +40,7 @@ export function DeliveryPage() {
                     возврату НЕ ПОДЛЕЖИТ!
                 </Typography>
             </div>
-            <ProductCarousel list={ProductCardList} title="Топовые позиции" />
+            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )

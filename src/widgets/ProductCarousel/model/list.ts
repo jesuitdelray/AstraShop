@@ -1,4 +1,4 @@
-import { ProductCardProps } from "entities/ProductCard/ProductCard"
+import { ProductCardProps } from "entities/ProductCard"
 import img from "./keyboard.png"
 
 export const ProductCardList: ProductCardProps[] = [
@@ -8,7 +8,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 1200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
     {
@@ -16,7 +17,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 2200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
     {
@@ -24,7 +26,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 3200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
     {
@@ -32,7 +35,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 4200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
     {
@@ -41,7 +45,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 5200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
     {
@@ -50,7 +55,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 6200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
     {
@@ -58,7 +64,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 7200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
     {
@@ -66,7 +73,8 @@ export const ProductCardList: ProductCardProps[] = [
         price: 8200,
         currency: "usd",
         // eslint-disable-next-line max-len
-        description: "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
+        description:
+            "Клавиатура беспроводная Logitech Craft USB/Bluetooth Клавиатура беспроводная Logitech Craft USB/Bluetooth",
         image: img,
     },
 ]

@@ -1,13 +1,12 @@
 import { ProductDescription } from "entities/ProductDescription"
 import { BannersRow } from "widgets/BannersRow"
-import { ProductCardList } from "widgets/ProductCarousel/model/list"
-import { ProductCarousel } from "widgets/ProductCarousel/ProductCarousel"
+import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 
 export function ProductDetailsPage() {
     return (
         <div>
             <ProductDescription />
-            <ProductCarousel list={ProductCardList} title="Топовые позиции" />
+            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )
