@@ -10,41 +10,6 @@
     text-align: center;
 }
 
-.buttonBar {
-    display: inline-block;
-    text-align: center;
-    margin-top: 32px;
-    width: 100%;
-
-    & li {
-        list-style: none;
-        cursor: pointer;
-        display: inline-block;
-        margin: 0 10px;
-        padding: 0;
-
-        & button {
-            background: var(--color-white);
-            color: transparent;
-            cursor: pointer;
-            display: block;
-            height: 18px;
-            width: 18px;
-            border-radius: 50%;
-            border: 1px solid var(--color-dark-gray);
-        }
-    }
-}
-
-.buttonBar :global(li.slick-active) button {
-    border: 1px solid var(--color-accent);
-    background-color: var(--color-accent);
-}
-
-:global(.slick-slide) {
-    padding: 0 10px;
-}
-
 .maxWidth1200 {
     max-width: 1200px;
     width: 100%;

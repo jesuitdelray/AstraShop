@@ -1,55 +1,37 @@
 import { ReactElement } from "react"
-import { Button, ButtonSize, ButtonVariant } from "shared/ui/Button/Button"
+import { Label } from "shared/ui/Label/Label"
+import { Typography } from "shared/ui/Typography/Typography"
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./ProductCard.module.scss"
 
 export interface ProductCardProps {
     id?: string
     isNew?: boolean
-    newText?: string
     className?: string
-    image?: string
-    description?: string
-    price?: number
-    currency?: string
-    onClick?: () => void
+    image: string
+    description: string
+    price: number
+    currency: string
 }
 
 export const ProductCard = (props: ProductCardProps): ReactElement => {
-    const {
-        isNew,
-        newText = "новый",
-        image,
-        className,
-        id,
-        description,
-        price,
-        currency,
-        onClick,
-    } = props
+    const { isNew, image, className, id, description, price, currency } = props
 
     return (
-        <div className={classNames(styles.container, {}, [className])} onClick={onClick}>
+        <div
+            className={classNames(styles.container, {}, [className])}
+            onClick={() => console.log(id)}
+        >
             <div className={styles.header}>
-                {!!isNew && (
-                    <div className={styles.button}>
-                        <Button variant={ButtonVariant.FILLED_RED} size={ButtonSize.SMALL}>
-                            {newText}
-                        </Button>
-                    </div>
-                )}
-                {!!image && (
-                    <img className={styles.image} src={image} alt={newText} decoding="async" />
-                )}
+                {!!isNew && <Label value="новый" className={styles.label} />}
+                {!!image && <img className={styles.image} src={image} alt="" decoding="async" />}
             </div>
             <div className={styles.footer}>
-                {!!description && <div className={styles.footerDescription}>{description}</div>}
-                {!!price && !!currency && (
-                    <div className={styles.footerPrice}>
-                        {price}
-                        {currency}
-                    </div>
-                )}
+                <Typography className={styles.footerDescription}>{description}</Typography>
+                <Typography className={styles.footerPrice} isBold>
+                    {price}
+                    {currency}
+                </Typography>
             </div>
         </div>
     )
