@@ -1,7 +1,5 @@
 import { OrderInfo } from "entities/OrderInfo"
-import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { ModalSlider, ModalSliderVariant } from "shared/ui/ModalSlider/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { basketItemsList } from "../model/list"
@@ -16,8 +14,6 @@ interface BasketProps {
 
 export function Basket({ isOpen, onClose }: BasketProps) {
     const isSlideTop = window.innerWidth < 769
-
-    const navigate = useNavigate()
 
     return (
         <ModalSlider
@@ -37,10 +33,7 @@ export function Basket({ isOpen, onClose }: BasketProps) {
                 {basketItemsList.length ? (
                     <>
                         <BasketItemsList list={basketItemsList} />
-                        <OrderInfo
-                            onOrderClick={() => navigate(RoutePath.order)}
-                            onExitClick={onClose}
-                        />
+                        <OrderInfo />
                     </>
                 ) : (
                     <EmptyBasket onClose={onClose} />
