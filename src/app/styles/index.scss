@@ -19,3 +19,38 @@
     padding-left: 36px;
     padding-right: 36px;
 }
+
+.slickSlider__dots {
+    display: inline-block;
+    text-align: center;
+    margin-top: 32px;
+    width: 100%;
+
+    & li {
+        list-style: none;
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 10px;
+        padding: 0;
+
+        & button {
+            background: var(--color-white);
+            color: transparent;
+            cursor: pointer;
+            display: block;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            border: 1px solid var(--color-dark-gray);
+        }
+    }
+}
+
+.slickSlider__dots li.slick-active button {
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-accent);
+}
+
+.slick-slide {
+    padding: 0 10px;
+}

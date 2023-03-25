@@ -1,15 +1,14 @@
 import { BannersRow } from "widgets/BannersRow"
 import { TopBanner } from "widgets/TopBanner"
-import { ProductCardList } from "widgets/ProductCarousel/model/list"
-import { ProductCarousel } from "widgets/ProductCarousel/ProductCarousel"
+import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 
 export function MainPage() {
     return (
         <div>
             <TopBanner />
-            <ProductCarousel list={ProductCardList} title="Топовые позиции" />
+            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
             <BannersRow />
-            <ProductCarousel list={ProductCardList} title="Новые поступления" />
+            <ProductCarousel variant={ProductCarouselVariant.NEW_PRODUCTS} />
         </div>
     )
 }

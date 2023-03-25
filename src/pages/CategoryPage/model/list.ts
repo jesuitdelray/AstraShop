@@ -1,4 +1,4 @@
-import { ProductCardProps } from "entities/ProductCard/ProductCard"
+import { ProductCardProps } from "entities/ProductCard"
 import img from "shared/assets/images/img3.png"
 
 export const ProductCardList: ProductCardProps[] = [

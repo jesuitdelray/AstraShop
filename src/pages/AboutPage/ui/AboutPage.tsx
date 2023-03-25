@@ -1,7 +1,6 @@
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { BannersRow } from "widgets/BannersRow"
-import { ProductCardList } from "widgets/ProductCarousel/model/list"
-import { ProductCarousel } from "widgets/ProductCarousel/ProductCarousel"
+import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import styles from "./AboutPage.module.scss"
 
 export function AboutPage() {
@@ -38,7 +37,7 @@ export function AboutPage() {
                 различных групп товаров, но и следим за тем, чтобы наши цены по возможности были
                 ниже чем у конкурентов.
             </Typography>
-            <ProductCarousel list={ProductCardList} title="Топовые позиции" />
+            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )
