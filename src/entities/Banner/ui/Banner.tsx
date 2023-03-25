@@ -1,8 +1,6 @@
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { classNames } from "shared/lib/classNames/classNames"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
-import { useNavigate } from "react-router-dom"
 import styles from "./Banner.module.scss"
 
 export enum BannerVariant {
@@ -35,8 +33,6 @@ export function Banner(props: BannerProps) {
         color = BannerColor.NORMAL,
     } = props
 
-    const navigate = useNavigate()
-
     const isMain = variant === BannerVariant.MAIN || variant === BannerVariant.TOP
 
     return (
@@ -68,20 +64,11 @@ export function Banner(props: BannerProps) {
                     </Typography>
                 )}
                 {isMain ? (
-                    <Button
-                        variant={ButtonVariant.FILLED_RED}
-                        className={styles.btn}
-                        onClick={() => navigate(RoutePath.category)}
-                    >
+                    <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
                         Смотреть
                     </Button>
                 ) : (
-                    <Button
-                        variant={ButtonVariant.CLEAR_INVERTED}
-                        onClick={() => navigate(RoutePath.category)}
-                    >
-                        Смотреть товары
-                    </Button>
+                    <Button variant={ButtonVariant.CLEAR_INVERTED}>Смотреть товары</Button>
                 )}
             </div>
             <img src={img} alt="" className={styles.img} />
