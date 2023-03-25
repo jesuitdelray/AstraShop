@@ -12,10 +12,18 @@ interface OrderInfoProps {
     isCentered?: boolean
     className?: string
     variant?: OrderInfoVariant
+    onOrderClick: () => void
+    onExitClick: () => void
 }
 
 export function OrderInfo(props: OrderInfoProps) {
-    const { isCentered = false, className, variant = OrderInfoVariant.DEFAULT } = props
+    const {
+        isCentered = false,
+        className,
+        variant = OrderInfoVariant.DEFAULT,
+        onOrderClick,
+        onExitClick,
+    } = props
 
     return (
         <div
@@ -35,8 +43,10 @@ export function OrderInfo(props: OrderInfoProps) {
                 <Typography className={styles.totalProducts}>3</Typography>
             </div>
             <div className={styles.buttons}>
-                <Button variant={ButtonVariant.FILLED_RED}>Подтвердить заказ</Button>
-                <Button>Продолжить покупки</Button>
+                <Button onClick={onOrderClick} variant={ButtonVariant.FILLED_RED}>
+                    Подтвердить заказ
+                </Button>
+                <Button onClick={onExitClick}>Продолжить покупки</Button>
             </div>
         </div>
     )
