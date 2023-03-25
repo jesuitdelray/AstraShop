@@ -28,10 +28,10 @@ export function Basket({ isOpen, onClose }: BasketProps) {
         >
             <div className={styles.container}>
                 <div className={styles.slideRightHeader}>
-                    <CrossIcon onClick={onClose} className={styles.cross} />
                     <Typography variant={TypographyVariant.H3} className={styles.slideRightTitle}>
                         Корзина
                     </Typography>
+                    <CrossIcon onClick={onClose} className={styles.cross} />
                 </div>
 
                 {basketItemsList.length ? (
