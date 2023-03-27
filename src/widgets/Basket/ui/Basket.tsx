@@ -1,4 +1,5 @@
 import { OrderInfo } from "entities/OrderInfo"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
@@ -12,14 +13,17 @@ import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
-const height = window.innerHeight
-
 interface BasketProps {
     isOpen: boolean
     onClose: () => void
 }
 
 export function Basket({ isOpen, onClose }: BasketProps) {
+    const [basketHeight, setBasketHeight] = useState(window.innerHeight)
+    useEffect(() => {
+        setBasketHeight(window.innerHeight)
+    }, [])
+
     const isSlideTop = window.innerWidth < 769
 
     const navigate = useNavigate()
@@ -32,7 +36,7 @@ export function Basket({ isOpen, onClose }: BasketProps) {
                 isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT
             }
             className={styles.wrapper}
-            containerHeight={`${height}px`}
+            containerHeight={`${basketHeight}px`}
         >
             <div className={styles.container}>
                 <div className={styles.slideRightHeader}>
