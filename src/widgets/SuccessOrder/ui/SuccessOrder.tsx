@@ -27,9 +27,7 @@ function Content({ isSlideTop }: ContentProps) {
             <Typography className={styles.text} variant={TypographyVariant.P}>
                 Наш менеджер свяжется с Вами в ближайшее время и уточнит детали заказа
             </Typography>
-            <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
-                Продолжить покупки
-            </Button>
+            <Button variant={ButtonVariant.FILLED_RED}>Продолжить покупки</Button>
         </>
     )
 }

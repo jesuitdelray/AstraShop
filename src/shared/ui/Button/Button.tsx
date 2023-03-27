@@ -9,32 +9,18 @@ export enum ButtonVariant {
     FILLED_GREY = "filled-grey",
 }
 
-export enum ButtonSize {
-    SMALL = "small",
-    LARGE = "large",
-}
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     variant?: ButtonVariant
-    size?: ButtonSize
     disabled?: boolean
     children?: ReactNode
 }
 
 export const Button = memo((props: ButtonProps) => {
-    const {
-        className,
-        variant = ButtonVariant.OUTLINE,
-        size = ButtonSize.LARGE,
-        disabled,
-        children,
-        ...restProps
-    } = props
+    const { className, variant = ButtonVariant.OUTLINE, disabled, children, ...restProps } = props
 
     const mods: Mods = {
         [styles[variant]]: true,
-        [styles[size]]: true,
         [styles.disabled]: disabled,
     }
 
