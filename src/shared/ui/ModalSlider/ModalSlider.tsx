@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactNode, useEffect } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./ModalSlider.module.scss"
 
@@ -37,6 +37,10 @@ export function ModalSlider(props: ModalSliderProps) {
     function clickHandler(e: React.MouseEvent) {
         e.stopPropagation()
     }
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("noScroll", isOpen)
+    }, [isOpen])
 
     return (
         <div className={wrapperClassName} onClick={onClose}>
