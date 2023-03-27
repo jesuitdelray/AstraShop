@@ -1,6 +1,6 @@
+import { StateSchema } from "app/providers/StoreProvider"
 import { OrderInfo } from "entities/OrderInfo"
-import { modalActions } from "processes/Modals/model/slice/modalsSlice"
-import { CurrentModalTypes } from "processes/Modals/model/types/modalsSchema"
+import { modalActions, CurrentModalTypes } from "processes/Modals"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
@@ -14,8 +14,8 @@ import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
 export function Basket() {
     const isSlideTop = window.innerWidth < 769
-    //@ts-ignore
-    const value = useSelector(state => state.modals.current)
+
+    const value = useSelector((state: StateSchema) => state.modals.current)
     const dispatch = useDispatch()
 
     const navigate = useNavigate()

@@ -1,5 +1,5 @@
-import { modalActions } from "processes/Modals/model/slice/modalsSlice"
-import { CurrentModalTypes } from "processes/Modals/model/types/modalsSchema"
+import { StateSchema } from "app/providers/StoreProvider/config/StateSchema"
+import { modalActions, CurrentModalTypes } from "processes/Modals"
 import { useDispatch, useSelector } from "react-redux"
 import { ShoppingBagIcon } from "shared/assets/icons/others"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
@@ -36,8 +36,7 @@ export function SuccessOrder() {
     const isSlideTop = window.innerWidth < 769
 
     const dispatch = useDispatch()
-    //@ts-ignore
-    const value = useSelector(state => state.modals.current)
+    const value = useSelector((state: StateSchema) => state.modals.current)
 
     const isOpen = value === CurrentModalTypes.SUCCESS
 

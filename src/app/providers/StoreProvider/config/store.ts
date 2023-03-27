@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { modalReducer } from "processes/Modals/model/slice/modalsSlice"
+import { modalReducer } from "processes/Modals"
 import { StateSchema } from "./StateSchema"
 
 export function createReduxStore(initialState?: StateSchema) {

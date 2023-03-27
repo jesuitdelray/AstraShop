@@ -1,6 +1,6 @@
+import { StateSchema } from "app/providers/StoreProvider/config/StateSchema"
 import { ProductFilters } from "features/ProductFilters"
-import { modalActions, modalSlice } from "processes/Modals/model/slice/modalsSlice"
-import { CurrentModalTypes } from "processes/Modals/model/types/modalsSchema"
+import { modalActions, CurrentModalTypes } from "processes/Modals"
 import { useDispatch, useSelector } from "react-redux"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { ModalSlider } from "shared/ui/ModalSlider/ModalSlider"
@@ -8,8 +8,7 @@ import styles from "./FiltersModalSlider.module.scss"
 
 export function FiltersModalSlider() {
     const dispatch = useDispatch()
-    //@ts-ignore
-    const value = useSelector(state => state.modals.current)
+    const value = useSelector((state: StateSchema) => state.modals.current)
 
     function onClose() {
         dispatch(modalActions.close())

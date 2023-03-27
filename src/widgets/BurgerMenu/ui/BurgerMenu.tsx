@@ -4,13 +4,12 @@ import { SearchProduct } from "features/SearchProduct"
 import { NavigationList, NavigationListVariant } from "entities/NavigationList"
 import { ModalSlider } from "shared/ui/ModalSlider/ModalSlider"
 import { useDispatch, useSelector } from "react-redux"
-import { modalActions } from "processes/Modals/model/slice/modalsSlice"
-import { CurrentModalTypes } from "processes/Modals/model/types/modalsSchema"
+import { modalActions, CurrentModalTypes } from "processes/Modals"
+import { StateSchema } from "app/providers/StoreProvider"
 import styles from "./BurgerMenu.module.scss"
 
 export function BurgerMenu() {
-    //@ts-ignore
-    const value = useSelector(state => state.modals.current)
+    const value = useSelector((state: StateSchema) => state.modals.current)
     const dispatch = useDispatch()
 
     function onClose() {
