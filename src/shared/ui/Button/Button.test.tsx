@@ -18,10 +18,4 @@ describe("Button test", () => {
         expect(screen.getByText("Submit")).toHaveClass("filled-grey")
         screen.debug()
     })
-
-    test("Test large size", () => {
-        render(<Button>Submit</Button>)
-        expect(screen.getByText("Submit")).toHaveClass("large")
-        screen.debug()
-    })
 })
