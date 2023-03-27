@@ -9,6 +9,8 @@ import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
+const height = window.innerHeight
+
 interface BasketProps {
     isOpen: boolean
     onClose: () => void
@@ -26,7 +28,7 @@ export function Basket({ isOpen, onClose }: BasketProps) {
             variant={isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT}
             className={styles.wrapper}
         >
-            <div className={styles.container}>
+            <div className={styles.container} style={{ height: `${height}px` }}>
                 <div className={styles.slideRightHeader}>
                     <Typography variant={TypographyVariant.H3} className={styles.slideRightTitle}>
                         Корзина
