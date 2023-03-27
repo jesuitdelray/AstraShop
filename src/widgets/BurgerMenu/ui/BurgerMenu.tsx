@@ -5,13 +5,14 @@ import { NavigationList, NavigationListVariant } from "entities/NavigationList"
 import { ModalSlider } from "shared/ui/ModalSlider/ModalSlider"
 import styles from "./BurgerMenu.module.scss"
 
-interface BurgerMenuProps {
-    isOpen: boolean
-    onClose: () => void
-}
+export function BurgerMenu() {
+    /* const { isOpen, onClose } = props */
 
-export function BurgerMenu(props: BurgerMenuProps) {
-    const { isOpen, onClose } = props
+    function onClose() {
+        return ""
+    }
+
+    const isOpen = true
 
     return (
         <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.wrapper}>
