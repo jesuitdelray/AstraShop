@@ -36,9 +36,12 @@ export function Basket({ isOpen, onClose }: BasketProps) {
                 isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT
             }
             className={styles.wrapper}
-            containerHeight={`${basketHeight}px`}
+            /* containerHeight={`${basketHeight}px`} */
         >
-            <div className={styles.container}>
+            <div
+                className={styles.container}
+                style={{ height: `${basketHeight}px` }}
+            >
                 <div className={styles.slideRightHeader}>
                     <Typography
                         variant={TypographyVariant.H3}
