@@ -1,14 +1,12 @@
+import { modalActions } from "processes/Modals/model/slice/modalsSlice"
+import { CurrentModalTypes } from "processes/Modals/model/types/modalsSchema"
+import { useDispatch, useSelector } from "react-redux"
 import { ShoppingBagIcon } from "shared/assets/icons/others"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Modal } from "shared/ui/Modal/Modal"
 import { ModalSlider } from "shared/ui/ModalSlider/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./SuccessOrder.module.scss"
-
-interface SuccessOrderProps {
-    isOpen: boolean
-    onClose: () => void
-}
 
 interface ContentProps {
     isSlideTop: boolean
@@ -34,8 +32,18 @@ function Content({ isSlideTop }: ContentProps) {
     )
 }
 
-export function SuccessOrder({ isOpen, onClose }: SuccessOrderProps) {
+export function SuccessOrder() {
     const isSlideTop = window.innerWidth < 769
+
+    const dispatch = useDispatch()
+    //@ts-ignore
+    const value = useSelector(state => state.modals.current)
+
+    const isOpen = value === CurrentModalTypes.SUCCESS
+
+    function onClose() {
+        dispatch(modalActions.close())
+    }
 
     return isSlideTop ? (
         <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.sliderWrapper}>

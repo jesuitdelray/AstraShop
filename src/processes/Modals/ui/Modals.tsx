@@ -7,9 +7,9 @@ export function Modals() {
     return (
         <>
             <BurgerMenu />
-            {/*  <Basket />
+            <Basket />
             <FiltersModalSlider />
-            <SuccessOrder /> */}
+            <SuccessOrder />
         </>
     )
 }

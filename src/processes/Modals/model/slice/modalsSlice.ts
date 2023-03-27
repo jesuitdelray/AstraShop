@@ -1,25 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { CurrentModalTypes, ModalsSchema } from "../types/modalsSchema"
+
+const initialState: ModalsSchema = {
+    current: CurrentModalTypes.NONE,
+}
 
 export const modalSlice = createSlice({
     name: "modals",
-    initialState: {
-        modal: "",
-    },
+    initialState,
     reducers: {
         close: state => {
-            state.modal = ""
+            state.current = CurrentModalTypes.NONE
         },
         openBurger: state => {
-            state.modal = "burger"
+            state.current = CurrentModalTypes.BURGER
         },
         openBasket: state => {
-            state.modal = "basket"
+            state.current = CurrentModalTypes.BASKET
         },
         openFilters: state => {
-            state.modal = "filters"
+            state.current = CurrentModalTypes.FILTERS
         },
         openSuccess: state => {
-            state.modal = "success"
+            state.current = CurrentModalTypes.SUCCESS
         },
     },
 })

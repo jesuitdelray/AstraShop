@@ -1,5 +1,5 @@
 import { classNames } from "shared/lib/classNames/classNames"
-import { memo, ReactNode } from "react"
+import { HTMLAttributes, memo, ReactNode } from "react"
 import styles from "./Typography.module.scss"
 
 export enum TypographyColor {
@@ -17,7 +17,7 @@ export enum TypographyVariant {
     P = "variantP",
 }
 
-interface TextProps {
+interface TextProps extends HTMLAttributes<HTMLDivElement> {
     className?: string
     children: ReactNode
     variant?: TypographyVariant
@@ -26,7 +26,14 @@ interface TextProps {
 }
 
 export const Typography = memo((props: TextProps) => {
-    const { className, children, variant = TypographyVariant.P, color = "", isBold = false } = props
+    const {
+        className,
+        children,
+        variant = TypographyVariant.P,
+        color = "",
+        isBold = false,
+        ...restProps
+    } = props
 
     return (
         <div
@@ -34,6 +41,7 @@ export const Typography = memo((props: TextProps) => {
                 className,
                 styles[variant],
             ])}
+            {...restProps}
         >
             {children}
         </div>

@@ -1,4 +1,7 @@
 import { OrderInfo } from "entities/OrderInfo"
+import { modalActions } from "processes/Modals/model/slice/modalsSlice"
+import { CurrentModalTypes } from "processes/Modals/model/types/modalsSchema"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
@@ -9,19 +12,21 @@ import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
-interface BasketProps {
-    isOpen: boolean
-    onClose: () => void
-}
-
-export function Basket({ isOpen, onClose }: BasketProps) {
+export function Basket() {
     const isSlideTop = window.innerWidth < 769
+    //@ts-ignore
+    const value = useSelector(state => state.modals.current)
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
+    function onClose() {
+        dispatch(modalActions.close())
+    }
+
     return (
         <ModalSlider
-            isOpen={isOpen}
+            isOpen={value === CurrentModalTypes.BASKET}
             onClose={onClose}
             variant={isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT}
             className={styles.wrapper}
