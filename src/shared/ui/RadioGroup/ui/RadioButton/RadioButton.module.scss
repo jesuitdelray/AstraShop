@@ -12,6 +12,9 @@
     border: 2px solid var(--color-accent);
     border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &::after {
         content: "";
