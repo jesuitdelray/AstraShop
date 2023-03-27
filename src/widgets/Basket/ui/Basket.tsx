@@ -19,9 +19,17 @@ interface BasketProps {
 }
 
 export function Basket({ isOpen, onClose }: BasketProps) {
-    const [basketHeight, setBasketHeight] = useState(window.innerHeight)
+    const [height, setHeight] = useState(window.innerHeight)
+
     useEffect(() => {
-        setBasketHeight(window.innerHeight)
+        function handleResize() {
+            setHeight(window.innerHeight)
+        }
+
+        window.addEventListener("resize", handleResize)
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
     }, [])
 
     const isSlideTop = window.innerWidth < 769
@@ -36,12 +44,9 @@ export function Basket({ isOpen, onClose }: BasketProps) {
                 isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT
             }
             className={styles.wrapper}
-            containerHeight={`${basketHeight - 64}px`}
+            containerHeight={isSlideTop ? `${height - 64}px` : "auto"}
         >
-            <div
-                className={styles.container}
-                /* style={{ height: `${basketHeight}px` }} */
-            >
+            <div className={styles.container}>
                 <div className={styles.slideRightHeader}>
                     <Typography
                         variant={TypographyVariant.H3}
