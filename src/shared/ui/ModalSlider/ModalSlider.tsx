@@ -13,10 +13,18 @@ interface ModalSliderProps {
     children: ReactNode
     className?: string
     variant?: ModalSliderVariant
+    containerHeight?: string
 }
 
 export function ModalSlider(props: ModalSliderProps) {
-    const { isOpen, onClose, children, className, variant = ModalSliderVariant.TOP } = props
+    const {
+        isOpen,
+        onClose,
+        children,
+        className,
+        variant = ModalSliderVariant.TOP,
+        containerHeight,
+    } = props
 
     const wrapperClassName = classNames(
         styles.wrapper,
@@ -36,7 +44,11 @@ export function ModalSlider(props: ModalSliderProps) {
 
     return (
         <div className={wrapperClassName} onClick={onClose}>
-            <div className={styles.container} onClick={clickHandler}>
+            <div
+                className={styles.container}
+                onClick={clickHandler}
+                style={{ height: containerHeight }}
+            >
                 {children}
             </div>
         </div>

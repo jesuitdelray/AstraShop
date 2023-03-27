@@ -15,6 +15,7 @@ interface BasketProps {
 }
 
 export function Basket({ isOpen, onClose }: BasketProps) {
+    const height = window.innerHeight
     const isSlideTop = window.innerWidth < 769
 
     const navigate = useNavigate()
@@ -25,6 +26,7 @@ export function Basket({ isOpen, onClose }: BasketProps) {
             onClose={onClose}
             variant={isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT}
             className={styles.wrapper}
+            containerHeight={isSlideTop ? `${height - 64}px` : "auto"}
         >
             <div className={styles.container}>
                 <div className={styles.slideRightHeader}>

@@ -3,6 +3,7 @@
 }
 
 .container {
+    height: 100%;
     min-height: 236px;
     display: flex;
     flex-direction: column;
@@ -20,7 +21,7 @@
         cursor: grab !important;
         background-color: var(--color-dark-gray);
         border-radius: 10px;
-        border-right: 3px solid white;
+        border-right: 3px solid var(--color-white);
         background-clip: padding-box;
     }
 }
