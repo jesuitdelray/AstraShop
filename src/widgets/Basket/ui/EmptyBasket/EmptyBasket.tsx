@@ -16,7 +16,7 @@ export function EmptyBasket({ onClose }: EmptyBasketProps) {
             >
                 Пусто
             </Typography>
-            <Button className={styles.btn} variant={ButtonVariant.FILLED_RED} onClick={onClose}>
+            <Button variant={ButtonVariant.FILLED_RED} onClick={onClose}>
                 Продолжить покупки
             </Button>
         </div>

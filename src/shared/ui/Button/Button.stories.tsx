@@ -1,6 +1,5 @@
-import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { Button, ButtonSize, ButtonVariant } from "./Button"
+import { Button, ButtonVariant } from "./Button"
 
 const buttonText = "Submit"
 
@@ -29,24 +28,4 @@ export const FilledGreyLarge = Template.bind({})
 FilledGreyLarge.args = {
     children: buttonText,
     variant: ButtonVariant.FILLED_GREY,
-}
-
-export const OutlineSmall = Template.bind({})
-OutlineSmall.args = {
-    children: buttonText,
-    size: ButtonSize.SMALL,
-}
-
-export const FilledRedSmall = Template.bind({})
-FilledRedSmall.args = {
-    children: buttonText,
-    variant: ButtonVariant.FILLED_RED,
-    size: ButtonSize.SMALL,
-}
-
-export const FilledGreySmall = Template.bind({})
-FilledGreySmall.args = {
-    children: buttonText,
-    variant: ButtonVariant.FILLED_GREY,
-    size: ButtonSize.SMALL,
 }

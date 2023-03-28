@@ -70,7 +70,6 @@ export function Banner(props: BannerProps) {
                 {isMain ? (
                     <Button
                         variant={ButtonVariant.FILLED_RED}
-                        className={styles.btn}
                         onClick={() => navigate(RoutePath.category)}
                     >
                         Смотреть

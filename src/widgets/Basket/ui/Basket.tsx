@@ -17,6 +17,7 @@ import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
 export function Basket() {
+    const height = window.innerHeight
     const isSlideTop = window.innerWidth < 769
 
     const currentModal = useSelector(getModalsCurrent)
@@ -34,6 +35,7 @@ export function Basket() {
             onClose={onClose}
             direction={isSlideTop ? ModalSliderDirection.TOP : ModalSliderDirection.RIGHT}
             className={styles.wrapper}
+            containerHeight={isSlideTop ? `${height - 64}px` : "auto"}
         >
             <div className={styles.container}>
                 <div className={styles.slideRightHeader}>
