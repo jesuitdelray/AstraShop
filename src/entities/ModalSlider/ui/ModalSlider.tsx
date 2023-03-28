@@ -31,6 +31,7 @@ export function ModalSlider(props: ModalSliderProps) {
         className,
         direction = ModalSliderDirection.TOP,
         variant = ModalSliderVariant.SLIDER,
+        containerHeight,
     } = props
 
     const wrapperClassName = classNames(
