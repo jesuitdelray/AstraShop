@@ -46,10 +46,7 @@ export function Basket() {
                 {basketItemsList.length ? (
                     <>
                         <BasketItemsList list={basketItemsList} />
-                        <OrderInfo
-                            onOrderClick={() => navigate(RoutePath.order)}
-                            onExitClick={onClose}
-                        />
+                        <OrderInfo onOrderClick={() => navigate(RoutePath.order)} />
                     </>
                 ) : (
                     <EmptyBasket onClose={onClose} />
