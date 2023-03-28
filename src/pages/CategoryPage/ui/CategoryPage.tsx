@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Breadcrumbs } from "entities/Breadcrumbs"
+import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { SortProducts } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
@@ -9,13 +11,14 @@ import styles from "./CategoryPage.module.scss"
 
 export function CategoryPage() {
     const [sortingPattern, setSortingPattern] = useState("")
+    const list = [AppRoutes.CATALOG, AppRoutes.CATEGORY]
 
     return (
         <div className={styles.wrapper}>
+            <Breadcrumbs list={list} />
             <Typography variant={TypographyVariant.H3} className={styles.title}>
                 Клавиатуры
             </Typography>
-
             <SortProducts
                 sortingPattern={sortingPattern}
                 setSortingPattern={setSortingPattern}
