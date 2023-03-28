@@ -1,8 +1,14 @@
 import { ReactNode, useEffect } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
+import { Modal } from "shared/ui/Modal/Modal"
 import styles from "./ModalSlider.module.scss"
 
 export enum ModalSliderVariant {
+    SLIDER = "slider",
+    MODAL = "modal",
+}
+
+export enum ModalSliderDirection {
     TOP = "top",
     RIGHT = "right",
 }
@@ -12,6 +18,7 @@ interface ModalSliderProps {
     onClose: () => void
     children: ReactNode
     className?: string
+    direction?: ModalSliderDirection
     variant?: ModalSliderVariant
     containerHeight?: string
 }
@@ -22,7 +29,8 @@ export function ModalSlider(props: ModalSliderProps) {
         onClose,
         children,
         className,
-        variant = ModalSliderVariant.TOP,
+        direction = ModalSliderDirection.TOP,
+        variant = ModalSliderVariant.SLIDER,
         containerHeight,
     } = props
 
@@ -31,7 +39,7 @@ export function ModalSlider(props: ModalSliderProps) {
         {
             [styles.open]: isOpen,
         },
-        [className, styles[variant]]
+        [className, styles[direction]]
     )
 
     function clickHandler(e: React.MouseEvent) {
@@ -42,7 +50,11 @@ export function ModalSlider(props: ModalSliderProps) {
         document.documentElement.classList.toggle("noScroll", isOpen)
     }, [isOpen])
 
-    return (
+    return variant === ModalSliderVariant.MODAL ? (
+        <Modal isOpen={isOpen} onClose={onClose} className={className}>
+            {children}
+        </Modal>
+    ) : (
         <div className={wrapperClassName} onClick={onClose}>
             <div
                 className={styles.container}

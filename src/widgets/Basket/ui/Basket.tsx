@@ -1,30 +1,39 @@
 import { OrderInfo } from "entities/OrderInfo"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
-import { ModalSlider, ModalSliderVariant } from "shared/ui/ModalSlider/ModalSlider"
+import {
+    getModalsCurrent,
+    modalsActions,
+    ModalSlider,
+    ModalSliderDirection,
+    ModalsList,
+} from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { basketItemsList } from "../model/list"
 import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
-interface BasketProps {
-    isOpen: boolean
-    onClose: () => void
-}
-
-export function Basket({ isOpen, onClose }: BasketProps) {
+export function Basket() {
     const height = window.innerHeight
     const isSlideTop = window.innerWidth < 769
 
+    const currentModal = useSelector(getModalsCurrent)
+    const dispatch = useDispatch()
+
     const navigate = useNavigate()
+
+    function onClose() {
+        dispatch(modalsActions.close())
+    }
 
     return (
         <ModalSlider
-            isOpen={isOpen}
+            isOpen={currentModal === ModalsList.BASKET}
             onClose={onClose}
-            variant={isSlideTop ? ModalSliderVariant.TOP : ModalSliderVariant.RIGHT}
+            direction={isSlideTop ? ModalSliderDirection.TOP : ModalSliderDirection.RIGHT}
             className={styles.wrapper}
             containerHeight={isSlideTop ? `${height - 64}px` : "auto"}
         >
@@ -39,10 +48,7 @@ export function Basket({ isOpen, onClose }: BasketProps) {
                 {basketItemsList.length ? (
                     <>
                         <BasketItemsList list={basketItemsList} />
-                        <OrderInfo
-                            onOrderClick={() => navigate(RoutePath.order)}
-                            onExitClick={onClose}
-                        />
+                        <OrderInfo onOrderClick={() => navigate(RoutePath.order)} />
                     </>
                 ) : (
                     <EmptyBasket onClose={onClose} />

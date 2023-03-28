@@ -1,3 +1,5 @@
+import { modalsActions } from "entities/ModalSlider"
+import { useDispatch } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
@@ -13,7 +15,7 @@ interface OrderInfoProps {
     className?: string
     variant?: OrderInfoVariant
     onOrderClick: () => void
-    onExitClick: () => void
+    onExitClick?: () => void
 }
 
 export function OrderInfo(props: OrderInfoProps) {
@@ -25,13 +27,28 @@ export function OrderInfo(props: OrderInfoProps) {
         onExitClick,
     } = props
 
+    const dispatch = useDispatch()
+
+    function closeModalHandler() {
+        dispatch(modalsActions.close())
+    }
+
+    function orderClickHandler() {
+        closeModalHandler()
+        onOrderClick?.()
+    }
+
+    function exitClickHandler() {
+        closeModalHandler()
+        onExitClick?.()
+    }
+
     return (
         <div
-            className={classNames(
-                styles.container,
-                { [styles.centered]: isCentered },
-                [className, styles[variant]]
-            )}
+            className={classNames(styles.container, { [styles.centered]: isCentered }, [
+                className,
+                styles[variant],
+            ])}
         >
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.H4} isBold>
@@ -40,19 +57,14 @@ export function OrderInfo(props: OrderInfoProps) {
                 <Typography isBold className={styles.totalPrice}>
                     103 832 грн
                 </Typography>
-                <Typography variant={TypographyVariant.H4}>
-                    Количество товаров
-                </Typography>
+                <Typography variant={TypographyVariant.H4}>Количество товаров</Typography>
                 <Typography className={styles.totalProducts}>3</Typography>
             </div>
             <div className={styles.buttons}>
-                <Button
-                    onClick={onOrderClick}
-                    variant={ButtonVariant.FILLED_RED}
-                >
+                <Button onClick={orderClickHandler} variant={ButtonVariant.FILLED_RED}>
                     Подтвердить заказ
                 </Button>
-                <Button onClick={onExitClick}>Продолжить покупки</Button>
+                <Button onClick={exitClickHandler}>Продолжить покупки</Button>
             </div>
         </div>
     )

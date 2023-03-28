@@ -7,15 +7,13 @@ import { Modals } from "processes/Modals"
 import { Sidebar } from "widgets/Sidebar"
 
 function App() {
-    const [modalOpen, setModalOpen] = useState("")
-
     return (
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                <Modals modalOpen={modalOpen} setModalOpen={setModalOpen} />
+                <Modals />
                 <Sidebar />
                 <div className="content-page">
-                    <Header modalOpen={modalOpen} setModalOpen={setModalOpen} />
+                    <Header />
                     <AppRouter />
                     <Footer />
                 </div>
