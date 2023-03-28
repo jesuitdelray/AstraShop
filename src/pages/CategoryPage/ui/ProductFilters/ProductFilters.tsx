@@ -28,6 +28,7 @@ export function ProductFilters({ className }: ProductFiltersProps): ReactElement
                 variant={TypographyVariant.P}
                 color={TypographyColor.DARK_GRAY}
                 className={styles.filter}
+                onClick={() => dispatch(modalsActions.openSort())}
             >
                 <SortIcon className={styles.icon} />
                 Сортировать
