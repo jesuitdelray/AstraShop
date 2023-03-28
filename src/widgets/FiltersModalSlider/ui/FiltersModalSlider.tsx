@@ -1,22 +1,20 @@
-import { StateSchema } from "app/providers/StoreProvider/config/StateSchema"
 import { ProductFilters } from "features/ProductFilters"
-import { modalActions, CurrentModalTypes } from "processes/Modals"
 import { useDispatch, useSelector } from "react-redux"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import { ModalSlider } from "shared/ui/ModalSlider/ModalSlider"
+import { getModalsCurrent, modalsActions, ModalSlider, ModalsList } from "entities/ModalSlider"
 import styles from "./FiltersModalSlider.module.scss"
 
 export function FiltersModalSlider() {
     const dispatch = useDispatch()
-    const value = useSelector((state: StateSchema) => state.modals.current)
+    const currentModal = useSelector(getModalsCurrent)
 
     function onClose() {
-        dispatch(modalActions.close())
+        dispatch(modalsActions.close())
     }
 
     return (
         <ModalSlider
-            isOpen={value === CurrentModalTypes.FILTERS}
+            isOpen={currentModal === ModalsList.FILTERS}
             onClose={onClose}
             className={styles.wrapper}
         >

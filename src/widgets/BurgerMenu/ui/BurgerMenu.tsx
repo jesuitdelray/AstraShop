@@ -2,23 +2,21 @@ import { Copyright } from "entities/Copyright/Copyright"
 import { Logo } from "entities/Logo/Logo"
 import { SearchProduct } from "features/SearchProduct"
 import { NavigationList, NavigationListVariant } from "entities/NavigationList"
-import { ModalSlider } from "shared/ui/ModalSlider/ModalSlider"
+import { getModalsCurrent, modalsActions, ModalSlider, ModalsList } from "entities/ModalSlider"
 import { useDispatch, useSelector } from "react-redux"
-import { modalActions, CurrentModalTypes } from "processes/Modals"
-import { StateSchema } from "app/providers/StoreProvider"
 import styles from "./BurgerMenu.module.scss"
 
 export function BurgerMenu() {
-    const value = useSelector((state: StateSchema) => state.modals.current)
+    const currentModal = useSelector(getModalsCurrent)
     const dispatch = useDispatch()
 
     function onClose() {
-        dispatch(modalActions.close())
+        dispatch(modalsActions.close())
     }
 
     return (
         <ModalSlider
-            isOpen={value === CurrentModalTypes.BURGER}
+            isOpen={currentModal === ModalsList.BURGER}
             onClose={onClose}
             className={styles.wrapper}
         >

@@ -1,4 +1,4 @@
-import { ModalsSchema } from "processes/Modals"
+import { ModalsSchema } from "entities/ModalSlider"
 
 export interface StateSchema {
     modals: ModalsSchema

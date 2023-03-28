@@ -1,4 +1,4 @@
-import { modalActions } from "processes/Modals/model/slice/modalsSlice"
+import { modalsActions } from "entities/ModalSlider"
 import { ReactElement } from "react"
 import { useDispatch } from "react-redux"
 import { FilterIcon, SortIcon } from "shared/assets/icons/others"
@@ -19,7 +19,7 @@ export function ProductFilters({ className }: ProductFiltersProps): ReactElement
                 variant={TypographyVariant.P}
                 color={TypographyColor.DARK_GRAY}
                 className={styles.filter}
-                onClick={() => dispatch(modalActions.openFilters())}
+                onClick={() => dispatch(modalsActions.openFilters())}
             >
                 <FilterIcon className={styles.icon} />
                 Фильтр

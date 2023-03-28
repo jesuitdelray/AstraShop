@@ -1,4 +1,4 @@
-import { modalActions } from "processes/Modals/model/slice/modalsSlice"
+import { getModalsCurrent, modalsActions, ModalsList } from "entities/ModalSlider"
 import { useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { CrossIcon, MobileBurgerIcon } from "shared/assets/icons/others"
@@ -12,36 +12,36 @@ interface HeaderLeftProps {
 
 export function HeaderLeft({ className }: HeaderLeftProps) {
     const dispatch = useDispatch()
-    //@ts-ignore
-    const value = useSelector(state => state.modals.current)
+
+    const currentModal = useSelector(getModalsCurrent)
 
     const switcher = useMemo(() => {
-        switch (value) {
-            case "burger":
+        switch (currentModal) {
+            case ModalsList.BURGER:
                 return (
                     <CrossIcon
-                        onClick={() => dispatch(modalActions.close())}
+                        onClick={() => dispatch(modalsActions.close())}
                         className={styles.icon}
                     />
                 )
-            case "basket":
+            case ModalsList.BASKET:
                 return window.innerWidth < 769 ? (
                     <Typography variant={TypographyVariant.H3}>Корзина</Typography>
                 ) : (
                     <MobileBurgerIcon
                         className={styles.icon}
-                        onClick={() => dispatch(modalActions.openBurger())}
+                        onClick={() => dispatch(modalsActions.openBurger())}
                     />
                 )
             default:
                 return (
                     <MobileBurgerIcon
                         className={styles.icon}
-                        onClick={() => dispatch(modalActions.openBurger())}
+                        onClick={() => dispatch(modalsActions.openBurger())}
                     />
                 )
         }
-    }, [value, dispatch])
+    }, [currentModal, dispatch])
 
     return <div className={classNames(styles.container, {}, [className])}>{switcher}</div>
 }

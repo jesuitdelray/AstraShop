@@ -1,20 +1,35 @@
-import { StateSchema } from "app/providers/StoreProvider/config/StateSchema"
-import { modalActions, CurrentModalTypes } from "processes/Modals"
 import { useDispatch, useSelector } from "react-redux"
 import { ShoppingBagIcon } from "shared/assets/icons/others"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import { Modal } from "shared/ui/Modal/Modal"
-import { ModalSlider } from "shared/ui/ModalSlider/ModalSlider"
+import {
+    getModalsCurrent,
+    modalsActions,
+    ModalSlider,
+    ModalSliderVariant,
+    ModalsList,
+} from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./SuccessOrder.module.scss"
 
-interface ContentProps {
-    isSlideTop: boolean
-}
+export function SuccessOrder() {
+    const isSlideTop = window.innerWidth < 769
 
-function Content({ isSlideTop }: ContentProps) {
+    const dispatch = useDispatch()
+    const value = useSelector(getModalsCurrent)
+
+    const isOpen = value === ModalsList.SUCCESS
+
+    function onClose() {
+        dispatch(modalsActions.close())
+    }
+
     return (
-        <>
+        <ModalSlider
+            isOpen={isOpen}
+            onClose={onClose}
+            className={isSlideTop ? styles.sliderWrapper : styles.wrapper}
+            variant={isSlideTop ? ModalSliderVariant.SLIDER : ModalSliderVariant.MODAL}
+        >
             <ShoppingBagIcon className={styles.shoppingBag} />
             <Typography
                 className={styles.title}
@@ -28,29 +43,6 @@ function Content({ isSlideTop }: ContentProps) {
             <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
                 Продолжить покупки
             </Button>
-        </>
-    )
-}
-
-export function SuccessOrder() {
-    const isSlideTop = window.innerWidth < 769
-
-    const dispatch = useDispatch()
-    const value = useSelector((state: StateSchema) => state.modals.current)
-
-    const isOpen = value === CurrentModalTypes.SUCCESS
-
-    function onClose() {
-        dispatch(modalActions.close())
-    }
-
-    return isSlideTop ? (
-        <ModalSlider isOpen={isOpen} onClose={onClose} className={styles.sliderWrapper}>
-            <Content isSlideTop={isSlideTop} />
         </ModalSlider>
-    ) : (
-        <Modal isOpen={isOpen} onClose={onClose} className={styles.wrapper}>
-            <Content isSlideTop={isSlideTop} />
-        </Modal>
     )
 }
