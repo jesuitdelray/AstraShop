@@ -7,11 +7,11 @@ import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { ProductCard } from "entities/ProductCard"
 import { ProductCardList } from "../model/list"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
-import styles from "./CategoryPage.module.scss"
+import styles from "./SubCategoryPage.module.scss"
 
-export function CategoryPage() {
+export function SubCategoryPage() {
     const [sortingPattern, setSortingPattern] = useState("")
-    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY]
+    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.SUB_CATEGORY]
 
     return (
         <div className={styles.wrapper}>

@@ -5,7 +5,7 @@ import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 
 export function ProductDetailsPage() {
-    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.PRODUCT_DETAILS]
+    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.SUB_CATEGORY, AppRoutes.PRODUCT_DETAILS]
 
     return (
         <div>

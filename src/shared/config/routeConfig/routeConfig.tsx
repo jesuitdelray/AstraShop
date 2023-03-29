@@ -1,6 +1,6 @@
 import { AboutPage } from "pages/AboutPage"
 import { CatalogPage } from "pages/CatalogPage"
-import { CategoryPage } from "pages/CategoryPage"
+import { SubCategoryPage } from "pages/SubCategoryPage"
 import { ContactsPage } from "pages/ContactsPage"
 import { DeliveryPage } from "pages/DeliveryPage"
 import { MainPage } from "pages/MainPage"
@@ -20,7 +20,7 @@ export enum AppRoutes {
     CONTACTS = "contacts",
     DELIVERY = "delivery",
     ORDER = "order",
-    CATEGORY = "category",
+    SUB_CATEGORY = "sub_category",
     PRODUCT_DETAILS = "product_details",
     NOT_FOUND = "not_found",
 }
@@ -32,7 +32,7 @@ export const RouteLinkName: Record<AppRoutes, string> = {
     [AppRoutes.CONTACTS]: "Контакты",
     [AppRoutes.DELIVERY]: "Доставка",
     [AppRoutes.ORDER]: "Заказ",
-    [AppRoutes.CATEGORY]: "Категория",
+    [AppRoutes.SUB_CATEGORY]: "Подкатегория",
     [AppRoutes.PRODUCT_DETAILS]: "Продукт",
     [AppRoutes.NOT_FOUND]: "*",
 }
@@ -44,8 +44,8 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.CONTACTS]: "/contacts",
     [AppRoutes.DELIVERY]: "/delivery",
     [AppRoutes.ORDER]: "/order",
-    [AppRoutes.CATEGORY]: "/category",
-    [AppRoutes.PRODUCT_DETAILS]: "/category/product",
+    [AppRoutes.SUB_CATEGORY]: "/sub_category",
+    [AppRoutes.PRODUCT_DETAILS]: "/sub_category/product",
     [AppRoutes.NOT_FOUND]: "*",
 }
 
@@ -74,9 +74,9 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: RoutePath.order,
         element: <OrderPage />,
     },
-    [AppRoutes.CATEGORY]: {
-        path: RoutePath.category,
-        element: <CategoryPage />,
+    [AppRoutes.SUB_CATEGORY]: {
+        path: RoutePath.sub_category,
+        element: <SubCategoryPage />,
     },
     [AppRoutes.PRODUCT_DETAILS]: {
         path: RoutePath.product_details,
