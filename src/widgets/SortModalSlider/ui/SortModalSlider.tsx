@@ -2,6 +2,7 @@ import { getModalsCurrent, modalsActions, ModalSlider, ModalsList } from "entiti
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { SortProducts } from "features/SortProducts"
+import { Button } from "shared/ui/Button/Button"
 import styles from "./SortModalSlider.module.scss"
 
 export function SortModalSlider() {
@@ -15,11 +16,14 @@ export function SortModalSlider() {
             isOpen={currentModal === ModalsList.SORT}
             onClose={() => dispatch(modalsActions.close())}
         >
-            <SortProducts
-                sortingPattern={sortingPattern}
-                setSortingPattern={setSortingPattern}
-                className={styles.desktopFilters}
-            />
+            <div className={styles.container}>
+                <SortProducts
+                    sortingPattern={sortingPattern}
+                    setSortingPattern={setSortingPattern}
+                    className={styles.desktopFilters}
+                />
+                <Button onClick={() => dispatch(modalsActions.close())}>Применить</Button>
+            </div>
         </ModalSlider>
     )
 }
