@@ -1,8 +1,12 @@
 import { getModalsCurrent, modalsActions, ModalSlider, ModalsList } from "entities/ModalSlider"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { SortProducts } from "features/SortProducts"
+import styles from "./SortModalSlider.module.scss"
 
 export function SortModalSlider() {
     const currentModal = useSelector(getModalsCurrent)
+    const [sortingPattern, setSortingPattern] = useState("")
 
     const dispatch = useDispatch()
 
@@ -11,7 +15,11 @@ export function SortModalSlider() {
             isOpen={currentModal === ModalsList.SORT}
             onClose={() => dispatch(modalsActions.close())}
         >
-            123
+            <SortProducts
+                sortingPattern={sortingPattern}
+                setSortingPattern={setSortingPattern}
+                className={styles.desktopFilters}
+            />
         </ModalSlider>
     )
 }
