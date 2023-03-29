@@ -9,7 +9,7 @@
         align-items: center;
         margin-bottom: 15px;
 
-        & > a:first-child {
+        a:first-child {
             display: flex;
         }
 
@@ -18,7 +18,7 @@
                 font-size: 14px;
 
                 &.active {
-                    color: var(--color-breadcrumbs);
+                    color: var(--color-light-gray);
                 }
             }
         }
@@ -34,6 +34,6 @@
     }
 
     .icon {
-        margin: 0 15px;
+        margin: 0 10px;
     }
 }

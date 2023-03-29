@@ -11,7 +11,7 @@ interface BreadcrumbsProps {
 export function Breadcrumbs({ list }: BreadcrumbsProps) {
     return (
         <div className={styles.breadcrumbs}>
-            <AppLink to="/">
+            <AppLink to={RoutePath.main}>
                 <MainHome className={styles.home} />
             </AppLink>
             {list?.map((route, index) => (

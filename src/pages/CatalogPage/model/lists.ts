@@ -12,6 +12,7 @@ import {
     SoundIcon,
     TabletIcon,
 } from "shared/assets/icons/list"
+import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 
 export const catalogList: LinksListItem[] = [
     {
@@ -151,3 +152,5 @@ export const catalogList: LinksListItem[] = [
         list: [{ id: "1", text: "Кошельки и портмоне", path: "/category" }],
     },
 ]
+
+export const breadcrumbsList = [AppRoutes.CATALOG]
