@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { fetchNavigationTree } from "../services/fetchNavigationTree/fetchNavigationTree"
 
-const sidebarNavigationSlice = createSlice({
-    name: "sidebarNavigationSlice",
+const catalogNavigationSlice = createSlice({
+    name: "catalogNavigation",
     initialState: {
         tree: [],
         isLoading: false,
@@ -31,5 +31,5 @@ const sidebarNavigationSlice = createSlice({
     },
 })
 
-export const { reducer: sidebarNavigationReducer, actions: sidebarNavigationactions } =
-    sidebarNavigationSlice
+export const { reducer: catalogNavigationReducer, actions: catalogNavigationActions } =
+    catalogNavigationSlice

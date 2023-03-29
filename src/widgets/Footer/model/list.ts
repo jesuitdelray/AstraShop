@@ -1,7 +1,6 @@
-import { LinksListItem } from "entities/LinksList"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 
-export const footerLinksData: LinksListItem = {
+export const footerLinksData: any = {
     title: "Информация",
     list: [
         { id: "1", text: "Доставка и оплата", path: RoutePath.delivery },

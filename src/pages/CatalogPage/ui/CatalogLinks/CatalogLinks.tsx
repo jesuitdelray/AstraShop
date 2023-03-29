@@ -1,8 +1,5 @@
-import { LinksList } from "entities/LinksList"
-import { getNavigationTree } from "entities/SidebarNavigation/model/selectors/sidebarNavigationSelectors"
-import { navigationTreeType } from "entities/SidebarNavigation/model/types/list"
+import { LinksList, getNavigationTree, navigationTreeType } from "entities/CatalogNavigation"
 import { useSelector } from "react-redux"
-import { catalogList } from "../../model/lists"
 import styles from "./CatalogLinks.module.scss"
 
 export function CatalogLinks() {

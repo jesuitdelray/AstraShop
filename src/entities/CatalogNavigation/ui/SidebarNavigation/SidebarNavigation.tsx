@@ -1,11 +1,11 @@
+import { getNavigationTree } from "entities/CatalogNavigation/model/selectors/sidebarNavigationSelectors"
+import { fetchNavigationTree } from "entities/CatalogNavigation/model/services/fetchNavigationTree/fetchNavigationTree"
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
-import { getNavigationTree } from "../model/selectors/sidebarNavigationSelectors"
-import { fetchNavigationTree } from "../model/services/fetchNavigationTree/fetchNavigationTree"
-import { navigationSubcategories, navigationTreeType } from "../model/types/list"
+import { navigationSubcategories, navigationTreeType } from "../../model/types/list"
 import styles from "./SidebarNavigation.module.scss"
 
 interface SubMenuProps {

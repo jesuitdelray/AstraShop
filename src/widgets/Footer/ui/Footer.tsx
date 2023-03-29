@@ -3,7 +3,7 @@ import { MasterCardIcon, VisaIcon } from "shared/assets/icons/others"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { Contacts } from "entities/Contacts"
 import { Schedule } from "entities/Schedule"
-import { LinksList } from "entities/LinksList"
+/* import { LinksList } from "entities/LinksList" */
 import { Copyright } from "entities/Copyright/Copyright"
 import styles from "./Footer.module.scss"
 import { footerLinksData } from "../model/list"

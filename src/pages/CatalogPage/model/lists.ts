@@ -1,4 +1,3 @@
-import { LinksListItem } from "entities/LinksList"
 import {
     BabyCarriageIcon,
     BoxIcon,
@@ -13,7 +12,7 @@ import {
     TabletIcon,
 } from "shared/assets/icons/list"
 
-export const catalogList: LinksListItem[] = [
+export const catalogList: any[] = [
     {
         id: "1",
         title: "Дом",
