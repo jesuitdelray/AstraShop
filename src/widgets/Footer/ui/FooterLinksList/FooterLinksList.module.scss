@@ -1,0 +1,23 @@
+.title {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+
+    .icon {
+        fill: var(--color-dark-gray);
+        margin-right: 10px;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+
+    a {
+        margin-bottom: 12px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
