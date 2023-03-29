@@ -1,6 +1,6 @@
+import { SidebarNavigation } from "entities/CatalogNavigation"
 import { Copyright } from "entities/Copyright/Copyright"
 import { Logo } from "entities/Logo/Logo"
-import { SidebarNavigation } from "entities/SidebarNavigation"
 import { ProductFilters } from "features/ProductFilters"
 import { useMatch } from "react-router-dom"
 import { AppRoutes } from "shared/config/routeConfig/routeConfig"
