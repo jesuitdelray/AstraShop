@@ -1,4 +1,5 @@
 import { MutableRefObject, useRef, useState } from "react"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import {
@@ -65,7 +66,7 @@ export function SidebarNavigation() {
                             className={styles.linkContainer}
                         >
                             <AppLink
-                                to={path}
+                                to={RoutePath.category}
                                 onClick={() => setHovered("")}
                                 className={styles.link}
                             >
