@@ -1,7 +1,6 @@
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
-import { Typography } from "shared/ui/Typography/Typography"
 import { navigationCategory } from "../../model/types/list"
 import styles from "./LinksList.module.scss"
 
@@ -15,12 +14,14 @@ export function LinksList({ data, className }: LinksListProps) {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <Typography className={styles.title}>{name}</Typography>
+            <AppLink to={RoutePath.category} className={styles.title}>
+                {name}
+            </AppLink>
             <div className={styles.list}>
                 {categories.map(item => {
                     const { id, name } = item
                     return (
-                        <AppLink key={id} to={RoutePath.category}>
+                        <AppLink key={id} to={RoutePath.sub_category}>
                             {name}
                         </AppLink>
                     )
