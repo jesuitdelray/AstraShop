@@ -1,37 +1,15 @@
-import { useState } from "react"
-import { SortProducts } from "features/SortProducts"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import { ProductCard } from "entities/ProductCard"
-import { ProductCardList } from "../model/list"
-import { ProductFilters } from "./ProductFilters/ProductFilters"
+import { Breadcrumbs } from "entities/Breadcrumbs"
+import { LinksList } from "entities/LinksList"
+import { catalogList } from "pages/CatalogPage/model/lists"
+import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import styles from "./CategoryPage.module.scss"
 
 export function CategoryPage() {
-    const [sortingPattern, setSortingPattern] = useState("")
-
+    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY]
     return (
         <div className={styles.wrapper}>
-            <Typography variant={TypographyVariant.H3} className={styles.title}>
-                Клавиатуры
-            </Typography>
-
-            <SortProducts
-                sortingPattern={sortingPattern}
-                setSortingPattern={setSortingPattern}
-                className={styles.desktopFilters}
-            />
-            <ProductFilters className={styles.mobileFilters} />
-
-            <div className={styles.products}>
-                {ProductCardList.map(item => {
-                    const { id } = item
-                    return <ProductCard key={id} {...item} className={styles.product} />
-                })}
-            </div>
-            <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
-                Показать еще товар
-            </Button>
+            <Breadcrumbs breadcrumbsList={breadcrumbsList} />
+            <LinksList data={catalogList[0]} />
         </div>
     )
 }

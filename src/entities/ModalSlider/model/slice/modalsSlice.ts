@@ -21,6 +21,9 @@ export const modalsSlice = createSlice({
         openFilters: state => {
             state.current = ModalsList.FILTERS
         },
+        openSort: state => {
+            state.current = ModalsList.SORT
+        },
         openSuccess: state => {
             state.current = ModalsList.SUCCESS
         },
