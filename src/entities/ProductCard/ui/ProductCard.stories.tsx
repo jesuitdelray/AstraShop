@@ -1,6 +1,6 @@
 import { ProductCard } from "entities/ProductCard"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { ProductCardList } from "pages/CategoryPage/model/list"
+import { ProductCardList } from "pages/SubCategoryPage/model/list"
 import styles from "./ProductCard.module.scss"
 
 export default {
