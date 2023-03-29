@@ -5,7 +5,7 @@ import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import styles from "./CategoryPage.module.scss"
 
 export function CategoryPage() {
-    const breadcrumbsList = [AppRoutes.CATALOG]
+    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY]
     return (
         <div className={styles.wrapper}>
             <Breadcrumbs breadcrumbsList={breadcrumbsList} />

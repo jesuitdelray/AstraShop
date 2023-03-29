@@ -11,7 +11,7 @@ import styles from "./SubCategoryPage.module.scss"
 
 export function SubCategoryPage() {
     const [sortingPattern, setSortingPattern] = useState("")
-    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.SUB_CATEGORY]
+    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.SUB_CATEGORY]
 
     return (
         <div className={styles.wrapper}>
