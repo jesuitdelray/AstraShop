@@ -1,4 +1,6 @@
+import { navigationCategories } from "entities/SidebarNavigation/model/types/list"
 import { SVGProps, VFC } from "react"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { Typography } from "shared/ui/Typography/Typography"
@@ -18,25 +20,25 @@ export interface LinksListItem {
 }
 
 interface LinksListProps {
-    data: LinksListItem
+    data: navigationCategories
     className?: string
 }
 
 export function LinksList({ data, className }: LinksListProps) {
-    const { title, list, Icon } = data
+    const { name, id, categories } = data
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
             <Typography className={styles.title}>
-                {!!Icon && <Icon className={styles.icon} />}
-                {title}
+                {/*  {!!Icon && <Icon className={styles.icon} />} */}
+                {name}
             </Typography>
             <div className={styles.list}>
-                {list.map(item => {
-                    const { id, text, path } = item
+                {categories.map(item => {
+                    const { id, name } = item
                     return (
-                        <AppLink key={id} to={path}>
-                            {text}
+                        <AppLink key={id} to={RoutePath.category}>
+                            {name}
                         </AppLink>
                     )
                 })}

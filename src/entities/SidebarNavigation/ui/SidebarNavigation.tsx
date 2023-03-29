@@ -1,15 +1,15 @@
-import { MutableRefObject, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
-import {
-    sidebarNavigationItemsType,
-    sidebarNavigationList,
-    sidebarNavigationSubMenuType,
-} from "../model/list"
+import { getNavigationTree } from "../model/selectors/sidebarNavigationSelectors"
+import { fetchNavigationTree } from "../model/services/fetchNavigationTree/fetchNavigationTree"
+import { navigationSubcategories, navigationTreeType } from "../model/types/list"
 import styles from "./SidebarNavigation.module.scss"
 
 interface SubMenuProps {
-    list: sidebarNavigationSubMenuType[]
+    list: navigationSubcategories[]
     isOpen: boolean
     onLinkClick?: () => void
 }
@@ -19,11 +19,11 @@ function SubMenu({ list, isOpen, onLinkClick }: SubMenuProps) {
 
     return (
         <div className={styles.subMenu}>
-            {list.map(item => {
-                const { id, path, text } = item
+            {list.map((item: any) => {
+                const { id, name } = item
                 return (
-                    <AppLink key={id} to={path} onClick={onLinkClick}>
-                        {text}
+                    <AppLink key={id} to={RoutePath.category} onClick={onLinkClick}>
+                        {name}
                     </AppLink>
                 )
             })}
@@ -51,12 +51,19 @@ export function SidebarNavigation() {
         }, 200)
     }
 
+    const dispatch = useDispatch()
+    const navigationTree: navigationTreeType = useSelector(getNavigationTree)
+
+    useEffect(() => {
+        dispatch(fetchNavigationTree())
+    }, [dispatch])
+
     return (
         <>
             <div className={classNames(styles.overlay, { [styles.overlayOn]: !!hovered })} />
             <div className={styles.container}>
-                {sidebarNavigationList.map((item: sidebarNavigationItemsType) => {
-                    const { id, path, text, Icon, subMenu = [] } = item
+                {navigationTree.map((item: any) => {
+                    const { id, categories: subCategories } = item
                     return (
                         <div
                             key={id}
@@ -65,16 +72,17 @@ export function SidebarNavigation() {
                             className={styles.linkContainer}
                         >
                             <AppLink
-                                to={path}
+                                to={RoutePath.catalog}
                                 onClick={() => setHovered("")}
                                 className={styles.link}
                             >
-                                <Icon className={styles.icon} />
-                                {text}
+                                {item.name}
                             </AppLink>
                             <SubMenu
-                                list={subMenu}
-                                isOpen={hovered === id && !!subMenu && subMenu?.length > 0}
+                                list={subCategories}
+                                isOpen={
+                                    hovered === id && !!subCategories && subCategories?.length > 0
+                                }
                                 onLinkClick={() => setHovered("")}
                             />
                         </div>

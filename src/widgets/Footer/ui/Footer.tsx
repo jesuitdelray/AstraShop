@@ -18,7 +18,7 @@ export function Footer() {
                     планшетных компьютеров
                 </Typography>
             </div>
-            <LinksList data={footerLinksData} className={styles.info} />
+            {/* <LinksList data={footerLinksData} className={styles.info} /> */}
             <Schedule className={styles.schedule} />
             <Contacts className={styles.contacts} />
             <div className={styles.icons}>

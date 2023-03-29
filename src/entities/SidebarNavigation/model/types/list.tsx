@@ -1,4 +1,4 @@
-import {
+/* import {
     BabyCarriageIcon,
     BoxIcon,
     CarIcon,
@@ -11,9 +11,9 @@ import {
     SoundIcon,
     TabletIcon,
 } from "shared/assets/icons/list"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/routeConfig" */
 
-export interface sidebarNavigationSubMenuType {
+/* export interface sidebarNavigationSubMenuType {
     path: string
     text: string
     id: string
@@ -160,4 +160,18 @@ export const sidebarNavigationList: sidebarNavigationItemsType[] = [
             { id: "12.3", text: "Дом", path: RoutePath.category },
         ],
     },
-]
+] */
+
+export interface navigationSubcategories {
+    name: string
+    id: number
+    parent_category_id: number
+}
+
+export interface navigationCategories {
+    name: string
+    id: number
+    categories: navigationSubcategories[]
+}
+
+export type navigationTreeType = navigationCategories[]
