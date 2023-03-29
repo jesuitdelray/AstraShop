@@ -1,9 +1,7 @@
-import { SVGProps, VFC } from "react"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { Typography } from "shared/ui/Typography/Typography"
-import styles from "./LinksList.module.scss"
+import styles from "./FooterLinksList.module.scss"
 
 interface ListItemType {
     id: string
@@ -11,9 +9,8 @@ interface ListItemType {
     path: string
 }
 
-export interface LinksListItem {
+interface LinksListItem {
     id?: string
-    Icon?: VFC<SVGProps<SVGSVGElement>>
     title: string
     list: ListItemType[]
 }
@@ -23,15 +20,12 @@ interface LinksListProps {
     className?: string
 }
 
-export function LinksList({ data, className }: LinksListProps) {
-    const { title, list, Icon } = data
+export function FooterLinksList({ data, className }: LinksListProps) {
+    const { title, list } = data
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <AppLink className={styles.title} to={RoutePath.category}>
-                {!!Icon && <Icon className={styles.icon} />}
-                {title}
-            </AppLink>
+            <Typography className={styles.title}>{title}</Typography>
             <div className={styles.list}>
                 {list.map(item => {
                     const { id, text, path } = item
