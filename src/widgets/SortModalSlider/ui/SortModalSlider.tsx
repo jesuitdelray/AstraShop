@@ -15,6 +15,7 @@ export function SortModalSlider() {
         <ModalSlider
             isOpen={currentModal === ModalsList.SORT}
             onClose={() => dispatch(modalsActions.close())}
+            className={styles.wrapper}
         >
             <div className={styles.container}>
                 <SortProducts

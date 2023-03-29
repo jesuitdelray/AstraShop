@@ -22,3 +22,9 @@
         width: 300px;
     }
 }
+
+@media (min-width: 1200px) {
+    .wrapper {
+        display: none;
+    }
+}
