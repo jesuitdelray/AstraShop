@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { catalogNavigationReducer } from "entities/CatalogNavigation/model/slice/sidebarNavigationSlice"
+import { catalogNavigationReducer } from "entities/CatalogNavigation"
 import { modalsReducer } from "entities/ModalSlider"
 import { StateSchema } from "./StateSchema"
 

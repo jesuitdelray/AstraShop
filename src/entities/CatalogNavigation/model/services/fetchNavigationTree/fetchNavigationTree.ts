@@ -1,7 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
+import { ThunkConfig } from "app/providers/StoreProvider/config/StateSchema"
 import axios from "axios"
+import { navigationTreeType } from "../../types/list"
 
-export const fetchNavigationTree = createAsyncThunk(
+export const fetchNavigationTree = createAsyncThunk<navigationTreeType, void, ThunkConfig<string>>(
     "catalogNavigation/fetchNavigationTree",
     async (props, thunkApi) => {
         try {
@@ -13,7 +15,6 @@ export const fetchNavigationTree = createAsyncThunk(
 
             return response.data
         } catch (error) {
-            console.log(error)
             return thunkApi.rejectWithValue("error")
         }
     }

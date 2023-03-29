@@ -1,22 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { fetchNavigationTree } from "../services/fetchNavigationTree/fetchNavigationTree"
+import { CatalogNavigationSchema } from "../types/catalogNavigationSchema"
+import { navigationTreeType } from "../types/list"
+
+const initialState: CatalogNavigationSchema = {
+    tree: [],
+    isLoading: false,
+    error: undefined,
+}
 
 const catalogNavigationSlice = createSlice({
     name: "catalogNavigation",
-    initialState: {
-        tree: [],
-        isLoading: false,
-        error: null,
-    },
-    reducers: {
-        setTree: (state, action) => {
-            state.tree = action.payload
-        },
-    },
+    initialState,
+    reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchNavigationTree.pending, (state, action) => {
-                state.error = null
+                state.error = undefined
                 state.isLoading = true
             })
             .addCase(fetchNavigationTree.fulfilled, (state, action) => {
@@ -25,7 +25,6 @@ const catalogNavigationSlice = createSlice({
             })
             .addCase(fetchNavigationTree.rejected, (state, action) => {
                 state.isLoading = false
-                // @ts-ignore
                 state.error = action.payload
             })
     },

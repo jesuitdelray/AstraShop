@@ -162,16 +162,16 @@ export const sidebarNavigationList: sidebarNavigationItemsType[] = [
     },
 ] */
 
-export interface navigationSubcategories {
+export interface navigationSubcategory {
     name: string
     id: number
     parent_category_id: number
 }
 
-export interface navigationCategories {
+export interface navigationCategory {
     name: string
     id: number
-    categories: navigationSubcategories[]
+    categories: navigationSubcategory[]
 }
 
-export type navigationTreeType = navigationCategories[]
+export type navigationTreeType = navigationCategory[]

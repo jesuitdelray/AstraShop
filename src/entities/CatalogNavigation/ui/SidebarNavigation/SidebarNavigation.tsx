@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
-import { navigationSubcategories, navigationTreeType } from "../../model/types/list"
+import { navigationSubcategory, navigationTreeType } from "../../model/types/list"
 import styles from "./SidebarNavigation.module.scss"
 
 interface SubMenuProps {
-    list: navigationSubcategories[]
+    list: navigationSubcategory[]
     isOpen: boolean
     onLinkClick?: () => void
 }
@@ -19,7 +19,7 @@ function SubMenu({ list, isOpen, onLinkClick }: SubMenuProps) {
 
     return (
         <div className={styles.subMenu}>
-            {list.map((item: any) => {
+            {list.map(item => {
                 const { id, name } = item
                 return (
                     <AppLink key={id} to={RoutePath.category} onClick={onLinkClick}>
@@ -32,11 +32,11 @@ function SubMenu({ list, isOpen, onLinkClick }: SubMenuProps) {
 }
 
 export function SidebarNavigation() {
-    const [hovered, setHovered] = useState("")
+    const [hovered, setHovered] = useState(-1)
 
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-    function mouseEnterHandler(id: string) {
+    function mouseEnterHandler(id: number) {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current)
             timeoutRef.current = null
@@ -47,7 +47,7 @@ export function SidebarNavigation() {
 
     function mouseLeaveHandler() {
         timeoutRef.current = setTimeout(() => {
-            setHovered("")
+            setHovered(-1)
         }, 200)
     }
 
@@ -60,9 +60,9 @@ export function SidebarNavigation() {
 
     return (
         <>
-            <div className={classNames(styles.overlay, { [styles.overlayOn]: !!hovered })} />
+            <div className={classNames(styles.overlay, { [styles.overlayOn]: hovered !== -1 })} />
             <div className={styles.container}>
-                {navigationTree.map((item: any) => {
+                {navigationTree.map(item => {
                     const { id, categories: subCategories } = item
                     return (
                         <div
@@ -73,7 +73,7 @@ export function SidebarNavigation() {
                         >
                             <AppLink
                                 to={RoutePath.catalog}
-                                onClick={() => setHovered("")}
+                                onClick={() => setHovered(-1)}
                                 className={styles.link}
                             >
                                 {item.name}
@@ -83,7 +83,7 @@ export function SidebarNavigation() {
                                 isOpen={
                                     hovered === id && !!subCategories && subCategories?.length > 0
                                 }
-                                onLinkClick={() => setHovered("")}
+                                onLinkClick={() => setHovered(-1)}
                             />
                         </div>
                     )
