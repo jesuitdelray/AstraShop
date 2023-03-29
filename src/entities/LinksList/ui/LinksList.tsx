@@ -1,4 +1,5 @@
 import { SVGProps, VFC } from "react"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { Typography } from "shared/ui/Typography/Typography"
@@ -27,10 +28,10 @@ export function LinksList({ data, className }: LinksListProps) {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <Typography className={styles.title}>
+            <AppLink className={styles.title} to={RoutePath.category}>
                 {!!Icon && <Icon className={styles.icon} />}
                 {title}
-            </Typography>
+            </AppLink>
             <div className={styles.list}>
                 {list.map(item => {
                     const { id, text, path } = item

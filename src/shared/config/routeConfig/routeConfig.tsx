@@ -8,6 +8,7 @@ import { NotFoundPage } from "pages/NotFoundPage"
 import { OrderPage } from "pages/OrderPage"
 import { ProductDetailsPage } from "pages/ProductDetailsPage"
 import { RouteProps } from "react-router-dom"
+import { CategoryPage } from "pages/CategoryPage"
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean
@@ -20,6 +21,7 @@ export enum AppRoutes {
     CONTACTS = "contacts",
     DELIVERY = "delivery",
     ORDER = "order",
+    CATEGORY = "category",
     SUB_CATEGORY = "sub_category",
     PRODUCT_DETAILS = "product_details",
     NOT_FOUND = "not_found",
@@ -32,6 +34,7 @@ export const RouteLinkName: Record<AppRoutes, string> = {
     [AppRoutes.CONTACTS]: "Контакты",
     [AppRoutes.DELIVERY]: "Доставка",
     [AppRoutes.ORDER]: "Заказ",
+    [AppRoutes.CATEGORY]: "Категория",
     [AppRoutes.SUB_CATEGORY]: "Подкатегория",
     [AppRoutes.PRODUCT_DETAILS]: "Продукт",
     [AppRoutes.NOT_FOUND]: "*",
@@ -44,6 +47,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.CONTACTS]: "/contacts",
     [AppRoutes.DELIVERY]: "/delivery",
     [AppRoutes.ORDER]: "/order",
+    [AppRoutes.CATEGORY]: "/category",
     [AppRoutes.SUB_CATEGORY]: "/sub_category",
     [AppRoutes.PRODUCT_DETAILS]: "/sub_category/product",
     [AppRoutes.NOT_FOUND]: "*",
@@ -73,6 +77,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ORDER]: {
         path: RoutePath.order,
         element: <OrderPage />,
+    },
+    [AppRoutes.CATEGORY]: {
+        path: RoutePath.category,
+        element: <CategoryPage />,
     },
     [AppRoutes.SUB_CATEGORY]: {
         path: RoutePath.sub_category,
