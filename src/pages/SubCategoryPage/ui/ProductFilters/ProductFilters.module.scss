@@ -7,11 +7,20 @@
     .filter {
         display: flex;
         align-items: center;
-    }
+        cursor: pointer;
 
-    .icon {
-        fill: var(--color-dark-gray);
-        display: block;
-        margin-right: 12px;
+        .icon {
+            fill: var(--color-dark-gray);
+            display: block;
+            margin-right: 12px;
+        }
+
+        &:hover {
+            color: var(--color-accent);
+
+            .icon {
+                fill: var(--color-accent);
+            }
+        }
     }
 }
