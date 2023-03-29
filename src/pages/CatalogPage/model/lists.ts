@@ -1,4 +1,4 @@
-import {
+/* import {
     BabyCarriageIcon,
     BoxIcon,
     CarIcon,
@@ -150,3 +150,4 @@ export const catalogList: any[] = [
         list: [{ id: "1", text: "Кошельки и портмоне", path: "/sub_category" }],
     },
 ]
+ */
