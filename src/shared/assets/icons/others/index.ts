@@ -14,6 +14,8 @@ import SortIcon from "./sort.svg"
 import NovaPochtaIcon from "./novapochta.svg"
 import IntimeIcon from "./intime.svg"
 import AutoluxIcon from "./autolux.svg"
+import ChevronBack from "./chevron-back.svg"
+import MainHome from "./home.svg"
 
 export {
     MinusIcon,
@@ -32,4 +34,6 @@ export {
     NovaPochtaIcon,
     IntimeIcon,
     AutoluxIcon,
+    ChevronBack,
+    MainHome,
 }

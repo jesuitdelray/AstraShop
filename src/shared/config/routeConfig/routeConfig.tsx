@@ -25,6 +25,18 @@ export enum AppRoutes {
     NOT_FOUND = "not_found",
 }
 
+export const RouteLinkName: Record<AppRoutes, string> = {
+    [AppRoutes.MAIN]: "Главная Страница",
+    [AppRoutes.ABOUT]: "О нас",
+    [AppRoutes.CATALOG]: "Каталог",
+    [AppRoutes.CONTACTS]: "Контакты",
+    [AppRoutes.DELIVERY]: "Доставка",
+    [AppRoutes.ORDER]: "Заказ",
+    [AppRoutes.CATEGORY]: "Категория",
+    [AppRoutes.PRODUCT_DETAILS]: "Продукт",
+    [AppRoutes.NOT_FOUND]: "*",
+}
+
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: "/",
     [AppRoutes.ABOUT]: "/about",
