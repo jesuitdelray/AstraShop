@@ -38,6 +38,7 @@ export function RadioGroup(props: RadioGroupProps) {
                     return (
                         <RadioButton
                             key={id}
+                            id={id}
                             label={label}
                             value={value}
                             checked={activeInput === value}
