@@ -11,11 +11,11 @@ import styles from "./CategoryPage.module.scss"
 
 export function CategoryPage() {
     const [sortingPattern, setSortingPattern] = useState("")
-    const list = [AppRoutes.CATALOG, AppRoutes.CATEGORY]
+    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY]
 
     return (
         <div className={styles.wrapper}>
-            <Breadcrumbs list={list} />
+            <Breadcrumbs breadcrumbsList={breadcrumbsList} />
             <Typography variant={TypographyVariant.H3} className={styles.title}>
                 Клавиатуры
             </Typography>
