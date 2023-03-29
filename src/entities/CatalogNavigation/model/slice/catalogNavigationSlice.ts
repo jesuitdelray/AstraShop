@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 import { fetchNavigationTree } from "../services/fetchNavigationTree/fetchNavigationTree"
 import { CatalogNavigationSchema } from "../types/catalogNavigationSchema"
-import { navigationTreeType } from "../types/list"
 
 const initialState: CatalogNavigationSchema = {
     tree: [],

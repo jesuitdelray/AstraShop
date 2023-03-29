@@ -1,5 +1,3 @@
 import axios from "axios"
 
-export const $api = axios.create({
-    baseURL: process.env.REACT_APP_API_KEY,
-})
+export const $api = axios.create({ baseURL: __API__ })
