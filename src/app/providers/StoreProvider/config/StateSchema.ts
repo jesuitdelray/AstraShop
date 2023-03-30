@@ -6,7 +6,7 @@ import { SubCategoryPageSchema } from "pages/SubCategoryPage"
 export interface StateSchema {
     modals: ModalsSchema
     catalogNavigation: CatalogNavigationSchema
-    subcategoryPage: any /* SubCategoryPageSchema */
+    subcategoryPage: SubCategoryPageSchema
 }
 
 interface ThunkExtraArg {

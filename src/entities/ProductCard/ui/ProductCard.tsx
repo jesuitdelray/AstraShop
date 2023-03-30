@@ -10,7 +10,7 @@ export interface ProductCardProps {
     id?: string
     isNew?: boolean
     className?: string
-    images?: any
+    images?: string[]
     name: string
     price: number
     currency?: string

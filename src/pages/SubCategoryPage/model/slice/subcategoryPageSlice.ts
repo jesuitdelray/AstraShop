@@ -1,21 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { fetchCategoryProducts } from "../services/fetchCategoryProducts/fetchCategoryProducts"
+import { SubCategoryPageSchema } from "../types/subcategoryPageSchema"
 
-/* const initialState: SubCategorySchema = {
-    tree: [],
+const initialState: SubCategoryPageSchema = {
+    products: [],
     isLoading: false,
     error: undefined,
-} */
+    id: 0,
+    name: "",
+}
 
 const subcategoryPageSlice = createSlice({
     name: "subcategoryPage",
-    initialState: {
-        id: "",
-        products: [],
-        isLoading: false,
-        name: "",
-        error: undefined,
-    },
+    initialState,
     reducers: {},
     extraReducers: builder => {
         builder
@@ -31,7 +28,6 @@ const subcategoryPageSlice = createSlice({
             })
             .addCase(fetchCategoryProducts.rejected, (state, action) => {
                 state.isLoading = false
-                // @ts-ignore
                 state.error = action.payload
             })
     },
