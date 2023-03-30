@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { catalogNavigationReducer } from "entities/CatalogNavigation"
 import { modalsReducer } from "entities/ModalSlider"
+import { productDetailsReducer } from "entities/Product"
 import { subcategoryPageReducer } from "pages/SubCategoryPage"
 import { $api } from "shared/api/api"
 import { StateSchema } from "./StateSchema"
@@ -11,6 +12,7 @@ export function createReduxStore(initialState?: StateSchema) {
             modals: modalsReducer,
             catalogNavigation: catalogNavigationReducer,
             subcategoryPage: subcategoryPageReducer,
+            productDetails: productDetailsReducer,
         },
         devTools: __IS_DEV__,
         preloadedState: initialState,

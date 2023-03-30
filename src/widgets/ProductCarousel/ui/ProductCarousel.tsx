@@ -1,5 +1,5 @@
-import { ProductCard, ProductCardProps } from "entities/ProductCard"
 import Slider from "react-slick"
+import { ProductCard, ProductCardProps } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"

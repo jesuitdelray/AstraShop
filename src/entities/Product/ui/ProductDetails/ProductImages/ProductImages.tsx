@@ -1,6 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { useState } from "react"
-import { productImagesListType } from "../../model/lists"
+import { productImagesListType } from "../lists"
 import styles from "./ProductImages.module.scss"
 
 interface ProductImagesProps {

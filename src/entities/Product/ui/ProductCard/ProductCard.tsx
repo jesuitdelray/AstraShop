@@ -24,7 +24,7 @@ export const ProductCard = (props: ProductCardProps): ReactElement => {
     return (
         <div
             className={classNames(styles.container, {}, [className])}
-            onClick={() => navigate(RoutePath.product_details + 1)}
+            onClick={() => navigate(RoutePath.product_details + 9)} // has to be + id
         >
             <div className={styles.header}>
                 {!!isNew && <Label value="новый" className={styles.label} />}

@@ -1,4 +1,4 @@
-import { ProductCardProps } from "entities/ProductCard"
+import { ProductCardProps } from "entities/Product"
 import img from "./keyboard.png"
 
 export const ProductCardList: ProductCardProps[] = [
