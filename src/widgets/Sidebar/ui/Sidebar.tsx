@@ -3,11 +3,11 @@ import { Copyright } from "entities/Copyright/Copyright"
 import { Logo } from "entities/Logo/Logo"
 import { ProductFilters } from "features/ProductFilters"
 import { useMatch } from "react-router-dom"
-import { AppRoutes } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import styles from "./Sidebar.module.scss"
 
 export function Sidebar() {
-    const subCategoryPage = useMatch(AppRoutes.SUB_CATEGORY)
+    const subCategoryPage = useMatch(`${RoutePath.sub_category}`)
 
     return (
         <div className={styles.wrapper}>

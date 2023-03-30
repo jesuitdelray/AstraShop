@@ -10,28 +10,30 @@ export interface ProductCardProps {
     id?: string
     isNew?: boolean
     className?: string
-    image: string
-    description: string
+    images?: string[]
+    name: string
     price: number
-    currency: string
+    currency?: string
 }
 
 export const ProductCard = (props: ProductCardProps): ReactElement => {
-    const { isNew, image, className, id, description, price, currency } = props
+    const { isNew, images, className, id, name, price, currency = "$" } = props
 
     const navigate = useNavigate()
 
     return (
         <div
             className={classNames(styles.container, {}, [className])}
-            onClick={() => navigate(RoutePath.product_details)}
+            onClick={() => navigate(RoutePath.product_details + 1)}
         >
             <div className={styles.header}>
                 {!!isNew && <Label value="новый" className={styles.label} />}
-                {!!image && <img className={styles.image} src={image} alt="" decoding="async" />}
+                {!!images?.[0] && (
+                    <img className={styles.image} src={images[0]} alt="" decoding="async" />
+                )}
             </div>
             <div className={styles.footer}>
-                <Typography className={styles.footerDescription}>{description}</Typography>
+                <Typography className={styles.footerDescription}>{name}</Typography>
                 <Typography className={styles.footerPrice} isBold>
                     {price}
                     {currency}
