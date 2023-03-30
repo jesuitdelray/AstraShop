@@ -1,13 +1,12 @@
-import { useDispatch, useSelector } from "react-redux"
 import { memo, useEffect, useMemo } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Slider from "react-slick"
-import { ProductCard, ProductCardProps } from "entities/Product"
+import { Product, ProductCard } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"
 import { sliderSettings } from "./sliderSettings"
 import styles from "./ProductCarousel.module.scss"
-
 import { fetchTopProducts } from "../model/services/fetchTopProducts/fetchTopProducts"
 import { fetchNewProducts } from "../model/services/fetchNewProducts/fetchNewProducts"
 import {
@@ -53,7 +52,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
     }, [dispatch, newProducts, topProducts, isLoadingNew, isLoadingTop, isNew, isTop, variant])
 
     const title = isNew ? "Новые поступления" : "Топовые позиции"
-    const list: any = isNew ? newProducts : topProducts
+    const list: Product[] | undefined = isNew ? newProducts : topProducts
     const loading = isNew ? isLoadingNew : isLoadingTop
     const error = isNew ? errorNew : errorTop
 
@@ -63,14 +62,22 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
                 return <div>Loading...</div>
             case !!error:
                 return <div>Error</div>
-            case list?.length > 0:
+            case !!list?.length:
                 return (
                     <>
                         <div className={styles.title}>{title}</div>
                         <Slider {...sliderSettings}>
-                            {list?.map((props: ProductCardProps) => {
-                                const { id, ...rest } = props
-                                return <ProductCard key={id} {...rest} />
+                            {list?.map(item => {
+                                const { id, is_new: isNew, name, price, images } = item
+                                return (
+                                    <ProductCard
+                                        key={id}
+                                        isNew={isNew}
+                                        name={name}
+                                        price={price}
+                                        images={images}
+                                    />
+                                )
                             })}
                         </Slider>
                     </>
