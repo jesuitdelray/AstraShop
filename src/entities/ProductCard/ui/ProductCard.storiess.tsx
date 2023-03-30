@@ -1,5 +1,6 @@
-import { ProductCard } from "entities/ProductCard"
+/* import { ProductCard } from "entities/ProductCard"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
+
 import { ProductCardList } from "pages/SubCategoryPage/model/list"
 import styles from "./ProductCard.module.scss"
 
@@ -25,3 +26,4 @@ ProductCardNewView.args = {
     className: styles.width280,
     isNew: true,
 }
+ */

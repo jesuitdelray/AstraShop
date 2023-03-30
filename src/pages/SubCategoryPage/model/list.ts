@@ -1,4 +1,4 @@
-import { ProductCardProps } from "entities/ProductCard"
+/* import { ProductCardProps } from "entities/ProductCard"
 import img from "shared/assets/images/img3.png"
 
 export const ProductCardList: ProductCardProps[] = [
@@ -78,3 +78,4 @@ export const ProductCardList: ProductCardProps[] = [
         image: img,
     },
 ]
+ */

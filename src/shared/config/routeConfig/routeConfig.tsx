@@ -47,9 +47,9 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.CONTACTS]: "/contacts",
     [AppRoutes.DELIVERY]: "/delivery",
     [AppRoutes.ORDER]: "/order",
-    [AppRoutes.CATEGORY]: "/category",
-    [AppRoutes.SUB_CATEGORY]: "/sub_category",
-    [AppRoutes.PRODUCT_DETAILS]: "/sub_category/product",
+    [AppRoutes.CATEGORY]: "/category", // + :id
+    [AppRoutes.SUB_CATEGORY]: "/sub", // + id
+    [AppRoutes.PRODUCT_DETAILS]: "/product", // + id
     [AppRoutes.NOT_FOUND]: "*",
 }
 
@@ -79,15 +79,15 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <OrderPage />,
     },
     [AppRoutes.CATEGORY]: {
-        path: RoutePath.category,
+        path: `${RoutePath.category}:id`,
         element: <CategoryPage />,
     },
     [AppRoutes.SUB_CATEGORY]: {
-        path: RoutePath.sub_category,
+        path: `${RoutePath.sub_category}:id`,
         element: <SubCategoryPage />,
     },
     [AppRoutes.PRODUCT_DETAILS]: {
-        path: RoutePath.product_details,
+        path: `${RoutePath.product_details}:id`,
         element: <ProductDetailsPage />,
     },
     [AppRoutes.NOT_FOUND]: {
