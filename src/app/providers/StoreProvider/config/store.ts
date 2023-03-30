@@ -4,6 +4,7 @@ import { modalsReducer } from "entities/ModalSlider"
 import { productDetailsReducer } from "entities/Product"
 import { subcategoryPageReducer } from "pages/SubCategoryPage"
 import { $api } from "shared/api/api"
+import { productCarouselReducer } from "widgets/ProductCarousel"
 import { StateSchema } from "./StateSchema"
 
 export function createReduxStore(initialState?: StateSchema) {
@@ -13,6 +14,7 @@ export function createReduxStore(initialState?: StateSchema) {
             catalogNavigation: catalogNavigationReducer,
             subcategoryPage: subcategoryPageReducer,
             productDetails: productDetailsReducer,
+            productCarousel: productCarouselReducer,
         },
         devTools: __IS_DEV__,
         preloadedState: initialState,

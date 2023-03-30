@@ -1,3 +1,2 @@
-import { ProductCarousel, ProductCarouselVariant } from "./ui/ProductCarousel"
-
-export { ProductCarousel, ProductCarouselVariant }
+export { ProductCarousel, ProductCarouselVariant } from "./ui/ProductCarousel"
+export { productCarouselReducer } from "./model/slice/productCarouselSlice"
