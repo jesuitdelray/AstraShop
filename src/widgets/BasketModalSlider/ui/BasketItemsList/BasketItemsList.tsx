@@ -1,5 +1,5 @@
+import { ProductCardBasket } from "entities/Product"
 import { basketItemsType } from "../../model/list"
-import { BasketProduct } from "../BasketProduct/BasketProduct"
 import styles from "./BasketItemsList.module.scss"
 
 interface BasketItemsListProps {
@@ -12,7 +12,7 @@ export function BasketItemsList({ list }: BasketItemsListProps) {
             {!!list &&
                 list.map((item: basketItemsType) => {
                     const { id, ...rest } = item
-                    return <BasketProduct key={id} {...rest} />
+                    return <ProductCardBasket key={id} {...rest} />
                 })}
         </div>
     )

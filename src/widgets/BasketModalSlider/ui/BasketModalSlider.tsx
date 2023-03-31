@@ -1,4 +1,4 @@
-import { OrderInfo } from "entities/OrderInfo"
+import { BasketSummary } from "entities/Basket"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
@@ -48,7 +48,7 @@ export function BasketModalSlider() {
                 {basketItemsList.length ? (
                     <>
                         <BasketItemsList list={basketItemsList} />
-                        <OrderInfo onOrderClick={() => navigate(RoutePath.order)} />
+                        <BasketSummary onOrderClick={() => navigate(RoutePath.order)} />
                     </>
                 ) : (
                     <EmptyBasket onClose={onClose} />

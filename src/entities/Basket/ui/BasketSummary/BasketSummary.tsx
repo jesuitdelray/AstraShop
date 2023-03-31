@@ -3,26 +3,26 @@ import { useDispatch } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import styles from "./OrderInfo.module.scss"
+import styles from "./BasketSummary.module.scss"
 
-export enum OrderInfoVariant {
+export enum BasketSummaryVariant {
     DEFAULT = "default",
     VERTICAL = "vertical",
 }
 
-interface OrderInfoProps {
+interface BasketSummaryProps {
     isCentered?: boolean
     className?: string
-    variant?: OrderInfoVariant
+    variant?: BasketSummaryVariant
     onOrderClick: () => void
     onExitClick?: () => void
 }
 
-export function OrderInfo(props: OrderInfoProps) {
+export function BasketSummary(props: BasketSummaryProps) {
     const {
         isCentered = false,
         className,
-        variant = OrderInfoVariant.DEFAULT,
+        variant = BasketSummaryVariant.DEFAULT,
         onOrderClick,
         onExitClick,
     } = props
