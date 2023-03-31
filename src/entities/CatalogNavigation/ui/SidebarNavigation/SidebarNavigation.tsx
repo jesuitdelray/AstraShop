@@ -22,7 +22,7 @@ function SubMenu({ list, isOpen, onLinkClick }: SubMenuProps) {
             {list.map(item => {
                 const { id, name } = item
                 return (
-                    <AppLink key={id} to={RoutePath.sub_category} onClick={onLinkClick}>
+                    <AppLink key={id} to={RoutePath.sub_category + id} onClick={onLinkClick}>
                         {name}
                     </AppLink>
                 )
@@ -72,7 +72,7 @@ export function SidebarNavigation() {
                             className={styles.linkContainer}
                         >
                             <AppLink
-                                to={RoutePath.category}
+                                to={RoutePath.category + id}
                                 onClick={() => setHovered(-1)}
                                 className={styles.link}
                             >

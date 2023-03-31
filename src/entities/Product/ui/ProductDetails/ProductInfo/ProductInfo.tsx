@@ -1,8 +1,8 @@
-import { productDescriptionDataType } from "entities/ProductDescription/model/lists"
 import { useMemo } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { v4 as uuid } from "uuid"
+import { productDescriptionDataType } from "../lists"
 import styles from "./ProductInfo.module.scss"
 
 interface ArticleProps {

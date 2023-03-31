@@ -33,7 +33,7 @@ export function RadioGroup(props: RadioGroupProps) {
             </Typography>
 
             <div className={styles.radiosContainer}>
-                {options.map((item: any) => {
+                {options.map(item => {
                     const { id, value, label } = item
                     return (
                         <RadioButton

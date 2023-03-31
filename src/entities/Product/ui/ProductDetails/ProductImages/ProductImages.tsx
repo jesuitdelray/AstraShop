@@ -1,6 +1,7 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { useState } from "react"
-import { productImagesListType } from "../../model/lists"
+import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
+import { productImagesListType } from "../lists"
 import styles from "./ProductImages.module.scss"
 
 interface ProductImagesProps {
@@ -14,13 +15,17 @@ export function ProductImages({ className, list }: ProductImagesProps) {
     return (
         <div className={classNames(styles.container, {}, [className])}>
             <div className={styles.mainImg}>
-                {list.map((item, index) => {
-                    const { id, img } = item
-                    return index === active ? <img src={img} alt="" key={id} /> : null
-                })}
+                {list?.[0] ? (
+                    list.map((item, index) => {
+                        const { id, img } = item
+                        return index === active && <img src={img} alt="" key={id} />
+                    })
+                ) : (
+                    <img src={productPlaceholder} alt="No_Images" />
+                )}
             </div>
             <div className={styles.imgRow}>
-                {list.map((item, index) => {
+                {list.slice(0, 4).map((item, index) => {
                     const { id, img } = item
                     return (
                         <div

@@ -1,5 +1,6 @@
 import { Breadcrumbs } from "entities/Breadcrumbs"
-import { ProductDescription } from "entities/ProductDescription"
+import { ProductDetails } from "entities/Product"
+import { useDispatch } from "react-redux"
 import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
@@ -15,7 +16,7 @@ export function ProductDetailsPage() {
     return (
         <div>
             <Breadcrumbs breadcrumbsList={breadcrumbsList} />
-            <ProductDescription />
+            <ProductDetails />
             <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
