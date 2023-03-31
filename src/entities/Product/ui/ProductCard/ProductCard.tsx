@@ -4,6 +4,7 @@ import { Typography } from "shared/ui/Typography/Typography"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useNavigate } from "react-router-dom"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
 import styles from "./ProductCard.module.scss"
 
 export interface ProductCardProps {
@@ -18,6 +19,7 @@ export interface ProductCardProps {
 
 export const ProductCard = (props: ProductCardProps): ReactElement => {
     const { isNew, images, className, id, name, price, currency = "$" } = props
+    const isImage = images?.[0] ? images[0] : productPlaceholder
 
     const navigate = useNavigate()
 
@@ -28,9 +30,7 @@ export const ProductCard = (props: ProductCardProps): ReactElement => {
         >
             <div className={styles.header}>
                 {!!isNew && <Label value="новый" className={styles.label} />}
-                {!!images?.[0] && (
-                    <img className={styles.image} src={images[0]} alt="" decoding="async" />
-                )}
+                <img className={styles.image} src={isImage} alt="" decoding="async" />
             </div>
             <div className={styles.footer}>
                 <Typography className={styles.footerDescription}>{name}</Typography>
