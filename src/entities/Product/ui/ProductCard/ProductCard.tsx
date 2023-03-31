@@ -19,7 +19,7 @@ export interface ProductCardProps {
 
 export const ProductCard = (props: ProductCardProps): ReactElement => {
     const { isNew, images, className, id, name, price, currency = "$" } = props
-    const isImage = images?.[0] ? images[0] : productPlaceholder
+    const productImage = images?.[0] ? images[0] : productPlaceholder
 
     const navigate = useNavigate()
 
@@ -30,7 +30,7 @@ export const ProductCard = (props: ProductCardProps): ReactElement => {
         >
             <div className={styles.header}>
                 {!!isNew && <Label value="новый" className={styles.label} />}
-                <img className={styles.image} src={isImage} alt="" decoding="async" />
+                <img className={styles.image} src={productImage} alt="" decoding="async" />
             </div>
             <div className={styles.footer}>
                 <Typography className={styles.footerDescription}>{name}</Typography>
