@@ -8,16 +8,17 @@ const BASKET_COUNT = 0
 interface SmallBasketProps {
     className?: string
     onClick: () => void
+    basketCount: number
 }
 
-export function SmallBasket({ className, onClick }: SmallBasketProps) {
+export function SmallBasket({ className, onClick, basketCount }: SmallBasketProps) {
     return (
         <div className={classNames(styles.container, {}, [className])} onClick={onClick}>
             <ShoppingBagIcon className={styles.icon} />
             <Label
-                value={BASKET_COUNT}
+                value={basketCount}
                 fontSize={LabelFontSize.FONT_NORMAL}
-                color={BASKET_COUNT ? LabelColor.RED : LabelColor.GRAY}
+                color={basketCount ? LabelColor.RED : LabelColor.GRAY}
             />
         </div>
     )

@@ -1,0 +1,8 @@
+.icon {
+    fill: var(--color-dark-gray);
+    cursor: pointer;
+
+    &:hover {
+        fill: var(--color-accent);
+    }
+}

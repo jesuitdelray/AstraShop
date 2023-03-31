@@ -15,10 +15,11 @@ export interface ProductCardProps {
     name?: string
     price?: number
     currency?: string
+    Basket?: any
 }
 
 export const ProductCard = (props: ProductCardProps): ReactElement => {
-    const { isNew, images, className, id, name, price, currency = "$" } = props
+    const { isNew, images, className, id, name, price, currency, Basket } = props
     const productImage = images?.[0] ? images[0] : productPlaceholder
 
     const navigate = useNavigate()
@@ -38,6 +39,7 @@ export const ProductCard = (props: ProductCardProps): ReactElement => {
                     {price}
                     {currency}
                 </Typography>
+                {!!Basket && Basket}
             </div>
         </div>
     )

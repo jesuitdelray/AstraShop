@@ -1,18 +1,19 @@
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import { Product } from "entities/Product/model/types"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
 import { productImagesList, productDescriptionData } from "./lists"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
+import { Product } from "../../model/types"
 
 interface ProductDetailsProps extends Product {
     isLoading: boolean
     error?: string
+    Basket: any
 }
 
 export function ProductDetails(props: ProductDetailsProps) {
-    const { isLoading, error, id, name, price, currency, images } = props
+    const { isLoading, error, id, name, price, currency, images, Basket } = props
 
     let content
 
@@ -45,9 +46,10 @@ export function ProductDetails(props: ProductDetailsProps) {
                         </Typography>
                     </div>
                     <ProductImages list={productImagesList} className={styles.images} />
-                    <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
+                    {/* <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
                         В корзину
-                    </Button>
+                    </Button> */}
+                    {Basket}
                     <ProductInfo className={styles.description} data={productDescriptionData} />
                 </>
             )

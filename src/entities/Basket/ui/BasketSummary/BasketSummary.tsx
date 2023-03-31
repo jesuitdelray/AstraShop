@@ -1,9 +1,10 @@
 import { modalsActions } from "entities/ModalSlider"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./BasketSummary.module.scss"
+import { getBasketProducts } from "entities/Basket/model/selectors/basketSelectors"
 
 export enum BasketSummaryVariant {
     DEFAULT = "default",
@@ -43,6 +44,16 @@ export function BasketSummary(props: BasketSummaryProps) {
         onExitClick?.()
     }
 
+    const products = useSelector(getBasketProducts)
+
+    const totalPrice = products
+        .map((item: any) => item.price * (item.quantity || 1))
+        .reduce((acc: number, val: number) => acc + val, 0)
+
+    const totalProducts = products
+        .map((item: any) => item.quantity || 1)
+        .reduce((acc: number, val: number) => acc + val, 0)
+
     return (
         <div
             className={classNames(styles.container, { [styles.centered]: isCentered }, [
@@ -55,10 +66,10 @@ export function BasketSummary(props: BasketSummaryProps) {
                     Итого
                 </Typography>
                 <Typography isBold className={styles.totalPrice}>
-                    103 832 грн
+                    {totalPrice}
                 </Typography>
                 <Typography variant={TypographyVariant.H4}>Количество товаров</Typography>
-                <Typography className={styles.totalProducts}>3</Typography>
+                <Typography className={styles.totalProducts}>{totalProducts}</Typography>
             </div>
             <div className={styles.buttons}>
                 <Button onClick={orderClickHandler} variant={ButtonVariant.FILLED_RED}>

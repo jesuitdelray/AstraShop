@@ -17,6 +17,7 @@ import {
     getProductCarouselNewProducts,
     getProductCarouselTopProducts,
 } from "../model/selectors/productCarouselSelector"
+import { ToggleProductInBasket } from "features/basketActions/ToggleProductInBasket/ToggleProductInBasket"
 
 export enum ProductCarouselVariant {
     TOP_PRODUCTS = "top",
@@ -76,6 +77,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
                                         name={name}
                                         price={price}
                                         images={images}
+                                        Basket={<ToggleProductInBasket product={item} />}
                                     />
                                 )
                             })}

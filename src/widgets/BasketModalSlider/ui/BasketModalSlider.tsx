@@ -1,4 +1,4 @@
-import { BasketSummary } from "entities/Basket"
+import { BasketSummary, getBasketProducts } from "entities/Basket"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
@@ -29,6 +29,8 @@ export function BasketModalSlider() {
         dispatch(modalsActions.close())
     }
 
+    const basketProducts = useSelector(getBasketProducts)
+
     return (
         <ModalSlider
             isOpen={currentModal === ModalsList.BASKET}
@@ -47,7 +49,7 @@ export function BasketModalSlider() {
 
                 {basketItemsList.length ? (
                     <>
-                        <BasketItemsList list={basketItemsList} />
+                        <BasketItemsList list={basketProducts} />
                         <BasketSummary onOrderClick={() => navigate(RoutePath.order)} />
                     </>
                 ) : (

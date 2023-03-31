@@ -7,6 +7,8 @@ import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
 import { ProductCard } from "entities/Product"
+/* import { toggleProductInBasket } from "features/basketActions" */
+import { ToggleProductInBasket } from "features/basketActions/ToggleProductInBasket/ToggleProductInBasket"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
@@ -56,8 +58,8 @@ export function SubCategoryPage() {
 
                         <div className={styles.products}>
                             {!!categoryProducts.length &&
-                                categoryProducts.map(item => {
-                                    const { id, is_new: isNew, images, name, price } = item
+                                categoryProducts.map(product => {
+                                    const { id = "", is_new: isNew, images, name, price } = product
                                     return (
                                         <ProductCard
                                             key={id}
@@ -66,6 +68,7 @@ export function SubCategoryPage() {
                                             name={name}
                                             images={images}
                                             price={price}
+                                            Basket={<ToggleProductInBasket product={product} />}
                                         />
                                     )
                                 })}

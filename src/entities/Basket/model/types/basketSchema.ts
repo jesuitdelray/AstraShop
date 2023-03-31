@@ -8,6 +8,4 @@
 
 export interface BasketSchema {
     products?: any
-    isLoading: boolean
-    error?: string
 }

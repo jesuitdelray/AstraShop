@@ -32,26 +32,6 @@
     justify-content: space-between;
     width: 100%;
     max-width: 100px;
-
-    .icon {
-        fill: var(--color-dark-gray);
-        cursor: pointer;
-
-        &:hover {
-            fill: var(--color-accent);
-        }
-    }
-}
-
-.delete {
-    grid-area: delete;
-    fill: var(--color-dark-gray);
-    align-self: center;
-    cursor: pointer;
-
-    &:hover {
-        fill: var(--color-accent);
-    }
 }
 
 @media (min-width: 769px) {

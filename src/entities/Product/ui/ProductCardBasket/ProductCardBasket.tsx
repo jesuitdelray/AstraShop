@@ -1,15 +1,16 @@
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import { DeleteBucketIcon, MinusIcon, PlusIcon } from "shared/assets/icons/others"
 import styles from "./ProductCardBasket.module.scss"
 
 interface ProductCardBasketProps {
     img?: string
     productName: string
     productPrice: string
+    Delete: any
+    Counter: any
 }
 
 export function ProductCardBasket(props: ProductCardBasketProps) {
-    const { img, productName, productPrice } = props
+    const { img, productName, productPrice, Delete, Counter } = props
 
     return (
         <div className={styles.container}>
@@ -20,12 +21,8 @@ export function ProductCardBasket(props: ProductCardBasketProps) {
                     {productPrice}
                 </Typography>
             </div>
-            <div className={styles.counter}>
-                <MinusIcon className={styles.icon} />
-                <Typography variant={TypographyVariant.P}>1</Typography>
-                <PlusIcon className={styles.icon} />
-            </div>
-            <DeleteBucketIcon className={styles.delete} />
+            <div className={styles.counter}>{Counter}</div>
+            {Delete}
         </div>
     )
 }
