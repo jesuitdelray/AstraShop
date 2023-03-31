@@ -1,5 +1,5 @@
-import { BasketProduct } from "features/BasketProduct"
-import { basketItemsType } from "widgets/Basket/model/list"
+import { basketItemsType } from "../../model/list"
+import { BasketProduct } from "../BasketProduct/BasketProduct"
 import styles from "./BasketItemsList.module.scss"
 
 interface BasketItemsListProps {

@@ -1,4 +1,4 @@
-import { Basket } from "widgets/Basket"
+import { BasketModalSlider } from "widgets/BasketModalSlider"
 import { BurgerMenu } from "widgets/BurgerMenu"
 import { FiltersModalSlider } from "widgets/FiltersModalSlider"
 import { SortModalSlider } from "widgets/SortModalSlider"
@@ -8,7 +8,7 @@ export function Modals() {
     return (
         <>
             <BurgerMenu />
-            <Basket />
+            <BasketModalSlider />
             <FiltersModalSlider />
             <SortModalSlider />
             <SuccessOrder />

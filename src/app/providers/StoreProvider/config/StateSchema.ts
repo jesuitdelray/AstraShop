@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios"
+import { BasketSchema } from "entities/Basket"
 import { CatalogNavigationSchema } from "entities/CatalogNavigation"
 import { ModalsSchema } from "entities/ModalSlider"
 import { ProductDetailsSchema } from "entities/Product"
@@ -11,6 +12,7 @@ export interface StateSchema {
     subcategoryPage: SubCategoryPageSchema
     productDetails: ProductDetailsSchema
     productCarousel: ProductCarouselSchema
+    basket: BasketSchema
 }
 
 interface ThunkExtraArg {

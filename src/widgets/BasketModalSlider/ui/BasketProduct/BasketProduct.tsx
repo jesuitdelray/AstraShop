@@ -1,4 +1,4 @@
-import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { DeleteBucketIcon } from "shared/assets/icons/others"
 import { BasketProductCounter } from "entities/BasketProductCounter"
 import styles from "./BasketProduct.module.scss"

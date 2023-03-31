@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import { catalogNavigationReducer } from "entities/CatalogNavigation"
 import { modalsReducer } from "entities/ModalSlider"
 import { productDetailsReducer } from "entities/Product"
+import { basketReducer } from "entities/Basket"
 import { subcategoryPageReducer } from "pages/SubCategoryPage"
 import { $api } from "shared/api/api"
 import { productCarouselReducer } from "widgets/ProductCarousel"
@@ -15,6 +16,7 @@ export function createReduxStore(initialState?: StateSchema) {
             subcategoryPage: subcategoryPageReducer,
             productDetails: productDetailsReducer,
             productCarousel: productCarouselReducer,
+            basket: basketReducer,
         },
         devTools: __IS_DEV__,
         preloadedState: initialState,

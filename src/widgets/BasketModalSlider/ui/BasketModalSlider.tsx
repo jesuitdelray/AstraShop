@@ -16,7 +16,7 @@ import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
 
-export function Basket() {
+export function BasketModalSlider() {
     const height = window.innerHeight
     const isSlideTop = window.innerWidth < 769
 
