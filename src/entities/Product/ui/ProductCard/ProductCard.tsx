@@ -12,8 +12,8 @@ export interface ProductCardProps {
     isNew?: boolean
     className?: string
     images?: string[]
-    name: string
-    price: number
+    name?: string
+    price?: number
     currency?: string
 }
 

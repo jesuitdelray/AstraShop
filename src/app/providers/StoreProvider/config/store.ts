@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { catalogNavigationReducer } from "entities/CatalogNavigation"
 import { modalsReducer } from "entities/ModalSlider"
-import { productDetailsReducer } from "entities/Product"
+import { productDetailsReducer } from "pages/ProductDetailsPage"
 import { basketReducer } from "entities/Basket"
 import { subcategoryPageReducer } from "pages/SubCategoryPage"
 import { $api } from "shared/api/api"

@@ -2,7 +2,7 @@ import { AxiosInstance } from "axios"
 import { BasketSchema } from "entities/Basket"
 import { CatalogNavigationSchema } from "entities/CatalogNavigation"
 import { ModalsSchema } from "entities/ModalSlider"
-import { ProductDetailsSchema } from "entities/Product"
+import { ProductDetailsSchema } from "pages/ProductDetailsPage"
 import { SubCategoryPageSchema } from "pages/SubCategoryPage"
 import { ProductCarouselSchema } from "widgets/ProductCarousel"
 
