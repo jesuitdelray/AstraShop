@@ -1,7 +1,9 @@
 .container {
     display: grid;
-    grid-template-columns: calc(100% - 20px) 20px;
-    grid-template-areas: "img delete" "info ." "counter .";
+    grid-template:
+        "img delete" 70px
+        "info ." auto
+        "counter ." auto / calc(100% - 20px) 20px;
     border-bottom: 1px solid var(--color-light-gray);
     height: 200px;
 
@@ -12,12 +14,15 @@
 
 .img {
     grid-area: img;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .info {
     grid-area: info;
     display: flex;
     flex-direction: column;
+    margin-top: 12px;
 
     *:first-child {
         margin-bottom: 8px;
@@ -26,7 +31,7 @@
 
 .counter {
     grid-area: counter;
-    margin-bottom: 12px;
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -35,10 +40,9 @@
     user-select: none;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 500px) {
     .container {
-        grid-template-columns: auto auto auto auto;
-        grid-template-areas: "img info counter delete";
+        grid-template: "img info counter delete" auto / 180px auto auto auto;
         column-gap: 20px;
         height: 130px;
         align-items: center;
