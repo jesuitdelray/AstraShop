@@ -5,8 +5,11 @@ import { getBasketProductQuantityById } from "entities/Basket/model/selectors/ba
 import { basketActions } from "entities/Basket"
 import styles from "./ChangeProductAmountInBasket.module.scss"
 
-export function ChangeProductAmountInBasket(props: any) {
-    const { id } = props
+interface ChangeProductAmountInBasketProps {
+    id: number
+}
+
+export function ChangeProductAmountInBasket({ id }: ChangeProductAmountInBasketProps) {
     const dispatch = useDispatch()
     const quantity = useSelector(getBasketProductQuantityById(id))
 

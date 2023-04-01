@@ -41,7 +41,12 @@ export function ProductDetailsPage() {
     const prodductIsNew = false // to be changed
     const productImages = useSelector(getProductDetailsImages) // to be used
 
-    const product = { id: productId, name: productName, images: productImages, price: productPrice }
+    const product = {
+        id: productId || 0,
+        name: productName || "",
+        images: productImages || [],
+        price: productPrice || 0,
+    }
 
     return (
         <div>

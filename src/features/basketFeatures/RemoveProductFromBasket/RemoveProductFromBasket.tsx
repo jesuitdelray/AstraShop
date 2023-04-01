@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux"
 import { DeleteBucketIcon } from "shared/assets/icons/others"
 import styles from "./RemoveProductFromBasket.module.scss"
 
-export function RemoveProductFromBasket({ product }: any) {
-    const { id } = product
+interface RemoveProductFromBasketProps {
+    id: number
+}
 
+export function RemoveProductFromBasket({ id }: RemoveProductFromBasketProps) {
     const dispatch = useDispatch()
 
-    function clickHandler(e: any) {
+    function clickHandler() {
         dispatch(basketActions.removeFromBasket(id))
     }
 

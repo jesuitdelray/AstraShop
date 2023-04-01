@@ -47,11 +47,11 @@ export function BasketSummary(props: BasketSummaryProps) {
     const products = useSelector(getBasketProducts)
 
     const totalPrice = products
-        ?.map((item: any) => item.price * (item.quantity || 1))
+        ?.map(item => item.price * (item.quantity || 1))
         .reduce((acc: number, val: number) => acc + val, 0)
 
     const totalProducts = products
-        ?.map((item: any) => item.quantity || 1)
+        ?.map(item => item.quantity || 1)
         .reduce((acc: number, val: number) => acc + val, 0)
 
     return (

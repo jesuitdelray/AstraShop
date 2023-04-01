@@ -1,4 +1,6 @@
 import { basketActions, getBasketProducts } from "entities/Basket"
+import { Product } from "entities/Product"
+import { MouseEvent } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "shared/ui/Button/Button"
 
@@ -8,7 +10,7 @@ export enum ToggleProductInBasketVariant {
 }
 
 interface ToggleProductInBasketProps {
-    product: any
+    product: Product
     variant: ToggleProductInBasketVariant
 }
 
@@ -18,9 +20,9 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
     const basketProducts = useSelector(getBasketProducts)
     const dispatch = useDispatch()
 
-    const isProductInBasket = basketProducts.some((item: any) => item.id === id)
+    const isProductInBasket = basketProducts.some(item => item.id === id)
 
-    function clickHandler(e: any) {
+    function clickHandler(e: MouseEvent) {
         e.stopPropagation()
         if (isProductInBasket) {
             dispatch(basketActions.removeFromBasket(id))
