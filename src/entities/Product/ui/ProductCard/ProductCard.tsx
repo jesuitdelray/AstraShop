@@ -15,7 +15,7 @@ interface ProductCardProps extends Product {
 }
 
 export const ProductCard = (props: ProductCardProps) => {
-    const { is_new: isNew, images, className, name, price, currency = "$", Basket } = props
+    const { id, is_new: isNew, images, className, name, price, currency = "$", Basket } = props
     const productImage = images?.[0] ? images[0] : productPlaceholder
 
     const navigate = useNavigate()
