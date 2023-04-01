@@ -30,14 +30,10 @@
 }
 
 .counter {
+    width: 100%;
     grid-area: counter;
     margin-bottom: 25px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 100px;
-    user-select: none;
 }
 
 @media (min-width: 500px) {
@@ -56,6 +52,7 @@
     }
 
     .counter {
+        justify-content: center;
         margin-bottom: 0;
     }
 }

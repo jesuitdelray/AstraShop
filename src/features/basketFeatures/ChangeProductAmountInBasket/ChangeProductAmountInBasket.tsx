@@ -22,10 +22,10 @@ export function ChangeProductAmountInBasket({ id }: ChangeProductAmountInBasketP
     }
 
     return (
-        <>
+        <div className={styles.container}>
             <MinusIcon className={styles.icon} onClick={decrement} />
             <Typography variant={TypographyVariant.P}>{quantity}</Typography>
             <PlusIcon className={styles.icon} onClick={increment} />
-        </>
+        </div>
     )
 }

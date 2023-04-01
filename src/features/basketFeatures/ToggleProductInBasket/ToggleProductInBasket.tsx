@@ -3,6 +3,7 @@ import { Product } from "entities/Product"
 import { MouseEvent } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "shared/ui/Button/Button"
+import { ToggleBasketIcon } from "shared/ui/ToggleBasketIcon/ToggleBasketIcon"
 
 export enum ToggleProductInBasketVariant {
     ICON = "icon",
@@ -33,7 +34,7 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
 
     switch (variant) {
         case ToggleProductInBasketVariant.ICON:
-            return <button onClick={clickHandler}>{isProductInBasket ? "Remove" : "Add"}</button>
+            return <ToggleBasketIcon onClick={clickHandler} isFilled={isProductInBasket} />
         case ToggleProductInBasketVariant.BUTTON:
             return (
                 <Button onClick={clickHandler}>
