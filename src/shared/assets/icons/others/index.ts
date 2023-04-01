@@ -16,6 +16,8 @@ import IntimeIcon from "./intime.svg"
 import AutoluxIcon from "./autolux.svg"
 import ChevronBack from "./chevron-back.svg"
 import MainHome from "./home.svg"
+import BasketSuccess from "./basket-succsess.svg"
+import AddToBasket from "./basket-add.svg"
 
 export {
     MinusIcon,
@@ -36,4 +38,6 @@ export {
     AutoluxIcon,
     ChevronBack,
     MainHome,
+    BasketSuccess,
+    AddToBasket,
 }

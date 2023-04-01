@@ -5,6 +5,7 @@ import { Product, ProductCard } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"
+import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { sliderSettings } from "./sliderSettings"
 import styles from "./ProductCarousel.module.scss"
 import { fetchTopProducts } from "../model/services/fetchTopProducts/fetchTopProducts"
@@ -71,11 +72,18 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
                                 const { id, is_new: isNew, name, price, images } = item
                                 return (
                                     <ProductCard
+                                        id={id}
                                         key={id}
-                                        isNew={isNew}
+                                        is_new={isNew}
                                         name={name}
                                         price={price}
                                         images={images}
+                                        Basket={
+                                            <ToggleProductInBasket
+                                                variant={ToggleProductInBasketVariant.ICON}
+                                                product={item}
+                                            />
+                                        }
                                     />
                                 )
                             })}

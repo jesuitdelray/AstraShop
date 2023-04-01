@@ -1,56 +1,39 @@
-import { useEffect } from "react"
-import { useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { ReactElement } from "react"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
 import { productImagesList, productDescriptionData } from "./lists"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
-import { fetchProductDetails } from "../../model/services/fetchProductDetails/fetchProductDetails"
-import {
-    getProductDetailsError,
-    getProductDetailsId,
-    getProductDetailsImages,
-    getProductDetailsLoading,
-    getProductDetailsName,
-    getProductDetailsPrice,
-} from "../../model/selectors/productDetailsSelectors"
+import { Product } from "../../model/types"
 
-export function ProductDetails() {
-    const dispatch = useDispatch()
-    const { id } = useParams()
+interface ProductDetailsProps extends Product {
+    isLoading: boolean
+    error?: string
+    Basket: ReactElement
+    currency?: string
+}
 
-    useEffect(() => {
-        dispatch(fetchProductDetails(id))
-    }, [dispatch, id])
-
-    const productRequestLoading = useSelector(getProductDetailsLoading)
-    const productRequestError = useSelector(getProductDetailsError)
-    const productId = useSelector(getProductDetailsId)
-    const productName = useSelector(getProductDetailsName)
-    const productPrice = useSelector(getProductDetailsPrice)
-    const currency = "$" // to be changed
-    const productImages = useSelector(getProductDetailsImages) // to be used
+export function ProductDetails(props: ProductDetailsProps) {
+    const { isLoading, error, id, name, price, currency = "$", images, Basket } = props
 
     let content
 
     switch (true) {
-        case productRequestLoading:
+        case isLoading:
             content = <div>Loading...</div>
             break
-        case !!productRequestError:
+        case !!error:
             content = <div>Error</div>
             break
-        case !productId:
+        case !id:
             content = <div>Product doesn t exist</div>
             break
-        case !!productId:
+        case !!id:
             content = (
                 <>
                     <div className={styles.header}>
                         <Typography variant={TypographyVariant.H3} className={styles.title}>
-                            {productName}
+                            {name}
                         </Typography>
                         <Typography color={TypographyColor.ACCENT} className={styles.isPresent}>
                             В наличии
@@ -60,13 +43,11 @@ export function ProductDetails() {
                             color={TypographyColor.DARK_GRAY}
                             className={styles.price}
                         >
-                            {`${productPrice} ${currency}`}
+                            {`${price} ${currency}`}
                         </Typography>
                     </div>
                     <ProductImages list={productImagesList} className={styles.images} />
-                    <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
-                        В корзину
-                    </Button>
+                    <div className={styles.btn}>{Basket}</div>
                     <ProductInfo className={styles.description} data={productDescriptionData} />
                 </>
             )

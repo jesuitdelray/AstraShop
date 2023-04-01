@@ -6,19 +6,16 @@ import { useNavigate } from "react-router-dom"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
 import styles from "./ProductCard.module.scss"
+import { Product } from "../../model/types"
 
-export interface ProductCardProps {
-    id?: string
-    isNew?: boolean
-    className?: string
-    images?: string[]
-    name: string
-    price: number
+interface ProductCardProps extends Product {
     currency?: string
+    Basket?: ReactElement
+    className?: string
 }
 
-export const ProductCard = (props: ProductCardProps): ReactElement => {
-    const { isNew, images, className, id, name, price, currency = "$" } = props
+export const ProductCard = (props: ProductCardProps) => {
+    const { is_new: isNew, images, className, name, price, currency, Basket } = props
     const productImage = images?.[0] ? images[0] : productPlaceholder
 
     const navigate = useNavigate()
@@ -38,6 +35,7 @@ export const ProductCard = (props: ProductCardProps): ReactElement => {
                     {price}
                     {currency}
                 </Typography>
+                {Basket}
             </div>
         </div>
     )
