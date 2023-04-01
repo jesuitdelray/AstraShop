@@ -15,7 +15,7 @@ interface ProductCardProps extends Product {
 }
 
 export const ProductCard = (props: ProductCardProps) => {
-    const { id, is_new: isNew, images, className, name, price, currency, Basket } = props
+    const { is_new: isNew, images, className, name, price, currency = "$", Basket } = props
     const productImage = images?.[0] ? images[0] : productPlaceholder
 
     const navigate = useNavigate()
@@ -31,11 +31,12 @@ export const ProductCard = (props: ProductCardProps) => {
             </div>
             <div className={styles.footer}>
                 <Typography className={styles.footerDescription}>{name}</Typography>
-                <Typography className={styles.footerPrice} isBold>
-                    {price}
-                    {currency}
-                </Typography>
-                {Basket}
+                <div className={styles.price}>
+                    <Typography className={styles.footerPrice} isBold>
+                        {`${price} ${currency}`}
+                    </Typography>
+                    {Basket}
+                </div>
             </div>
         </div>
     )

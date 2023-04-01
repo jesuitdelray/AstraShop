@@ -1,9 +1,10 @@
 import { AddToBasket, BasketSuccess } from "shared/assets/icons/others"
+import { MouseEvent } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./ToggleBasketIcon.module.scss"
 
 interface ToggleBasketIconProps {
-    onClick: () => void
+    onClick: (e: MouseEvent) => void
     isFilled: boolean
     className?: string
 }
