@@ -11,9 +11,9 @@ interface ProductCardBasketProps extends Product {
 }
 
 export function ProductCardBasket(props: ProductCardBasketProps) {
-    const { images = [], name, price, Delete, Counter } = props
+    const { images = [], name, price, Delete, Counter, currency } = props
     const imgSrc = images?.[0] ? images[0] : productPlaceholder
-    
+
     return (
         <div className={styles.container}>
             <img src={imgSrc} alt="" className={styles.img} />
