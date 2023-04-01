@@ -2,10 +2,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { ChangeEvent, InputHTMLAttributes } from "react"
 import styles from "./Input.module.scss"
 
-type HtmlInputProps = Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    "value" | "onChange"
->
+type HtmlInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange">
 
 export enum InputType {
     TEXT = "text",
@@ -38,11 +35,9 @@ export function Input(props: InputProps) {
         ...otherProps
     } = props
 
-    const containerClassName = classNames(
-        styles.container,
-        { [styles.incorrect]: error },
-        [className]
-    )
+    const containerClassName = classNames(styles.container, { [styles.incorrect]: error }, [
+        className,
+    ])
 
     function changeHandler(e: ChangeEvent<HTMLInputElement>) {
         onChange?.(e.target.value)
