@@ -14,7 +14,7 @@ const productDetailsSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchProductDetails.pending, (state, action) => {
+            .addCase(fetchProductDetails.pending, state => {
                 state.error = undefined
                 state.isLoading = true
             })
