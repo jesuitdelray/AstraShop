@@ -10,7 +10,7 @@ const basketSlice = createSlice({
     initialState,
     reducers: {
         addToBasket: (state, { payload }) => {
-            state.products.push(payload)
+            state.products.push({ ...payload, quantity: 1 })
         },
         removeFromBasket: (state, { payload }) => {
             state.products = state.products.filter((product: any) => product.id !== payload)

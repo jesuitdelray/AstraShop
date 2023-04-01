@@ -1,6 +1,5 @@
 import { ProductCardBasket } from "entities/Product"
-import { ChangeProductAmountInBasket } from "features/basketActions/ChangeProductAmountInBasket/ChangeProductAmountInBasket"
-import { RemoveProductFromBasket } from "features/basketActions/RemoveProductFromBasket/RemoveProductFromBasket"
+import { ChangeProductAmountInBasket, RemoveProductFromBasket } from "features/basketFeatures"
 import { basketItemsType } from "../../model/list"
 import styles from "./BasketItemsList.module.scss"
 

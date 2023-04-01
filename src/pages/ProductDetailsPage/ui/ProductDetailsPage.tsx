@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
-import { ToggleProductInBasket } from "features/basketActions/ToggleProductInBasket/ToggleProductInBasket"
+import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { fetchProductDetails } from "../model/services/fetchProductDetails/fetchProductDetails"
 import {
     getProductDetailsError,
@@ -55,7 +55,12 @@ export function ProductDetailsPage() {
                 price={productPrice}
                 currency={productCurrency}
                 images={productImages}
-                Basket={<ToggleProductInBasket product={product} />}
+                Basket={
+                    <ToggleProductInBasket
+                        variant={ToggleProductInBasketVariant.BUTTON}
+                        product={product}
+                    />
+                }
             />
             <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
             <BannersRow />

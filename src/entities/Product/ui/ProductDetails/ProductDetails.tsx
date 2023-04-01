@@ -1,4 +1,3 @@
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
@@ -46,10 +45,7 @@ export function ProductDetails(props: ProductDetailsProps) {
                         </Typography>
                     </div>
                     <ProductImages list={productImagesList} className={styles.images} />
-                    {/* <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
-                        В корзину
-                    </Button> */}
-                    {Basket}
+                    <div className={styles.btn}>{Basket}</div>
                     <ProductInfo className={styles.description} data={productDescriptionData} />
                 </>
             )
