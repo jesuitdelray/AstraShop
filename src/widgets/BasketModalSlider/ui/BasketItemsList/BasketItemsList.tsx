@@ -19,6 +19,7 @@ export function BasketItemsList({ list }: BasketItemsListProps) {
                             images={images}
                             name={name}
                             price={price}
+                            currency="$"
                             Delete={<RemoveProductFromBasket id={id} />}
                             Counter={<ChangeProductAmountInBasket id={id} />}
                         />
