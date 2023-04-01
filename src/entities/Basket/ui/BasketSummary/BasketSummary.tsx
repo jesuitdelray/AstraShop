@@ -54,6 +54,8 @@ export function BasketSummary(props: BasketSummaryProps) {
         ?.map(item => item.quantity || 1)
         .reduce((acc: number, val: number) => acc + val, 0)
 
+    const currency = "$"
+
     return (
         <div
             className={classNames(styles.container, { [styles.centered]: isCentered }, [
@@ -66,7 +68,7 @@ export function BasketSummary(props: BasketSummaryProps) {
                     Итого
                 </Typography>
                 <Typography isBold className={styles.totalPrice}>
-                    {totalPrice}
+                    {`${totalPrice} ${currency}`}
                 </Typography>
                 <Typography variant={TypographyVariant.H4}>Количество товаров</Typography>
                 <Typography className={styles.totalProducts}>{totalProducts}</Typography>

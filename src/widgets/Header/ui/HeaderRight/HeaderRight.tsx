@@ -9,13 +9,17 @@ export function HeaderRight() {
     const currentModal = useSelector(getModalsCurrent)
     const basketProducts = useSelector(getBasketProducts)
 
+    const totalProducts = basketProducts
+        ?.map(item => item.quantity || 1)
+        .reduce((acc: number, val: number) => acc + val, 0)
+
     return currentModal === ModalsList.BASKET && window.innerWidth < 769 ? (
         <CrossIcon onClick={() => dispatch(modalsActions.close())} className={styles.cross} />
     ) : (
         <SmallBasket
             className={styles.basket}
             onClick={() => dispatch(modalsActions.openBasket())}
-            basketCount={basketProducts.length}
+            basketCount={totalProducts || 0}
         />
     )
 }

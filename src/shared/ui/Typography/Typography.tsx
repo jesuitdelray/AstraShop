@@ -30,13 +30,14 @@ export const Typography = memo((props: TextProps) => {
         className,
         children,
         variant = TypographyVariant.P,
-        color = "",
+        color = TypographyColor.BASE,
         isBold = false,
         ...restProps
     } = props
 
     return (
         <div
+            data-testid="typography"
             className={classNames(styles.Text, { [styles[color]]: color, [styles.bold]: isBold }, [
                 className,
                 styles[variant],
