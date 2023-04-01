@@ -2,9 +2,9 @@ import { modalsActions } from "entities/ModalSlider"
 import { useDispatch, useSelector } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { getBasketProducts } from "entities/Basket/model/selectors/basketSelectors"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./BasketSummary.module.scss"
-import { getBasketProducts } from "entities/Basket/model/selectors/basketSelectors"
 
 export enum BasketSummaryVariant {
     DEFAULT = "default",
@@ -47,11 +47,11 @@ export function BasketSummary(props: BasketSummaryProps) {
     const products = useSelector(getBasketProducts)
 
     const totalPrice = products
-        .map((item: any) => item.price * (item.quantity || 1))
+        ?.map((item: any) => item.price * (item.quantity || 1))
         .reduce((acc: number, val: number) => acc + val, 0)
 
     const totalProducts = products
-        .map((item: any) => item.quantity || 1)
+        ?.map((item: any) => item.quantity || 1)
         .reduce((acc: number, val: number) => acc + val, 0)
 
     return (

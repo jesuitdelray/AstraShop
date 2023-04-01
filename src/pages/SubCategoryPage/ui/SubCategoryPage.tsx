@@ -58,12 +58,12 @@ export function SubCategoryPage() {
                         <div className={styles.products}>
                             {!!categoryProducts.length &&
                                 categoryProducts.map(product => {
-                                    const { id = "", is_new: isNew, images, name, price } = product
+                                    const { id, is_new: isNew, images, name, price } = product
                                     return (
                                         <ProductCard
                                             key={id}
-                                            id={id?.toString()}
-                                            isNew={isNew}
+                                            id={id}
+                                            is_new={isNew}
                                             name={name}
                                             images={images}
                                             price={price}

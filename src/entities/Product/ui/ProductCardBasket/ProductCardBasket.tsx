@@ -3,22 +3,22 @@ import styles from "./ProductCardBasket.module.scss"
 
 interface ProductCardBasketProps {
     img?: string
-    productName: string
-    productPrice: string
+    name: string
+    price: string
     Delete: any
     Counter: any
 }
 
 export function ProductCardBasket(props: ProductCardBasketProps) {
-    const { img, productName, productPrice, Delete, Counter } = props
+    const { img, name, price, Delete, Counter } = props
 
     return (
         <div className={styles.container}>
             <img src={img} alt="" className={styles.img} />
             <div className={styles.info}>
-                <Typography variant={TypographyVariant.P}>{productName}</Typography>
+                <Typography variant={TypographyVariant.P}>{name}</Typography>
                 <Typography variant={TypographyVariant.H3} isBold>
-                    {productPrice}
+                    {price}
                 </Typography>
             </div>
             <div className={styles.counter}>{Counter}</div>

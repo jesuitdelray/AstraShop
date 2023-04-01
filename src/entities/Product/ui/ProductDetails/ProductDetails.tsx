@@ -1,3 +1,4 @@
+import { ReactElement } from "react"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
@@ -8,11 +9,12 @@ import { Product } from "../../model/types"
 interface ProductDetailsProps extends Product {
     isLoading: boolean
     error?: string
-    Basket: any
+    Basket: ReactElement
+    currency?: string
 }
 
 export function ProductDetails(props: ProductDetailsProps) {
-    const { isLoading, error, id, name, price, currency, images, Basket } = props
+    const { isLoading, error, id, name, price, currency = "$", images, Basket } = props
 
     let content
 

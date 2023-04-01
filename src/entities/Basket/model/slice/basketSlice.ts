@@ -13,10 +13,10 @@ const basketSlice = createSlice({
             state.products.push({ ...payload, quantity: 1 })
         },
         removeFromBasket: (state, { payload }) => {
-            state.products = state.products.filter((product: any) => product.id !== payload)
+            state.products = state.products?.filter(product => product.id !== payload)
         },
         incrementInBasket: (state, { payload }) => {
-            state.products = state.products.map((product: any) => {
+            state.products = state.products.map(product => {
                 if (product.id === payload) {
                     return {
                         ...product,
@@ -27,7 +27,7 @@ const basketSlice = createSlice({
             })
         },
         decrementInBasket: (state, { payload }) => {
-            state.products = state.products.map((product: any) => {
+            state.products = state.products.map(product => {
                 if (product.id === payload) {
                     return {
                         ...product,

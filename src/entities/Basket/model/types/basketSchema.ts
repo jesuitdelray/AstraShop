@@ -1,11 +1,9 @@
-/* export interface Product {
-    id: number
-    name: string
-    is_new: boolean
-    images: string[]
-    price: number
-} */
+import { Product } from "entities/Product"
+
+interface BasketProduct extends Product {
+    quantity: number
+}
 
 export interface BasketSchema {
-    products?: any
+    products: BasketProduct[]
 }

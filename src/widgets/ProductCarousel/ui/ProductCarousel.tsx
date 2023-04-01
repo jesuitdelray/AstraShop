@@ -72,8 +72,9 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
                                 const { id, is_new: isNew, name, price, images } = item
                                 return (
                                     <ProductCard
+                                        id={id}
                                         key={id}
-                                        isNew={isNew}
+                                        is_new={isNew}
                                         name={name}
                                         price={price}
                                         images={images}

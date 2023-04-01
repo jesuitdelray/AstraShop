@@ -1,17 +1,9 @@
-interface SubCategoryPageProduct {
-    id?: string
-    is_new?: boolean
-    className?: string
-    images?: string[]
-    name: string
-    price: number
-    currency?: string
-}
+import { Product } from "entities/Product"
 
 export interface SubCategoryPageSchema {
     id: number
     name: string
-    products: SubCategoryPageProduct[]
+    products: Product[]
     isLoading: boolean
     error?: string
 }

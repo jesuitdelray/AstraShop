@@ -49,7 +49,7 @@ export function BasketModalSlider() {
 
                 {basketItemsList.length ? (
                     <>
-                        <BasketItemsList list={basketProducts} />
+                        <BasketItemsList list={basketProducts || []} />
                         <BasketSummary onOrderClick={() => navigate(RoutePath.order)} />
                     </>
                 ) : (

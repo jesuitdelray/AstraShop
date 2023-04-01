@@ -50,11 +50,11 @@ export function ProductDetailsPage() {
                 isLoading={productRequestLoading}
                 error={productRequestError}
                 is_new={prodductIsNew}
-                id={productId}
-                name={productName}
-                price={productPrice}
+                id={productId || 0}
+                name={productName || ""}
+                price={productPrice || 0}
                 currency={productCurrency}
-                images={productImages}
+                images={productImages || []}
                 Basket={
                     <ToggleProductInBasket
                         variant={ToggleProductInBasketVariant.BUTTON}

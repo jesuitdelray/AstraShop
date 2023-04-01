@@ -1,10 +1,10 @@
-import { ProductCardProps } from "entities/Product"
+/* import { Product } from "entities/Product"
 import img from "./keyboard.png"
 
-export const ProductCardList: ProductCardProps[] = [
+export const ProductCardList: Product[] = [
     {
-        id: "1",
-        isNew: true,
+        id: 1,
+        is_new: true,
         price: 1200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -12,7 +12,7 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
     {
-        id: "2",
+        id: 2,
         price: 2200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -20,7 +20,7 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
     {
-        id: "3",
+        id: 3,
         price: 3200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -28,7 +28,7 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
     {
-        id: "4",
+        id: 4,
         price: 4200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -36,8 +36,8 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
     {
-        id: "5",
-        isNew: true,
+        id: 5,
+        is_new: true,
         price: 5200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -45,8 +45,8 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
     {
-        id: "6",
-        isNew: true,
+        id: 6,
+        is_new: true,
         price: 6200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -54,7 +54,7 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
     {
-        id: "7",
+        id: 7,
         price: 7200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -62,7 +62,7 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
     {
-        id: "8",
+        id: 8,
         price: 8200,
         currency: "usd",
         // eslint-disable-next-line max-len
@@ -70,3 +70,4 @@ export const ProductCardList: ProductCardProps[] = [
         images: [img],
     },
 ]
+ */
