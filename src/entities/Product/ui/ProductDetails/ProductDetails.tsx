@@ -2,7 +2,6 @@ import { ReactElement } from "react"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
-import { productImagesList, productDescriptionData } from "./lists"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
 import { Product } from "../../model/types"
 
@@ -14,7 +13,18 @@ interface ProductDetailsProps extends Product {
 }
 
 export function ProductDetails(props: ProductDetailsProps) {
-    const { isLoading, error, id, name, price, currency = "$", images, Basket } = props
+    const {
+        isLoading,
+        error,
+        id,
+        name,
+        price,
+        currency = "$",
+        images,
+        Basket,
+        description,
+        attributes,
+    } = props
 
     let content
 
@@ -46,9 +56,13 @@ export function ProductDetails(props: ProductDetailsProps) {
                             {`${price} ${currency}`}
                         </Typography>
                     </div>
-                    <ProductImages list={productImagesList} className={styles.images} />
+                    <ProductImages list={images} className={styles.images} />
                     <div className={styles.btn}>{Basket}</div>
-                    <ProductInfo className={styles.description} data={productDescriptionData} />
+                    <ProductInfo
+                        className={styles.description}
+                        description={description}
+                        attributes={attributes}
+                    />
                 </>
             )
             break

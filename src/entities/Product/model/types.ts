@@ -4,6 +4,8 @@ export interface Product {
     is_new?: boolean
     images: string[]
     price: number
+    description?: string
+    attributes?: any
     // description
     // attributes
     // parrent id

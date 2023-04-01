@@ -15,7 +15,7 @@ interface ProductCardProps extends Product {
 }
 
 export const ProductCard = (props: ProductCardProps) => {
-    const { is_new: isNew, images, className, name, price, currency, Basket } = props
+    const { id, is_new: isNew, images, className, name, price, currency, Basket } = props
     const productImage = images?.[0] ? images[0] : productPlaceholder
 
     const navigate = useNavigate()
@@ -23,7 +23,7 @@ export const ProductCard = (props: ProductCardProps) => {
     return (
         <div
             className={classNames(styles.container, {}, [className])}
-            onClick={() => navigate(RoutePath.product_details + 9)} // has to be + id
+            onClick={() => navigate(RoutePath.product_details + id)}
         >
             <div className={styles.header}>
                 {!!isNew && <Label value="новый" className={styles.label} />}
