@@ -171,6 +171,7 @@ export interface navigationSubcategory {
 export interface navigationCategory {
     name: string
     id: number
+    icon: string
     categories: navigationSubcategory[]
 }
 

@@ -5,6 +5,11 @@
 .linkContainer {
     position: relative;
 
+    & img {
+        margin-right: 10px;
+        width: 25px;
+    }
+
     .subMenu {
         display: flex;
         flex-direction: column;
