@@ -76,6 +76,7 @@ export function SidebarNavigation() {
                                 onClick={() => setHovered(-1)}
                                 className={styles.link}
                             >
+                                <img src={item.icon} alt="svg" />
                                 {item.name}
                             </AppLink>
                             <SubMenu
