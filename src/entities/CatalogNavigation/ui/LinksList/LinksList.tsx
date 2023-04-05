@@ -2,6 +2,7 @@ import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { useNavigate } from "react-router-dom"
+import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
 import { navigationCategory } from "../../model/types/list"
 import styles from "./LinksList.module.scss"
 
@@ -22,12 +23,14 @@ export function LinksList({ data, className }: LinksListProps) {
             <div className={styles.listContainer}>
                 {categories.map(item => {
                     const { id, name, image } = item
+                    const categoryImage = image || productPlaceholder
+
                     return (
                         <div
                             onClick={() => navigate(RoutePath.sub_category + id)}
                             className={styles.list}
                         >
-                            <img src={image} alt="pic" className={styles.image} />
+                            <img src={categoryImage} alt="pic" className={styles.image} />
                             <AppLink key={id} to={RoutePath.sub_category + id}>
                                 {name}
                             </AppLink>
