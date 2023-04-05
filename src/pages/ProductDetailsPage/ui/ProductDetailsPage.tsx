@@ -9,6 +9,8 @@ import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { fetchProductDetails } from "../model/services/fetchProductDetails/fetchProductDetails"
 import {
+    getProductDetailsAttributes,
+    getProductDetailsDescription,
     getProductDetailsError,
     getProductDetailsId,
     getProductDetailsImages,
@@ -39,7 +41,9 @@ export function ProductDetailsPage() {
     const productPrice = useSelector(getProductDetailsPrice)
     const productCurrency = "$" // to be changed
     const prodductIsNew = false // to be changed
-    const productImages = useSelector(getProductDetailsImages) // to be used
+    const productImages = useSelector(getProductDetailsImages)
+    const productDesc = useSelector(getProductDetailsDescription)
+    const productAttributes = useSelector(getProductDetailsAttributes)
 
     const product = {
         id: productId || 0,
@@ -60,6 +64,8 @@ export function ProductDetailsPage() {
                 price={productPrice || 0}
                 currency={productCurrency}
                 images={productImages || []}
+                description={productDesc}
+                attributes={productAttributes}
                 Basket={
                     <ToggleProductInBasket
                         variant={ToggleProductInBasketVariant.BUTTON}

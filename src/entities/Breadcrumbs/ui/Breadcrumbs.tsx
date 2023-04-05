@@ -20,7 +20,11 @@ export function Breadcrumbs({ breadcrumbsList }: BreadcrumbsProps) {
                     <ChevronBack className={styles.icon} />
                     <div className={styles.crumbs} key={route}>
                         <AppLink
-                            to={RoutePath[route]}
+                            to={
+                                route === AppRoutes.CATALOG
+                                    ? RoutePath[AppRoutes.CATALOG]
+                                    : RoutePath[route] + 32
+                            }
                             className={classNames(styles.link, {
                                 [styles.active]: index === breadcrumbsList.length - 1,
                             })}
