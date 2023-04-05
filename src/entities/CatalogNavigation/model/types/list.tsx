@@ -165,6 +165,7 @@ export const sidebarNavigationList: sidebarNavigationItemsType[] = [
 export interface navigationSubcategory {
     name: string
     id: number
+    image: string
     parent_category_id: number
 }
 
