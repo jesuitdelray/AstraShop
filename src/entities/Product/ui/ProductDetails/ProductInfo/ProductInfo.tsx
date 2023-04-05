@@ -3,8 +3,10 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { v4 as uuid } from "uuid"
 import styles from "./ProductInfo.module.scss"
+import { ProductAttributes } from "../../../model/types"
+import { convertDataToObjectArray } from "../../../lib/convertDataToObjectArray"
 
-interface ArticleData {
+export interface ArticleData {
     title: string
     text: string[] | string
 }
@@ -19,7 +21,7 @@ function Article({ data }: ArticleProps) {
     const content = useMemo(() => {
         switch (true) {
             case !!text && Array.isArray(text) && text.length > 1:
-                // @ts-ignore
+                if (!Array.isArray(text)) return null
                 return text?.map(item => (
                     <Typography
                         key={uuid()}
@@ -51,29 +53,18 @@ function Article({ data }: ArticleProps) {
 interface ProductInfoProps {
     className?: string
     description?: string
-    attributes: any
+    attributes?: ProductAttributes
 }
 
 export function ProductInfo({ className, description, attributes }: ProductInfoProps) {
-    function convertDataToObjectArray(data: any) {
-        const objectArray: any = []
-
-        Object.keys(data).forEach(key => {
-            const title = key.charAt(0).toUpperCase() + key.slice(1)
-            const text = Array.isArray(data[key]) ? data[key] : String(data[key])
-
-            objectArray.push({ title, text })
-        })
-
-        return objectArray
-    }
+    if (!description || !attributes) return null
 
     const data = [{ title: "Описание", text: description }, ...convertDataToObjectArray(attributes)]
 
     return (
         <div className={classNames(styles.info, {}, [className])}>
-            {data.map((item: any) => (
-                <Article key={item.id} data={item} />
+            {data?.map(item => (
+                <Article key={uuid()} data={item} />
             ))}
         </div>
     )

@@ -1,3 +1,13 @@
+export interface ProductAttributes {
+    [key: string]: string | string[]
+}
+
+interface ProductParentCategory {
+    id: number
+    parent_category_id: boolean
+    name: string
+}
+
 export interface Product {
     id: number
     name: string
@@ -5,8 +15,7 @@ export interface Product {
     images: string[]
     price: number
     description?: string
-    attributes?: any
-    // description
-    // attributes
-    // parrent id
+    attributes?: ProductAttributes
+    parent_category_id?: number
+    parentCategories?: ProductParentCategory[]
 }
