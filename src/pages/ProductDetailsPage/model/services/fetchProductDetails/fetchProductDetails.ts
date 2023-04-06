@@ -17,7 +17,11 @@ export const fetchProductDetails = createAsyncThunk<
         }
 
         return response.data
-    } catch (error) {
-        return rejectWithValue("error")
+    } catch (error: any) {
+        if (error.response?.status === 404) {
+            return rejectWithValue("Product not found")
+        }
+
+        return rejectWithValue("unexpected error")
     }
 })
