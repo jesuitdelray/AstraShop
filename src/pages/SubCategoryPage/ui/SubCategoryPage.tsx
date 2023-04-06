@@ -29,15 +29,20 @@ export function SubCategoryPage() {
     const dispatch = useDispatch()
     const sortOrderPattern = useSelector(getSortOrder)
 
-    useEffect(() => {
+    const fetchSortedData = useCallback(() => {
         dispatch(fetchCategoryProducts(id))
     }, [dispatch, id])
+
+    useEffect(() => {
+        fetchSortedData()
+    }, [fetchSortedData])
 
     const sortClickHandler = useCallback(
         (pattern: sortProductsOrderType) => {
             dispatch(subcategoryPageActions.setSortOrder(pattern))
+            fetchSortedData()
         },
-        [dispatch]
+        [dispatch, fetchSortedData]
     )
 
     const categoryName = useSelector(getSubCategoryName)

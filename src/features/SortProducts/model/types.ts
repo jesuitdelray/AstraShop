@@ -1,1 +1,5 @@
-export type sortProductsOrderType = "asc" | "desc" | ""
+export enum sortProductsOrderType {
+    ASC = "asc",
+    DESC = "desc",
+    NONE = "",
+}

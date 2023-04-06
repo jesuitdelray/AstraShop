@@ -20,18 +20,22 @@ export function SortProducts(props: SortProductsProps) {
             <Button
                 className={styles.btn}
                 variant={
-                    sortOrderPattern === "asc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
+                    sortOrderPattern === sortProductsOrderType.ASC
+                        ? ButtonVariant.FILLED_RED
+                        : ButtonVariant.OUTLINE
                 }
-                onClick={() => onClick?.("asc")}
+                onClick={() => onClick?.(sortProductsOrderType.ASC)}
             >
                 По возрастанию
             </Button>
             <Button
                 className={styles.btn}
                 variant={
-                    sortOrderPattern === "desc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
+                    sortOrderPattern === sortProductsOrderType.DESC
+                        ? ButtonVariant.FILLED_RED
+                        : ButtonVariant.OUTLINE
                 }
-                onClick={() => onClick?.("desc")}
+                onClick={() => onClick?.(sortProductsOrderType.DESC)}
             >
                 По убыванию
             </Button>

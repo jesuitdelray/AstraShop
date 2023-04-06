@@ -1,12 +1,12 @@
 import { getModalsCurrent, modalsActions, ModalSlider, ModalsList } from "entities/ModalSlider"
 import { useDispatch, useSelector } from "react-redux"
-import { SortProducts } from "features/SortProducts"
+import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button } from "shared/ui/Button/Button"
 import styles from "./SortModalSlider.module.scss"
 
 interface SortModalSliderProps {
-    sortOrderPattern: "asc" | "desc" | ""
-    onClick: (pattern: "asc" | "desc" | "") => void
+    sortOrderPattern: sortProductsOrderType
+    onClick: (pattern: sortProductsOrderType) => void
 }
 
 export function SortModalSlider({ sortOrderPattern, onClick }: SortModalSliderProps) {
