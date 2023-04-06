@@ -1,9 +1,10 @@
 import { Breadcrumbs } from "entities/Breadcrumbs"
-import { getNavigationTree, LinksList } from "entities/CatalogNavigation"
+import { getNavigationTree } from "entities/CatalogNavigation"
 import { useMemo } from "react"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { AppRoutes } from "shared/config/routeConfig/routeConfig"
+import { CategoryLinks } from "./CategoryLinks/CategoryLinks"
 import styles from "./CategoryPage.module.scss"
 
 export function CategoryPage() {
@@ -21,7 +22,7 @@ export function CategoryPage() {
 
         const category = navigationTree.filter(item => item.id.toString() === id)[0]
 
-        return <LinksList data={category} />
+        return <CategoryLinks data={category} />
     }, [id, navigationTree])
 
     return (
