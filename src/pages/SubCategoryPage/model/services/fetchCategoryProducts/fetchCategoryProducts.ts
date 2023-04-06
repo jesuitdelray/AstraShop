@@ -19,7 +19,7 @@ export const fetchCategoryProducts = createAsyncThunk<
         return response.data
     } catch (error: any) {
         if (error.response?.status === 404) {
-            return rejectWithValue("Page not found")
+            return rejectWithValue("Category not found")
         }
 
         return rejectWithValue("unexpected error")
