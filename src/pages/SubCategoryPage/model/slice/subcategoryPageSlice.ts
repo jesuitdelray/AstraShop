@@ -6,6 +6,7 @@ const initialState: SubCategoryPageSchema = {
     products: [],
     isLoading: false,
     error: undefined,
+    sortOrder: "",
     id: 0,
     name: "",
 }
@@ -13,7 +14,11 @@ const initialState: SubCategoryPageSchema = {
 const subcategoryPageSlice = createSlice({
     name: "subcategoryPage",
     initialState,
-    reducers: {},
+    reducers: {
+        setSortOrder: (state, action) => {
+            state.sortOrder = action.payload
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchCategoryProducts.pending, (state, action) => {

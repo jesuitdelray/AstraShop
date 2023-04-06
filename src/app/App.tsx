@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Header } from "widgets/Header"
 import { Footer } from "widgets/Footer"
-import { Modals } from "processes/Modals"
 import { basketActions } from "entities/Basket"
 import { Sidebar } from "widgets/Sidebar"
+import { BasketModalSlider } from "widgets/BasketModalSlider"
+import { BurgerMenu } from "widgets/BurgerMenu"
 import { AppRouter } from "./providers/router"
 
 function App() {
@@ -18,10 +19,9 @@ function App() {
     return (
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                <Modals />
                 <Sidebar />
                 <div className="content-page">
-                    <Header />
+                    <Header BasketModal={<BasketModalSlider />} BurgerModal={<BurgerMenu />} />
                     <AppRouter />
                     <Footer />
                 </div>

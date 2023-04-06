@@ -6,28 +6,42 @@ import { SortProducts } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
+import { FiltersModalSlider } from "widgets/FiltersModalSlider"
+import { SortModalSlider } from "widgets/SortModalSlider"
 import { ProductCard } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
 import {
+    getSortOrder,
     getSubCategoryError,
     getSubCategoryLoading,
     getSubCategoryName,
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
+import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
+import { sortOrder } from "../model/types/subcategoryPageSchema"
 
 export function SubCategoryPage() {
-    const [sortingPattern, setSortingPattern] = useState("")
+    /* const [sortingPattern, setSortingPattern] = useState("") */
     const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.SUB_CATEGORY]
     const { id } = useParams()
 
     const dispatch = useDispatch()
+    const sortOrderPattern = useSelector(getSortOrder)
 
     useEffect(() => {
         dispatch(fetchCategoryProducts(id))
     }, [dispatch, id])
+
+    const sortClickHandler = useMemo(
+        // @ts-ignore
+        (pattern: sortOrder) => {
+            dispatch(subcategoryPageActions.setSortOrder(pattern))
+        },
+        [dispatch]
+    )
 
     const categoryName = useSelector(getSubCategoryName)
     const categoryProducts = useSelector(getSubCategoryProducts)
@@ -49,8 +63,8 @@ export function SubCategoryPage() {
                             {categoryName}
                         </Typography>
                         <SortProducts
-                            sortingPattern={sortingPattern}
-                            setSortingPattern={setSortingPattern}
+                            onClick={sortClickHandler}
+                            sortOrderPattern={sortOrderPattern}
                             className={styles.desktopFilters}
                         />
                         <ProductFilters className={styles.mobileFilters} />
@@ -90,13 +104,18 @@ export function SubCategoryPage() {
         categoryProducts,
         categoryRequestLoading,
         categoryRequestError,
-        sortingPattern,
+        sortOrderPattern,
+        sortClickHandler,
     ])
 
     return (
-        <div className={styles.wrapper}>
-            <Breadcrumbs breadcrumbsList={breadcrumbsList} />
-            {content}
-        </div>
+        <>
+            <FiltersModalSlider />
+            <SortModalSlider />
+            <div className={styles.wrapper}>
+                <Breadcrumbs breadcrumbsList={breadcrumbsList} />
+                {content}
+            </div>
+        </>
     )
 }

@@ -1,16 +1,17 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
+import { sortOrder } from "pages/SubCategoryPage"
 import styles from "./SortProducts.module.scss"
 
 interface SortProductsProps {
-    setSortingPattern: (val: string) => void
-    sortingPattern: string
+    sortOrderPattern?: sortOrder
+    onClick?: any
     className?: string
 }
 
 export function SortProducts(props: SortProductsProps) {
-    const { sortingPattern, setSortingPattern, className } = props
+    const { className, sortOrderPattern, onClick } = props
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
@@ -18,18 +19,18 @@ export function SortProducts(props: SortProductsProps) {
             <Button
                 className={styles.btn}
                 variant={
-                    sortingPattern === "asc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
+                    sortOrderPattern === "asc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
                 }
-                onClick={() => setSortingPattern("asc")}
+                onClick={() => onClick?.("asc")}
             >
                 По возрастанию
             </Button>
             <Button
                 className={styles.btn}
                 variant={
-                    sortingPattern === "desc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
+                    sortOrderPattern === "desc" ? ButtonVariant.FILLED_RED : ButtonVariant.OUTLINE
                 }
-                onClick={() => setSortingPattern("desc")}
+                onClick={() => onClick?.("desc")}
             >
                 По убыванию
             </Button>

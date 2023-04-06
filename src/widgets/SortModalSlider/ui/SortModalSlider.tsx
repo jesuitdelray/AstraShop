@@ -7,7 +7,7 @@ import styles from "./SortModalSlider.module.scss"
 
 export function SortModalSlider() {
     const currentModal = useSelector(getModalsCurrent)
-    const [sortingPattern, setSortingPattern] = useState("")
+    /* const [sortingPattern, setSortingPattern] = useState("") */
 
     const dispatch = useDispatch()
 
@@ -19,8 +19,8 @@ export function SortModalSlider() {
         >
             <div className={styles.container}>
                 <SortProducts
-                    sortingPattern={sortingPattern}
-                    setSortingPattern={setSortingPattern}
+                    /* sortingPattern={sortingPattern}
+                    setSortingPattern={setSortingPattern} */
                     className={styles.desktopFilters}
                 />
                 <Button onClick={() => dispatch(modalsActions.close())}>Применить</Button>
