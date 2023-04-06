@@ -1,7 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
-
 import styles from "./SortProducts.module.scss"
 import { sortProductsOrderType } from "../model/types"
 
