@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo } from "react"
 import { useParams } from "react-router-dom"
 import { Breadcrumbs } from "entities/Breadcrumbs"
 import { AppRoutes } from "shared/config/routeConfig/routeConfig"
-import { SortProducts } from "features/SortProducts"
+import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
@@ -21,10 +21,8 @@ import {
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
-import { sortOrder } from "../model/types/subcategoryPageSchema"
 
 export function SubCategoryPage() {
-    /* const [sortingPattern, setSortingPattern] = useState("") */
     const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.SUB_CATEGORY]
     const { id } = useParams()
 
@@ -35,9 +33,8 @@ export function SubCategoryPage() {
         dispatch(fetchCategoryProducts(id))
     }, [dispatch, id])
 
-    const sortClickHandler = useMemo(
-        // @ts-ignore
-        (pattern: sortOrder) => {
+    const sortClickHandler = useCallback(
+        (pattern: sortProductsOrderType) => {
             dispatch(subcategoryPageActions.setSortOrder(pattern))
         },
         [dispatch]
@@ -111,7 +108,7 @@ export function SubCategoryPage() {
     return (
         <>
             <FiltersModalSlider />
-            <SortModalSlider />
+            <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
             <div className={styles.wrapper}>
                 <Breadcrumbs breadcrumbsList={breadcrumbsList} />
                 {content}

@@ -1,13 +1,16 @@
 import { getModalsCurrent, modalsActions, ModalSlider, ModalsList } from "entities/ModalSlider"
-import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { SortProducts } from "features/SortProducts"
 import { Button } from "shared/ui/Button/Button"
 import styles from "./SortModalSlider.module.scss"
 
-export function SortModalSlider() {
+interface SortModalSliderProps {
+    sortOrderPattern: "asc" | "desc" | ""
+    onClick: (pattern: "asc" | "desc" | "") => void
+}
+
+export function SortModalSlider({ sortOrderPattern, onClick }: SortModalSliderProps) {
     const currentModal = useSelector(getModalsCurrent)
-    /* const [sortingPattern, setSortingPattern] = useState("") */
 
     const dispatch = useDispatch()
 
@@ -19,8 +22,8 @@ export function SortModalSlider() {
         >
             <div className={styles.container}>
                 <SortProducts
-                    /* sortingPattern={sortingPattern}
-                    setSortingPattern={setSortingPattern} */
+                    sortOrderPattern={sortOrderPattern}
+                    onClick={onClick}
                     className={styles.desktopFilters}
                 />
                 <Button onClick={() => dispatch(modalsActions.close())}>Применить</Button>

@@ -1,12 +1,11 @@
 import { Product } from "entities/Product"
-
-export type sortOrder = "" | "asc" | "desc"
+import { sortProductsOrderType } from "features/SortProducts"
 
 export interface SubCategoryPageSchema {
     id: number
     name: string
     products: Product[]
-    sortOrder: sortOrder
+    sortOrder: sortProductsOrderType
     isLoading: boolean
     error?: string
 }

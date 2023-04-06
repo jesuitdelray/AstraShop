@@ -1,12 +1,13 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
-import { sortOrder } from "pages/SubCategoryPage"
+
 import styles from "./SortProducts.module.scss"
+import { sortProductsOrderType } from "../model/types"
 
 interface SortProductsProps {
-    sortOrderPattern?: sortOrder
-    onClick?: any
+    sortOrderPattern: sortProductsOrderType
+    onClick: (pattern: sortProductsOrderType) => void
     className?: string
 }
 
