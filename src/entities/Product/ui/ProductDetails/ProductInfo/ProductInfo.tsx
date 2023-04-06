@@ -59,7 +59,9 @@ interface ProductInfoProps {
 export function ProductInfo({ className, description, attributes }: ProductInfoProps) {
     if (!description || !attributes) return null
 
-    const data = [{ title: "Описание", text: description }, ...convertDataToObjectArray(attributes)]
+    const data = [
+        { title: "Описание", text: description } /* ...convertDataToObjectArray(attributes) */,
+    ]
 
     return (
         <div className={classNames(styles.info, {}, [className])}>
