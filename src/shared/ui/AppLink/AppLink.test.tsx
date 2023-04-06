@@ -1,59 +1,42 @@
-import { fireEvent, render, screen } from "@testing-library/react"
-import { AppRouter } from "app/providers/router"
+import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { MemoryRouter, Route, Router, Routes } from "react-router-dom"
 import { AppLink } from "./AppLink"
 
 describe("Applink", () => {
-    test("Applink test", () => {
+    test("Applink render", () => {
         render(
             <MemoryRouter>
-                <AppLink to="/">Applink test</AppLink>
+                <AppLink to="/">Test</AppLink>
             </MemoryRouter>
         )
-        expect(screen.getByText("Applink test")).toBeInTheDocument()
+        const appLink = screen.getByTestId("AppLink")
+        expect(appLink).toBeInTheDocument()
     })
-    test("Applink test on click", () => {
-        const onClick = jest.fn()
+
+    test("Applink with className", () => {
         render(
             <MemoryRouter>
-                <AppLink to="/about" onClick={onClick}>
-                    Applink test
+                <AppLink to="/" className="testClassName">
+                    Test
                 </AppLink>
-                <Routes>
-                    <Route path="/" element={<></>} />
-                    <Route path="/about" element={<></>} />
-                </Routes>
             </MemoryRouter>
         )
-        fireEvent.click(screen.getByText("Applink test"))
-        expect(onClick).toHaveBeenCalled()
-    })
-})
-
-test("clicking filter links updates product query params", () => {
-    let testHistory, testLocation
-    render(
-        <MemoryRouter initialEntries={["/my/initial/route"]}>
-            <App />
-            <Route
-                path="*"
-                render={({ history, location }) => {
-                    testHistory = history
-                    testLocation = location
-                    return null
-                }}
-            />
-        </MemoryRouter>,
-        node
-    )
-
-    act(() => {
-        // example: click a <Link> to /products?id=1234
+        const appLink = screen.getByTestId("AppLink")
+        expect(appLink).toHaveClass("testClassName")
     })
 
-    // assert about url
-    expect(testLocation.pathname).toBe("/products")
-    const searchParams = new URLSearchParams(testLocation.search)
-    expect(searchParams.has("id")).toBe(true)
-    expect(searchParams.get("id")).toEqual("1234")
+    test("Applink test onСlick", () => {
+        render(
+            <MemoryRouter initialEntries={["/"]}>
+                <Routes>
+                    <Route path="/about" element={<div>TEST</div>} />
+                </Routes>
+                <AppLink to="/about">About</AppLink>
+            </MemoryRouter>
+        )
+        const appLink = screen.getByTestId("AppLink")
+        userEvent.click(appLink)
+        expect(screen.getByText("TEST")).toBeInTheDocument()
+    })
 })
