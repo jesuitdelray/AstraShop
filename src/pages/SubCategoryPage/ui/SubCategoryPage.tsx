@@ -55,7 +55,7 @@ export function SubCategoryPage() {
             case categoryRequestLoading:
                 return <div>Loading...</div>
             case !!categoryRequestError:
-                return <div>Error</div>
+                return <div>{categoryRequestError}</div>
             case categoryProducts?.length === 0:
                 return <div>No Products</div>
             case categoryProducts?.length > 0 && !!categoryName:
@@ -99,7 +99,7 @@ export function SubCategoryPage() {
                     </>
                 )
             default:
-                return <div>Error</div>
+                return <div>Unexpected Error</div>
         }
     }, [
         categoryName,

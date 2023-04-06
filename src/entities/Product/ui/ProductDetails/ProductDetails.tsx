@@ -33,7 +33,7 @@ export function ProductDetails(props: ProductDetailsProps) {
             content = <div>Loading...</div>
             break
         case !!error:
-            content = <div>Error</div>
+            content = <div>{error}</div>
             break
         case !id:
             content = <div>Product doesn t exist</div>
@@ -67,7 +67,7 @@ export function ProductDetails(props: ProductDetailsProps) {
             )
             break
         default:
-            content = <div>Error</div>
+            content = <div>Unexpected error</div>
     }
 
     return <div className={styles.container}>{content}</div>
