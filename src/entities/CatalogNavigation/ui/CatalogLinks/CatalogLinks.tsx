@@ -1,11 +1,19 @@
-import { getNavigationTree, navigationTreeType } from "entities/CatalogNavigation"
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import styles from "./CatalogLinks.module.scss"
+import { navigationTreeType } from "../../model/types/list"
+import { getNavigationTree } from "../../model/selectors/sidebarNavigationSelectors"
+import { fetchNavigationTree } from "../../model/services/fetchNavigationTree/fetchNavigationTree"
 
 export function CatalogLinks() {
+    const dispatch = useDispatch()
     const navigationTree: navigationTreeType = useSelector(getNavigationTree)
+
+    useEffect(() => {
+        dispatch(fetchNavigationTree())
+    }, [dispatch])
 
     return (
         <div className={styles.container}>

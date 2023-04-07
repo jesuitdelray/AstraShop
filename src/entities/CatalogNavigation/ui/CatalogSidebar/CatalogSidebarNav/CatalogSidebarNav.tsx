@@ -1,12 +1,12 @@
-import { getNavigationTree } from "entities/CatalogNavigation/model/selectors/sidebarNavigationSelectors"
-import { fetchNavigationTree } from "entities/CatalogNavigation/model/services/fetchNavigationTree/fetchNavigationTree"
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
-import styles from "./Navigation.module.scss"
+import styles from "./CatalogSidebarNav.module.scss"
 import { navigationSubcategory, navigationTreeType } from "../../../model/types/list"
+import { fetchNavigationTree } from "../../../model/services/fetchNavigationTree/fetchNavigationTree"
+import { getNavigationTree } from "../../../model/selectors/sidebarNavigationSelectors"
 
 interface SubMenuProps {
     list: navigationSubcategory[]
@@ -31,7 +31,7 @@ function SubMenu({ list, isOpen, onLinkClick }: SubMenuProps) {
     )
 }
 
-export function Navigation() {
+export function CatalogSidebarNav() {
     const [hovered, setHovered] = useState(-1)
 
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)

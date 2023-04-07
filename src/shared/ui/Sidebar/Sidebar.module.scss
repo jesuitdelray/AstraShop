@@ -15,16 +15,7 @@
     .container {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         height: 100%;
-    }
-
-    .logo {
-        margin-bottom: 50px;
-    }
-
-    .copyright {
-        margin-top: auto;
-        margin-bottom: 50px;
     }
 }
