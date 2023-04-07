@@ -55,8 +55,10 @@ export function CatalogSidebarNav() {
     const navigationTree: navigationTreeType = useSelector(getNavigationTree)
 
     useEffect(() => {
-        dispatch(fetchNavigationTree())
-    }, [dispatch])
+        if (!navigationTree.length) {
+            dispatch(fetchNavigationTree())
+        }
+    }, [dispatch, navigationTree])
 
     return (
         <>
