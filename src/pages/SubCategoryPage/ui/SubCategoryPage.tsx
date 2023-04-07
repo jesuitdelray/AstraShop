@@ -111,13 +111,13 @@ export function SubCategoryPage() {
     ])
 
     return (
-        <>
-            <FilterProducts />
+        <div className={styles.wrapper}>
+            <FilterProducts className={styles.sidebar} />
             <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
-            <div className={styles.wrapper}>
+            <div className={styles.container}>
                 <Breadcrumbs breadcrumbsList={breadcrumbsList} />
                 {content}
             </div>
-        </>
+        </div>
     )
 }

@@ -14,7 +14,7 @@ interface FilterProductsProps {
 
 export function FilterProducts({ className }: FilterProductsProps) {
     const content = (
-        <div className={classNames("", {}, [className])}>
+        <div>
             <PriceFilter />
             {list.map(item => (
                 <CheckboxGroup key={item.id} list={item.list} title={item.title} />
@@ -34,7 +34,7 @@ export function FilterProducts({ className }: FilterProductsProps) {
             <ModalSlider
                 isOpen={currentModal === ModalsList.FILTERS}
                 onClose={onClose}
-                className={styles.modal}
+                className={classNames(styles.modal, {}, [className])}
             >
                 {content}
                 <Button variant={ButtonVariant.FILLED_RED} className={styles.btn} onClick={onClose}>
@@ -42,7 +42,7 @@ export function FilterProducts({ className }: FilterProductsProps) {
                 </Button>
             </ModalSlider>
 
-            <Sidebar>{content}</Sidebar>
+            <Sidebar className={classNames("", {}, [className])}>{content}</Sidebar>
         </>
     )
 }
