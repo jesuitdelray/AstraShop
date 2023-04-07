@@ -1,4 +1,4 @@
-import { SidebarNavigation } from "entities/CatalogNavigation"
+/* import { SidebarNavigation } from "entities/CatalogNavigation"
 import { Copyright } from "entities/Copyright/Copyright"
 import { Logo } from "entities/Logo/Logo"
 import { ProductFilters } from "features/ProductFilters"
@@ -19,3 +19,4 @@ export function Sidebar() {
         </div>
     )
 }
+ */

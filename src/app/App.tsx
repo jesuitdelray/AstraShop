@@ -4,9 +4,9 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { Header } from "widgets/Header"
 import { Footer } from "widgets/Footer"
 import { basketActions } from "entities/Basket"
-import { Sidebar } from "widgets/Sidebar"
 import { BasketModalSlider } from "widgets/BasketModalSlider"
 import { BurgerMenu } from "widgets/BurgerMenu"
+import { CatalogSidebar } from "entities/CatalogNavigation"
 import { AppRouter } from "./providers/router"
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
     return (
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                <Sidebar />
+                <CatalogSidebar />
                 <div className="content-page">
                     <Header BasketModal={<BasketModalSlider />} BurgerModal={<BurgerMenu />} />
                     <AppRouter />
