@@ -19,6 +19,7 @@
 
                 &.active {
                     color: var(--color-light-gray);
+                    pointer-events: none;
                 }
             }
         }

@@ -17,6 +17,7 @@ import {
     getProductDetailsLoading,
     getProductDetailsName,
     getProductDetailsPrice,
+    getProductParentId,
 } from "../model/selectors/productDetailsSelectors"
 
 export function ProductDetailsPage() {
@@ -44,6 +45,7 @@ export function ProductDetailsPage() {
     const productImages = useSelector(getProductDetailsImages)
     const productDesc = useSelector(getProductDetailsDescription)
     const productAttributes = useSelector(getProductDetailsAttributes)
+    const productParentId = useSelector(getProductParentId)
 
     const product = {
         id: productId || 0,
@@ -54,7 +56,7 @@ export function ProductDetailsPage() {
 
     return (
         <div>
-            <Breadcrumbs breadcrumbsList={breadcrumbsList} />
+            <Breadcrumbs breadcrumbsList={breadcrumbsList} parentId={productParentId} />
             <ProductDetails
                 isLoading={productRequestLoading}
                 error={productRequestError}
