@@ -5,7 +5,7 @@ import { filterListsItemType } from "../../model/lists"
 
 interface CheckboxGroupProps {
     title: string
-    list: filterListsItemType[]
+    list?: any[] /* filterListsItemType[] */
 }
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
@@ -15,21 +15,21 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
         <div className={styles.container}>
             <Typography className={styles.title}>{title}</Typography>
             <div className={styles.list}>
-                {list.map(item => {
-                    const { label, id, products, isChecked } = item
+                {list?.map(item => {
+                    const { name, id, products, isChecked } = item
                     return (
                         <div className={styles.item} key={id}>
                             <Checkbox
-                                label={label}
+                                label={name}
                                 id={id}
                                 checked={isChecked || false}
                                 onChange={() => null}
                             />
-                            {!isChecked && (
+                            {/* {!isChecked && (
                                 <Typography color={TypographyColor.DARK_GRAY}>
                                     {products}
                                 </Typography>
-                            )}
+                            )} */}
                         </div>
                     )
                 })}

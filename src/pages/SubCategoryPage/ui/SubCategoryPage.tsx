@@ -15,12 +15,14 @@ import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
 import {
     getSortOrder,
-    getSubCategoryError,
-    getSubCategoryLoading,
+    getSubCategoryErrorProducts,
+    getSubCategoryFilters,
+    getSubCategoryLoadingProducts,
     getSubCategoryName,
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
+import { fetchCategoryFilters } from "../model/services/fetchCategoryFilters/fetchCategoryFilters"
 
 export function SubCategoryPage() {
     const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.SUB_CATEGORY]
@@ -31,6 +33,7 @@ export function SubCategoryPage() {
 
     const fetchSortedData = useCallback(() => {
         dispatch(fetchCategoryProducts(id))
+        dispatch(fetchCategoryFilters(id))
     }, [dispatch, id])
 
     useEffect(() => {
@@ -47,8 +50,10 @@ export function SubCategoryPage() {
 
     const categoryName = useSelector(getSubCategoryName)
     const categoryProducts = useSelector(getSubCategoryProducts)
-    const categoryRequestLoading = useSelector(getSubCategoryLoading)
-    const categoryRequestError = useSelector(getSubCategoryError)
+    const categoryRequestLoading = useSelector(getSubCategoryLoadingProducts)
+    const categoryRequestError = useSelector(getSubCategoryErrorProducts)
+
+    const categoryFilters = useSelector(getSubCategoryFilters)
 
     const content = useMemo(() => {
         switch (true) {
@@ -112,7 +117,7 @@ export function SubCategoryPage() {
 
     return (
         <div className={styles.wrapper}>
-            <FilterProducts className={styles.sidebar} />
+            <FilterProducts className={styles.sidebar} data={categoryFilters} />
             <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
             <div className={styles.container}>
                 <Breadcrumbs breadcrumbsList={breadcrumbsList} />

@@ -5,7 +5,10 @@ export interface SubCategoryPageSchema {
     id: number
     name: string
     products: Product[]
+    filters: any[]
     sortOrder: sortProductsOrderType
-    isLoading: boolean
-    error?: string
+    isLoadingProducts: boolean
+    isLoadingFilters: boolean
+    errorProducts?: string
+    errorFilters?: string
 }

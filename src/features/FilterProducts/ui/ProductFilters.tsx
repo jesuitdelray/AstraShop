@@ -10,15 +10,25 @@ import styles from "./ProductFilters.module.scss"
 
 interface FilterProductsProps {
     className?: string
+    data: any[]
 }
 
-export function FilterProducts({ className }: FilterProductsProps) {
+export function FilterProducts({ className, data }: FilterProductsProps) {
     const content = (
         <div>
-            <PriceFilter />
+            {data.map(item => {
+                if (item.type === "price_range") {
+                    return <PriceFilter />
+                }
+                if (item.type === "attributes") {
+                    return <CheckboxGroup key={item.id} list={item.info} title={item.name} />
+                }
+                return null
+            })}
+            {/* <PriceFilter />
             {list.map(item => (
                 <CheckboxGroup key={item.id} list={item.list} title={item.title} />
-            ))}
+            ))} */}
         </div>
     )
 
