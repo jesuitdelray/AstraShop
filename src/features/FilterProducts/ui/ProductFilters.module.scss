@@ -1,4 +1,4 @@
-.wrapper {
+.modal {
     > div {
         padding: 32px;
     }
@@ -9,7 +9,7 @@
 }
 
 @media (min-width: 1200px) {
-    .wrapper {
+    .modal {
         display: none;
     }
 }

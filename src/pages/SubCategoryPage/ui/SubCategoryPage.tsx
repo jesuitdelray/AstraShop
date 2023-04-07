@@ -6,10 +6,10 @@ import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
-import { FiltersModalSlider } from "widgets/FiltersModalSlider"
 import { SortModalSlider } from "widgets/SortModalSlider"
 import { ProductCard } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
+import { FilterProducts } from "features/FilterProducts"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
@@ -112,7 +112,7 @@ export function SubCategoryPage() {
 
     return (
         <>
-            <FiltersModalSlider />
+            <FilterProducts />
             <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
             <div className={styles.wrapper}>
                 <Breadcrumbs breadcrumbsList={breadcrumbsList} />
