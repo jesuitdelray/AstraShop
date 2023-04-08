@@ -4,6 +4,7 @@ import { CatalogNavigationSchema } from "../types/catalogNavigationSchema"
 
 const initialState: CatalogNavigationSchema = {
     tree: [],
+    currentTree: [],
     isLoading: false,
     error: undefined,
 }
@@ -11,7 +12,11 @@ const initialState: CatalogNavigationSchema = {
 const catalogNavigationSlice = createSlice({
     name: "catalogNavigation",
     initialState,
-    reducers: {},
+    reducers: {
+        setCurrentTree: (state, action) => {
+            state.currentTree = action.payload
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchNavigationTree.pending, (state, action) => {

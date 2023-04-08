@@ -7,6 +7,7 @@ import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
+import { catalogNavigationActions } from "entities/CatalogNavigation/model/slice/catalogNavigationSlice"
 import { fetchProductDetails } from "../model/services/fetchProductDetails/fetchProductDetails"
 import {
     getProductDetailsAttributes,
@@ -17,17 +18,10 @@ import {
     getProductDetailsLoading,
     getProductDetailsName,
     getProductDetailsPrice,
-    getProductParentId,
+    getProductParents,
 } from "../model/selectors/productDetailsSelectors"
 
 export function ProductDetailsPage() {
-    const breadcrumbsList = [
-        AppRoutes.CATALOG,
-        AppRoutes.CATEGORY,
-        AppRoutes.SUB_CATEGORY,
-        AppRoutes.PRODUCT_DETAILS,
-    ]
-
     const dispatch = useDispatch()
     const { id } = useParams()
 
@@ -45,7 +39,28 @@ export function ProductDetailsPage() {
     const productImages = useSelector(getProductDetailsImages)
     const productDesc = useSelector(getProductDetailsDescription)
     const productAttributes = useSelector(getProductDetailsAttributes)
-    const productParentId = useSelector(getProductParentId)
+
+    const productParentsData = useSelector(getProductParents)
+
+    useEffect(() => {
+        const parents =
+            productParentsData?.map(parent => ({
+                id: parent.id,
+                name: parent.name,
+                type: parent.parent_category_id === null ? "category" : "sub_category",
+            })) || []
+
+        dispatch(
+            catalogNavigationActions.setCurrentTree([
+                ...parents,
+                {
+                    id: id !== undefined ? +id : 0,
+                    name: productName,
+                    type: "product",
+                },
+            ])
+        )
+    }, [id, dispatch, productName, productParentsData])
 
     const product = {
         id: productId || 0,
@@ -56,7 +71,7 @@ export function ProductDetailsPage() {
 
     return (
         <div>
-            <Breadcrumbs breadcrumbsList={breadcrumbsList} parentId={productParentId} />
+            <Breadcrumbs />
             <ProductDetails
                 isLoading={productRequestLoading}
                 error={productRequestError}

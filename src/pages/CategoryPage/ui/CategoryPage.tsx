@@ -1,7 +1,8 @@
 import { Breadcrumbs } from "entities/Breadcrumbs"
 import { getNavigationTree } from "entities/CatalogNavigation"
-import { useMemo } from "react"
-import { useSelector } from "react-redux"
+import { useCallback, useEffect, useMemo } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { catalogNavigationActions } from "entities/CatalogNavigation/model/slice/catalogNavigationSlice"
 import { useParams } from "react-router-dom"
 import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { CategoryLinks } from "./CategoryLinks/CategoryLinks"
@@ -12,6 +13,21 @@ export function CategoryPage() {
 
     const { id } = useParams()
     const navigationTree = useSelector(getNavigationTree)
+
+    const getCategoryName = useCallback(
+        () => navigationTree.filter(item => id && +id === item.id)?.[0]?.name || "Category",
+        [id, navigationTree]
+    )
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(
+            catalogNavigationActions.setCurrentTree([
+                { id: id !== undefined ? +id : 0, name: getCategoryName(), type: "category" },
+            ])
+        )
+    }, [getCategoryName, dispatch, id])
 
     const content = useMemo(() => {
         if (!navigationTree[0]) return null
@@ -27,7 +43,7 @@ export function CategoryPage() {
 
     return (
         <div className={styles.wrapper}>
-            <Breadcrumbs breadcrumbsList={breadcrumbsList} />
+            <Breadcrumbs />
             {content}
         </div>
     )

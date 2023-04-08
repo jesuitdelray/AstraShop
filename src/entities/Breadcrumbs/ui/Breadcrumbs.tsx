@@ -1,42 +1,48 @@
 import React from "react"
+import { useSelector } from "react-redux"
 import { ChevronBack, MainHome } from "shared/assets/icons/others"
 import { AppRoutes, RouteLinkName, RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
+import { getCurrentTree } from "entities/CatalogNavigation/model/selectors/sidebarNavigationSelectors"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import styles from "./Breadcrumbs.module.scss"
 
-interface BreadcrumbsProps {
-    breadcrumbsList: AppRoutes[]
-    parentId?: any
-}
+export function Breadcrumbs() {
+    const currentTree = useSelector(getCurrentTree)
 
-export function Breadcrumbs({ breadcrumbsList, parentId }: BreadcrumbsProps) {
+    const data = [{ id: null, name: "Catalog", type: "catalog" }, ...currentTree]
+
     return (
         <div className={styles.breadcrumbs}>
             <AppLink to={RoutePath.main}>
                 <MainHome className={styles.home} />
             </AppLink>
-            {breadcrumbsList?.map((route, index) => {
-                let condition
-                if (route === AppRoutes.CATALOG) {
-                    condition = RoutePath[AppRoutes.CATALOG]
-                } else if (route === AppRoutes.CATEGORY) {
-                    condition = `${RoutePath[route]}${parentId?.[0].id}`
-                } else {
-                    condition = `${RoutePath[route]}${parentId?.[1].id}`
+            {data.map((route, index) => {
+                const { name, id, type } = route
+                const link = () => {
+                    switch (type) {
+                        case "category":
+                            return RoutePath.category + id
+                        case "sub_category":
+                            return RoutePath.sub_category + id
+                        case "product":
+                            return RoutePath.product_details + id
+                        default:
+                            return RoutePath.main
+                    }
                 }
 
                 return (
-                    <React.Fragment key={route}>
+                    <React.Fragment key={id}>
                         <ChevronBack className={styles.icon} />
-                        <div className={styles.crumbs} key={route}>
+                        <div className={styles.crumbs}>
                             <AppLink
-                                to={condition}
+                                to={link()}
                                 className={classNames(styles.link, {
-                                    [styles.active]: index === breadcrumbsList.length - 1,
+                                    [styles.active]: index === data.length - 1,
                                 })}
                             >
-                                {RouteLinkName[route]}
+                                {name}
                             </AppLink>
                         </div>
                     </React.Fragment>
