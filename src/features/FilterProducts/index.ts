@@ -1,1 +1,3 @@
-export { FilterProducts } from "./ui/ProductFilters"
+export { FilterProducts } from "./ui/FilterProducts"
+
+export { filterProductsReducer } from "./model/slice/filterProductsSlice"

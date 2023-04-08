@@ -10,19 +10,18 @@ import { SortModalSlider } from "widgets/SortModalSlider"
 import { ProductCard } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { FilterProducts } from "features/FilterProducts"
+import { fetchCategoryFilters } from "features/FilterProducts/model/services/fetchCategoryFilters/fetchCategoryFilters"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
 import {
     getSortOrder,
     getSubCategoryErrorProducts,
-    getSubCategoryFilters,
     getSubCategoryLoadingProducts,
     getSubCategoryName,
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
-import { fetchCategoryFilters } from "../model/services/fetchCategoryFilters/fetchCategoryFilters"
 
 export function SubCategoryPage() {
     const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.SUB_CATEGORY]
@@ -52,8 +51,6 @@ export function SubCategoryPage() {
     const categoryProducts = useSelector(getSubCategoryProducts)
     const categoryRequestLoading = useSelector(getSubCategoryLoadingProducts)
     const categoryRequestError = useSelector(getSubCategoryErrorProducts)
-
-    const categoryFilters = useSelector(getSubCategoryFilters)
 
     const content = useMemo(() => {
         switch (true) {
@@ -117,7 +114,7 @@ export function SubCategoryPage() {
 
     return (
         <div className={styles.wrapper}>
-            <FilterProducts className={styles.sidebar} data={categoryFilters} />
+            <FilterProducts className={styles.sidebar} />
             <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
             <div className={styles.container}>
                 <Breadcrumbs breadcrumbsList={breadcrumbsList} />

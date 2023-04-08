@@ -12,6 +12,7 @@ export interface StateSchema {
     subcategoryPage: SubCategoryPageSchema
     productDetails: ProductDetailsSchema
     productCarousel: ProductCarouselSchema
+    filterProducts: any
     basket: BasketSchema
 }
 

@@ -9,8 +9,3 @@ export const getSubCategoryLoadingProducts = (state: StateSchema) =>
     state.subcategoryPage.isLoadingProducts
 export const getSubCategoryErrorProducts = (state: StateSchema) =>
     state.subcategoryPage.errorProducts
-
-export const getSubCategoryFilters = (state: StateSchema) => state.subcategoryPage.filters
-export const getSubCategoryLoadingFilters = (state: StateSchema) =>
-    state.subcategoryPage.isLoadingFilters
-export const getSubCategoryErrorFilters = (state: StateSchema) => state.subcategoryPage.errorFilters

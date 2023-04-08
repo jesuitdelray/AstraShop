@@ -6,10 +6,16 @@ import { filterListsItemType } from "../../model/lists"
 interface CheckboxGroupProps {
     title: string
     list?: any[] /* filterListsItemType[] */
+    groupId: number
 }
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
-    const { title, list } = props
+    const { title, list, groupId } = props
+
+    function onChangeCheck(id: number) {
+        console.log(groupId)
+        console.log(id)
+    }
 
     return (
         <div className={styles.container}>
@@ -23,7 +29,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
                                 label={name}
                                 id={id}
                                 checked={isChecked || false}
-                                onChange={() => null}
+                                onChange={() => onChangeCheck(id)}
                             />
                             {/* {!isChecked && (
                                 <Typography color={TypographyColor.DARK_GRAY}>

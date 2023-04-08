@@ -6,14 +6,16 @@ import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import { filterListsData as list } from "../model/lists"
-import styles from "./ProductFilters.module.scss"
+import styles from "./FilterProducts.module.scss"
+import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
 
 interface FilterProductsProps {
     className?: string
-    data: any[]
 }
 
-export function FilterProducts({ className, data }: FilterProductsProps) {
+export function FilterProducts({ className }: FilterProductsProps) {
+    const data: any[] = useSelector(getProductFilters) || []
+
     const content = (
         <div>
             {data.map(item => {
@@ -21,7 +23,14 @@ export function FilterProducts({ className, data }: FilterProductsProps) {
                     return <PriceFilter />
                 }
                 if (item.type === "attributes") {
-                    return <CheckboxGroup key={item.id} list={item.info} title={item.name} />
+                    return (
+                        <CheckboxGroup
+                            key={item.id}
+                            groupId={item.id}
+                            list={item.info}
+                            title={item.name}
+                        />
+                    )
                 }
                 return null
             })}
