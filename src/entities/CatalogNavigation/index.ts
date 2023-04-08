@@ -1,5 +1,3 @@
-export { LinksList } from "./ui/LinksList/LinksList"
-export { SidebarNavigation } from "./ui/SidebarNavigation/SidebarNavigation"
 export { Breadcrumbs } from "./ui/Breadcrumbs/Breadcrumbs"
 
 export { getNavigationTree } from "./model/selectors/sidebarNavigationSelectors"
