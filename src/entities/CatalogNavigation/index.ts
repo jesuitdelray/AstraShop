@@ -9,3 +9,6 @@ export { CurrentTreeItemType } from "./model/types/catalogNavigationSchema"
 
 export { catalogNavigationReducer } from "./model/slice/catalogNavigationSlice"
 export { catalogNavigationActions } from "./model/slice/catalogNavigationSlice"
+
+export { CatalogSidebar } from "./ui/CatalogSidebar/CatalogSidebar"
+export { CatalogLinks } from "./ui/CatalogLinks/CatalogLinks"
