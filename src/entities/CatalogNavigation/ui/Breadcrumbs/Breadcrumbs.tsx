@@ -1,10 +1,10 @@
 import React from "react"
+import { AppLink } from "shared/ui/AppLink/AppLink"
 import { useSelector } from "react-redux"
 import { ChevronBack, MainHome } from "shared/assets/icons/others"
-import { AppRoutes, RouteLinkName, RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/routeConfig"
 import { classNames } from "shared/lib/classNames/classNames"
-import { getCurrentTree } from "entities/CatalogNavigation/model/selectors/sidebarNavigationSelectors"
-import { AppLink } from "shared/ui/AppLink/AppLink"
+import { getCurrentTree } from "../../model/selectors/sidebarNavigationSelectors"
 import styles from "./Breadcrumbs.module.scss"
 
 export function Breadcrumbs() {

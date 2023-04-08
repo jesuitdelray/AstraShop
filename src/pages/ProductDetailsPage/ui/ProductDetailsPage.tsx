@@ -1,13 +1,11 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { Breadcrumbs } from "entities/Breadcrumbs"
 import { ProductDetails } from "entities/Product"
 import { useDispatch, useSelector } from "react-redux"
-import { AppRoutes } from "shared/config/routeConfig/routeConfig"
+import { Breadcrumbs, catalogNavigationActions } from "entities/CatalogNavigation"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
-import { catalogNavigationActions } from "entities/CatalogNavigation/model/slice/catalogNavigationSlice"
 import { fetchProductDetails } from "../model/services/fetchProductDetails/fetchProductDetails"
 import {
     getProductDetailsAttributes,

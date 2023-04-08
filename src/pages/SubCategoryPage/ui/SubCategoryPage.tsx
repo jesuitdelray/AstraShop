@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useMemo } from "react"
 import { useParams } from "react-router-dom"
-import { Breadcrumbs } from "entities/Breadcrumbs"
-import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
@@ -9,16 +7,18 @@ import { useDispatch, useSelector } from "react-redux"
 import { FiltersModalSlider } from "widgets/FiltersModalSlider"
 import { SortModalSlider } from "widgets/SortModalSlider"
 import { ProductCard } from "entities/Product"
-import { catalogNavigationActions } from "entities/CatalogNavigation/model/slice/catalogNavigationSlice"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
-import { getNavigationTree } from "entities/CatalogNavigation"
+import {
+    Breadcrumbs,
+    getNavigationTree,
+    catalogNavigationActions,
+} from "entities/CatalogNavigation"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
 import {
     getSortOrder,
     getSubCategoryError,
-    getSubCategoryId,
     getSubCategoryLoading,
     getSubCategoryName,
     getSubCategoryParentId,
@@ -27,7 +27,6 @@ import {
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
 
 export function SubCategoryPage() {
-    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.SUB_CATEGORY]
     const { id } = useParams()
 
     const dispatch = useDispatch()

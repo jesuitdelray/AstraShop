@@ -1,16 +1,15 @@
-import { Breadcrumbs } from "entities/Breadcrumbs"
-import { getNavigationTree } from "entities/CatalogNavigation"
+import {
+    Breadcrumbs,
+    getNavigationTree,
+    catalogNavigationActions,
+} from "entities/CatalogNavigation"
 import { useCallback, useEffect, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { catalogNavigationActions } from "entities/CatalogNavigation/model/slice/catalogNavigationSlice"
 import { useParams } from "react-router-dom"
-import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { CategoryLinks } from "./CategoryLinks/CategoryLinks"
 import styles from "./CategoryPage.module.scss"
 
 export function CategoryPage() {
-    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY]
-
     const { id } = useParams()
     const navigationTree = useSelector(getNavigationTree)
 
