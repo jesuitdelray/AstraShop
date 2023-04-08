@@ -27,6 +27,7 @@ export function Label(props: InputProps) {
                 styles[color],
                 className,
             ])}
+            data-testid="label"
         >
             <span className={styles.content}>{value}</span>
         </div>
