@@ -1,7 +1,9 @@
+import { useDispatch, useSelector } from "react-redux"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
+import { getProductFilters } from "../../model/selectors/subcategoryPageSelectors"
 import styles from "./CheckboxGroup.module.scss"
-import { filterListsItemType } from "../../model/lists"
+import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 
 interface CheckboxGroupProps {
     title: string
@@ -12,9 +14,10 @@ interface CheckboxGroupProps {
 export function CheckboxGroup(props: CheckboxGroupProps) {
     const { title, list, groupId } = props
 
-    function onChangeCheck(id: number) {
-        console.log(groupId)
-        console.log(id)
+    const dispatch = useDispatch()
+
+    function onChangeCheck(groupId: number, checkId: number) {
+        dispatch(filterProductsActions.setFilterAttributes({ groupId, checkId }))
     }
 
     return (
@@ -29,7 +32,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
                                 label={name}
                                 id={id}
                                 checked={isChecked || false}
-                                onChange={() => onChangeCheck(id)}
+                                onChange={() => onChangeCheck(groupId, id)}
                             />
                             {/* {!isChecked && (
                                 <Typography color={TypographyColor.DARK_GRAY}>

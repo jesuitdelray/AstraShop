@@ -11,8 +11,33 @@ const filterProductsSlice = createSlice({
     name: "subcategoryPage",
     initialState,
     reducers: {
-        setFilters: (state, action) => {
-            state.filters = action.payload
+        setFilterAttributes: (state, action) => {
+            // {groupId: number, checkId:number}
+            const { groupId, checkId } = action.payload
+
+            state.filters = state.filters.map((group: any) => {
+                if (group.id === groupId) {
+                    group.info.map((check: any) => {
+                        if (check.id === checkId) {
+                            check.isChecked = !check.isChecked
+                        }
+                        return check
+                    })
+                }
+                return group
+            })
+        },
+        setPriceRange: (state, action) => {
+            // groupId, range: {min: number, max:number}
+            const { range, groupId } = action.payload
+
+            state.filters = state.filters.map((item: any) => {
+                if (item.type === "price_range" && item.id === groupId) {
+                    item.range = range
+                }
+
+                return item
+            })
         },
     },
     extraReducers: builder => {

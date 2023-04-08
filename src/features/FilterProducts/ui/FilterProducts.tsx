@@ -5,7 +5,6 @@ import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entiti
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
-import { filterListsData as list } from "../model/lists"
 import styles from "./FilterProducts.module.scss"
 import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
 
@@ -20,7 +19,7 @@ export function FilterProducts({ className }: FilterProductsProps) {
         <div>
             {data.map(item => {
                 if (item.type === "price_range") {
-                    return <PriceFilter />
+                    return <PriceFilter groupId={item.id} title={item.name} range={item.info} />
                 }
                 if (item.type === "attributes") {
                     return (

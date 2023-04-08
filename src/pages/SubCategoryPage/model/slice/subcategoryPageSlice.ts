@@ -5,7 +5,6 @@ import { SubCategoryPageSchema } from "../types/subcategoryPageSchema"
 
 const initialState: SubCategoryPageSchema = {
     products: [],
-    filters: [],
     isLoadingProducts: false,
     isLoadingFilters: false,
     errorProducts: undefined,

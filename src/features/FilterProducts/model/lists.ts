@@ -1,4 +1,4 @@
-export interface filterListsItemType {
+/* export interface filterListsItemType {
     label: string
     id: string
     products: string
@@ -41,3 +41,4 @@ export const filterListsData: filterListsDataType[] = [
         ],
     },
 ]
+ */

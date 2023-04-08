@@ -2,13 +2,23 @@ import { useEffect, useRef, useState } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./PriceFilter.module.scss"
+import { useDispatch } from "react-redux"
+import { filterProductsActions } from "features/FilterProducts/model/slice/filterProductsSlice"
 
-const MINIMUM_PRICE = 1000
-const MAXIMUM_PRICE = 10000
-const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
-const GAP = 1000
+interface PriceFilterProps {
+    groupId: number
+    title: string
+    range: any
+}
 
-export function PriceFilter() {
+export function PriceFilter(props: PriceFilterProps) {
+    const { title, groupId, range } = props
+
+    const GAP = 1000
+    const MINIMUM_PRICE = range.from
+    const MAXIMUM_PRICE = range.to
+    const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
+
     const [priceSort, setPriceSort] = useState({
         min: MINIMUM_PRICE,
         max: PRICE_RANGE / 2 + MINIMUM_PRICE,
@@ -20,6 +30,12 @@ export function PriceFilter() {
 
     const minRef = useRef<HTMLInputElement>(null)
     const maxRef = useRef<HTMLInputElement>(null)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(filterProductsActions.setPriceRange({ groupId, range: priceSort }))
+    }, [priceSort, dispatch, groupId])
 
     useEffect(() => {
         if (minRef.current && maxRef.current) {
@@ -126,7 +142,7 @@ export function PriceFilter() {
     return (
         <div className={styles.container}>
             <Typography variant={TypographyVariant.P} className={styles.title}>
-                Фильтровать по цене
+                {title}
             </Typography>
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.P} color={TypographyColor.DARK_GRAY}>
