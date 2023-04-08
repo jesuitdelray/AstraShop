@@ -10,6 +10,7 @@ const initialState: SubCategoryPageSchema = {
     errorProducts: undefined,
     errorFilters: undefined,
     sortOrder: sortProductsOrderType.NONE,
+    parent_category_id: 0,
     id: 0,
     name: "",
 }
@@ -32,6 +33,7 @@ const subcategoryPageSlice = createSlice({
                 state.isLoadingProducts = false
                 state.products = action.payload.products
                 state.id = action.payload.id
+                state.parent_category_id = action.payload.parent_category_id
                 state.name = action.payload.name
             })
             .addCase(fetchCategoryProducts.rejected, (state, action) => {

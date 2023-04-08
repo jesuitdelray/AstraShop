@@ -27,7 +27,7 @@
         }
     }
 
-    &.filled-grey {
+    &.filled-gray {
         border: unset;
         background: var(--color-dark-gray);
         color: var(--color-white);
@@ -39,10 +39,7 @@
 
     &.disabled {
         opacity: 0.5;
-
-        &:hover {
-            filter: unset;
-        }
+        pointer-events: none;
     }
 
     &.clearInverted {
