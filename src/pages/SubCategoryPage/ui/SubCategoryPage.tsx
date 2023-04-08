@@ -12,6 +12,7 @@ import {
     Breadcrumbs,
     getNavigationTree,
     catalogNavigationActions,
+    CurrentTreeItemType,
 } from "entities/CatalogNavigation"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
@@ -66,8 +67,16 @@ export function SubCategoryPage() {
     useEffect(() => {
         dispatch(
             catalogNavigationActions.setCurrentTree([
-                { id: parentCategoryId, name: getCategoryName(), type: "category" },
-                { id: id !== undefined ? +id : 0, name: categoryName, type: "sub_category" },
+                {
+                    id: parentCategoryId,
+                    name: getCategoryName(),
+                    type: CurrentTreeItemType.CATEGORY,
+                },
+                {
+                    id: id !== undefined ? +id : 0,
+                    name: categoryName,
+                    type: CurrentTreeItemType.SUB_CATEGORY,
+                },
             ])
         )
     }, [categoryName, parentCategoryId, dispatch, id, getCategoryName])

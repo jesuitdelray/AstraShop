@@ -2,7 +2,11 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { ProductDetails } from "entities/Product"
 import { useDispatch, useSelector } from "react-redux"
-import { Breadcrumbs, catalogNavigationActions } from "entities/CatalogNavigation"
+import {
+    Breadcrumbs,
+    CurrentTreeItemType,
+    catalogNavigationActions,
+} from "entities/CatalogNavigation"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
@@ -45,7 +49,10 @@ export function ProductDetailsPage() {
             productParentsData?.map(parent => ({
                 id: parent.id,
                 name: parent.name,
-                type: parent.parent_category_id === null ? "category" : "sub_category",
+                type:
+                    parent.parent_category_id === null
+                        ? CurrentTreeItemType.CATEGORY
+                        : CurrentTreeItemType.SUB_CATEGORY,
             })) || []
 
         dispatch(
@@ -53,8 +60,8 @@ export function ProductDetailsPage() {
                 ...parents,
                 {
                     id: id !== undefined ? +id : 0,
-                    name: productName,
-                    type: "product",
+                    name: productName || "Product",
+                    type: CurrentTreeItemType.PRODUCT,
                 },
             ])
         )

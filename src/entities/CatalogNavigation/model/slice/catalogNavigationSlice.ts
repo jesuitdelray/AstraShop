@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { fetchNavigationTree } from "../services/fetchNavigationTree/fetchNavigationTree"
-import { CatalogNavigationSchema } from "../types/catalogNavigationSchema"
+import { CatalogNavigationSchema, CurrentTreeItem } from "../types/catalogNavigationSchema"
 
 const initialState: CatalogNavigationSchema = {
     tree: [],
@@ -13,7 +13,7 @@ const catalogNavigationSlice = createSlice({
     name: "catalogNavigation",
     initialState,
     reducers: {
-        setCurrentTree: (state, action) => {
+        setCurrentTree: (state, action: PayloadAction<CurrentTreeItem[]>) => {
             state.currentTree = action.payload
         },
     },

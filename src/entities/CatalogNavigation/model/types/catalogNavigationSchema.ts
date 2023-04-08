@@ -1,23 +1,21 @@
 import { navigationTreeType } from "./list"
 
-/* interface categoryType {
-    id: number
-    name: string
+export enum CurrentTreeItemType {
+    CATALOG = "catalog",
+    CATEGORY = "category",
+    SUB_CATEGORY = "sub_category",
+    PRODUCT = "product",
 }
 
-interface subcategoryType {
+export interface CurrentTreeItem {
     id: number
     name: string
+    type: CurrentTreeItemType
 }
-
-interface productType {
-    id: number
-    name: string
-} */
 
 export interface CatalogNavigationSchema {
     tree: navigationTreeType | []
-    currentTree: any[]
+    currentTree: CurrentTreeItem[] | []
     isLoading: boolean
     error?: string
 }

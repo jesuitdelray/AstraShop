@@ -2,6 +2,7 @@ import {
     Breadcrumbs,
     getNavigationTree,
     catalogNavigationActions,
+    CurrentTreeItemType,
 } from "entities/CatalogNavigation"
 import { useCallback, useEffect, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -23,7 +24,11 @@ export function CategoryPage() {
     useEffect(() => {
         dispatch(
             catalogNavigationActions.setCurrentTree([
-                { id: id !== undefined ? +id : 0, name: getCategoryName(), type: "category" },
+                {
+                    id: id !== undefined ? +id : 0,
+                    name: getCategoryName(),
+                    type: CurrentTreeItemType.CATEGORY,
+                },
             ])
         )
     }, [getCategoryName, dispatch, id])
