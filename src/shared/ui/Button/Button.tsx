@@ -6,7 +6,7 @@ export enum ButtonVariant {
     OUTLINE = "outline",
     CLEAR_INVERTED = "clearInverted",
     FILLED_RED = "filled-red",
-    FILLED_GREY = "filled-grey",
+    FILLED_GREY = "filled-gray",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -26,6 +26,7 @@ export const Button = memo((props: ButtonProps) => {
 
     return (
         <button
+            data-testid="button"
             type="button"
             className={classNames(styles.button, mods, [className])}
             disabled={disabled}
