@@ -10,3 +10,4 @@ export const getProductDetailsDescription = (state: StateSchema) =>
     state.productDetails.data?.description
 export const getProductDetailsAttributes = (state: StateSchema) =>
     state.productDetails.data?.attributes
+export const getProductParents = (state: StateSchema) => state.productDetails.data?.parentCategories

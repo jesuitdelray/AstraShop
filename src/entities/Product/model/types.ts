@@ -4,7 +4,7 @@ export interface ProductAttributes {
 
 interface ProductParentCategory {
     id: number
-    parent_category_id: boolean
+    parent_category_id: number
     name: string
 }
 

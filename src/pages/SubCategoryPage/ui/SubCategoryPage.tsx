@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useMemo } from "react"
 import { useParams } from "react-router-dom"
-import { Breadcrumbs } from "entities/Breadcrumbs"
-import { AppRoutes } from "shared/config/routeConfig/routeConfig"
 import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
@@ -10,6 +8,12 @@ import { FiltersModalSlider } from "widgets/FiltersModalSlider"
 import { SortModalSlider } from "widgets/SortModalSlider"
 import { ProductCard } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
+import {
+    Breadcrumbs,
+    getNavigationTree,
+    catalogNavigationActions,
+    CurrentTreeItemType,
+} from "entities/CatalogNavigation"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
@@ -18,12 +22,12 @@ import {
     getSubCategoryError,
     getSubCategoryLoading,
     getSubCategoryName,
+    getSubCategoryParentId,
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
 
 export function SubCategoryPage() {
-    const breadcrumbsList = [AppRoutes.CATALOG, AppRoutes.CATEGORY, AppRoutes.SUB_CATEGORY]
     const { id } = useParams()
 
     const dispatch = useDispatch()
@@ -49,6 +53,33 @@ export function SubCategoryPage() {
     const categoryProducts = useSelector(getSubCategoryProducts)
     const categoryRequestLoading = useSelector(getSubCategoryLoading)
     const categoryRequestError = useSelector(getSubCategoryError)
+    const parentCategoryId = useSelector(getSubCategoryParentId)
+
+    const navigationTree = useSelector(getNavigationTree)
+
+    const getCategoryName = useCallback(
+        () =>
+            navigationTree.filter(item => parentCategoryId && +parentCategoryId === item.id)?.[0]
+                ?.name || "Category",
+        [navigationTree, parentCategoryId]
+    )
+
+    useEffect(() => {
+        dispatch(
+            catalogNavigationActions.setCurrentTree([
+                {
+                    id: parentCategoryId,
+                    name: getCategoryName(),
+                    type: CurrentTreeItemType.CATEGORY,
+                },
+                {
+                    id: id !== undefined ? +id : 0,
+                    name: categoryName,
+                    type: CurrentTreeItemType.SUB_CATEGORY,
+                },
+            ])
+        )
+    }, [categoryName, parentCategoryId, dispatch, id, getCategoryName])
 
     const content = useMemo(() => {
         switch (true) {
@@ -115,7 +146,7 @@ export function SubCategoryPage() {
             <FiltersModalSlider />
             <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
             <div className={styles.wrapper}>
-                <Breadcrumbs breadcrumbsList={breadcrumbsList} />
+                <Breadcrumbs />
                 {content}
             </div>
         </>

@@ -1,17 +1,21 @@
-import { Breadcrumbs } from "entities/Breadcrumbs"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import { AppRoutes } from "shared/config/routeConfig/routeConfig"
+import { Breadcrumbs, CatalogLinks, catalogNavigationActions } from "entities/CatalogNavigation"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
-import { CatalogLinks } from "entities/CatalogNavigation"
+import { useDispatch } from "react-redux"
+import { useEffect } from "react"
 import styles from "./CatalogPage.module.scss"
 
 export function CatalogPage() {
-    const breadcrumbsList = [AppRoutes.CATALOG]
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(catalogNavigationActions.setCurrentTree([]))
+    }, [dispatch])
 
     return (
         <div className={styles.wrapper}>
-            <Breadcrumbs breadcrumbsList={breadcrumbsList} />
+            <Breadcrumbs />
             <Typography variant={TypographyVariant.H1} className={styles.title}>
                 Каталог товаров
             </Typography>

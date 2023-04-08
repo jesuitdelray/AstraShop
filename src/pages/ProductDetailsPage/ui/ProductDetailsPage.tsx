@@ -1,9 +1,12 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { Breadcrumbs } from "entities/Breadcrumbs"
 import { ProductDetails } from "entities/Product"
 import { useDispatch, useSelector } from "react-redux"
-import { AppRoutes } from "shared/config/routeConfig/routeConfig"
+import {
+    Breadcrumbs,
+    CurrentTreeItemType,
+    catalogNavigationActions,
+} from "entities/CatalogNavigation"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
@@ -17,16 +20,10 @@ import {
     getProductDetailsLoading,
     getProductDetailsName,
     getProductDetailsPrice,
+    getProductParents,
 } from "../model/selectors/productDetailsSelectors"
 
 export function ProductDetailsPage() {
-    const breadcrumbsList = [
-        AppRoutes.CATALOG,
-        AppRoutes.CATEGORY,
-        AppRoutes.SUB_CATEGORY,
-        AppRoutes.PRODUCT_DETAILS,
-    ]
-
     const dispatch = useDispatch()
     const { id } = useParams()
 
@@ -45,6 +42,31 @@ export function ProductDetailsPage() {
     const productDesc = useSelector(getProductDetailsDescription)
     const productAttributes = useSelector(getProductDetailsAttributes)
 
+    const productParentsData = useSelector(getProductParents)
+
+    useEffect(() => {
+        const parents =
+            productParentsData?.map(parent => ({
+                id: parent.id,
+                name: parent.name,
+                type:
+                    parent.parent_category_id === null
+                        ? CurrentTreeItemType.CATEGORY
+                        : CurrentTreeItemType.SUB_CATEGORY,
+            })) || []
+
+        dispatch(
+            catalogNavigationActions.setCurrentTree([
+                ...parents,
+                {
+                    id: id !== undefined ? +id : 0,
+                    name: productName || "Product",
+                    type: CurrentTreeItemType.PRODUCT,
+                },
+            ])
+        )
+    }, [id, dispatch, productName, productParentsData])
+
     const product = {
         id: productId || 0,
         name: productName || "",
@@ -54,7 +76,7 @@ export function ProductDetailsPage() {
 
     return (
         <div>
-            <Breadcrumbs breadcrumbsList={breadcrumbsList} />
+            <Breadcrumbs />
             <ProductDetails
                 isLoading={productRequestLoading}
                 error={productRequestError}
