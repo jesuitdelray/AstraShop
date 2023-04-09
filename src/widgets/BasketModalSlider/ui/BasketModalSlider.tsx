@@ -2,7 +2,7 @@ import { BasketSummary, getBasketProducts } from "entities/Basket"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { CrossIcon } from "shared/assets/icons/others"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import {
     getModalsCurrent,
     modalsActions,

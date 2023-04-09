@@ -1,4 +1,4 @@
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { MenuIcon } from "shared/assets/icons/others"
 
 export interface headerItemsType {

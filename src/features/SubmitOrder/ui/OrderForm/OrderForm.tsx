@@ -7,7 +7,7 @@ import { Checkbox } from "shared/ui/Checkbox/Checkbox"
 import { classNames } from "shared/lib/classNames/classNames"
 import { RadioGroup } from "shared/ui/RadioGroup"
 import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import styles from "./OrderForm.module.scss"
 
 export function OrderForm() {

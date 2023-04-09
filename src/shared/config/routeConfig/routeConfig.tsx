@@ -9,35 +9,10 @@ import { OrderPage } from "pages/OrderPage"
 import { ProductDetailsPage } from "pages/ProductDetailsPage"
 import { RouteProps } from "react-router-dom"
 import { CategoryPage } from "pages/CategoryPage"
+import { AppRoutes, RoutePath } from "./const"
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean
-}
-
-export enum AppRoutes {
-    MAIN = "main",
-    ABOUT = "about",
-    CATALOG = "catalog",
-    CONTACTS = "contacts",
-    DELIVERY = "delivery",
-    ORDER = "order",
-    CATEGORY = "category",
-    SUB_CATEGORY = "sub_category",
-    PRODUCT_DETAILS = "product_details",
-    NOT_FOUND = "not_found",
-}
-
-export const RoutePath: Record<AppRoutes, string> = {
-    [AppRoutes.MAIN]: "/",
-    [AppRoutes.ABOUT]: "/about",
-    [AppRoutes.CATALOG]: "/catalog",
-    [AppRoutes.CONTACTS]: "/contacts",
-    [AppRoutes.DELIVERY]: "/delivery",
-    [AppRoutes.ORDER]: "/order",
-    [AppRoutes.CATEGORY]: "/category", // + /:id
-    [AppRoutes.SUB_CATEGORY]: "/sub", // + /:id
-    [AppRoutes.PRODUCT_DETAILS]: "/product", // + /:id
-    [AppRoutes.NOT_FOUND]: "*",
 }
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {

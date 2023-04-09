@@ -7,7 +7,7 @@ import { basketActions } from "entities/Basket"
 import { BasketModalSlider } from "widgets/BasketModalSlider"
 import { BurgerMenu } from "widgets/BurgerMenu"
 import { CatalogSidebar } from "entities/CatalogNavigation"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { useMatch } from "react-router-dom"
 import { AppRouter } from "./providers/router"
 

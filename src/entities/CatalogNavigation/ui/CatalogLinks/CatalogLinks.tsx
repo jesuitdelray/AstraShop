@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import styles from "./CatalogLinks.module.scss"
 import { navigationTreeType } from "../../model/types/list"
