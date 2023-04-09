@@ -17,7 +17,7 @@ export function CategoryLinks({ data, className }: CategoryLinksProps) {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <AppLink to={RoutePath.category + id} className={styles.title}>
+            <AppLink to={`${RoutePath.category}/${id}`} className={styles.title}>
                 {name}
             </AppLink>
             <div className={styles.listContainer}>
@@ -27,11 +27,11 @@ export function CategoryLinks({ data, className }: CategoryLinksProps) {
 
                     return (
                         <div
-                            onClick={() => navigate(RoutePath.sub_category + id)}
+                            onClick={() => navigate(`${RoutePath.sub_category}/${id}`)}
                             className={styles.list}
                         >
                             <img src={categoryImage} alt="pic" className={styles.image} />
-                            <AppLink key={id} to={RoutePath.sub_category + id}>
+                            <AppLink key={id} to={`${RoutePath.sub_category}/${id}`}>
                                 {name}
                             </AppLink>
                         </div>

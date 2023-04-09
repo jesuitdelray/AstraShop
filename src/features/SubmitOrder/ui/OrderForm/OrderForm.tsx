@@ -95,7 +95,7 @@ export function OrderForm() {
                 <BasketSummary
                     className={styles.orderInfo}
                     variant={BasketSummaryVariant.VERTICAL}
-                    onOrderClick={() => navigate("/order")}
+                    onOrderClick={() => navigate(RoutePath.order)}
                 />
             </form>
         </div>

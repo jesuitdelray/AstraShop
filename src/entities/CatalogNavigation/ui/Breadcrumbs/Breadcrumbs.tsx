@@ -21,6 +21,7 @@ export function Breadcrumbs() {
             <AppLink to={RoutePath.main}>
                 <MainHome className={styles.home} />
             </AppLink>
+
             {data.map((route, index) => {
                 const { name, id, type } = route
                 const link = () => {
@@ -28,11 +29,11 @@ export function Breadcrumbs() {
                         case CurrentTreeItemType.CATALOG:
                             return RoutePath.catalog
                         case CurrentTreeItemType.CATEGORY:
-                            return RoutePath.category + id
+                            return `${RoutePath.category}/${id}`
                         case CurrentTreeItemType.SUB_CATEGORY:
-                            return RoutePath.sub_category + id
+                            return `${RoutePath.sub_category}/${id}`
                         case CurrentTreeItemType.PRODUCT:
-                            return RoutePath.product_details + id
+                            return `${RoutePath.product_details}/${id}`
                         default:
                             return RoutePath.main
                     }
