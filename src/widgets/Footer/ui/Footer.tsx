@@ -4,18 +4,20 @@ import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { Contacts } from "entities/Contacts"
 import { Schedule } from "entities/Schedule"
 import { Copyright } from "entities/Copyright/Copyright"
+import { useTranslation } from "react-i18next"
 import { FooterLinksList } from "./FooterLinksList/FooterLinksList"
 import styles from "./Footer.module.scss"
 import { footerLinksData } from "../model/list"
 
 export function Footer() {
+    const { t, i18n } = useTranslation()
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.slogan}>
                 <Logo className={styles.logo} />
                 <Typography color={TypographyColor.DARK_GRAY} className={styles.sloganText}>
-                    Большой выбор товаров самых различных категорий, отнадувных матрасов до
-                    планшетных компьютеров
+                    {t("test")}
                 </Typography>
             </div>
             <FooterLinksList data={footerLinksData} className={styles.info} />

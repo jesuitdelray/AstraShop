@@ -12,8 +12,9 @@ export function buildBabelLoader({ isDev }: BuildOptions) {
                     [
                         "i18next-extract",
                         {
-                            locales: ["ru", "en"],
+                            locales: ["en", "ru"],
                             keyAsDefaultValue: true,
+                            outputPath: "public/locales/{{locale}}/{{ns}}.json",
                         },
                     ],
                     isDev && require.resolve("react-refresh/babel"),
