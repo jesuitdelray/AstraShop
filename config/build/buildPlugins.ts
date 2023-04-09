@@ -27,22 +27,22 @@ export function buildPlugins({
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
         }),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                diagnosticOptions: {
+                    semantic: true,
+                    syntactic: true,
+                },
+                mode: "write-references",
+            },
+            async: isDev,
+            devServer: false,
+        }),
     ]
 
     if (isDev) {
         plugins.push(new ReactRefreshWebpackPlugin())
         plugins.push(new webpack.HotModuleReplacementPlugin())
-        plugins.push(
-            new ForkTsCheckerWebpackPlugin({
-                typescript: {
-                    diagnosticOptions: {
-                        semantic: true,
-                        syntactic: true,
-                    },
-                    mode: "write-references",
-                },
-            })
-        )
         plugins.push(
             new CircularDependencyPlugin({
                 exclude: /node-modules/,
