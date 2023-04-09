@@ -1,12 +1,12 @@
 import { AboutPage } from "pages/AboutPage"
 import { CatalogPage } from "pages/CatalogPage"
-import { SubCategoryPage } from "pages/SubCategoryPage/ui/SubCategoryPage" // due to bug in HMR
+import { SubCategoryPage } from "pages/SubCategoryPage"
 import { ContactsPage } from "pages/ContactsPage"
 import { DeliveryPage } from "pages/DeliveryPage"
 import { MainPage } from "pages/MainPage"
 import { NotFoundPage } from "pages/NotFoundPage"
 import { OrderPage } from "pages/OrderPage"
-import { ProductDetailsPage } from "pages/ProductDetailsPage/ui/ProductDetailsPage" // due to bug in HMR
+import { ProductDetailsPage } from "pages/ProductDetailsPage"
 import { RouteProps } from "react-router-dom"
 import { CategoryPage } from "pages/CategoryPage"
 
