@@ -1,3 +1,5 @@
+export type index = { id: 1 }
+
 /* import { ProductCard } from "entities/ProductCard"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 
