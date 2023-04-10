@@ -1,4 +1,5 @@
 import { memo } from "react"
+import { ChangeLanguage } from "features/ChangeLanguage/ui/ChangeLanguage"
 import { useLocation } from "react-router-dom"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
@@ -25,8 +26,9 @@ export const NavigationList = memo((props: NavigationListProps) => {
 
     return (
         <div className={classNames(styles.list, {}, [className])}>
+            <ChangeLanguage />
             {list.map(item => {
-                const { id, path, text, Icon } = item
+                const { id, path, text } = item
                 return (
                     <AppLink
                         key={id}
@@ -38,7 +40,6 @@ export const NavigationList = memo((props: NavigationListProps) => {
                         )}
                         onClick={onLinkClick}
                     >
-                        {!!Icon && <Icon className={styles.menuItem} />}
                         {text}
                     </AppLink>
                 )

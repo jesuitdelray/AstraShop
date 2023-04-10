@@ -1,0 +1,45 @@
+.wrapper {
+    position: absolute;
+    top: 38px;
+    right: 20px;
+
+    .menuItem {
+        width: 22px;
+        fill: var(--color-dark-gray);
+        margin: 0 16px;
+        cursor: pointer;
+
+        &:hover {
+            fill: var(--color-accent);
+        }
+    }
+
+    .languageListContainer {
+        border: 1px solid black;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--color-light-gray);
+        top: 30px;
+        right: 0;
+        z-index: var(--modal-z-index);
+
+        .btn {
+            color: black;
+            height: fit-content;
+            padding: 5px 0;
+
+            &:hover {
+                color: var(--color-accent);
+            }
+        }
+    }
+}
+
+@media (min-width: 1281px) {
+    .wrapper {
+        position: static;
+    }
+}

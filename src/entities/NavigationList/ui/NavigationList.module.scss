@@ -13,18 +13,6 @@
             &.active {
                 color: var(--color-accent);
             }
-
-            .menuItem {
-                fill: var(--color-dark-gray);
-                cursor: pointer;
-                margin-right: 16px;
-            }
-
-            &:hover {
-                .menuItem {
-                    fill: var(--color-accent);
-                }
-            }
         }
 
         .link:last-child {
