@@ -45,12 +45,23 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
     const isTop = variant === ProductCarouselVariant.TOP_PRODUCTS
 
     useEffect(() => {
-        if (isNew && !newProducts?.length && !isLoadingNew) {
+        if (isNew && !newProducts?.length && !isLoadingNew && !errorNew) {
             dispatch(fetchNewProducts())
-        } else if (isTop && !topProducts?.length && !isLoadingTop) {
+        } else if (isTop && !topProducts?.length && !isLoadingTop && !errorTop) {
             dispatch(fetchTopProducts())
         }
-    }, [dispatch, newProducts, topProducts, isLoadingNew, isLoadingTop, isNew, isTop, variant])
+    }, [
+        dispatch,
+        newProducts,
+        topProducts,
+        isLoadingNew,
+        isLoadingTop,
+        isNew,
+        isTop,
+        variant,
+        errorNew,
+        errorTop,
+    ])
 
     const title = isNew ? "Новые поступления" : "Топовые позиции"
     const list: Product[] | undefined = isNew ? newProducts : topProducts

@@ -37,23 +37,27 @@ export function SubCategoryPage() {
         dispatch(fetchCategoryProducts(id))
     }, [dispatch, id])
 
-    useEffect(() => {
-        fetchSortedData()
-    }, [fetchSortedData])
-
-    const sortClickHandler = useCallback(
-        (pattern: sortProductsOrderType) => {
-            dispatch(subcategoryPageActions.setSortOrder(pattern))
-            fetchSortedData()
-        },
-        [dispatch, fetchSortedData]
-    )
-
     const categoryName = useSelector(getSubCategoryName)
     const categoryProducts = useSelector(getSubCategoryProducts)
     const categoryRequestLoading = useSelector(getSubCategoryLoading)
     const categoryRequestError = useSelector(getSubCategoryError)
     const parentCategoryId = useSelector(getSubCategoryParentId)
+
+    useEffect(() => {
+        if (!categoryRequestError) {
+            fetchSortedData()
+        }
+    }, [fetchSortedData, categoryRequestError])
+
+    const sortClickHandler = useCallback(
+        (pattern: sortProductsOrderType) => {
+            dispatch(subcategoryPageActions.setSortOrder(pattern))
+            if (!categoryRequestError) {
+                fetchSortedData()
+            }
+        },
+        [dispatch, fetchSortedData, categoryRequestError]
+    )
 
     const navigationTree = useSelector(getNavigationTree)
 

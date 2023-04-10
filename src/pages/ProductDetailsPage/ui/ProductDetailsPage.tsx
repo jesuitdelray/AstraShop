@@ -27,10 +27,6 @@ export function ProductDetailsPage() {
     const dispatch = useDispatch()
     const { id } = useParams()
 
-    useEffect(() => {
-        dispatch(fetchProductDetails(id))
-    }, [dispatch, id])
-
     const productRequestLoading = useSelector(getProductDetailsLoading)
     const productRequestError = useSelector(getProductDetailsError)
     const productId = useSelector(getProductDetailsId)
@@ -43,6 +39,12 @@ export function ProductDetailsPage() {
     const productAttributes = useSelector(getProductDetailsAttributes)
 
     const productParentsData = useSelector(getProductParents)
+
+    useEffect(() => {
+        if (!productRequestError) {
+            dispatch(fetchProductDetails(id))
+        }
+    }, [dispatch, id, productRequestError])
 
     useEffect(() => {
         const parents =
