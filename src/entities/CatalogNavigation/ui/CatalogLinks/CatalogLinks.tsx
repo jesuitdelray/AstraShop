@@ -4,18 +4,22 @@ import { RoutePath } from "shared/config/routeConfig/const"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import styles from "./CatalogLinks.module.scss"
 import { navigationTreeType } from "../../model/types/list"
-import { getNavigationTree } from "../../model/selectors/sidebarNavigationSelectors"
+import {
+    getNavigationTree,
+    getNavigationTreeError,
+} from "../../model/selectors/sidebarNavigationSelectors"
 import { fetchNavigationTree } from "../../model/services/fetchNavigationTree/fetchNavigationTree"
 
 export function CatalogLinks() {
     const dispatch = useDispatch()
     const navigationTree: navigationTreeType = useSelector(getNavigationTree)
+    const error = useSelector(getNavigationTreeError)
 
     useEffect(() => {
-        if (!navigationTree.length) {
+        if (!navigationTree.length && !error) {
             dispatch(fetchNavigationTree())
         }
-    }, [dispatch, navigationTree])
+    }, [dispatch, navigationTree, error])
 
     return (
         <div className={styles.container}>
