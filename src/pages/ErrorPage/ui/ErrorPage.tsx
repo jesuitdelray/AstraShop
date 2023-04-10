@@ -1,6 +1,6 @@
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import styles from "./ErrorPage.module.scss"
 
 export function ErrorPage() {

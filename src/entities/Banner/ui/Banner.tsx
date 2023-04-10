@@ -1,7 +1,7 @@
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { classNames } from "shared/lib/classNames/classNames"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { useNavigate } from "react-router-dom"
 import styles from "./Banner.module.scss"
 
