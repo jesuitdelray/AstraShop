@@ -6,7 +6,10 @@ import { AppLink } from "shared/ui/AppLink/AppLink"
 import styles from "./CatalogSidebarNav.module.scss"
 import { navigationSubcategory, navigationTreeType } from "../../../model/types/list"
 import { fetchNavigationTree } from "../../../model/services/fetchNavigationTree/fetchNavigationTree"
-import { getNavigationTree } from "../../../model/selectors/sidebarNavigationSelectors"
+import {
+    getNavigationTree,
+    getNavigationTreeError,
+} from "../../../model/selectors/sidebarNavigationSelectors"
 
 interface SubMenuProps {
     list: navigationSubcategory[]
@@ -53,12 +56,13 @@ export function CatalogSidebarNav() {
 
     const dispatch = useDispatch()
     const navigationTree: navigationTreeType = useSelector(getNavigationTree)
+    const error = useSelector(getNavigationTreeError)
 
     useEffect(() => {
-        if (!navigationTree.length) {
+        if (!navigationTree.length && !error) {
             dispatch(fetchNavigationTree())
         }
-    }, [dispatch, navigationTree])
+    }, [dispatch, navigationTree, error])
 
     return (
         <>
