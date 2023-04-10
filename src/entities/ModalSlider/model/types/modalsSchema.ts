@@ -1,11 +1,4 @@
-export enum ModalsList {
-    BURGER = "burger",
-    BASKET = "basket",
-    FILTERS = "filters",
-    SORT = "sort",
-    SUCCESS = "success",
-    NONE = "",
-}
+import { ModalsList } from "../const/modalList"
 
 export interface ModalsSchema {
     current: ModalsList

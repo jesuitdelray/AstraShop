@@ -2,7 +2,7 @@ import React from "react"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { useSelector } from "react-redux"
 import { ChevronBack, MainHome } from "shared/assets/icons/others"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { classNames } from "shared/lib/classNames/classNames"
 import { getCurrentTree } from "../../model/selectors/sidebarNavigationSelectors"
 import { CurrentTreeItem, CurrentTreeItemType } from "../../model/types/catalogNavigationSchema"
@@ -21,6 +21,7 @@ export function Breadcrumbs() {
             <AppLink to={RoutePath.main}>
                 <MainHome className={styles.home} />
             </AppLink>
+
             {data.map((route, index) => {
                 const { name, id, type } = route
                 const link = () => {
@@ -28,11 +29,11 @@ export function Breadcrumbs() {
                         case CurrentTreeItemType.CATALOG:
                             return RoutePath.catalog
                         case CurrentTreeItemType.CATEGORY:
-                            return RoutePath.category + id
+                            return `${RoutePath.category}/${id}`
                         case CurrentTreeItemType.SUB_CATEGORY:
-                            return RoutePath.sub_category + id
+                            return `${RoutePath.sub_category}/${id}`
                         case CurrentTreeItemType.PRODUCT:
-                            return RoutePath.product_details + id
+                            return `${RoutePath.product_details}/${id}`
                         default:
                             return RoutePath.main
                     }

@@ -1,3 +1,4 @@
-import { RadioGroup, RadioGroupOptios } from "./ui/RadioGroup"
+import { RadioGroup } from "./ui/RadioGroup"
+import type { RadioGroupOptios } from "./ui/RadioGroup"
 
 export { RadioGroup, RadioGroupOptios }

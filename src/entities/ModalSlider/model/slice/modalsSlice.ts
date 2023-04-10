@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { ModalsList, ModalsSchema } from "../types/modalsSchema"
+import { ModalsSchema } from "../types/modalsSchema"
+import { ModalsList } from "../const/modalList"
 
 const initialState: ModalsSchema = {
     current: ModalsList.NONE,

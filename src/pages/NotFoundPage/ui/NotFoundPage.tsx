@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { RoutePath } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./NotFoundPage.module.scss"

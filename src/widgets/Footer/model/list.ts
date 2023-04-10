@@ -1,4 +1,4 @@
-import { RoutePath, AppRoutes } from "shared/config/routeConfig/routeConfig"
+import { RoutePath } from "shared/config/routeConfig/const"
 
 interface footerlinksItem {
     id: string
