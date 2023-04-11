@@ -21,11 +21,11 @@ export function SortModalSlider({ sortOrderPattern, onClick }: SortModalSliderPr
             className={styles.wrapper}
         >
             <div className={styles.container}>
-                <SortProducts
-                    sortOrderPattern={sortOrderPattern}
+                {/*  <SortProducts
+                    sortOrderPattern={sortOrderPattern || null}
                     onClick={onClick}
                     className={styles.desktopFilters}
-                />
+                /> */}
                 <Button onClick={() => dispatch(modalsActions.close())}>Применить</Button>
             </div>
         </ModalSlider>

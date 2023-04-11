@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from "react"
-import { useParams } from "react-router-dom"
-import { SortProducts, sortProductsOrderType } from "features/SortProducts"
+import { useParams, useSearchParams } from "react-router-dom"
+import { SortProducts } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
@@ -18,20 +18,18 @@ import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
 import {
-    getSortOrder,
     getSubCategoryError,
     getSubCategoryLoading,
     getSubCategoryName,
     getSubCategoryParentId,
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
-import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
+import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
 
 export function SubCategoryPage() {
     const { id } = useParams()
 
     const dispatch = useDispatch()
-    const sortOrderPattern = useSelector(getSortOrder)
 
     const fetchSortedData = useCallback(() => {
         dispatch(fetchCategoryProducts(id))
@@ -48,16 +46,6 @@ export function SubCategoryPage() {
             fetchSortedData()
         }
     }, [fetchSortedData, categoryRequestError])
-
-    const sortClickHandler = useCallback(
-        (pattern: sortProductsOrderType) => {
-            dispatch(subcategoryPageActions.setSortOrder(pattern))
-            if (!categoryRequestError) {
-                fetchSortedData()
-            }
-        },
-        [dispatch, fetchSortedData, categoryRequestError]
-    )
 
     const navigationTree = useSelector(getNavigationTree)
 
@@ -85,6 +73,12 @@ export function SubCategoryPage() {
         )
     }, [categoryName, parentCategoryId, dispatch, id, getCategoryName])
 
+    const [searchParams] = useSearchParams()
+
+    useEffect(() => {
+        dispatch(initCategoryProducts({ searchParams, id }))
+    }, [searchParams, dispatch])
+
     const content = useMemo(() => {
         switch (true) {
             case categoryRequestLoading:
@@ -100,9 +94,8 @@ export function SubCategoryPage() {
                             {categoryName}
                         </Typography>
                         <SortProducts
-                            onClick={sortClickHandler}
-                            sortOrderPattern={sortOrderPattern}
                             className={styles.desktopFilters}
+                            onChangeSort={fetchSortedData}
                         />
                         <ProductFilters className={styles.mobileFilters} />
 
@@ -141,14 +134,13 @@ export function SubCategoryPage() {
         categoryProducts,
         categoryRequestLoading,
         categoryRequestError,
-        sortOrderPattern,
-        sortClickHandler,
+        fetchSortedData,
     ])
 
     return (
         <>
             <FiltersModalSlider />
-            <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
+            {/* <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} /> */}
             <div className={styles.wrapper}>
                 <Breadcrumbs />
                 {content}

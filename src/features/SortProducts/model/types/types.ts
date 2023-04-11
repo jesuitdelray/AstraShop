@@ -1,5 +1,5 @@
 export enum sortProductsOrderType {
-    ASC = "asc",
-    DESC = "desc",
+    ASC = "low_price",
+    DESC = "high_price",
     NONE = "",
 }

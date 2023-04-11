@@ -1,16 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
 import { SubCategoryPageSchema } from "../../types/subcategoryPageSchema"
+import { getSortProductsOrder } from "features/SortProducts/model/selectors/sortProductsSelectors"
+import { addQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
 
 export const fetchCategoryProducts = createAsyncThunk<
     SubCategoryPageSchema,
     string | undefined,
     ThunkConfig<string>
 >("subcategoryPage/fetchCategoryProducts", async (id, thunkApi) => {
-    const { extra, rejectWithValue } = thunkApi
+    const { extra, rejectWithValue, getState } = thunkApi
+    const orderBy = getSortProductsOrder(getState())
 
     try {
-        const response = await extra.api.get(`category/${id}/products`)
+        addQueryParams({ orderBy })
+        const response = await extra.api.get(`category/${id}/products`, {
+            params: {
+                orderBy,
+            },
+        })
 
         if (!response.data) {
             throw new Error()

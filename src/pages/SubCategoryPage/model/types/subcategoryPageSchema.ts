@@ -6,7 +6,6 @@ export interface SubCategoryPageSchema {
     parent_category_id: number
     name: string
     products: Product[]
-    sortOrder: sortProductsOrderType
     isLoading: boolean
     error?: string
 }

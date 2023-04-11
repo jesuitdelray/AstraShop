@@ -1,22 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { fetchCategoryProducts } from "../services/fetchCategoryProducts/fetchCategoryProducts"
-import { SubCategoryPageSchema } from "../types/subcategoryPageSchema"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { SortProductsSchema } from "../types/sortProductsSchema"
+import { sortProductsOrderType } from "../types/types"
+import { addQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
 
-const initialState: SubCategoryPageSchema = {
-    products: [],
-    isLoading: false,
-    error: undefined,
-
-    parent_category_id: 0,
-    id: 0,
-    name: "",
+const initialState: SortProductsSchema = {
+    order: sortProductsOrderType.NONE,
 }
 
-const subcategoryPageSlice = createSlice({
-    name: "subcategoryPage",
+const sortProductsSlice = createSlice({
+    name: "features/sortProductsSlice",
     initialState,
-    reducers: {},
-    extraReducers: builder => {
+    reducers: {
+        setOrder: (state, action: PayloadAction<sortProductsOrderType>) => {
+            state.order = action.payload
+        },
+    },
+    /* extraReducers: builder => {
         builder
             .addCase(fetchCategoryProducts.pending, (state, action) => {
                 state.error = undefined
@@ -33,8 +32,7 @@ const subcategoryPageSlice = createSlice({
                 state.isLoading = false
                 state.error = action.payload
             })
-    },
+    }, */
 })
 
-export const { reducer: subcategoryPageReducer, actions: subcategoryPageActions } =
-    subcategoryPageSlice
+export const { reducer: sortProductsReducer, actions: sortProductsAction } = sortProductsSlice
