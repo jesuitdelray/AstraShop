@@ -1,10 +1,13 @@
 {
     "aboutUs": "About us",
     "Contacts": "Contacts",
+    "error": "Error",
     "inputSearchPlaceholder": "Search product",
     "basketTakeOutBtn": "Remove from cart",
     "basketAddBtn": "Add to cart",
     "productDescriptionTitle": "Description",
+    "showMoreProducts": "Show more products",
+    "loadingProcessNoProduct": "No products",
     "loadingProcessLoading": "Loading...",
     "loadingProcessProductExist": "In stock",
     "loadingProcessProductNotExist": "Product does not exist",

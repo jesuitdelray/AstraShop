@@ -2,6 +2,7 @@ import { AppLink } from "shared/ui/AppLink/AppLink"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { useDispatch, useSelector } from "react-redux"
 import { modalsActions } from "entities/ModalSlider"
+import { useTranslation } from "react-i18next"
 import {
     getSearchProductsError,
     getSearchProductsList,
@@ -23,14 +24,16 @@ export function SearchDropdown(props: SearchDropdownProps) {
 
     const dispatch = useDispatch()
 
+    const { t } = useTranslation()
+
     const content = (() => {
         switch (true) {
             case !!error:
                 return <div>{error}</div>
             case isLoading:
-                return <div>Loading...</div>
+                return <div>{t("loadingProcessLoading")}</div>
             case productsList.length < 1:
-                return <div>No products</div>
+                return <div>{t("loadingProcessNoProduct")}</div>
             case productsList.length > 0:
                 return productsList.map(item => {
                     const { id, name } = item
@@ -50,7 +53,7 @@ export function SearchDropdown(props: SearchDropdownProps) {
                     )
                 })
             default:
-                return <div>Error</div>
+                return <div>{t("error")}</div>
         }
     })()
 

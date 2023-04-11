@@ -16,9 +16,7 @@ export const DefaultOnlyValue = Template.bind({})
 DefaultOnlyValue.args = {
     value: "новый",
 }
-function t(t) {
-    useTranslation()
-}
+
 export const LabelFontSizeSmallRedGray = Template.bind({})
 LabelFontSizeSmallRedGray.args = {
     value: "новый",
