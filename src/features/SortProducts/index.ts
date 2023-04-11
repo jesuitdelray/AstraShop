@@ -6,3 +6,4 @@ export type { SortProductsSchema } from "./model/types/sortProductsSchema"
 
 export { sortProductsReducer } from "./model/slice/sortProductsSlice"
 export { sortProductsAction } from "./model/slice/sortProductsSlice"
+export { getSortProductsOrder } from "./model/selectors/sortProductsSelectors"

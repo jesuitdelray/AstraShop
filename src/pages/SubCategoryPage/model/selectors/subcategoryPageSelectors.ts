@@ -7,3 +7,4 @@ export const getSubCategoryName = (state: StateSchema) => state.subcategoryPage.
 export const getSubCategoryError = (state: StateSchema) => state.subcategoryPage.error
 export const getSubCategoryLoading = (state: StateSchema) => state.subcategoryPage.isLoading
 export const getSubCategoryProducts = (state: StateSchema) => state.subcategoryPage.products
+export const getSubCategoryInited = (state: StateSchema) => state.subcategoryPage._inited

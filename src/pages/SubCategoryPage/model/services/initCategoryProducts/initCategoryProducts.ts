@@ -1,24 +1,32 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
-import { sortProductsAction } from "features/SortProducts"
+import { sortProductsAction, sortProductsOrderType } from "features/SortProducts"
 import { fetchCategoryProducts } from "../fetchCategoryProducts/fetchCategoryProducts"
+import { subcategoryPageActions } from "../../slice/subcategoryPageSlice"
+import { getSubCategoryInited } from "../../selectors/subcategoryPageSelectors"
 
-export const initCategoryProducts = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
-    "subcategoryPage/initCategoryProducts",
-    async ({ searchParams, id }, thunkApi) => {
-        const { getState, dispatch } = thunkApi
-        // const inited = getArticlesPageInited(getState())
+interface InitCategoryProductsProps {
+    searchParams: URLSearchParams
+    id: string
+}
 
-        const inited = false
+export const initCategoryProducts = createAsyncThunk<
+    void,
+    InitCategoryProductsProps,
+    ThunkConfig<string>
+>("subcategoryPage/initCategoryProducts", async ({ searchParams, id }, thunkApi) => {
+    const { dispatch, getState } = thunkApi
 
-        if (!inited) {
-            const orderBy = searchParams.get("orderBy") as sortProductsOrderType
+    const inited = getSubCategoryInited(getState())
 
-            if (orderBy) {
-                dispatch(sortProductsAction.setOrder(orderBy))
-            }
+    if (!inited) {
+        const orderBy = searchParams.get("orderBy") as sortProductsOrderType
 
-            dispatch(fetchCategoryProducts(id))
+        if (orderBy) {
+            dispatch(sortProductsAction.setOrder(orderBy))
         }
+
+        dispatch(subcategoryPageActions.initState())
+        dispatch(fetchCategoryProducts(id))
     }
-)
+})

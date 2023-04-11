@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
-import { SubCategoryPageSchema } from "../../types/subcategoryPageSchema"
-import { getSortProductsOrder } from "features/SortProducts/model/selectors/sortProductsSelectors"
+import { getSortProductsOrder } from "features/SortProducts"
 import { addQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
+import { SubCategoryPageSchema } from "../../types/subcategoryPageSchema"
 
 export const fetchCategoryProducts = createAsyncThunk<
     SubCategoryPageSchema,

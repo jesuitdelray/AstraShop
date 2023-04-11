@@ -6,16 +6,20 @@ const initialState: SubCategoryPageSchema = {
     products: [],
     isLoading: false,
     error: undefined,
-
     parent_category_id: 0,
     id: 0,
     name: "",
+    _inited: false,
 }
 
 const subcategoryPageSlice = createSlice({
     name: "subcategoryPage",
     initialState,
-    reducers: {},
+    reducers: {
+        initState: state => {
+            state._inited = true
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchCategoryProducts.pending, (state, action) => {

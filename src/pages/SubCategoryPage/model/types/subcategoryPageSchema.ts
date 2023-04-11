@@ -1,5 +1,4 @@
 import { Product } from "entities/Product"
-import { sortProductsOrderType } from "features/SortProducts"
 
 export interface SubCategoryPageSchema {
     id: number
@@ -8,4 +7,5 @@ export interface SubCategoryPageSchema {
     products: Product[]
     isLoading: boolean
     error?: string
+    _inited: boolean
 }

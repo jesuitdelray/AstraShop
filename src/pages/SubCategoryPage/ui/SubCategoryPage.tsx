@@ -76,8 +76,10 @@ export function SubCategoryPage() {
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
-        dispatch(initCategoryProducts({ searchParams, id }))
-    }, [searchParams, dispatch])
+        if (id !== undefined) {
+            dispatch(initCategoryProducts({ searchParams, id }))
+        }
+    }, [searchParams, dispatch, id])
 
     const content = useMemo(() => {
         switch (true) {
@@ -140,7 +142,7 @@ export function SubCategoryPage() {
     return (
         <>
             <FiltersModalSlider />
-            {/* <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} /> */}
+            <SortModalSlider onChangeSort={fetchSortedData} />
             <div className={styles.wrapper}>
                 <Breadcrumbs />
                 {content}
