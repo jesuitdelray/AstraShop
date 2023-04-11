@@ -1,17 +1,27 @@
 import { classNames } from "shared/lib/classNames/classNames"
+import { useDispatch, useSelector } from "react-redux"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import styles from "./SortProducts.module.scss"
-import { sortProductsOrderType } from "../model/types"
+import { sortProductsOrderType } from "../model/types/types"
+import { getSortProductsOrder } from "../model/selectors/sortProductsSelectors"
+import { sortProductsAction } from "../model/slice/sortProductsSlice"
 
 interface SortProductsProps {
-    sortOrderPattern: sortProductsOrderType
-    onClick: (pattern: sortProductsOrderType) => void
     className?: string
+    onChangeSort?: () => void
 }
 
 export function SortProducts(props: SortProductsProps) {
-    const { className, sortOrderPattern, onClick } = props
+    const { className, onChangeSort } = props
+
+    const dispatch = useDispatch()
+    const sortOrderPattern = useSelector(getSortProductsOrder)
+
+    function clickHandler(order: sortProductsOrderType) {
+        dispatch(sortProductsAction.setOrder(order))
+        onChangeSort?.()
+    }
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
@@ -23,7 +33,7 @@ export function SortProducts(props: SortProductsProps) {
                         ? ButtonVariant.FILLED_RED
                         : ButtonVariant.OUTLINE
                 }
-                onClick={() => onClick?.(sortProductsOrderType.ASC)}
+                onClick={() => clickHandler(sortProductsOrderType.ASC)}
             >
                 По возрастанию
             </Button>
@@ -34,7 +44,7 @@ export function SortProducts(props: SortProductsProps) {
                         ? ButtonVariant.FILLED_RED
                         : ButtonVariant.OUTLINE
                 }
-                onClick={() => onClick?.(sortProductsOrderType.DESC)}
+                onClick={() => clickHandler(sortProductsOrderType.DESC)}
             >
                 По убыванию
             </Button>

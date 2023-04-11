@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { sortProductsOrderType } from "features/SortProducts"
 import { fetchCategoryProducts } from "../services/fetchCategoryProducts/fetchCategoryProducts"
 import { SubCategoryPageSchema } from "../types/subcategoryPageSchema"
 
@@ -7,18 +6,18 @@ const initialState: SubCategoryPageSchema = {
     products: [],
     isLoading: false,
     error: undefined,
-    sortOrder: sortProductsOrderType.NONE,
     parent_category_id: 0,
     id: 0,
     name: "",
+    _inited: false,
 }
 
 const subcategoryPageSlice = createSlice({
     name: "subcategoryPage",
     initialState,
     reducers: {
-        setSortOrder: (state, action) => {
-            state.sortOrder = action.payload
+        initState: state => {
+            state._inited = true
         },
     },
     extraReducers: builder => {
