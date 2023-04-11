@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
+import { changeLanguageReducer } from "features/ChangeLanguage"
 import { catalogNavigationReducer } from "entities/CatalogNavigation"
 import { modalsReducer } from "entities/ModalSlider"
 import { productDetailsReducer } from "pages/ProductDetailsPage"
@@ -18,6 +19,7 @@ export function createReduxStore(initialState?: StateSchema) {
             subcategoryPage: subcategoryPageReducer,
             productDetails: productDetailsReducer,
             productCarousel: productCarouselReducer,
+            changeLanguage: changeLanguageReducer,
             searchProducts: searchProductsReducer,
             sortProducts: sortProductsReducer,
             basket: basketReducer,

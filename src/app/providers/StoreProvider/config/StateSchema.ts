@@ -2,6 +2,7 @@ import { AxiosInstance } from "axios"
 import { BasketSchema } from "entities/Basket"
 import { CatalogNavigationSchema } from "entities/CatalogNavigation"
 import { ModalsSchema } from "entities/ModalSlider"
+import { ChangeLanguageSchema } from "features/ChangeLanguage"
 import { SearchProductsSchema } from "features/SearchProduct"
 import { SortProductsSchema } from "features/SortProducts"
 import { ProductDetailsSchema } from "pages/ProductDetailsPage"
@@ -14,6 +15,7 @@ export interface StateSchema {
     subcategoryPage: SubCategoryPageSchema
     productDetails: ProductDetailsSchema
     productCarousel: ProductCarouselSchema
+    changeLanguage: ChangeLanguageSchema
     searchProducts: SearchProductsSchema
     sortProducts: SortProductsSchema
     basket: BasketSchema

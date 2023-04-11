@@ -115,6 +115,7 @@ export function SubCategoryPage() {
                                             price={price}
                                             Basket={
                                                 <ToggleProductInBasket
+                                                    key={id}
                                                     variant={ToggleProductInBasketVariant.ICON}
                                                     product={product}
                                                 />
