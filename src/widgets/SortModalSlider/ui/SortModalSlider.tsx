@@ -13,6 +13,11 @@ export function SortModalSlider({ onChangeSort }: SortModalSliderProps) {
 
     const dispatch = useDispatch()
 
+    function changeSortHandler() {
+        onChangeSort?.()
+        dispatch(modalsActions.close())
+    }
+
     return (
         <ModalSlider
             isOpen={currentModal === ModalsList.SORT}
@@ -20,9 +25,7 @@ export function SortModalSlider({ onChangeSort }: SortModalSliderProps) {
             className={styles.wrapper}
         >
             <div className={styles.container}>
-                <SortProducts onChangeSort={onChangeSort} className={styles.desktopFilters} />
-
-                <Button onClick={() => dispatch(modalsActions.close())}>Применить</Button>
+                <SortProducts onChangeSort={changeSortHandler} className={styles.desktopFilters} />
             </div>
         </ModalSlider>
     )
