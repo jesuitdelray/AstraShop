@@ -2,6 +2,7 @@ import { ReactElement } from "react"
 import { SearchProduct } from "features/SearchProduct"
 import { NavigationList, NavigationListVariant } from "entities/NavigationList"
 /* import { ChangeLanguageExample } from "features/ChangeLanguageExample/ChangeLanguageExample" */ // for language testing
+import { ChangeLanguage } from "features/ChangeLanguage"
 import styles from "./Header.module.scss"
 import { HeaderLeft } from "./HeaderLeft/HeaderLeft"
 import { HeaderRight } from "./HeaderRight/HeaderRight"
@@ -20,10 +21,10 @@ export function Header(props: HeaderProps) {
             {BasketModal}
             <div className={styles.container}>
                 <SearchProduct className={styles.search} />
-
                 <HeaderLeft className={styles.headerLeft} />
 
                 <NavigationList
+                    ChangeLanguage={<ChangeLanguage />}
                     className={styles.navlist}
                     variant={NavigationListVariant.DESKTOP}
                 />

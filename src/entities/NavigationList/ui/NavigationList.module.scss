@@ -1,4 +1,17 @@
+.changeLanguage {
+    position: absolute;
+    display: flex;
+    top: 38px;
+    right: 20px;
+}
+
 @include desktop {
+    .changeLanguage {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
     .list {
         display: flex;
         align-items: center;

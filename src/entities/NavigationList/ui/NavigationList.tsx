@@ -1,5 +1,4 @@
-import { memo } from "react"
-import { ChangeLanguage } from "features/ChangeLanguage/ui/ChangeLanguage"
+import { ReactNode, memo } from "react"
 import { useLocation } from "react-router-dom"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
@@ -15,10 +14,11 @@ interface NavigationListProps {
     className?: string
     variant: NavigationListVariant
     onLinkClick?: () => void
+    ChangeLanguage?: ReactNode
 }
 
 export const NavigationList = memo((props: NavigationListProps) => {
-    const { className, onLinkClick, variant } = props
+    const { className, onLinkClick, variant, ChangeLanguage } = props
 
     const { pathname } = useLocation()
 
@@ -26,7 +26,7 @@ export const NavigationList = memo((props: NavigationListProps) => {
 
     return (
         <div className={classNames(styles.list, {}, [className])}>
-            <ChangeLanguage />
+            <div className={styles.changeLanguage}>{!!ChangeLanguage && ChangeLanguage}</div>
             {list.map(item => {
                 const { id, path, text } = item
                 return (

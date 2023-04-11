@@ -2,6 +2,7 @@ import { Copyright } from "entities/Copyright/Copyright"
 import { Logo } from "entities/Logo/Logo"
 import { SearchProduct } from "features/SearchProduct"
 import { NavigationList, NavigationListVariant } from "entities/NavigationList"
+import { ChangeLanguage } from "features/ChangeLanguage/ui/ChangeLanguage"
 import { getModalsCurrent, modalsActions, ModalSlider, ModalsList } from "entities/ModalSlider"
 import { useDispatch, useSelector } from "react-redux"
 import styles from "./BurgerMenu.module.scss"
@@ -24,6 +25,7 @@ export function BurgerMenu() {
                 <Logo className={styles.logo} onClick={onClose} />
                 <SearchProduct className={styles.searchbar} />
                 <NavigationList
+                    ChangeLanguage={<ChangeLanguage />}
                     className={styles.navlist}
                     onLinkClick={onClose}
                     variant={NavigationListVariant.MOBILE}
