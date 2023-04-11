@@ -22,6 +22,6 @@ export const fetchCategoryProducts = createAsyncThunk<
             return rejectWithValue("Category not found")
         }
 
-        return rejectWithValue("unexpected error")
+        return rejectWithValue("Unexpected error")
     }
 })

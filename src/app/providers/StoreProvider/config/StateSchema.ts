@@ -3,6 +3,7 @@ import { BasketSchema } from "entities/Basket"
 import { CatalogNavigationSchema } from "entities/CatalogNavigation"
 import { ModalsSchema } from "entities/ModalSlider"
 import { ChangeLanguageSchema } from "features/ChangeLanguage"
+import { SearchProductsSchema } from "features/SearchProduct"
 import { ProductDetailsSchema } from "pages/ProductDetailsPage"
 import { SubCategoryPageSchema } from "pages/SubCategoryPage"
 import { ProductCarouselSchema } from "widgets/ProductCarousel"
@@ -14,6 +15,7 @@ export interface StateSchema {
     productDetails: ProductDetailsSchema
     productCarousel: ProductCarouselSchema
     changeLanguage: ChangeLanguageSchema
+    searchProducts: SearchProductsSchema
     basket: BasketSchema
 }
 
