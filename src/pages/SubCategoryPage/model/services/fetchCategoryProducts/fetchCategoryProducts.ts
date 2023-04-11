@@ -7,16 +7,10 @@ export const fetchCategoryProducts = createAsyncThunk<
     string | undefined,
     ThunkConfig<string>
 >("subcategoryPage/fetchCategoryProducts", async (id, thunkApi) => {
-    const { extra, rejectWithValue, getState } = thunkApi
-
-    const queryProducts = `/${id}/products`
-
-    const filterId = 150
-
-    const queryFilters = `/filters/${filterId}`
+    const { extra, rejectWithValue } = thunkApi
 
     try {
-        const response = await extra.api.get(`category/${id}/products`)
+        const response = await extra.api.get(`/category/${id}/products`)
 
         if (!response.data) {
             throw new Error()

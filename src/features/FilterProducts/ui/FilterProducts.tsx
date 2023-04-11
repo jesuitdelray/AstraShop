@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { Sidebar } from "shared/ui/Sidebar/Sidebar"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
@@ -10,16 +11,26 @@ import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
 
 interface FilterProductsProps {
     className?: string
+    onChangeFilters: () => void
 }
 
-export function FilterProducts({ className }: FilterProductsProps) {
+export function FilterProducts({ className, onChangeFilters }: FilterProductsProps) {
     const data: any[] = useSelector(getProductFilters) || []
+
+    const filters = 1
 
     const content = (
         <div>
             {data.map(item => {
                 if (item.type === "price_range") {
-                    return <PriceFilter groupId={item.id} title={item.name} range={item.info} />
+                    return (
+                        <PriceFilter
+                            groupId={item.id}
+                            title={item.name}
+                            range={item.info}
+                            onChangeFilters={onChangeFilters}
+                        />
+                    )
                 }
                 if (item.type === "attributes") {
                     return (

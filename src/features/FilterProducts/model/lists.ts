@@ -1,3 +1,7 @@
+export interface A {
+    id: number
+}
+
 /* export interface filterListsItemType {
     label: string
     id: string

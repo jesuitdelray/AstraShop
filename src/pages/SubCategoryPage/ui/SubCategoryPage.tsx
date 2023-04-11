@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useSearchParams } from "react-router-dom"
 import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
@@ -27,6 +27,8 @@ import {
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
+import { fetchFilteredProducts } from "../model/services/fetchFilteredProducts/fetchFilteredProducts"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 
 export function SubCategoryPage() {
     const { id } = useParams()
@@ -86,6 +88,13 @@ export function SubCategoryPage() {
             ])
         )
     }, [categoryName, parentCategoryId, dispatch, id, getCategoryName])
+
+    function onChangeFilters() {
+        dispatch(fetchFilteredProducts())
+    }
+
+    const [s, setS] = useSearchParams()
+    console.log(s.get("150"))
 
     const content = useMemo(() => {
         switch (true) {
@@ -149,7 +158,7 @@ export function SubCategoryPage() {
 
     return (
         <div className={styles.wrapper}>
-            <FilterProducts className={styles.sidebar} />
+            <FilterProducts className={styles.sidebar} onChangeFilters={onChangeFilters} />
             <SortModalSlider sortOrderPattern={sortOrderPattern} onClick={sortClickHandler} />
             <div className={styles.container}>
                 <Breadcrumbs />
