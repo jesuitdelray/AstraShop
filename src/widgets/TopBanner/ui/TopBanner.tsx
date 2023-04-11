@@ -1,6 +1,7 @@
 import { Banner, BannerColor, BannerVariant } from "entities/Banner"
 import { useEffect, useState } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
+import { useTranslation } from "react-i18next"
 import { topBannerSlides as slides } from "../model/list"
 import styles from "./TopBanner.module.scss"
 
@@ -9,6 +10,7 @@ const SLIDER_DELAY = 5000
 export function TopBanner() {
     const [isAutoScroll, setIsAutoScroll] = useState(true)
     const [current, setCurrent] = useState(0)
+    const { t } = useTranslation()
 
     useEffect(() => {
         function paginate() {
@@ -45,8 +47,8 @@ export function TopBanner() {
                         variant={BannerVariant.TOP}
                         color={BannerColor.INVERTED}
                         img={img}
-                        title={title}
-                        desc={desc}
+                        title={t(`topBannerTitle${id}`)}
+                        desc={t(`topBannerDesc${id}`)}
                         className={styles.banner}
                     />
                 ) : null

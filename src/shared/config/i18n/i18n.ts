@@ -9,7 +9,7 @@ i18n.use(Backend)
     .use(initReactI18next)
     .init({
         fallbackLng: "en",
-        debug: false, // будет спам в консоль
+        debug: false,
         interpolation: {
             escapeValue: false,
         },

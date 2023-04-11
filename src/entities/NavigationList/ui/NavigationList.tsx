@@ -2,6 +2,7 @@ import { memo } from "react"
 import { useLocation } from "react-router-dom"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
+import { useTranslation } from "react-i18next"
 import { desktopItemsList, mobileItemsList } from "../model/list"
 import styles from "./NavigationList.module.scss"
 
@@ -21,6 +22,8 @@ export const NavigationList = memo((props: NavigationListProps) => {
 
     const { pathname } = useLocation()
 
+    const { t } = useTranslation()
+
     const list = variant === NavigationListVariant.MOBILE ? mobileItemsList : desktopItemsList
 
     return (
@@ -39,7 +42,7 @@ export const NavigationList = memo((props: NavigationListProps) => {
                         onClick={onLinkClick}
                     >
                         {!!Icon && <Icon className={styles.menuItem} />}
-                        {text}
+                        {t(`navBar${id}`)}
                     </AppLink>
                 )
             })}

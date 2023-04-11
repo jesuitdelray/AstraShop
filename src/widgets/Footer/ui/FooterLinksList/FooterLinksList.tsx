@@ -1,6 +1,7 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { Typography } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import styles from "./FooterLinksList.module.scss"
 
 interface ListItemType {
@@ -22,7 +23,7 @@ interface LinksListProps {
 
 export function FooterLinksList({ data, className }: LinksListProps) {
     const { title, list } = data
-
+    const { t } = useTranslation()
     return (
         <div className={classNames(styles.container, {}, [className])}>
             <Typography className={styles.title}>{title}</Typography>
@@ -31,7 +32,7 @@ export function FooterLinksList({ data, className }: LinksListProps) {
                     const { id, text, path } = item
                     return (
                         <AppLink key={id} to={path}>
-                            {text}
+                            {t(`footerLinks${id}`)}
                         </AppLink>
                     )
                 })}

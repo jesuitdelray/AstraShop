@@ -7,7 +7,7 @@ export interface headerItemsType {
     id: string
     Icon?: React.VFC<React.SVGProps<SVGSVGElement>>
 }
-
+//
 export const desktopItemsList: headerItemsType[] = [
     { text: "Каталог товаров", path: RoutePath.catalog, Icon: MenuIcon, id: "1" },
     { text: "Доставка и оплата", path: RoutePath.delivery, id: "2" },

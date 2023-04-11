@@ -5,6 +5,7 @@ import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { getBasketProducts } from "entities/Basket/model/selectors/basketSelectors"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./BasketSummary.module.scss"
+import { useTranslation } from "react-i18next"
 
 export enum BasketSummaryVariant {
     DEFAULT = "default",
@@ -56,6 +57,8 @@ export function BasketSummary(props: BasketSummaryProps) {
 
     const currency = "$"
 
+    const { t } = useTranslation()
+
     return (
         <div
             className={classNames(styles.container, { [styles.centered]: isCentered }, [
@@ -65,19 +68,21 @@ export function BasketSummary(props: BasketSummaryProps) {
         >
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.H4} isBold>
-                    Итого
+                    {t("basketTotal")}
                 </Typography>
                 <Typography isBold className={styles.totalPrice}>
                     {`${totalPrice} ${currency}`}
                 </Typography>
-                <Typography variant={TypographyVariant.H4}>Количество товаров</Typography>
+                <Typography variant={TypographyVariant.H4}>
+                    {t("basketNumberOfProducts")}
+                </Typography>
                 <Typography className={styles.totalProducts}>{totalProducts}</Typography>
             </div>
             <div className={styles.buttons}>
                 <Button onClick={orderClickHandler} variant={ButtonVariant.FILLED_RED}>
-                    Подтвердить заказ
+                    {t("basketConfirmTheOrder")}
                 </Button>
-                <Button onClick={exitClickHandler}>Продолжить покупки</Button>
+                <Button onClick={exitClickHandler}>{t("continueShopping")}</Button>
             </div>
         </div>
     )

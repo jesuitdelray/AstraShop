@@ -3,6 +3,7 @@ import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typogr
 import { classNames } from "shared/lib/classNames/classNames"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import styles from "./Banner.module.scss"
 
 export enum BannerVariant {
@@ -36,6 +37,8 @@ export function Banner(props: BannerProps) {
     } = props
 
     const navigate = useNavigate()
+
+    const { t } = useTranslation()
 
     const isMain = variant === BannerVariant.MAIN || variant === BannerVariant.TOP
 
@@ -72,14 +75,16 @@ export function Banner(props: BannerProps) {
                         variant={ButtonVariant.FILLED_RED}
                         onClick={() => navigate(RoutePath.sub_category)}
                     >
-                        Смотреть
+                        {/* Смотреть */}
+                        {t("view")}
                     </Button>
                 ) : (
                     <Button
                         variant={ButtonVariant.CLEAR_INVERTED}
                         onClick={() => navigate(RoutePath.sub_category)}
                     >
-                        Смотреть товары
+                        {/* Смотреть товары */}
+                        {t("viewProducts")}
                     </Button>
                 )}
             </div>
