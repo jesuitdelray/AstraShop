@@ -1,7 +1,5 @@
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { RoutePath } from "shared/config/routeConfig/const"
-import { useEffect, useMemo, useRef, useState } from "react"
-import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
 import { modalsActions } from "entities/ModalSlider"
 import {
@@ -13,10 +11,11 @@ import styles from "./SearchDropdown.module.scss"
 
 interface SearchDropdownProps {
     className?: string
+    setIsDropdownOpen: (arg: boolean) => void
 }
 
 export function SearchDropdown(props: SearchDropdownProps) {
-    const { className } = props
+    const { className, setIsDropdownOpen } = props
 
     const productsList = useSelector(getSearchProductsList)
     const isLoading = useSelector(getSearchProductsLoading)
@@ -43,6 +42,7 @@ export function SearchDropdown(props: SearchDropdownProps) {
                             className={styles.product}
                             onClick={() => {
                                 dispatch(modalsActions.close())
+                                setIsDropdownOpen(false)
                             }}
                         >
                             {name}

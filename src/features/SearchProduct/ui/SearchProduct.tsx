@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useRef, useState, useEffect } from "react"
+import { useDispatch } from "react-redux"
 import { Input } from "shared/ui/Input/Input"
 import { SearchIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
@@ -36,29 +36,21 @@ export function SearchProduct({ className }: SearchProductProps) {
         debounsedSearch(value)
     }
 
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
-
-    function mouseEnterHandler() {
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current)
-            timeoutRef.current = null
+    useEffect(() => {
+        function closeHandler(e: MouseEvent) {
+            const target = e.target as HTMLElement
+            if (!target?.closest("#searcProductContainer")) {
+                setIsDropdownOpen(false)
+            }
         }
-
-        setIsDropdownOpen(true)
-    }
-
-    function mouseLeaveHandler() {
-        timeoutRef.current = setTimeout(() => {
-            setIsDropdownOpen(false)
-        }, 200)
-    }
+        window.addEventListener("click", closeHandler)
+        return () => {
+            window.removeEventListener("click", closeHandler)
+        }
+    }, [])
 
     return (
-        <div
-            className={classNames(styles.container, {}, [className])}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-        >
+        <div className={classNames(styles.container, {}, [className])} id="searcProductContainer">
             <SearchIcon
                 className={classNames(
                     styles.icon,
@@ -71,12 +63,15 @@ export function SearchProduct({ className }: SearchProductProps) {
                 onChange={value => changeHandler(value)}
                 placeholder="Search Product"
                 className={styles.searchbar}
-                onFocus={() => setActive(true)}
+                onFocus={() => {
+                    setIsDropdownOpen(true)
+                    setActive(true)
+                }}
                 onBlur={() => setActive(false)}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
             />
-            {isDropdownOpen && <SearchDropdown />}
+            {isDropdownOpen && <SearchDropdown setIsDropdownOpen={setIsDropdownOpen} />}
         </div>
     )
 }
