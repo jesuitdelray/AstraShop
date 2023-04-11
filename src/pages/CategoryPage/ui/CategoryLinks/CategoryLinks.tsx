@@ -27,6 +27,7 @@ export function CategoryLinks({ data, className }: CategoryLinksProps) {
 
                     return (
                         <div
+                            key={id}
                             onClick={() => navigate(`${RoutePath.sub_category}/${id}`)}
                             className={styles.list}
                         >

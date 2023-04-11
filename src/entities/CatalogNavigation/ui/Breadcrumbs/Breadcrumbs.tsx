@@ -12,7 +12,7 @@ export function Breadcrumbs() {
     const currentTree = useSelector(getCurrentTree)
 
     const data: CurrentTreeItem[] = [
-        { id: 0, name: "Catalog", type: CurrentTreeItemType.CATALOG },
+        { id: 228, name: "Catalog", type: CurrentTreeItemType.CATALOG },
         ...currentTree,
     ]
 

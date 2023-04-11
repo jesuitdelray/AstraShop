@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Header } from "widgets/Header"
 import { Footer } from "widgets/Footer"
+import { changeLanguageActions } from "features/ChangeLanguage"
 import { basketActions } from "entities/Basket"
 import { BasketModalSlider } from "widgets/BasketModalSlider"
 import { BurgerMenu } from "widgets/BurgerMenu"
@@ -16,6 +17,7 @@ function App() {
 
     useEffect(() => {
         dispatch(basketActions.initBasketData())
+        dispatch(changeLanguageActions.initLanguage())
     })
 
     const isSubCategoryPage = useMatch(`${RoutePath.sub_category}:id`)
