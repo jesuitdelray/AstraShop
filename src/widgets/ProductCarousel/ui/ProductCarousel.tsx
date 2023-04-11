@@ -18,6 +18,7 @@ import {
     getProductCarouselNewProducts,
     getProductCarouselTopProducts,
 } from "../model/selectors/productCarouselSelector"
+import { useTranslation } from "react-i18next"
 
 export enum ProductCarouselVariant {
     TOP_PRODUCTS = "top",
@@ -31,6 +32,8 @@ interface ProductCarouselProps {
 
 export const ProductCarousel = memo((props: ProductCarouselProps) => {
     const { variant, className } = props
+
+    const { t } = useTranslation()
 
     const dispatch = useDispatch()
 
@@ -63,7 +66,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
         errorTop,
     ])
 
-    const title = isNew ? "Новые поступления" : "Топовые позиции"
+    const title = isNew ? t("productsNewProducts") : t("productsTopProducts")
     const list: Product[] | undefined = isNew ? newProducts : topProducts
     const loading = isNew ? isLoadingNew : isLoadingTop
     const error = isNew ? errorNew : errorTop

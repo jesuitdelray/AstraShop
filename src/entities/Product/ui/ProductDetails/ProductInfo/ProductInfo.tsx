@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { v4 as uuid } from "uuid"
+import { useTranslation } from "react-i18next"
 import styles from "./ProductInfo.module.scss"
 import { ProductAttributes } from "../../../model/types"
 import { convertDataToObjectArray } from "../../../lib/convertDataToObjectArray"
@@ -42,9 +43,11 @@ function Article({ data }: ArticleProps) {
         }
     }, [text])
 
+    const { t } = useTranslation()
+
     return (
         <div className={styles.article}>
-            <Typography className={styles.title}>{title}</Typography>
+            <Typography className={styles.title}>{`${t("productDescriptionTitle")}`}</Typography>
             {content}
         </div>
     )

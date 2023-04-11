@@ -1,5 +1,6 @@
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import { RadioButton } from "./RadioButton/RadioButton"
 import styles from "./RadioGroup.module.scss"
 
@@ -20,7 +21,7 @@ interface RadioGroupProps {
 
 export function RadioGroup(props: RadioGroupProps) {
     const { options, onChange, activeInput, className, isRequired, title } = props
-
+    const { t } = useTranslation()
     function changeHandler(value: string) {
         onChange?.(value)
     }
@@ -39,7 +40,7 @@ export function RadioGroup(props: RadioGroupProps) {
                         <RadioButton
                             key={id}
                             id={id}
-                            label={label}
+                            label={`${t(`deliveryTypes${id}`)}`}
                             value={value}
                             checked={activeInput === value}
                             onChange={() => changeHandler(value)}

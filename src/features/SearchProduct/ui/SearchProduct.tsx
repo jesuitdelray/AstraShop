@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { SearchIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
+import { useTranslation } from "react-i18next"
 import styles from "./SearchProduct.module.scss"
 
 interface SearchProductProps {
@@ -12,7 +13,7 @@ export function SearchProduct({ className }: SearchProductProps) {
     const [value, setValue] = useState("")
     const [hover, setHover] = useState(false)
     const [active, setActive] = useState(false)
-
+    const { t } = useTranslation()
     return (
         <div className={classNames(styles.container, {}, [className])}>
             <SearchIcon
@@ -25,7 +26,7 @@ export function SearchProduct({ className }: SearchProductProps) {
             <Input
                 value={value}
                 onChange={value => setValue(value)}
-                placeholder="Search Product"
+                placeholder={`${t("inputSearchPlaceholder")}`}
                 className={styles.searchbar}
                 onFocus={() => setActive(true)}
                 onBlur={() => setActive(false)}

@@ -26,7 +26,7 @@ export function FooterLinksList({ data, className }: LinksListProps) {
     const { t } = useTranslation()
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <Typography className={styles.title}>{title}</Typography>
+            <Typography className={styles.title}>{t("footerTitleInformation")}</Typography>
             <div className={styles.list}>
                 {list.map(item => {
                     const { id, text, path } = item

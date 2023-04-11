@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { useTranslation } from "react-i18next"
 import { Label, LabelFontSize, LabelColor } from "./Label"
 
 export default {
@@ -15,7 +16,9 @@ export const DefaultOnlyValue = Template.bind({})
 DefaultOnlyValue.args = {
     value: "новый",
 }
-
+function t(t) {
+    useTranslation()
+}
 export const LabelFontSizeSmallRedGray = Template.bind({})
 LabelFontSizeSmallRedGray.args = {
     value: "новый",

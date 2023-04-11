@@ -75,7 +75,6 @@ export function Banner(props: BannerProps) {
                         variant={ButtonVariant.FILLED_RED}
                         onClick={() => navigate(RoutePath.sub_category)}
                     >
-                        {/* Смотреть */}
                         {t("view")}
                     </Button>
                 ) : (
@@ -83,7 +82,6 @@ export function Banner(props: BannerProps) {
                         variant={ButtonVariant.CLEAR_INVERTED}
                         onClick={() => navigate(RoutePath.sub_category)}
                     >
-                        {/* Смотреть товары */}
                         {t("viewProducts")}
                     </Button>
                 )}
