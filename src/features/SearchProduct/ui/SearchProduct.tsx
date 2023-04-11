@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Input } from "shared/ui/Input/Input"
 import { SearchIcon } from "shared/assets/icons/others"
@@ -17,6 +17,7 @@ export function SearchProduct({ className }: SearchProductProps) {
     const [value, setValue] = useState("")
     const [hover, setHover] = useState(false)
     const [active, setActive] = useState(false)
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -35,8 +36,29 @@ export function SearchProduct({ className }: SearchProductProps) {
         debounsedSearch(value)
     }
 
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+    function mouseEnterHandler() {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+            timeoutRef.current = null
+        }
+
+        setIsDropdownOpen(true)
+    }
+
+    function mouseLeaveHandler() {
+        timeoutRef.current = setTimeout(() => {
+            setIsDropdownOpen(false)
+        }, 200)
+    }
+
     return (
-        <div className={classNames(styles.container, {}, [className])}>
+        <div
+            className={classNames(styles.container, {}, [className])}
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+        >
             <SearchIcon
                 className={classNames(
                     styles.icon,
@@ -54,7 +76,7 @@ export function SearchProduct({ className }: SearchProductProps) {
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
             />
-            <SearchDropdown isOpen={!!active} />
+            {isDropdownOpen && <SearchDropdown />}
         </div>
     )
 }

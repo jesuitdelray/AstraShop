@@ -1,7 +1,9 @@
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { RoutePath } from "shared/config/routeConfig/const"
-import { useEffect, useMemo, useState } from "react"
-import { useSelector } from "react-redux"
+import { useEffect, useMemo, useRef, useState } from "react"
+import { classNames } from "shared/lib/classNames/classNames"
+import { useDispatch, useSelector } from "react-redux"
+import { modalsActions } from "entities/ModalSlider"
 import {
     getSearchProductsError,
     getSearchProductsList,
@@ -11,26 +13,18 @@ import styles from "./SearchDropdown.module.scss"
 
 interface SearchDropdownProps {
     className?: string
-    isOpen: boolean
 }
 
 export function SearchDropdown(props: SearchDropdownProps) {
-    const { className, isOpen } = props
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
-    useEffect(() => {
-        if (isOpen) {
-            setIsDropdownOpen(true)
-        } else {
-            setTimeout(() => setIsDropdownOpen(false), 100)
-        }
-    }, [isOpen])
+    const { className } = props
 
     const productsList = useSelector(getSearchProductsList)
     const isLoading = useSelector(getSearchProductsLoading)
     const error = useSelector(getSearchProductsError)
 
-    const content = useMemo(() => {
+    const dispatch = useDispatch()
+
+    const content = (() => {
         switch (true) {
             case !!error:
                 return <div>{error}</div>
@@ -47,6 +41,9 @@ export function SearchDropdown(props: SearchDropdownProps) {
                             key={id}
                             to={`${RoutePath.product_details}/${id}`}
                             className={styles.product}
+                            onClick={() => {
+                                dispatch(modalsActions.close())
+                            }}
                         >
                             {name}
                         </AppLink>
@@ -55,9 +52,7 @@ export function SearchDropdown(props: SearchDropdownProps) {
             default:
                 return <div>Error</div>
         }
-    }, [error, isLoading, productsList])
-
-    if (!isDropdownOpen) return null
+    })()
 
     return <div className={styles.container}>{content}</div>
 }
