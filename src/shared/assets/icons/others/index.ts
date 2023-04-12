@@ -19,6 +19,7 @@ import MainHome from "./home.svg"
 import BasketSuccess from "./basket-succsess.svg"
 import AddToBasket from "./basket-add.svg"
 import ChangeLanguageIcon from "./language.svg"
+import DeleteSeacrhbaricon from "./deleteSeacrhbaricon.svg"
 
 export {
     MinusIcon,
@@ -42,4 +43,5 @@ export {
     BasketSuccess,
     AddToBasket,
     ChangeLanguageIcon,
+    DeleteSeacrhbaricon,
 }

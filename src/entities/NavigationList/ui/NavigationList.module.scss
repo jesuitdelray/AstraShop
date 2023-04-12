@@ -5,6 +5,12 @@
     right: 20px;
 }
 
+.list {
+    .link {
+        width: fit-content;
+    }
+}
+
 @include desktop {
     .changeLanguage {
         position: relative;

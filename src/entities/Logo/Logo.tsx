@@ -10,11 +10,16 @@ interface LogoProps {
 
 export function Logo({ className, onClick }: LogoProps) {
     return (
-        <Link to="/" style={{ textDecoration: "none" }} onClick={onClick}>
-            <div className={classNames(styles.container, {}, [className])}>
+        <div className={classNames(styles.container, {}, [className])}>
+            <Link
+                to="/"
+                style={{ textDecoration: "none" }}
+                onClick={onClick}
+                className={styles.link}
+            >
                 <ShoppingBagIcon className={styles.icon} />
                 <p className={styles.name}>AstraShop</p>
-            </div>
-        </Link>
+            </Link>
+        </div>
     )
 }
