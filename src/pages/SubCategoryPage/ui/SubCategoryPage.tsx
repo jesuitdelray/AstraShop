@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { SortProducts, sortProductsOrderType } from "features/SortProducts"
-import { SortProducts } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
 import { SortModalSlider } from "widgets/SortModalSlider"
@@ -29,7 +29,6 @@ import {
 } from "../model/selectors/subcategoryPageSelectors"
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
 import { fetchFilteredProducts } from "../model/services/fetchFilteredProducts/fetchFilteredProducts"
-import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
 
 export function SubCategoryPage() {
@@ -44,8 +43,8 @@ export function SubCategoryPage() {
 
     const categoryName = useSelector(getSubCategoryName)
     const categoryProducts = useSelector(getSubCategoryProducts)
-    const categoryRequestLoading = useSelector(getSubCategoryLoadingProducts)
-    const categoryRequestError = useSelector(getSubCategoryErrorProducts)
+    const categoryRequestLoading = useSelector(getSubCategoryLoading)
+    const categoryRequestError = useSelector(getSubCategoryError)
     const parentCategoryId = useSelector(getSubCategoryParentId)
 
     useEffect(() => {

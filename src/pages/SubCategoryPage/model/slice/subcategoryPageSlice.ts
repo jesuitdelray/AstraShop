@@ -24,22 +24,22 @@ const subcategoryPageSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(fetchCategoryProducts.pending, (state, action) => {
-                state.errorProducts = undefined
-                state.isLoadingProducts = true
+                state.error = undefined
+                state.isLoading = true
             })
             .addCase(fetchCategoryProducts.fulfilled, (state, action) => {
-                state.isLoadingProducts = false
+                state.isLoading = false
                 state.products = action.payload.products
                 state.id = action.payload.id
                 state.parent_category_id = action.payload.parent_category_id
                 state.name = action.payload.name
             })
             .addCase(fetchCategoryProducts.rejected, (state, action) => {
-                state.isLoadingProducts = false
-                state.errorProducts = action.payload
+                state.isLoading = false
+                state.error = action.payload
             })
 
-            .addCase(fetchFilteredProducts.pending, (state, action) => {
+        /*    .addCase(fetchFilteredProducts.pending, (state, action) => {
                 state.errorProducts = undefined
                 state.isLoadingProducts = true
             })
@@ -50,7 +50,7 @@ const subcategoryPageSlice = createSlice({
             .addCase(fetchFilteredProducts.rejected, (state, action) => {
                 state.isLoadingProducts = false
                 state.errorProducts = action.payload
-            })
+            }) */
     },
 })
 

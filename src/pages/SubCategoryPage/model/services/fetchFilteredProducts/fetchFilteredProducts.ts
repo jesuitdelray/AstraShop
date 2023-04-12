@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
 import { getProductFilters } from "features/FilterProducts/model/selectors/subcategoryPageSelectors"
-import { getQueryParams } from "shared/lib/url/getQueryParams/getQueryParams"
 import { SubCategoryPageSchema } from "../../types/subcategoryPageSchema"
 
 export const fetchFilteredProducts = createAsyncThunk<
@@ -12,9 +11,9 @@ export const fetchFilteredProducts = createAsyncThunk<
     const { extra, rejectWithValue, getState } = thunkApi
 
     const filters = getProductFilters(getState())
-    const query = getQueryParams(filters)
+    const query = null
 
-    window.history.pushState(null, "", `?${query}`)
+    // window.history.pushState(null, "", `?${query}`)
 
     try {
         const response = await extra.api.get(`category/filters/${query}`)

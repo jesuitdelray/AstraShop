@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { useDispatch } from "react-redux"
 import { filterProductsActions } from "features/FilterProducts/model/slice/filterProductsSlice"
 import styles from "./PriceFilter.module.scss"
-import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 
 interface PriceFilterProps {
     groupId: number
     title: string
     range: any
+    onChangeFilters: () => void
 }
 
 export function PriceFilter(props: PriceFilterProps) {
