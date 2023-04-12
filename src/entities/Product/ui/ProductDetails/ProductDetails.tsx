@@ -1,5 +1,6 @@
 import { ReactElement } from "react"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
@@ -27,16 +28,17 @@ export function ProductDetails(props: ProductDetailsProps) {
     } = props
 
     let content
+    const { t } = useTranslation()
 
     switch (true) {
         case isLoading:
-            content = <div>Loading...</div>
+            content = <div>{t("loadingProcessLoading")}</div>
             break
         case !!error:
             content = <div>{error}</div>
             break
         case !id:
-            content = <div>Product doesn t exist</div>
+            content = <div>{t("loadingProcessProductNotExist")}</div>
             break
         case !!id:
             content = (
@@ -46,7 +48,7 @@ export function ProductDetails(props: ProductDetailsProps) {
                             {name}
                         </Typography>
                         <Typography color={TypographyColor.ACCENT} className={styles.isPresent}>
-                            В наличии
+                            {t("loadingProcessProductExist")}
                         </Typography>
                         <Typography
                             variant={TypographyVariant.H2}
@@ -67,7 +69,7 @@ export function ProductDetails(props: ProductDetailsProps) {
             )
             break
         default:
-            content = <div>Unexpected error</div>
+            content = <div>{t("loadingProcessUnexpectedError")}</div>
     }
 
     return <div className={styles.container}>{content}</div>

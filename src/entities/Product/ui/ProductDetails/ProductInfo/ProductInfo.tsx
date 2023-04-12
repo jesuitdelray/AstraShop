@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { v4 as uuid } from "uuid"
+import { useTranslation } from "react-i18next"
 import styles from "./ProductInfo.module.scss"
 import { ProductAttributes } from "../../../model/types"
 import { convertDataToObjectArray } from "../../../lib/convertDataToObjectArray"
@@ -57,10 +58,14 @@ interface ProductInfoProps {
 }
 
 export function ProductInfo({ className, description, attributes }: ProductInfoProps) {
+    const { t } = useTranslation()
     if (!description || !attributes) return null
 
     const data = [
-        { title: "Описание", text: description } /* ...convertDataToObjectArray(attributes) */,
+        {
+            title: t("productDescriptionTitle"),
+            text: description,
+        },
     ]
 
     return (
