@@ -34,6 +34,7 @@
     transform: translateY(-50%);
     fill: var(--color-dark-gray);
     border-radius: 50px;
+    cursor: pointer;
 
     &:hover {
         > :first-child {
