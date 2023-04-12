@@ -5,6 +5,7 @@ import { ModalsSchema } from "entities/ModalSlider"
 import { ChangeLanguageSchema } from "features/ChangeLanguage"
 import { SearchProductsSchema } from "features/SearchProduct"
 import { SortProductsSchema } from "features/SortProducts"
+import { SubmitOrderSchema } from "features/SubmitOrder"
 import { ProductDetailsSchema } from "pages/ProductDetailsPage"
 import { SubCategoryPageSchema } from "pages/SubCategoryPage"
 import { ProductCarouselSchema } from "widgets/ProductCarousel"
@@ -18,6 +19,7 @@ export interface StateSchema {
     changeLanguage: ChangeLanguageSchema
     searchProducts: SearchProductsSchema
     sortProducts: SortProductsSchema
+    submitOrder: SubmitOrderSchema
     basket: BasketSchema
 }
 
