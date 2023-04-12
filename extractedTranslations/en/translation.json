@@ -22,6 +22,7 @@
   "basketTakeOutBtn": "basketTakeOutBtn",
   "basketTotal": "basketTotal",
   "checkout": "checkout",
+  "computerSearch": "computerSearch",
   "continueShopping": "continueShopping",
   "deliveryMethod": "deliveryMethod",
   "deliveryTypes": "deliveryTypes",
@@ -65,8 +66,10 @@
   "scheduleWeekend": "scheduleWeekend",
   "shippingAndPayment": "shippingAndPayment",
   "showMoreProducts": "Show more products",
+  "tabletSearch": "tabletSearch",
   "title": "title",
   "view": "view",
   "viewGoods": "viewGoods",
-  "viewProducts": "viewProducts"
+  "viewProducts": "viewProducts",
+  "Описание": "Описание"
 }

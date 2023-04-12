@@ -43,11 +43,9 @@ function Article({ data }: ArticleProps) {
         }
     }, [text])
 
-    const { t } = useTranslation()
-
     return (
         <div className={styles.article}>
-            <Typography className={styles.title}>{`${t("productDescriptionTitle")}`}</Typography>
+            <Typography className={styles.title}>{title}</Typography>
             {content}
         </div>
     )
@@ -60,10 +58,14 @@ interface ProductInfoProps {
 }
 
 export function ProductInfo({ className, description, attributes }: ProductInfoProps) {
+    const { t } = useTranslation()
     if (!description || !attributes) return null
 
     const data = [
-        { title: "Описание", text: description } /* ...convertDataToObjectArray(attributes) */,
+        {
+            title: t("productDescriptionTitle"),
+            text: description,
+        },
     ]
 
     return (
