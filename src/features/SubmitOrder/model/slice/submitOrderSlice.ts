@@ -3,7 +3,6 @@ import { SubmitOrderSchema } from "../types/submitOrderSchema"
 import { createNewOrder } from "../services/createNewOrder/createNewOrder"
 
 const initialState: SubmitOrderSchema = {
-    response: "",
     isLoading: false,
 }
 
@@ -19,7 +18,9 @@ const submitOrderSlice = createSlice({
             })
             .addCase(createNewOrder.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.response = action.payload
+                if (action.payload.url) {
+                    window.location.href = action.payload.url
+                }
             })
             .addCase(createNewOrder.rejected, (state, action) => {
                 state.isLoading = false
