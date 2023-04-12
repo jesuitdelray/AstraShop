@@ -1,4 +1,4 @@
-import { IFormData } from "../model/types"
+import { IFormData } from "../model/types/types"
 
 function validateName(value: string): string {
     let error = ""

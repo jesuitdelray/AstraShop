@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import {
@@ -16,7 +16,8 @@ import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
 import { RoutePath } from "shared/config/routeConfig/const"
 import styles from "./OrderForm.module.scss"
 import { inputValidations } from "../../lib/inputValidations"
-import { IFormData } from "../../model/types"
+import { IFormData } from "../../model/types/types"
+import { createNewOrder } from "../../model/services/createNewOrder/createNewOrder"
 
 export function OrderForm() {
     const [formData, setFormData] = useState<IFormData>({
@@ -50,6 +51,7 @@ export function OrderForm() {
     const [isDirty, setIsDirty] = useState(initialIsDirty)
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     function inputChangeHandler(value: string, input: string) {
         setFormData(prev => ({ ...prev, [input]: value }))
@@ -88,6 +90,7 @@ export function OrderForm() {
         if (!checkOrderValid()) return
         if (!checkInputsValid(formData)) return
         console.log("submit")
+        // dispatch(createNewOrder(formData))
     }
     return (
         <div>
