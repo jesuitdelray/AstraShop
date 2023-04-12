@@ -1,6 +1,7 @@
 .checkboxWrapper {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .label {
@@ -47,4 +48,12 @@
         transform: rotate(-45deg);
         width: 8px;
     }
+}
+
+.error {
+    position: absolute;
+    color: var(--color-error);
+    font-size: var(--font-size-small);
+    bottom: -20px;
+    left: 28px;
 }

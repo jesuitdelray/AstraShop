@@ -5,4 +5,8 @@ export { BasketSummaryVariant } from "./ui/BasketSummary/BasketSummary"
 export { basketReducer } from "./model/slice/basketSlice"
 export type { BasketSchema } from "./model/types/basketSchema"
 export { basketActions } from "./model/slice/basketSlice"
-export { getBasketProducts } from "./model/selectors/basketSelectors"
+export {
+    getBasketProducts,
+    getBasketProductsTotalPrice,
+    getBasketProductsTotalQuantity,
+} from "./model/selectors/basketSelectors"

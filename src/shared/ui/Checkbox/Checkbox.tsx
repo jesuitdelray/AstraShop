@@ -10,10 +10,11 @@ interface inputProps extends HtmlInputProps {
     onChange: () => void
     id: string
     className?: string
+    error?: string
 }
 
 export function Checkbox(props: inputProps) {
-    const { label, checked, onChange, id, className, ...otherProps } = props
+    const { label, checked, onChange, id, className, error, ...otherProps } = props
     return (
         <label
             className={classNames(styles.checkboxWrapper, { [styles.checked]: checked }, [
@@ -35,6 +36,7 @@ export function Checkbox(props: inputProps) {
                 <div className={styles.checkboxTick} />
             </div>
             <p className={styles.label}>{label}</p>
+            {!!error && <p className={styles.error}>{error}</p>}
         </label>
     )
 }

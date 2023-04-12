@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react"
+import { ReactNode, useEffect, useRef } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Modal } from "shared/ui/Modal/Modal"
 import styles from "./ModalSlider.module.scss"
@@ -33,6 +33,7 @@ export function ModalSlider(props: ModalSliderProps) {
         variant = ModalSliderVariant.SLIDER,
         containerHeight,
     } = props
+    const wrapperRef = useRef(null)
 
     const wrapperClassName = classNames(
         styles.wrapper,
@@ -42,8 +43,10 @@ export function ModalSlider(props: ModalSliderProps) {
         [className, styles[direction]]
     )
 
-    function clickHandler(e: React.MouseEvent) {
-        e.stopPropagation()
+    function closeHandler(e: React.MouseEvent) {
+        if (e.target === wrapperRef.current) {
+            onClose()
+        }
     }
 
     useEffect(() => {
@@ -55,12 +58,8 @@ export function ModalSlider(props: ModalSliderProps) {
             {children}
         </Modal>
     ) : (
-        <div className={wrapperClassName} onClick={onClose}>
-            <div
-                className={styles.container}
-                onClick={clickHandler}
-                style={{ height: containerHeight }}
-            >
+        <div className={wrapperClassName} onClick={closeHandler} ref={wrapperRef}>
+            <div className={styles.container} style={{ height: containerHeight }}>
                 {children}
             </div>
         </div>

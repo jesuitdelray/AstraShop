@@ -126,9 +126,9 @@ export function SubCategoryPage() {
                                     )
                                 })}
                         </div>
-                        <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
+                        {/* <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
                             {t("showMoreProducts")}
-                        </Button>
+                        </Button> */}
                     </>
                 )
             default:
