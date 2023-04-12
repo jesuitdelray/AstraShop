@@ -26,13 +26,13 @@ export function FooterLinksList({ data, className }: LinksListProps) {
     const { t } = useTranslation()
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <Typography className={styles.title}>{t("footerTitleInformation")}</Typography>
+            <Typography className={styles.title}>{t(title)}</Typography>
             <div className={styles.list}>
                 {list.map(item => {
                     const { id, text, path } = item
                     return (
                         <AppLink key={id} to={path}>
-                            {t(`footerLinks${id}`)}
+                            {t(text)}
                         </AppLink>
                     )
                 })}
