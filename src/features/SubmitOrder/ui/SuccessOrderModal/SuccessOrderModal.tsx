@@ -9,9 +9,9 @@ import {
     ModalsList,
 } from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import styles from "./SuccessOrder.module.scss"
+import styles from "./SuccessOrderModal.module.scss"
 
-export function SuccessOrder() {
+export function SuccessOrderModal() {
     const isSlideTop = window.innerWidth < 769
 
     const dispatch = useDispatch()
