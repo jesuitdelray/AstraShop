@@ -2,13 +2,12 @@ import { modalsActions } from "entities/ModalSlider"
 import { useDispatch, useSelector } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import {
-    getBasketProducts,
-    getBasketProductsTotalPrice,
-    getBasketProductsTotalQuantity,
-} from "entities/Basket/model/selectors/basketSelectors"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./BasketSummary.module.scss"
+import {
+    getBasketProductsTotalPrice,
+    getBasketProductsTotalQuantity,
+} from "../../model/selectors/basketSelectors"
 
 export enum BasketSummaryVariant {
     DEFAULT = "default",
