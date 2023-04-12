@@ -26,7 +26,7 @@ export function CatalogLinks() {
             {navigationTree.map(item => {
                 const { id, name, categories } = item
                 return (
-                    <div className={styles.links}>
+                    <div className={styles.links} key={id}>
                         <AppLink to={`${RoutePath.category}/${id}`} className={styles.title}>
                             {name}
                         </AppLink>

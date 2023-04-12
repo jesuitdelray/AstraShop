@@ -16,7 +16,7 @@ export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
                     [
                         "i18next-extract",
                         {
-                            locales: ["ru", "en"],
+                            locales: ["en", "ru"],
                             keyAsDefaultValue: true,
                         },
                     ],

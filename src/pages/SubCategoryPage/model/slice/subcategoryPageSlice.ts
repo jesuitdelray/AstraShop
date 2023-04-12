@@ -1,27 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { sortProductsOrderType } from "features/SortProducts"
 import { fetchCategoryProducts } from "../services/fetchCategoryProducts/fetchCategoryProducts"
 import { SubCategoryPageSchema } from "../types/subcategoryPageSchema"
 import { fetchFilteredProducts } from "../services/fetchFilteredProducts/fetchFilteredProducts"
 
 const initialState: SubCategoryPageSchema = {
     products: [],
-    isLoadingProducts: false,
-    isLoadingFilters: false,
-    errorProducts: undefined,
-    errorFilters: undefined,
-    sortOrder: sortProductsOrderType.NONE,
+    isLoading: false,
+    error: undefined,
     parent_category_id: 0,
     id: 0,
     name: "",
+    _inited: false,
 }
 
 const subcategoryPageSlice = createSlice({
     name: "subcategoryPage",
     initialState,
     reducers: {
-        setSortOrder: (state, action) => {
-            state.sortOrder = action.payload
+        initState: state => {
+            state._inited = true
         },
     },
     extraReducers: builder => {

@@ -2,9 +2,13 @@ import { modalsActions } from "entities/ModalSlider"
 import { useDispatch, useSelector } from "react-redux"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import { getBasketProducts } from "entities/Basket/model/selectors/basketSelectors"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import styles from "./BasketSummary.module.scss"
+import {
+    getBasketProductsTotalPrice,
+    getBasketProductsTotalQuantity,
+} from "../../model/selectors/basketSelectors"
 
 export enum BasketSummaryVariant {
     DEFAULT = "default",
@@ -44,17 +48,12 @@ export function BasketSummary(props: BasketSummaryProps) {
         onExitClick?.()
     }
 
-    const products = useSelector(getBasketProducts)
-
-    const totalPrice = products
-        ?.map(item => item.price * (item.quantity || 1))
-        .reduce((acc: number, val: number) => acc + val, 0)
-
-    const totalProducts = products
-        ?.map(item => item.quantity || 1)
-        .reduce((acc: number, val: number) => acc + val, 0)
+    const totalPrice = useSelector(getBasketProductsTotalPrice)
+    const totalQuantity = useSelector(getBasketProductsTotalQuantity)
 
     const currency = "$"
+
+    const { t } = useTranslation()
 
     return (
         <div
@@ -65,19 +64,21 @@ export function BasketSummary(props: BasketSummaryProps) {
         >
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.H4} isBold>
-                    Итого
+                    {t("basketTotal")}
                 </Typography>
                 <Typography isBold className={styles.totalPrice}>
                     {`${totalPrice} ${currency}`}
                 </Typography>
-                <Typography variant={TypographyVariant.H4}>Количество товаров</Typography>
-                <Typography className={styles.totalProducts}>{totalProducts}</Typography>
+                <Typography variant={TypographyVariant.H4}>
+                    {t("basketNumberOfProducts")}
+                </Typography>
+                <Typography className={styles.totalProducts}>{totalQuantity}</Typography>
             </div>
             <div className={styles.buttons}>
                 <Button onClick={orderClickHandler} variant={ButtonVariant.FILLED_RED}>
-                    Подтвердить заказ
+                    {t("basketConfirmTheOrder")}
                 </Button>
-                <Button onClick={exitClickHandler}>Продолжить покупки</Button>
+                <Button onClick={exitClickHandler}>{t("continueShopping")}</Button>
             </div>
         </div>
     )

@@ -1,9 +1,11 @@
 .container {
     padding: 32px;
+    position: relative;
 }
 
 .logo {
     margin-bottom: 24px;
+    width: fit-content;
 }
 
 .searchbar {

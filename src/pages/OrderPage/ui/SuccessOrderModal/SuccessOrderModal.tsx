@@ -9,9 +9,9 @@ import {
     ModalsList,
 } from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import styles from "./SuccessOrder.module.scss"
+import styles from "./SuccessOrderModal.module.scss"
 
-export function SuccessOrder() {
+export function SuccessOrderModal() {
     const isSlideTop = window.innerWidth < 769
 
     const dispatch = useDispatch()
@@ -35,13 +35,13 @@ export function SuccessOrder() {
                 className={styles.title}
                 variant={isSlideTop ? TypographyVariant.H3 : TypographyVariant.H1}
             >
-                Спасибо за ваш заказ
+                Успешная оплата
             </Typography>
             <Typography className={styles.text} variant={TypographyVariant.P}>
-                Наш менеджер свяжется с Вами в ближайшее время и уточнит детали заказа
+                Детали заказа и чек отправлены Вам на почту
             </Typography>
             <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
-                Продолжить покупки
+                Вернуться
             </Button>
         </ModalSlider>
     )

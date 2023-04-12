@@ -11,22 +11,20 @@ interface bannersRowListType {
 export const bannersRowList: bannersRowListType[] = [
     {
         id: "1",
-        title: "Компьютерная периферия и аксессуары",
-        desc: `предлагаем широкий ассортимент чехлов и прочих защитных аксессуаров для
-    мобильных телефонов, смартфонов, планшетов и т. д. Надежная защита Вашего
-    устройства`,
+        title: "banner1",
+        desc: "bannerDesc",
         img: image4,
         link: "/",
     },
     {
         id: "2",
-        title: "Мужчинам",
+        title: "banner2",
         img: image5,
         link: "/",
     },
     {
         id: "3",
-        title: "Женщинам",
+        title: "banner3",
         img: image6,
         link: "/",
     },

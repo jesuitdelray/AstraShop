@@ -12,10 +12,10 @@ interface footerLinksType {
 }
 
 export const footerLinksData: footerLinksType = {
-    title: "Информация",
+    title: "footerTitleInformation",
     list: [
-        { id: "1", text: "Доставка и оплата", path: RoutePath.delivery },
-        { id: "2", text: "О нас", path: RoutePath.about },
-        { id: "3", text: "Контакты", path: RoutePath.contacts },
+        { id: "1", text: "footerLinks1", path: RoutePath.delivery },
+        { id: "2", text: "footerLinks2", path: RoutePath.about },
+        { id: "3", text: "footerLinks3", path: RoutePath.contacts },
     ],
 }
