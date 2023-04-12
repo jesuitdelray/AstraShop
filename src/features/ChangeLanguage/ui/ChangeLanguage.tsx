@@ -1,13 +1,13 @@
+import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ChangeLanguageIcon } from "shared/assets/icons/others"
-import i18n from "shared/config/i18n/i18n"
 import { classNames } from "shared/lib/classNames/classNames"
-import { useEffect, useRef, useState } from "react"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import styles from "./ChangeLanguage.module.scss"
+import i18n from "shared/config/i18n/i18n"
 import { changeLanguageActions } from "../model/slice/changeLanguageSlice"
 import { getStorageLanguage } from "../model/selectors/changeLanguageSelectors"
-import { languagesData } from "../config/config"
+import { Languages, languagesData } from "../config/config"
+import styles from "./ChangeLanguage.module.scss"
 
 export function ChangeLanguage() {
     const currentLanguage = useSelector(getStorageLanguage)
@@ -21,8 +21,16 @@ export function ChangeLanguage() {
             clearTimeout(timeoutRef.current)
             timeoutRef.current = null
         }
+    }
 
-        setDropdownActive(true)
+    function clickHandler() {
+        setDropdownActive(prev => !prev)
+    }
+
+    function languageClickHandler(languagesCode: Languages) {
+        i18n.changeLanguage(languagesCode)
+        dispatch(changeLanguageActions.setCurrentLanguage(languagesCode))
+        setDropdownActive(false)
     }
 
     function mouseLeaveHandler() {
@@ -32,21 +40,10 @@ export function ChangeLanguage() {
             setDropdownActive(false)
         }, delay)
     }
-
-    useEffect(() => {
-        function closeDropdown(e: MouseEvent) {
-            if (e.target !== dropdownRef.current) {
-                setDropdownActive(false)
-            }
-        }
-        document.body.addEventListener("click", closeDropdown)
-
-        return () => document.body.removeEventListener("click", closeDropdown)
-    }, [])
-
     return (
         <div
             className={styles.wrapper}
+            onClick={clickHandler}
             onMouseEnter={onMouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
         >
@@ -60,12 +57,9 @@ export function ChangeLanguage() {
                             <Button
                                 key={id}
                                 variant={ButtonVariant.CLEAR_INVERTED}
-                                onClick={() => {
-                                    i18n.changeLanguage(languagesCode)
-                                    dispatch(
-                                        changeLanguageActions.setCurrentLanguage(languagesCode)
-                                    )
-                                    setDropdownActive(false)
+                                onClick={e => {
+                                    e.stopPropagation()
+                                    languageClickHandler(languagesCode)
                                 }}
                                 className={classNames(
                                     styles.btn,

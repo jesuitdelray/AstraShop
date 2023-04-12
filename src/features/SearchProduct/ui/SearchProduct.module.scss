@@ -26,6 +26,23 @@
     fill: var(--color-dark-gray);
 }
 
+.cross {
+    position: absolute;
+    z-index: 3;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: var(--color-dark-gray);
+    border-radius: 50px;
+    cursor: pointer;
+
+    &:hover {
+        > :first-child {
+            fill: var(--color-accent);
+        }
+    }
+}
+
 .active {
     fill: var(--color-accent);
 }
