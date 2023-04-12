@@ -1,6 +1,6 @@
 .wrapper {
     display: flex;
-    z-index: 10;
+    z-index: var(--modal-z-index);
 
     .menuItem {
         position: relative;

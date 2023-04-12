@@ -1,13 +1,13 @@
+import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ChangeLanguageIcon } from "shared/assets/icons/others"
-import i18n from "shared/config/i18n/i18n"
 import { classNames } from "shared/lib/classNames/classNames"
-import { useRef, useState } from "react"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import styles from "./ChangeLanguage.module.scss"
+import i18n from "shared/config/i18n/i18n"
 import { changeLanguageActions } from "../model/slice/changeLanguageSlice"
 import { getStorageLanguage } from "../model/selectors/changeLanguageSelectors"
 import { Languages, languagesData } from "../config/config"
+import styles from "./ChangeLanguage.module.scss"
 
 export function ChangeLanguage() {
     const currentLanguage = useSelector(getStorageLanguage)
@@ -34,7 +34,7 @@ export function ChangeLanguage() {
     }
 
     function mouseLeaveHandler() {
-        const delay = window.innerWidth < 769 ? 0 : 500
+        const delay = window.innerWidth < 769 ? 0 : 400
 
         timeoutRef.current = setTimeout(() => {
             setDropdownActive(false)
