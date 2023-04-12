@@ -25,6 +25,7 @@
     "orderFormPhoneNumber": "Número de teléfono",
     "orderFormPlaceholderCity": "Budapest",
     "orderFormPlaceholderName": "Alejandro Pérez",
+    "orderFormPlaceholderPhone": "(123) 456 78 90",
     "orderFormPlaceholderPost": "№21 Oleksandrivsky pr...",
     "orderFormTypeOfDelivery": "Tipo de entrega",
     "checkout": "Realizar compra",

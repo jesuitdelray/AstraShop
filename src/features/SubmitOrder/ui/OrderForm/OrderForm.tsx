@@ -113,7 +113,7 @@ export function OrderForm() {
                     value={formData.phone}
                     onChange={value => inputChangeHandler(value, "phone")}
                     label={`${t("orderFormPhoneNumber")}`}
-                    placeholder="+38 228 322 13 37"
+                    placeholder={`${t("orderFormPlaceholderPhone")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.phone])}
                     error={isDirty.phone ? "" : formErrors.phone}

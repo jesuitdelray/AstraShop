@@ -43,7 +43,7 @@ export const NavigationList = memo((props: NavigationListProps) => {
                         )}
                         onClick={onLinkClick}
                     >
-                        {text}
+                        {t(text)}
                     </AppLink>
                 )
             })}

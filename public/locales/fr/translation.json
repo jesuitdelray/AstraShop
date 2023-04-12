@@ -25,6 +25,7 @@
     "orderFormPhoneNumber": "Numéro de téléphone",
     "orderFormPlaceholderCity": "Budapest",
     "orderFormPlaceholderName": "Alexander Ivanov",
+    "orderFormPlaceholderPhone": "(123) 456 78 90",
     "orderFormPlaceholderPost": "№21 Oleksandrivsky pr...",
     "orderFormTypeOfDelivery": "Type de livraison",
     "checkout": "Commander",

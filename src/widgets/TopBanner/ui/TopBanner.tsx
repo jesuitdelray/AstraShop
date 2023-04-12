@@ -47,8 +47,8 @@ export function TopBanner() {
                         variant={BannerVariant.TOP}
                         color={BannerColor.INVERTED}
                         img={img}
-                        title={t(`topBannerTitle${id}`)}
-                        desc={t(`topBannerDesc${id}`)}
+                        title={t(title)}
+                        desc={t(desc)}
                         className={styles.banner}
                     />
                 ) : null

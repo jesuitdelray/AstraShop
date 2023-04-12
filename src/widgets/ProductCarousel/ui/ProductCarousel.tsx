@@ -5,6 +5,7 @@ import { Product, ProductCard } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"
+import { useTranslation } from "react-i18next"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { sliderSettings } from "./sliderSettings"
 import styles from "./ProductCarousel.module.scss"
@@ -18,7 +19,6 @@ import {
     getProductCarouselNewProducts,
     getProductCarouselTopProducts,
 } from "../model/selectors/productCarouselSelector"
-import { useTranslation } from "react-i18next"
 
 export enum ProductCarouselVariant {
     TOP_PRODUCTS = "top",
@@ -74,9 +74,9 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
     const content = useMemo(() => {
         switch (true) {
             case loading:
-                return <div>Loading...</div>
+                return <div>{t("loadingProcessLoading")}</div>
             case !!error:
-                return <div>Error</div>
+                return <div>{t("error")}</div>
             case !!list?.length:
                 return (
                     <>
@@ -107,7 +107,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
             default:
                 return null
         }
-    }, [list, loading, title, error])
+    }, [list, loading, title, error, t])
 
     return <div className={classNames(styles.container, {}, [className])}>{content}</div>
 })

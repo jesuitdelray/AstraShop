@@ -12,13 +12,7 @@ export function BannersRow() {
                 const { id, title, desc = "", img } = item
                 const variant = index === 0 ? BannerVariant.MAIN : BannerVariant.NORMAL
                 return (
-                    <Banner
-                        key={id}
-                        variant={variant}
-                        title={t(`banner${id}`)}
-                        desc={t("bannerDesc")}
-                        img={img}
-                    />
+                    <Banner key={id} variant={variant} title={t(title)} desc={t(desc)} img={img} />
                 )
             })}
         </div>
