@@ -7,7 +7,8 @@ import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
 import { SortModalSlider } from "widgets/SortModalSlider"
-import { ProductCard } from "entities/Product"
+import { ProductCard, ProductCardSkeleton } from "entities/Product"
+import { Skeleton } from "shared/ui/Skeleton/Skeleton"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { FilterProducts } from "features/FilterProducts"
 import { fetchCategoryFilters } from "features/FilterProducts/model/services/fetchCategoryFilters/fetchCategoryFilters"
@@ -98,7 +99,21 @@ export function SubCategoryPage() {
     const content = useMemo(() => {
         switch (true) {
             case categoryRequestLoading:
-                return <div>{t("loadingProcessLoading")}</div>
+                return (
+                    <>
+                        <Skeleton height={28} width={200} border="5px" className={styles.title} />
+                        <SortProducts
+                            className={styles.desktopFilters}
+                            onChangeSort={fetchSortedData}
+                        />
+                        <ProductFilters className={styles.mobileFilters} />
+                        <div className={styles.products}>
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => (
+                                <ProductCardSkeleton key={item} />
+                            ))}
+                        </div>
+                    </>
+                )
             case !!categoryRequestError:
                 if (categoryRequestError === "Category not found") {
                     navigate(RoutePath.not_found)
@@ -159,7 +174,6 @@ export function SubCategoryPage() {
         categoryProducts,
         categoryRequestLoading,
         categoryRequestError,
-        t,
         fetchSortedData,
         navigate,
         parentCategoryId,
