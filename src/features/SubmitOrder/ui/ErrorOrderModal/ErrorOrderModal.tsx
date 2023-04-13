@@ -9,11 +9,13 @@ import {
     ModalsList,
 } from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import styles from "./ErrorOrderModal.module.scss"
 
 export function ErrorOrderModal() {
     const isSlideTop = window.innerWidth < 769
 
+    const { t } = useTranslation()
     const dispatch = useDispatch()
     const value = useSelector(getModalsCurrent)
 
@@ -35,10 +37,10 @@ export function ErrorOrderModal() {
                 className={styles.title}
                 variant={isSlideTop ? TypographyVariant.H3 : TypographyVariant.H1}
             >
-                Корзина пуста
+                {t("emptyBasket")}
             </Typography>
             <Button onClick={onClose} variant={ButtonVariant.FILLED_RED} className={styles.btn}>
-                Вернуться
+                {t("returnBtn")}
             </Button>
         </ModalSlider>
     )

@@ -76,5 +76,7 @@
     "scheduleSaturday": "Sábados: 8.00 - 16.00",
     "scheduleTitle": "Horario",
     "scheduleWeekend": "Domingo: Cerrado",
-    "shippingAndPayment": "Envío y pago"
+    "shippingAndPayment": "Envío y pago",
+    "emptyBasket": "La cesta está vacía",
+    "returnBtn": "Return"
 }
