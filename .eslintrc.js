@@ -78,6 +78,7 @@ module.exports = {
                 prop: "ignore",
             },
         ],
+        "no-control-regex": 0,
     },
     globals: {
         __IS_DEV__: true,

@@ -78,5 +78,10 @@
     "scheduleWeekend": "Вс: Выходной",
     "shippingAndPayment": "Доставка и оплата",
     "emptyBasket": "Корзина пуста",
-    "returnBtn": "Вернуться"
+    "returnBtn": "Вернуться",
+    "requiredField": "Обязательное поле",
+    "onlyLetters": "Только буквы",
+    "incorrectNumber": "Номер телефона включает в себя только цифры",
+    "emailPattern": "Только латинские буквы, цифры и специальные символы",
+    "incorrectEmail": "Введите правильный Email"
 }

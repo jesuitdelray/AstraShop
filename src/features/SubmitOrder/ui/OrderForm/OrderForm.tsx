@@ -20,7 +20,6 @@ import styles from "./OrderForm.module.scss"
 import { inputValidations } from "../../lib/inputValidations"
 import { IFormData } from "../../model/types/types"
 import { createNewOrder } from "../../model/services/createNewOrder/createNewOrder"
-import { ErrorOrderModal } from "../ErrorOrderModal/ErrorOrderModal"
 
 export function OrderForm() {
     const [formData, setFormData] = useState<IFormData>({
