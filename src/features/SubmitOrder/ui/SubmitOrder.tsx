@@ -3,6 +3,7 @@ import { useMemo } from "react"
 import { OrderForm } from "./OrderForm/OrderForm"
 import styles from "./SubmitOrder.module.scss"
 import { getSubmitOrderError, getSubmitOrderLoading } from "../model/selectors/submitOrderSelectors"
+import { ErrorOrderModal } from "./ErrorOrderModal/ErrorOrderModal"
 
 export function SubmitOrder() {
     const error = useSelector(getSubmitOrderError)
@@ -19,5 +20,10 @@ export function SubmitOrder() {
         }
     }, [error, isLoading])
 
-    return <div className={styles.wrapper}>{content}</div>
+    return (
+        <>
+            <ErrorOrderModal />
+            <div className={styles.wrapper}>{content}</div>
+        </>
+    )
 }
