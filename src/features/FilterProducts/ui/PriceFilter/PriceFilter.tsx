@@ -1,25 +1,46 @@
 import { useEffect, useRef, useState } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
+import { useDispatch } from "react-redux"
+import { filterProductsActions } from "features/FilterProducts/model/slice/filterProductsSlice"
 import styles from "./PriceFilter.module.scss"
 
-const MINIMUM_PRICE = 1000
-const MAXIMUM_PRICE = 10000
-const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
-const GAP = 1000
+interface PriceFilterProps {
+    groupId: number
+    title: string
+    range: any
+    onChangeFilters: () => void
+}
 
-export function PriceFilter() {
+export function PriceFilter(props: PriceFilterProps) {
+    const { title, groupId, range, onChangeFilters } = props
+
+    const GAP = 100
+    const MINIMUM_PRICE = range.from
+    const MAXIMUM_PRICE = range.to
+    const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
+
     const [priceSort, setPriceSort] = useState({
         min: MINIMUM_PRICE,
-        max: PRICE_RANGE / 2 + MINIMUM_PRICE,
+        max: MAXIMUM_PRICE,
     })
     const [position, setPosition] = useState({
         left: "0%",
-        right: "50%",
+        right: "0%",
     })
 
     const minRef = useRef<HTMLInputElement>(null)
     const maxRef = useRef<HTMLInputElement>(null)
+
+    const dispatch = useDispatch()
+
+    const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
+
+    /* useEffect(() => {
+        dispatch(filterProductsActions.setPriceRange({ groupId, range: priceSort }))
+        debounsedChangeFilters()
+    }, [priceSort, dispatch, groupId, debounsedChangeFilters]) */ // cycling
 
     useEffect(() => {
         if (minRef.current && maxRef.current) {
@@ -126,7 +147,7 @@ export function PriceFilter() {
     return (
         <div className={styles.container}>
             <Typography variant={TypographyVariant.P} className={styles.title}>
-                Фильтровать по цене
+                {title}
             </Typography>
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.P} color={TypographyColor.DARK_GRAY}>

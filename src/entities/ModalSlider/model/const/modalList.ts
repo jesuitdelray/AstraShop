@@ -4,5 +4,7 @@ export enum ModalsList {
     FILTERS = "filters",
     SORT = "sort",
     SUCCESS = "success",
+    ORDER_ERROR = "error",
+    PAYMENT_ERROR = "paymentError",
     NONE = "",
 }

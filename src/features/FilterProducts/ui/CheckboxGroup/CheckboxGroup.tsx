@@ -1,35 +1,44 @@
+import { useDispatch, useSelector } from "react-redux"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
+import { getProductFilters } from "../../model/selectors/subcategoryPageSelectors"
 import styles from "./CheckboxGroup.module.scss"
-import { filterListsItemType } from "../../model/lists"
+import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 
 interface CheckboxGroupProps {
     title: string
-    list: filterListsItemType[]
+    list?: any[] /* filterListsItemType[] */
+    groupId: number
 }
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
-    const { title, list } = props
+    const { title, list, groupId } = props
+
+    const dispatch = useDispatch()
+
+    function onChangeCheck(groupId: number, checkId: number) {
+        dispatch(filterProductsActions.setFilterAttributes({ groupId, checkId }))
+    }
 
     return (
         <div className={styles.container}>
             <Typography className={styles.title}>{title}</Typography>
             <div className={styles.list}>
-                {list.map(item => {
-                    const { label, id, products, isChecked } = item
+                {list?.map(item => {
+                    const { name, id, products, isChecked } = item
                     return (
                         <div className={styles.item} key={id}>
                             <Checkbox
-                                label={label}
+                                label={name}
                                 id={id}
                                 checked={isChecked || false}
-                                onChange={() => null}
+                                onChange={() => onChangeCheck(groupId, id)}
                             />
-                            {!isChecked && (
+                            {/* {!isChecked && (
                                 <Typography color={TypographyColor.DARK_GRAY}>
                                     {products}
                                 </Typography>
-                            )}
+                            )} */}
                         </div>
                     )
                 })}

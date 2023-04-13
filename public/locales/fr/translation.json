@@ -76,5 +76,14 @@
     "scheduleSaturday": "Samedi : 8h00 - 16h00",
     "scheduleTitle": "Horaire",
     "scheduleWeekend": "Dimanche : Fermé",
-    "shippingAndPayment": "Livraison et paiement"
+    "shippingAndPayment": "Livraison et paiement",
+    "emptyBasket": "Le panier est vide",
+    "returnBtn": "Return",
+    "requiredField": "Reqiered field",
+    "onlyLetters": "Include only letters",
+    "incorrectNumber": "Your phone number is incorrect",
+    "emailPattern": "Only english, digits and special characters allowed",
+    "incorrectEmail": "Please enter a valid email",
+    "paymentError": "Error!",
+    "paymentNotAccepted": "Your payment hasn't been accepted. Please try again!"
 }

@@ -76,5 +76,14 @@
     "scheduleSaturday": "Sábados: 8.00 - 16.00",
     "scheduleTitle": "Horario",
     "scheduleWeekend": "Domingo: Cerrado",
-    "shippingAndPayment": "Envío y pago"
+    "shippingAndPayment": "Envío y pago",
+    "emptyBasket": "La cesta está vacía",
+    "returnBtn": "Return",
+    "requiredField": "Reqiered field",
+    "onlyLetters": "Include only letters",
+    "incorrectNumber": "Your phone number is incorrect",
+    "emailPattern": "Only english, digits and special characters allowed",
+    "incorrectEmail": "Please enter a valid email",
+    "paymentError": "Error!",
+    "paymentNotAccepted": "Your payment hasn't been accepted. Please try again!"
 }

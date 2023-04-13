@@ -16,6 +16,7 @@ export interface StateSchema {
     subcategoryPage: SubCategoryPageSchema
     productDetails: ProductDetailsSchema
     productCarousel: ProductCarouselSchema
+    filterProducts: any
     changeLanguage: ChangeLanguageSchema
     searchProducts: SearchProductsSchema
     sortProducts: SortProductsSchema

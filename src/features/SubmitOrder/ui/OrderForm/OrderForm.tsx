@@ -12,6 +12,7 @@ import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
 import { classNames } from "shared/lib/classNames/classNames"
 import { RadioGroup } from "shared/ui/RadioGroup"
+import { modalsActions } from "entities/ModalSlider"
 import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { useTranslation } from "react-i18next"
@@ -83,7 +84,7 @@ export function OrderForm() {
         if (totalPrice > 0 && totalQuantity > 0) {
             return true
         }
-        // display modal with error
+        dispatch(modalsActions.openOrderError())
         return false
     }
 
