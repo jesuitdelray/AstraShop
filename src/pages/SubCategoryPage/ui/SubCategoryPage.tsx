@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo } from "react"
-import { useParams, useSearchParams } from "react-router-dom"
+import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
@@ -30,6 +31,8 @@ import {
 import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
 import { fetchFilteredProducts } from "../model/services/fetchFilteredProducts/fetchFilteredProducts"
 import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
+import { NoProducts } from "./NoProducts/NoProducts"
+import { UnexpectedError } from "./UnexpectedError/UnexpectedError"
 
 export function SubCategoryPage() {
     const { id } = useParams()
@@ -37,6 +40,7 @@ export function SubCategoryPage() {
     const dispatch = useDispatch()
     const { t } = useTranslation()
     const [searchParams] = useSearchParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (id !== undefined) {
@@ -96,9 +100,17 @@ export function SubCategoryPage() {
             case categoryRequestLoading:
                 return <div>{t("loadingProcessLoading")}</div>
             case !!categoryRequestError:
-                return <div>{categoryRequestError}</div>
+                if (categoryRequestError === "Category not found") {
+                    navigate(RoutePath.not_found)
+                    return null
+                }
+                return <UnexpectedError />
             case categoryProducts?.length === 0:
-                return <div>{t("loadingProcessNoProduct")}</div>
+                return (
+                    <NoProducts
+                        onReturnClick={() => navigate(`${RoutePath.category}/${parentCategoryId}`)}
+                    />
+                )
             case categoryProducts?.length > 0 && !!categoryName:
                 return (
                     <>
@@ -140,7 +152,7 @@ export function SubCategoryPage() {
                     </>
                 )
             default:
-                return <div>{t("loadingProcessUnexpectedError")}</div>
+                return <UnexpectedError />
         }
     }, [
         categoryName,
@@ -149,6 +161,8 @@ export function SubCategoryPage() {
         categoryRequestError,
         t,
         fetchSortedData,
+        navigate,
+        parentCategoryId,
     ])
 
     return (

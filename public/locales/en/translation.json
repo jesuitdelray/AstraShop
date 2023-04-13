@@ -7,7 +7,7 @@
     "basketAddBtn": "Add to cart",
     "productDescriptionTitle": "Description",
     "showMoreProducts": "Show more products",
-    "loadingProcessNoProduct": "No products",
+    "loadingProcessNoProduct": "No products found",
     "loadingProcessLoading": "Loading...",
     "loadingProcessProductExist": "In stock",
     "loadingProcessProductNotExist": "Product does not exist",

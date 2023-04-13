@@ -37,10 +37,10 @@ export function PriceFilter(props: PriceFilterProps) {
 
     const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
 
-    useEffect(() => {
+    /* useEffect(() => {
         dispatch(filterProductsActions.setPriceRange({ groupId, range: priceSort }))
         debounsedChangeFilters()
-    }, [priceSort, dispatch, groupId, debounsedChangeFilters])
+    }, [priceSort, dispatch, groupId, debounsedChangeFilters]) */ // cycling
 
     useEffect(() => {
         if (minRef.current && maxRef.current) {
