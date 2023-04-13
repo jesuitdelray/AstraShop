@@ -35,6 +35,14 @@ export function SubCategoryPage() {
     const { id } = useParams()
 
     const dispatch = useDispatch()
+    const { t } = useTranslation()
+    const [searchParams] = useSearchParams()
+
+    useEffect(() => {
+        if (id !== undefined) {
+            dispatch(initCategoryProducts({ searchParams, id }))
+        }
+    }, [searchParams, dispatch, id])
 
     const fetchSortedData = useCallback(() => {
         dispatch(fetchCategoryProducts(id))
@@ -82,17 +90,6 @@ export function SubCategoryPage() {
     function onChangeFilters() {
         dispatch(fetchFilteredProducts())
     }
-
-    const [s, setS] = useSearchParams()
-    console.log(s.get("150"))
-    const { t } = useTranslation()
-    const [searchParams] = useSearchParams()
-
-    useEffect(() => {
-        if (id !== undefined) {
-            dispatch(initCategoryProducts({ searchParams, id }))
-        }
-    }, [searchParams, dispatch, id])
 
     const content = useMemo(() => {
         switch (true) {
@@ -158,6 +155,7 @@ export function SubCategoryPage() {
         <>
             <SortModalSlider onChangeSort={fetchSortedData} />
             <div className={styles.wrapper}>
+                <FilterProducts className={styles.sidebar} onChangeFilters={() => null} />
                 <Breadcrumbs />
                 {content}
             </div>

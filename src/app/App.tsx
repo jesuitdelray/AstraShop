@@ -20,7 +20,7 @@ function App() {
         dispatch(changeLanguageActions.initLanguage())
     })
 
-    const isSubCategoryPage = useMatch(`${RoutePath.sub_category}:id`)
+    const isSubCategoryPage = useMatch(`${RoutePath.sub_category}/:id`)
 
     return (
         <div className={classNames("app", {}, [])}>
