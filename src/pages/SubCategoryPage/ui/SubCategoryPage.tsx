@@ -105,7 +105,7 @@ export function SubCategoryPage() {
                     return null
                 }
                 return <UnexpectedError />
-            case true || categoryProducts?.length === 0:
+            case categoryProducts?.length === 0:
                 return (
                     <NoProducts
                         onReturnClick={() => navigate(`${RoutePath.category}/${parentCategoryId}`)}

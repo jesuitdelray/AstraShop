@@ -1,3 +1,5 @@
+import { RoutePath } from "shared/config/routeConfig/const"
+import { useNavigate } from "react-router-dom"
 import { ReactElement } from "react"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useTranslation } from "react-i18next"
@@ -29,16 +31,17 @@ export function ProductDetails(props: ProductDetailsProps) {
 
     let content
     const { t } = useTranslation()
+    const navigate = useNavigate()
 
     switch (true) {
         case isLoading:
             content = <div>{t("loadingProcessLoading")}</div>
             break
         case !!error:
-            content = <div>{error}</div>
+            navigate(RoutePath.not_found)
             break
         case !id:
-            content = <div>{t("loadingProcessProductNotExist")}</div>
+            navigate(RoutePath.not_found)
             break
         case !!id:
             content = (
