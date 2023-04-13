@@ -40,7 +40,7 @@ export function SuccessOrderModal() {
             <Typography className={styles.text} variant={TypographyVariant.P}>
                 Детали заказа и чек отправлены Вам на почту
             </Typography>
-            <Button variant={ButtonVariant.FILLED_RED} className={styles.btn}>
+            <Button variant={ButtonVariant.FILLED_RED} className={styles.btn} onClick={onClose}>
                 Вернуться
             </Button>
         </ModalSlider>
