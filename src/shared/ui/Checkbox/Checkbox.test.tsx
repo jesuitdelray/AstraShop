@@ -15,6 +15,7 @@ describe("Checkbox", () => {
                 id="test"
                 onChange={handleChange}
                 className="test"
+                error="error test"
             />
         )
     }
@@ -47,5 +48,14 @@ describe("Checkbox", () => {
         userEvent.click(input)
         expect(input).not.toBeChecked()
         expect(screen.getByTestId("checkboxLabel")).not.toHaveClass("checked")
+    })
+
+    test("Checkbox checked with error", () => {
+        render(<CheckboxTest />)
+        const error = screen.getByTestId("error")
+
+        expect(error).toBeInTheDocument()
+        expect(error).toHaveClass("error")
+        expect(error).toHaveTextContent("error test")
     })
 })

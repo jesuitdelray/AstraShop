@@ -36,7 +36,11 @@ export function Checkbox(props: inputProps) {
                 <div className={styles.checkboxTick} />
             </div>
             <p className={styles.label}>{label}</p>
-            {!!error && <p className={styles.error}>{error}</p>}
+            {!!error && (
+                <p className={styles.error} data-testid="error">
+                    {error}
+                </p>
+            )}
         </label>
     )
 }
