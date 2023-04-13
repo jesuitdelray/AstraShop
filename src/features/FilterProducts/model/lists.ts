@@ -1,3 +1,8 @@
+export interface A {
+    id: number
+}
+
+/* export interface filterListsItemType {
 import { useTranslation } from "react-i18next"
 
 export interface filterListsItemType {
@@ -43,3 +48,4 @@ export const filterListsData: filterListsDataType[] = [
         ],
     },
 ]
+ */

@@ -6,6 +6,7 @@ import { productDetailsReducer } from "pages/ProductDetailsPage"
 import { basketReducer } from "entities/Basket"
 import { subcategoryPageReducer } from "pages/SubCategoryPage"
 import { $api } from "shared/api/api"
+import { filterProductsReducer } from "features/FilterProducts"
 import { productCarouselReducer } from "widgets/ProductCarousel"
 import { sortProductsReducer } from "features/SortProducts"
 import { submitOrderReducer } from "features/SubmitOrder"
@@ -20,6 +21,7 @@ export function createReduxStore(initialState?: StateSchema) {
             subcategoryPage: subcategoryPageReducer,
             productDetails: productDetailsReducer,
             productCarousel: productCarouselReducer,
+            filterProducts: filterProductsReducer,
             changeLanguage: changeLanguageReducer,
             searchProducts: searchProductsReducer,
             sortProducts: sortProductsReducer,
