@@ -17,10 +17,9 @@ import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { useTranslation } from "react-i18next"
 import styles from "./OrderForm.module.scss"
-import { inputValidate } from "../../lib/useInputValidate"
+import { inputValidations } from "../../lib/inputValidations"
 import { IFormData } from "../../model/types/types"
 import { createNewOrder } from "../../model/services/createNewOrder/createNewOrder"
-import { ErrorOrderModal } from "../ErrorOrderModal/ErrorOrderModal"
 
 export function OrderForm() {
     const [formData, setFormData] = useState<IFormData>({
@@ -72,8 +71,7 @@ export function OrderForm() {
     }
 
     function checkInputsValid(formData: IFormData) {
-        const errors = inputValidate(formData)
-        //const errors = inputValidations(formData)
+        const errors = inputValidations(formData)
         setFormErrors(errors)
 
         return !Object.values(errors).some(item => item.length > 0)

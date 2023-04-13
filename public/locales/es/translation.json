@@ -78,5 +78,10 @@
     "scheduleWeekend": "Domingo: Cerrado",
     "shippingAndPayment": "Envío y pago",
     "emptyBasket": "La cesta está vacía",
-    "returnBtn": "Return"
+    "returnBtn": "Return",
+    "requiredField": "Reqiered field",
+    "onlyLetters": "Include only letters",
+    "incorrectNumber": "Your phone number is incorrect",
+    "emailPattern": "Only english, digits and special characters allowed",
+    "incorrectEmail": "Please enter a valid email"
 }
