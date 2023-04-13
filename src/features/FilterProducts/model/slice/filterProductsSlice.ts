@@ -8,7 +8,7 @@ const initialState: any = {
 }
 
 const filterProductsSlice = createSlice({
-    name: "subcategoryPage",
+    name: "filterProductsSlice",
     initialState,
     reducers: {
         setFilterAttributes: (state, action) => {

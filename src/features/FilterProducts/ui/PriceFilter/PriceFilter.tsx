@@ -37,10 +37,11 @@ export function PriceFilter(props: PriceFilterProps) {
 
     const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
 
-    /* useEffect(() => {
+    useEffect(() => {
         dispatch(filterProductsActions.setPriceRange({ groupId, range: priceSort }))
         debounsedChangeFilters()
-    }, [priceSort, dispatch, groupId, debounsedChangeFilters]) */ // cycling
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [priceSort, dispatch, groupId])
 
     useEffect(() => {
         if (minRef.current && maxRef.current) {
