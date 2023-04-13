@@ -35,12 +35,14 @@
 
 @media (min-width: 1200px) {
     .wrapper {
-        div {
-            left: var(--sidebar-width) !important;
-        }
+        padding-left: var(--sidebar-width);
 
-        .container {
-            left: 0 !important;
+        > div {
+            margin-left: var(--sidebar-width);
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
         }
     }
 }
