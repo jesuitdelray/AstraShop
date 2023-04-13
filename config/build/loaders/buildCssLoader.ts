@@ -2,7 +2,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin"
 
 export function buildCssLoader(isDev: boolean) {
     return {
-        test: /\.s[ac]ss$/i,
+        test: /\.(s[ac]|c)ss$/i,
         use: [
             isDev ? "style-loader" : MiniCssExtractPlugin.loader,
             {
@@ -20,9 +20,7 @@ export function buildCssLoader(isDev: boolean) {
             {
                 loader: "sass-resources-loader",
                 options: {
-                    resources: [
-                        "./src/app/styles/resources/**/*.scss",
-                    ],
+                    resources: ["./src/app/styles/resources/**/*.scss"],
                 },
             },
         ],
