@@ -13,13 +13,6 @@ export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
             options: {
                 presets: ["@babel/preset-env"],
                 plugins: [
-                    [
-                        "i18next-extract",
-                        {
-                            locales: ["en", "ru"],
-                            keyAsDefaultValue: true,
-                        },
-                    ],
                     ["@babel/plugin-transform-typescript", { isTsx }],
                     "@babel/plugin-transform-runtime",
                     isDev && require.resolve("react-refresh/babel"),
