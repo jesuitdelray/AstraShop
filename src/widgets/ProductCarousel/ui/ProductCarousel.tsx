@@ -1,10 +1,10 @@
 import { memo, useEffect, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Slider from "react-slick"
 import { Product, ProductCard } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
+/* import Slider from "react-slick"
 import "slick-carousel/slick/slick.scss"
-import "slick-carousel/slick/slick-theme.scss"
+import "slick-carousel/slick/slick-theme.scss" */
 import { useTranslation } from "react-i18next"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { sliderSettings } from "./sliderSettings"
@@ -19,6 +19,8 @@ import {
     getProductCarouselNewProducts,
     getProductCarouselTopProducts,
 } from "../model/selectors/productCarouselSelector"
+import Carousel from "react-multi-carousel-18"
+import "react-multi-carousel-18/lib/styles.css"
 
 export enum ProductCarouselVariant {
     TOP_PRODUCTS = "top",
@@ -81,7 +83,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
                 return (
                     <>
                         <div className={styles.title}>{title}</div>
-                        <Slider {...sliderSettings}>
+                        <Carousel {...sliderSettings}>
                             {list?.map(item => {
                                 const { id, is_new: isNew, name, price, images } = item
                                 return (
@@ -101,7 +103,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
                                     />
                                 )
                             })}
-                        </Slider>
+                        </Carousel>
                     </>
                 )
             default:
