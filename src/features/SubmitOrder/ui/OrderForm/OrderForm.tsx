@@ -15,7 +15,7 @@ import { RadioGroup } from "shared/ui/RadioGroup"
 import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
 import { RoutePath } from "shared/config/routeConfig/const"
 import styles from "./OrderForm.module.scss"
-import { inputValidations } from "../../lib/inputValidations"
+import { inputValidate } from "../../lib/useInputValidate"
 import { IFormData } from "../../model/types/types"
 import { createNewOrder } from "../../model/services/createNewOrder/createNewOrder"
 
@@ -68,7 +68,8 @@ export function OrderForm() {
     }
 
     function checkInputsValid(formData: IFormData) {
-        const errors = inputValidations(formData)
+        const errors = inputValidate(formData)
+        //const errors = inputValidations(formData)
         setFormErrors(errors)
 
         return !Object.values(errors).some(item => item.length > 0)
