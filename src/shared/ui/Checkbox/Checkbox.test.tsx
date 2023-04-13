@@ -59,3 +59,6 @@ describe("Checkbox", () => {
         expect(error).toHaveTextContent("error test")
     })
 })
+
+//no error props
+//error=""
