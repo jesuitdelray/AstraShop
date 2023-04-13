@@ -28,6 +28,9 @@ export const modalsSlice = createSlice({
         openSuccess: state => {
             state.current = ModalsList.SUCCESS
         },
+        openOrderError: state => {
+            state.current = ModalsList.ORDER_ERROR
+        },
     },
 })
 

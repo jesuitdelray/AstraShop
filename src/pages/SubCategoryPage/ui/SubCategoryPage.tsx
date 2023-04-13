@@ -1,19 +1,22 @@
 import { useCallback, useEffect, useMemo } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
-import { SortProducts } from "features/SortProducts"
+import { SortProducts, sortProductsOrderType } from "features/SortProducts"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
-import { FiltersModalSlider } from "widgets/FiltersModalSlider"
 import { SortModalSlider } from "widgets/SortModalSlider"
 import { ProductCard } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
+import { FilterProducts } from "features/FilterProducts"
+import { fetchCategoryFilters } from "features/FilterProducts/model/services/fetchCategoryFilters/fetchCategoryFilters"
 import {
     Breadcrumbs,
     getNavigationTree,
     catalogNavigationActions,
     CurrentTreeItemType,
 } from "entities/CatalogNavigation"
+import { useTranslation } from "react-i18next"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
@@ -24,15 +27,26 @@ import {
     getSubCategoryParentId,
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
+import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
+import { fetchFilteredProducts } from "../model/services/fetchFilteredProducts/fetchFilteredProducts"
 import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
 
 export function SubCategoryPage() {
     const { id } = useParams()
 
     const dispatch = useDispatch()
+    const { t } = useTranslation()
+    const [searchParams] = useSearchParams()
+
+    useEffect(() => {
+        if (id !== undefined) {
+            dispatch(initCategoryProducts({ searchParams, id }))
+        }
+    }, [searchParams, dispatch, id])
 
     const fetchSortedData = useCallback(() => {
         dispatch(fetchCategoryProducts(id))
+        dispatch(fetchCategoryFilters(id))
     }, [dispatch, id])
 
     const categoryName = useSelector(getSubCategoryName)
@@ -73,22 +87,18 @@ export function SubCategoryPage() {
         )
     }, [categoryName, parentCategoryId, dispatch, id, getCategoryName])
 
-    const [searchParams] = useSearchParams()
-
-    useEffect(() => {
-        if (id !== undefined) {
-            dispatch(initCategoryProducts({ searchParams, id }))
-        }
-    }, [searchParams, dispatch, id])
+    function onChangeFilters() {
+        dispatch(fetchFilteredProducts())
+    }
 
     const content = useMemo(() => {
         switch (true) {
             case categoryRequestLoading:
-                return <div>Loading...</div>
+                return <div>{t("loadingProcessLoading")}</div>
             case !!categoryRequestError:
                 return <div>{categoryRequestError}</div>
             case categoryProducts?.length === 0:
-                return <div>No Products</div>
+                return <div>{t("loadingProcessNoProduct")}</div>
             case categoryProducts?.length > 0 && !!categoryName:
                 return (
                     <>
@@ -125,26 +135,27 @@ export function SubCategoryPage() {
                                 })}
                         </div>
                         {/* <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
-                            Показать еще товар
+                            {t("showMoreProducts")}
                         </Button> */}
                     </>
                 )
             default:
-                return <div>Unexpected Error</div>
+                return <div>{t("loadingProcessUnexpectedError")}</div>
         }
     }, [
         categoryName,
         categoryProducts,
         categoryRequestLoading,
         categoryRequestError,
+        t,
         fetchSortedData,
     ])
 
     return (
         <>
-            <FiltersModalSlider />
             <SortModalSlider onChangeSort={fetchSortedData} />
             <div className={styles.wrapper}>
+                <FilterProducts className={styles.sidebar} onChangeFilters={() => null} />
                 <Breadcrumbs />
                 {content}
             </div>

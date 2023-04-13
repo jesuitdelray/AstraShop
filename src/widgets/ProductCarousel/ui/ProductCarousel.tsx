@@ -5,6 +5,7 @@ import { Product, ProductCard } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"
+import { useTranslation } from "react-i18next"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { sliderSettings } from "./sliderSettings"
 import styles from "./ProductCarousel.module.scss"
@@ -31,6 +32,8 @@ interface ProductCarouselProps {
 
 export const ProductCarousel = memo((props: ProductCarouselProps) => {
     const { variant, className } = props
+
+    const { t } = useTranslation()
 
     const dispatch = useDispatch()
 
@@ -63,7 +66,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
         errorTop,
     ])
 
-    const title = isNew ? "Новые поступления" : "Топовые позиции"
+    const title = isNew ? t("productsNewProducts") : t("productsTopProducts")
     const list: Product[] | undefined = isNew ? newProducts : topProducts
     const loading = isNew ? isLoadingNew : isLoadingTop
     const error = isNew ? errorNew : errorTop
@@ -71,9 +74,9 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
     const content = useMemo(() => {
         switch (true) {
             case loading:
-                return <div>Loading...</div>
+                return <div>{t("loadingProcessLoading")}</div>
             case !!error:
-                return <div>Error</div>
+                return <div>{t("error")}</div>
             case !!list?.length:
                 return (
                     <>
@@ -104,7 +107,7 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
             default:
                 return null
         }
-    }, [list, loading, title, error])
+    }, [list, loading, title, error, t])
 
     return <div className={classNames(styles.container, {}, [className])}>{content}</div>
 })

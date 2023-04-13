@@ -10,14 +10,14 @@ import styles from "./Footer.module.scss"
 import { footerLinksData } from "../model/list"
 
 export function Footer() {
-    const { t, i18n } = useTranslation()
+    const { t } = useTranslation()
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.slogan}>
                 <Logo className={styles.logo} />
                 <Typography color={TypographyColor.DARK_GRAY} className={styles.sloganText}>
-                    {t("test")}
+                    {t("footerSlogan")}
                 </Typography>
             </div>
             <FooterLinksList data={footerLinksData} className={styles.info} />

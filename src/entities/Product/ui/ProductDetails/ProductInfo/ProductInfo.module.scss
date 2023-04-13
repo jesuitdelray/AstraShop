@@ -3,10 +3,25 @@
 
     .title {
         margin-bottom: 8px;
+
+        &::first-letter {
+            text-transform: capitalize;
+        }
+    }
+
+    .articleTextList {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        max-width: 300px;
     }
 
     .text {
         margin-bottom: 8px;
+
+        &::first-letter {
+            text-transform: capitalize;
+        }
 
         &:last-child {
             margin-bottom: 0;

@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { useTranslation } from "react-i18next"
 import { Label, LabelFontSize, LabelColor } from "./Label"
 
 export default {

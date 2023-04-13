@@ -4,7 +4,7 @@ import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
 import { v4 as uuid } from "uuid"
 import styles from "./ProductInfo.module.scss"
 import { ProductAttributes } from "../../../model/types"
-import { convertDataToObjectArray } from "../../../lib/convertDataToObjectArray"
+import { useAttributesData } from "../../../lib/useAttributesData"
 
 export interface ArticleData {
     title: string
@@ -22,15 +22,19 @@ function Article({ data }: ArticleProps) {
         switch (true) {
             case !!text && Array.isArray(text) && text.length > 1:
                 if (!Array.isArray(text)) return null
-                return text?.map(item => (
-                    <Typography
-                        key={uuid()}
-                        color={TypographyColor.DARK_GRAY}
-                        className={styles.text}
-                    >
-                        {item}
-                    </Typography>
-                ))
+                return (
+                    <div className={styles.articleTextList}>
+                        {text?.map(item => (
+                            <Typography
+                                key={uuid()}
+                                color={TypographyColor.DARK_GRAY}
+                                className={styles.text}
+                            >
+                                {item}
+                            </Typography>
+                        ))}
+                    </div>
+                )
             case !!text:
                 return (
                     <Typography color={TypographyColor.DARK_GRAY} className={styles.text}>
@@ -56,12 +60,10 @@ interface ProductInfoProps {
     attributes?: ProductAttributes
 }
 
-export function ProductInfo({ className, description, attributes }: ProductInfoProps) {
-    if (!description || !attributes) return null
+export function ProductInfo({ className, description = "", attributes = {} }: ProductInfoProps) {
+    const data = useAttributesData({ description, attributes })
 
-    const data = [
-        { title: "Описание", text: description } /* ...convertDataToObjectArray(attributes) */,
-    ]
+    if (!description || !attributes) return null
 
     return (
         <div className={classNames(styles.info, {}, [className])}>

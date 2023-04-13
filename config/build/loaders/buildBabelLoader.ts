@@ -18,7 +18,6 @@ export function buildBabelLoader({ isDev, isTsx }: buildBabelLoaderProps) {
                         {
                             locales: ["en", "ru"],
                             keyAsDefaultValue: true,
-                            outputPath: "public/locales/{{locale}}/{{ns}}.json",
                         },
                     ],
                     ["@babel/plugin-transform-typescript", { isTsx }],

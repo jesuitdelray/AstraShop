@@ -10,11 +10,10 @@ export const createNewOrder = createAsyncThunk<SubmitOrderSchema, IFormData, Thu
         const { extra, getState, rejectWithValue } = thunkApi
 
         const basketProducts = getBasketProducts(getState())
-
         const orderData = basketProducts.map(item => ({ id: item.id, quantity: item.quantity }))
 
         try {
-            const response = await extra.api.post("/order", { formData, orderData })
+            const response = await extra.api.post("/order", { order: orderData })
 
             if (!response.data) {
                 throw new Error()
