@@ -83,5 +83,7 @@
     "onlyLetters": "Только буквы",
     "incorrectNumber": "Номер телефона включает в себя только цифры",
     "emailPattern": "Только латинские буквы, цифры и специальные символы",
-    "incorrectEmail": "Введите правильный Email"
+    "incorrectEmail": "Введите правильный Email",
+    "paymentError": "Ошибка!",
+    "paymentNotAccepted": "Ваша оплата не принята. Попробуйте ещё раз."
 }
