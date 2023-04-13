@@ -31,6 +31,9 @@ export const modalsSlice = createSlice({
         openOrderError: state => {
             state.current = ModalsList.ORDER_ERROR
         },
+        openPaymentError: state => {
+            state.current = ModalsList.PAYMENT_ERROR
+        },
     },
 })
 

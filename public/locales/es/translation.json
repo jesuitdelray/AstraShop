@@ -83,5 +83,7 @@
     "onlyLetters": "Include only letters",
     "incorrectNumber": "Your phone number is incorrect",
     "emailPattern": "Only english, digits and special characters allowed",
-    "incorrectEmail": "Please enter a valid email"
+    "incorrectEmail": "Please enter a valid email",
+    "paymentError": "Error!",
+    "paymentNotAccepted": "Your payment hasn't been accepted. Please try again!"
 }
