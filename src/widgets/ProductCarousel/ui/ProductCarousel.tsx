@@ -1,9 +1,11 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable indent */
 import { memo, useEffect, useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Product, ProductCard } from "entities/Product"
+import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination } from "swiper"
+import { Pagination } from "swiper"
 import "swiper/scss"
 import "swiper/scss/navigation"
 import "swiper/scss/pagination"
@@ -21,7 +23,6 @@ import {
     getProductCarouselNewProducts,
     getProductCarouselTopProducts,
 } from "../model/selectors/productCarouselSelector"
-import { ProductCardSkeleton } from "entities/Product/ui/ProductCardSkeleton/ProductCardSkeleton"
 
 export enum ProductCarouselVariant {
     TOP_PRODUCTS = "top",
@@ -71,106 +72,63 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
 
     const title = isNew ? t("productsNewProducts") : t("productsTopProducts")
     const list: Product[] | undefined = isNew ? newProducts : topProducts
-    const loading = isNew ? isLoadingNew : isLoadingTop
+    const isLoading = isNew ? isLoadingNew : isLoadingTop
     const error = isNew ? errorNew : errorTop
 
-    const content = useMemo(() => {
-        switch (true) {
-            case loading:
-                return (
-                    <>
-                        <div className={styles.title}>{title}</div>
-                        <Swiper
-                            slidesPerView={1}
-                            className={styles.swiper}
-                            pagination={{ clickable: true }}
-                            modules={[Pagination]}
-                            spaceBetween={30}
-                            breakpoints={{
-                                480: {
-                                    slidesPerView: 2,
-                                },
-                                768: {
-                                    slidesPerView: 3,
-                                },
-                                1024: {
-                                    slidesPerView: 4,
-                                },
-                                1300: {
-                                    slidesPerView: 5,
-                                },
-                            }}
-                        >
-                            {[1, 2, 3, 4, 5, 6, 7, 8].map(item => {
-                                const { id, is_new: isNew, name, price, images } = item
-                                return (
-                                    <SwiperSlide key={id}>
-                                        <ProductCardSkeleton />
-                                    </SwiperSlide>
-                                )
-                            })}
-                        </Swiper>
-                    </>
-                )
-            case !!error:
-                return <div>{t("error")}</div>
-            case !!list?.length:
-                return (
-                    <>
-                        <div className={styles.title}>{title}</div>
-                        <Swiper
-                            slidesPerView={1}
-                            className={styles.swiper}
-                            pagination={{ clickable: true }}
-                            modules={[Pagination]}
-                            spaceBetween={30}
-                            breakpoints={{
-                                480: {
-                                    slidesPerView: 2,
-                                },
-                                768: {
-                                    slidesPerView: 3,
-                                },
-                                1024: {
-                                    slidesPerView: 4,
-                                },
-                                1300: {
-                                    slidesPerView: 5,
-                                },
-                            }}
-                        >
-                            {list?.map(item => {
-                                const { id, is_new: isNew, name, price, images } = item
-                                return (
-                                    <SwiperSlide key={id}>
-                                        <ProductCard
-                                            id={id}
-                                            is_new={isNew}
-                                            name={name}
-                                            price={price}
-                                            images={images}
-                                            Basket={
-                                                <ToggleProductInBasket
-                                                    variant={ToggleProductInBasketVariant.ICON}
-                                                    product={item}
-                                                />
-                                            }
-                                            className={styles.product}
-                                        />
-                                    </SwiperSlide>
-                                )
-                            })}
-                        </Swiper>
-                    </>
-                )
-            default:
-                return null
-        }
-    }, [list, loading, title, error, t])
+    if (error) return null
 
     return (
         <div className={classNames(styles.container, {}, [className, "productCarousel"])}>
-            {content}
+            <div className={styles.title}>{title}</div>
+            <Swiper
+                slidesPerView={1}
+                className={styles.swiper}
+                pagination={{ clickable: true }}
+                modules={isLoading ? [] : [Pagination]}
+                spaceBetween={30}
+                breakpoints={{
+                    480: {
+                        slidesPerView: 2,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                    },
+                    1300: {
+                        slidesPerView: 5,
+                    },
+                }}
+            >
+                {isLoading
+                    ? [1, 2, 3, 4, 5, 6, 7, 8].map(item => (
+                          <SwiperSlide key={item}>
+                              <ProductCardSkeleton />
+                          </SwiperSlide>
+                      ))
+                    : list?.map(item => {
+                          const { id, is_new: isNew, name, price, images } = item
+                          return (
+                              <SwiperSlide key={id}>
+                                  <ProductCard
+                                      id={id}
+                                      is_new={isNew}
+                                      name={name}
+                                      price={price}
+                                      images={images}
+                                      Basket={
+                                          <ToggleProductInBasket
+                                              variant={ToggleProductInBasketVariant.ICON}
+                                              product={item}
+                                          />
+                                      }
+                                      className={styles.product}
+                                  />
+                              </SwiperSlide>
+                          )
+                      })}
+            </Swiper>
         </div>
     )
 })

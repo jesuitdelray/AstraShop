@@ -7,7 +7,8 @@ import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
 import { SortModalSlider } from "widgets/SortModalSlider"
-import { ProductCard } from "entities/Product"
+import { ProductCard, ProductCardSkeleton } from "entities/Product"
+import { Skeleton } from "shared/ui/Skeleton/Skeleton"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { FilterProducts } from "features/FilterProducts"
 import { fetchCategoryFilters } from "features/FilterProducts/model/services/fetchCategoryFilters/fetchCategoryFilters"
@@ -33,8 +34,6 @@ import { fetchFilteredProducts } from "../model/services/fetchFilteredProducts/f
 import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
 import { NoProducts } from "./NoProducts/NoProducts"
 import { UnexpectedError } from "./UnexpectedError/UnexpectedError"
-import { ProductCardSkeleton } from "entities/Product/ui/ProductCardSkeleton/ProductCardSkeleton"
-import { Skeleton } from "shared/ui/Skeleton/Skeleton"
 
 export function SubCategoryPage() {
     const { id } = useParams()
@@ -110,7 +109,7 @@ export function SubCategoryPage() {
                         <ProductFilters className={styles.mobileFilters} />
                         <div className={styles.products}>
                             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => (
-                                <ProductCardSkeleton />
+                                <ProductCardSkeleton key={item} />
                             ))}
                         </div>
                     </>
@@ -175,7 +174,6 @@ export function SubCategoryPage() {
         categoryProducts,
         categoryRequestLoading,
         categoryRequestError,
-        t,
         fetchSortedData,
         navigate,
         parentCategoryId,
