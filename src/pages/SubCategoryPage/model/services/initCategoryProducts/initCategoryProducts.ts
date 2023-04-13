@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
 import { sortProductsAction, sortProductsOrderType } from "features/SortProducts"
+import { fetchCategoryFilters } from "features/FilterProducts"
 import { fetchCategoryProducts } from "../fetchCategoryProducts/fetchCategoryProducts"
 import { subcategoryPageActions } from "../../slice/subcategoryPageSlice"
 import { getSubCategoryInited } from "../../selectors/subcategoryPageSelectors"
@@ -28,5 +29,6 @@ export const initCategoryProducts = createAsyncThunk<
 
         dispatch(subcategoryPageActions.initState())
         dispatch(fetchCategoryProducts(id))
+        dispatch(fetchCategoryFilters(id))
     }
 })

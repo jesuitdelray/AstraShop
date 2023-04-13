@@ -13,14 +13,13 @@ export const fetchCategoryProducts = createAsyncThunk<
     const orderBy = getSortProductsOrder(getState())
 
     try {
-        addQueryParams({ orderBy })
-        const response = await extra.api.get(
-            `category/${id}/products` /* , {
-            params: {
-                orderBy,
-            },
-        } */
-        )
+        const params = {}
+        if (orderBy) {
+            addQueryParams({ orderBy })
+            params.orderBy = orderBy
+        }
+
+        const response = await extra.api.get(`category/${id}/products`, {})
 
         if (!response.data) {
             throw new Error()

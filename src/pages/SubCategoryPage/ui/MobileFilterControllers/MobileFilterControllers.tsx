@@ -4,13 +4,13 @@ import { useDispatch } from "react-redux"
 import { FilterIcon, SortIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
-import styles from "./ProductFilters.module.scss"
+import styles from "./MobileFilterControllers.module.scss"
 
-interface ProductFiltersProps {
+interface MobileFilterControllersProps {
     className?: string
 }
 
-export function ProductFilters({ className }: ProductFiltersProps): ReactElement {
+export function MobileFilterControllers({ className }: MobileFilterControllersProps): ReactElement {
     const dispatch = useDispatch()
 
     return (
