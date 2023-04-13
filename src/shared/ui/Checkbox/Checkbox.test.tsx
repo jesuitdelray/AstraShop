@@ -25,7 +25,7 @@ describe("Checkbox", () => {
         const input = screen.getByTestId("checkbox")
 
         expect(input).toBeInTheDocument()
-        expect(screen.getByLabelText("Test checkbox")).toBeInTheDocument()
+        expect(screen.getByTestId("label")).toBeInTheDocument()
         expect(input).not.toBeChecked()
         expect(input).not.toHaveClass("checked")
     })
