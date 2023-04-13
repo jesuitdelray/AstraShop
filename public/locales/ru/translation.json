@@ -5,7 +5,7 @@
     "inputSearchPlaceholder": "Поиск товара",
     "productDescriptionTitle": "Описание",
     "showMoreProducts": "Показать ещё товар",
-    "loadingProcessNoProduct": "Нет товаров",
+    "loadingProcessNoProduct": "Товары не найдены",
     "loadingProcessLoading": "Загрузка...",
     "loadingProcessProductExist": "В наличии",
     "loadingProcessProductNotExist": "Продукт не существует",

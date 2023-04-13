@@ -25,6 +25,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 if (item.type === "price_range") {
                     return (
                         <PriceFilter
+                            key={item.id}
                             groupId={item.id}
                             title={item.name}
                             range={item.info}
