@@ -1,6 +1,7 @@
 import { basketActions, getBasketProducts } from "entities/Basket"
 import { Product } from "entities/Product"
 import { MouseEvent } from "react"
+import { useTranslation } from "react-i18next"
 import { useDispatch, useSelector } from "react-redux"
 import { Button } from "shared/ui/Button/Button"
 import { ToggleBasketIcon } from "shared/ui/ToggleBasketIcon/ToggleBasketIcon"
@@ -21,6 +22,8 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
     const basketProducts = useSelector(getBasketProducts)
     const dispatch = useDispatch()
 
+    const { t } = useTranslation()
+
     const isProductInBasket = basketProducts.some(item => item.id === id)
 
     function clickHandler(e: MouseEvent) {
@@ -38,7 +41,7 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
         case ToggleProductInBasketVariant.BUTTON:
             return (
                 <Button onClick={clickHandler}>
-                    {isProductInBasket ? "Убрать из корзины" : "Добавить в корзину"}
+                    {isProductInBasket ? `${t("basketTakeOutBtn")}` : `${t("basketAddBtn")}`}
                 </Button>
             )
         default:

@@ -15,6 +15,7 @@ import { RadioGroup } from "shared/ui/RadioGroup"
 import { modalsActions } from "entities/ModalSlider"
 import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
 import { RoutePath } from "shared/config/routeConfig/const"
+import { useTranslation } from "react-i18next"
 import styles from "./OrderForm.module.scss"
 import { inputValidations } from "../../lib/inputValidations"
 import { IFormData } from "../../model/types/types"
@@ -32,6 +33,7 @@ export function OrderForm() {
         isConsent: true,
     })
 
+    const { t } = useTranslation()
     const [formErrors, setFormErrors] = useState({
         name: "",
         phone: "",
@@ -97,14 +99,14 @@ export function OrderForm() {
     return (
         <div>
             <Typography variant={TypographyVariant.H3} className={styles.title}>
-                Оформление заказа
+                {`${t("orderForm")}`}
             </Typography>
             <form action="submit" className={styles.form}>
                 <Input
                     value={formData.name}
                     onChange={value => inputChangeHandler(value, "name")}
-                    label="Имя, Фамилия"
-                    placeholder="Александр Иванов"
+                    label={`${t("orderFormLabelName")}`}
+                    placeholder={`${t("orderFormPlaceholderName")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.name])}
                     error={isDirty.name ? "" : formErrors.name}
@@ -112,8 +114,8 @@ export function OrderForm() {
                 <Input
                     value={formData.phone}
                     onChange={value => inputChangeHandler(value, "phone")}
-                    label="Номер телефона"
-                    placeholder="+38 228 322 13 37"
+                    label={`${t("orderFormPhoneNumber")}`}
+                    placeholder={`${t("orderFormPlaceholderPhone")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.phone])}
                     error={isDirty.phone ? "" : formErrors.phone}
@@ -130,14 +132,14 @@ export function OrderForm() {
                 <Input
                     value={formData.city}
                     onChange={value => inputChangeHandler(value, "city")}
-                    label="Город"
-                    placeholder="Будапешт"
+                    label={`${t("orderFormLabelCity")}`}
+                    placeholder={`${t("orderFormPlaceholderCity")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.city])}
                     error={isDirty.city ? "" : formErrors.city}
                 />
                 <RadioGroup
-                    title="Тип доставки"
+                    title={`${t("orderFormTypeOfDelivery")}`}
                     isRequired
                     options={options}
                     activeInput={formData.delivery}
@@ -147,8 +149,8 @@ export function OrderForm() {
                 <Input
                     value={formData.department}
                     onChange={value => inputChangeHandler(value, "department")}
-                    label="Отделение Новой почты"
-                    placeholder="№21 Олександрівський пр..."
+                    label={`${t("orderFormLabelPost")}`}
+                    placeholder={`${t("orderFormPlaceholderPost")}`}
                     isRequired
                     className={classNames(styles.input, {}, [styles.department])}
                     error={isDirty.department ? "" : formErrors.department}
@@ -157,7 +159,7 @@ export function OrderForm() {
                     id="checkbox1"
                     checked={formData.isConsent}
                     onChange={checkboxChangeHandler}
-                    label="Я согласен (согласна) на обработку моих персональных данных"
+                    label={`${t("orderFormLabelAgreement")}`}
                     className={styles.consent}
                     error={isDirty.isConsent ? "" : formErrors.isConsent}
                 />

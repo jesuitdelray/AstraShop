@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next"
+
 export interface filterListsItemType {
     label: string
     id: string

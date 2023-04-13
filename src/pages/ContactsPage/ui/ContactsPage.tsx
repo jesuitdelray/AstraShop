@@ -3,13 +3,15 @@ import { Schedule } from "entities/Schedule"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { BannersRow } from "widgets/BannersRow"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
+import { useTranslation } from "react-i18next"
 import styles from "./ContactsPage.module.scss"
 
 export function ContactsPage() {
+    const { t } = useTranslation()
     return (
         <div>
             <Typography variant={TypographyVariant.H1} className={styles.title}>
-                Контакты
+                {t("Contacts")}
             </Typography>
             <div className={styles.contacts}>
                 <Schedule className={styles.schedule} />

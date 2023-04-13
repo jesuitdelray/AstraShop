@@ -1,8 +1,9 @@
 import { useRef, useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { Input } from "shared/ui/Input/Input"
-import { SearchIcon } from "shared/assets/icons/others"
+import { DeleteSeacrhbarIcon, SearchIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
+import { useTranslation } from "react-i18next"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import styles from "./SearchProduct.module.scss"
 import { searchProductsActions } from "../model/slice/searchProductSlice"
@@ -29,6 +30,7 @@ export function SearchProduct({ className }: SearchProductProps) {
         dispatch(fetchSearchProducts(value))
     }
 
+    const { t } = useTranslation()
     const debounsedSearch = useDebounce(fetchSearchData, 500)
 
     function changeHandler(value: string) {
@@ -49,6 +51,10 @@ export function SearchProduct({ className }: SearchProductProps) {
         }
     }, [])
 
+    useEffect(() => {
+        setIsDropdownOpen(value.length > 0)
+    }, [value])
+
     return (
         <div className={classNames(styles.container, {}, [className])} id="searcProductContainer">
             <SearchIcon
@@ -58,13 +64,14 @@ export function SearchProduct({ className }: SearchProductProps) {
                     []
                 )}
             />
+            {value && <DeleteSeacrhbarIcon className={styles.cross} onClick={() => setValue("")} />}
             <Input
                 value={value}
                 onChange={value => changeHandler(value)}
-                placeholder="Search Product"
+                placeholder={`${t("inputSearchPlaceholder")}`}
                 className={styles.searchbar}
                 onFocus={() => {
-                    setIsDropdownOpen(true)
+                    setIsDropdownOpen(value.length > 0)
                     setActive(true)
                 }}
                 onBlur={() => setActive(false)}

@@ -11,6 +11,7 @@ import {
     ModalsList,
 } from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import { basketItemsList } from "../model/list"
 import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
@@ -24,6 +25,8 @@ export function BasketModalSlider() {
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
+
+    const { t } = useTranslation()
 
     function onClose() {
         dispatch(modalsActions.close())
@@ -42,7 +45,7 @@ export function BasketModalSlider() {
             <div className={styles.container}>
                 <div className={styles.slideRightHeader}>
                     <Typography variant={TypographyVariant.H3} className={styles.slideRightTitle}>
-                        Корзина
+                        {t("basket")}
                     </Typography>
                     <CrossIcon onClick={onClose} className={styles.cross} />
                 </div>

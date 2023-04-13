@@ -1,5 +1,5 @@
 export interface SubmitOrderSchema {
-    response: any
+    url?: string
     isLoading: boolean
     error?: string
 }

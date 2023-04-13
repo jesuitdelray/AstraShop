@@ -14,6 +14,7 @@ import {
     catalogNavigationActions,
     CurrentTreeItemType,
 } from "entities/CatalogNavigation"
+import { useTranslation } from "react-i18next"
 import { ProductFilters } from "./ProductFilters/ProductFilters"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
@@ -73,6 +74,7 @@ export function SubCategoryPage() {
         )
     }, [categoryName, parentCategoryId, dispatch, id, getCategoryName])
 
+    const { t } = useTranslation()
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
@@ -84,11 +86,11 @@ export function SubCategoryPage() {
     const content = useMemo(() => {
         switch (true) {
             case categoryRequestLoading:
-                return <div>Loading...</div>
+                return <div>{t("loadingProcessLoading")}</div>
             case !!categoryRequestError:
                 return <div>{categoryRequestError}</div>
             case categoryProducts?.length === 0:
-                return <div>No Products</div>
+                return <div>{t("loadingProcessNoProduct")}</div>
             case categoryProducts?.length > 0 && !!categoryName:
                 return (
                     <>
@@ -125,18 +127,19 @@ export function SubCategoryPage() {
                                 })}
                         </div>
                         {/* <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
-                            Показать еще товар
+                            {t("showMoreProducts")}
                         </Button> */}
                     </>
                 )
             default:
-                return <div>Unexpected Error</div>
+                return <div>{t("loadingProcessUnexpectedError")}</div>
         }
     }, [
         categoryName,
         categoryProducts,
         categoryRequestLoading,
         categoryRequestError,
+        t,
         fetchSortedData,
     ])
 

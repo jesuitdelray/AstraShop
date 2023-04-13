@@ -1,5 +1,6 @@
 .wrapper {
     display: flex;
+    z-index: var(--modal-z-index);
 
     .menuItem {
         position: relative;
@@ -30,6 +31,7 @@
             color: black;
             height: fit-content;
             padding: 5px 0;
+            user-select: none;
 
             &:hover {
                 color: var(--color-accent);
