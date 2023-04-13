@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
 import { getSortProductsOrder } from "features/SortProducts"
-import { getProductFilters } from "features/FilterProducts"
+import { getProductFiltersPriceRange } from "features/FilterProducts"
 import { addQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
 import { SubCategoryPageSchema } from "../../types/subcategoryPageSchema"
 
@@ -13,17 +13,7 @@ export const fetchCategoryProducts = createAsyncThunk<
     const { extra, rejectWithValue, getState } = thunkApi
     const orderBy = getSortProductsOrder(getState())
 
-    const priceRange = getProductFilters(getState())
-
-    // const { min, max } = priceRange.filter(item => item.type === "price_range")?.[0].range
-
-    if (!priceRange.filter(item => item.type === "price_range")[0]) return null
-
-    const { min, max } = priceRange.filter(item => item.type === "price_range")[0].range
-
-    const price = `${0}-${400}`
-
-    console.log(price)
+    const priceRange = getProductFiltersPriceRange(getState())
 
     try {
         const params = {}
@@ -32,12 +22,17 @@ export const fetchCategoryProducts = createAsyncThunk<
             params.orderBy = orderBy
         }
 
-        /* if (price) {
-            //   addQueryParams({ price })
-            // params.price = price
-        } */
+        if (priceRange) {
+            const { min, max } = priceRange
+            const price = `${min}-${max}`
 
-        const response = await extra.api.get(`category/${id}/products`, {})
+            addQueryParams({ price })
+            params.price = price
+        }
+
+        console.log(params)
+
+        const response = await extra.api.get(`category/${id}/products`, { params })
 
         if (!response.data) {
             throw new Error()

@@ -3,6 +3,7 @@ import { fetchCategoryFilters } from "../services/fetchCategoryFilters/fetchCate
 
 const initialState: any = {
     filters: [],
+    priceRange: undefined,
     error: undefined,
     isLoading: false,
 }
@@ -29,15 +30,9 @@ const filterProductsSlice = createSlice({
         },
         setPriceRange: (state, action) => {
             // groupId, range: {min: number, max:number}
-            const { range, groupId } = action.payload
+            const { range } = action.payload
 
-            state.filters = state.filters.map((item: any) => {
-                if (item.type === "price_range" && item.id === groupId) {
-                    item.range = range
-                }
-
-                return item
-            })
+            state.priceRange = range
         },
     },
     extraReducers: builder => {
