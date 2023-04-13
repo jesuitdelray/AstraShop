@@ -105,8 +105,12 @@ export function SubCategoryPage() {
                     return null
                 }
                 return <UnexpectedError />
-            case categoryProducts?.length === 0:
-                return <NoProducts />
+            case true || categoryProducts?.length === 0:
+                return (
+                    <NoProducts
+                        onReturnClick={() => navigate(`${RoutePath.category}/${parentCategoryId}`)}
+                    />
+                )
             case categoryProducts?.length > 0 && !!categoryName:
                 return (
                     <>
@@ -158,6 +162,7 @@ export function SubCategoryPage() {
         t,
         fetchSortedData,
         navigate,
+        parentCategoryId,
     ])
 
     return (

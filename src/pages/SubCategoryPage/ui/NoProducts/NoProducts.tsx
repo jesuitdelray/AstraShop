@@ -3,7 +3,11 @@ import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Button } from "shared/ui/Button/Button"
 import styles from "./NoProducts.module.scss"
 
-export function NoProducts() {
+interface NoProductsProps {
+    onReturnClick: () => void
+}
+
+export function NoProducts({ onReturnClick }: NoProductsProps) {
     const { t } = useTranslation()
 
     return (
@@ -12,7 +16,7 @@ export function NoProducts() {
                 <Typography variant={TypographyVariant.H2} className={styles.title}>
                     {t("loadingProcessNoProduct")}
                 </Typography>
-                <Button>{t("returnBtn")}</Button>
+                <Button onClick={onReturnClick}>{t("returnBtn")}</Button>
             </div>
         </div>
     )
