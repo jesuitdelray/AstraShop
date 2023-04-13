@@ -21,6 +21,7 @@ import {
     getProductCarouselNewProducts,
     getProductCarouselTopProducts,
 } from "../model/selectors/productCarouselSelector"
+import { ProductCardSkeleton } from "entities/Product/ui/ProductCardSkeleton/ProductCardSkeleton"
 
 export enum ProductCarouselVariant {
     TOP_PRODUCTS = "top",
@@ -76,7 +77,41 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
     const content = useMemo(() => {
         switch (true) {
             case loading:
-                return <div>{t("loadingProcessLoading")}</div>
+                return (
+                    <>
+                        <div className={styles.title}>{title}</div>
+                        <Swiper
+                            slidesPerView={1}
+                            className={styles.swiper}
+                            pagination={{ clickable: true }}
+                            modules={[Pagination]}
+                            spaceBetween={30}
+                            breakpoints={{
+                                480: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 4,
+                                },
+                                1300: {
+                                    slidesPerView: 5,
+                                },
+                            }}
+                        >
+                            {[1, 2, 3, 4, 5, 6, 7, 8].map(item => {
+                                const { id, is_new: isNew, name, price, images } = item
+                                return (
+                                    <SwiperSlide key={id}>
+                                        <ProductCardSkeleton />
+                                    </SwiperSlide>
+                                )
+                            })}
+                        </Swiper>
+                    </>
+                )
             case !!error:
                 return <div>{t("error")}</div>
             case !!list?.length:

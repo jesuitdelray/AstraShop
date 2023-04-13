@@ -33,6 +33,8 @@ import { fetchFilteredProducts } from "../model/services/fetchFilteredProducts/f
 import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
 import { NoProducts } from "./NoProducts/NoProducts"
 import { UnexpectedError } from "./UnexpectedError/UnexpectedError"
+import { ProductCardSkeleton } from "entities/Product/ui/ProductCardSkeleton/ProductCardSkeleton"
+import { Skeleton } from "shared/ui/Skeleton/Skeleton"
 
 export function SubCategoryPage() {
     const { id } = useParams()
@@ -98,7 +100,21 @@ export function SubCategoryPage() {
     const content = useMemo(() => {
         switch (true) {
             case categoryRequestLoading:
-                return <div>{t("loadingProcessLoading")}</div>
+                return (
+                    <>
+                        <Skeleton height={28} width={200} border="5px" className={styles.title} />
+                        <SortProducts
+                            className={styles.desktopFilters}
+                            onChangeSort={fetchSortedData}
+                        />
+                        <ProductFilters className={styles.mobileFilters} />
+                        <div className={styles.products}>
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => (
+                                <ProductCardSkeleton />
+                            ))}
+                        </div>
+                    </>
+                )
             case !!categoryRequestError:
                 if (categoryRequestError === "Category not found") {
                     navigate(RoutePath.not_found)
