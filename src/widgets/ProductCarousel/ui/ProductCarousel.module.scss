@@ -3,6 +3,14 @@
     margin-bottom: 81px;
 }
 
+.swiper {
+    padding-bottom: 40px;
+
+    .product {
+        margin: 0 auto;
+    }
+}
+
 .title {
     @include typography-size-h1;
 
