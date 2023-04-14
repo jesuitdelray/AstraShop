@@ -3,6 +3,7 @@ import { useMemo } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { CrossIcon, MobileBurgerIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
+import { useTranslation } from "react-i18next"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./HeaderLeft.module.scss"
 
@@ -15,6 +16,8 @@ export function HeaderLeft({ className }: HeaderLeftProps) {
 
     const currentModal = useSelector(getModalsCurrent)
 
+    const { t } = useTranslation()
+
     const switcher = useMemo(() => {
         switch (currentModal) {
             case ModalsList.BURGER:
@@ -26,7 +29,7 @@ export function HeaderLeft({ className }: HeaderLeftProps) {
                 )
             case ModalsList.BASKET:
                 return window.innerWidth < 769 ? (
-                    <Typography variant={TypographyVariant.H3}>Корзина</Typography>
+                    <Typography variant={TypographyVariant.H3}>{t("basket")}</Typography>
                 ) : (
                     <MobileBurgerIcon
                         className={styles.icon}
@@ -41,7 +44,7 @@ export function HeaderLeft({ className }: HeaderLeftProps) {
                     />
                 )
         }
-    }, [currentModal, dispatch])
+    }, [currentModal, dispatch, t])
 
     return <div className={classNames(styles.container, {}, [className])}>{switcher}</div>
 }
