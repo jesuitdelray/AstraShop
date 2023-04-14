@@ -3,6 +3,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entities/ModalSlider"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { Logo } from "entities/Logo/Logo"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
@@ -67,9 +68,12 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 </Button>
             </ModalSlider>
 
-            <Sidebar className={classNames(styles.sidebarWrapper, {}, [className])}>
-                {content}
-            </Sidebar>
+            <div className={classNames(styles.sidebarWrapper, {}, [className])}>
+                <div className={styles.container}>
+                    <Logo className={styles.logo} />
+                    {content}
+                </div>
+            </div>
         </>
     )
 }

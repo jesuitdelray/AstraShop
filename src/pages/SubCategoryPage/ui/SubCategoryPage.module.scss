@@ -35,6 +35,8 @@
     }
 
     .wrapper {
-        margin-left: var(--sidebar-width);
+        display: flex;
+        flex-direction: row;
+        align-items: start;
     }
 }

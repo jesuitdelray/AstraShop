@@ -73,27 +73,29 @@ export function SubCategoryPage() {
                     className={styles.sidebar}
                     onChangeFilters={updateCategoryProducts}
                 />
-                <Breadcrumbs />
+                <div className={styles.container}>
+                    <Breadcrumbs />
 
-                {categoryRequestLoading ? (
-                    <Skeleton height={28} width={200} border="5px" className={styles.title} />
-                ) : (
-                    <Typography variant={TypographyVariant.H3} className={styles.title}>
-                        {categoryName}
-                    </Typography>
-                )}
+                    {categoryRequestLoading ? (
+                        <Skeleton height={28} width={200} border="5px" className={styles.title} />
+                    ) : (
+                        <Typography variant={TypographyVariant.H3} className={styles.title}>
+                            {categoryName}
+                        </Typography>
+                    )}
 
-                <SortProducts
-                    className={styles.desktopFilters}
-                    onChangeSort={updateCategoryProducts}
-                />
+                    <SortProducts
+                        className={styles.desktopFilters}
+                        onChangeSort={updateCategoryProducts}
+                    />
 
-                <MobileFilterControllers className={styles.mobileFilters} />
+                    <MobileFilterControllers className={styles.mobileFilters} />
 
-                <Products isLoading={categoryRequestLoading} products={categoryProducts} />
-                {/* <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
+                    <Products isLoading={categoryRequestLoading} products={categoryProducts} />
+                    {/* <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
                             {t("showMoreProducts")}
                         </Button> */}
+                </div>
             </div>
         </>
     )
