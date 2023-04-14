@@ -1,4 +1,12 @@
 {
+    "from": "от",
+    "to": "до",
+    "filter": "Фильтр",
+    "sortBy": "Сортировать",
+    "sortByLowToHigh": "По возрастанию",
+    "sortByHighToLow": "По убыванию",
+    "toMainPage": "На главную",
+    "pageDoesNotExist": "Страница не существует",
     "aboutUs": "О нас",
     "Contacts": "Контакты",
     "error": "Ошибка",

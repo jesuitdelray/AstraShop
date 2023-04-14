@@ -140,7 +140,7 @@ export function OrderForm() {
                 <RadioGroup
                     title={`${t("orderFormTypeOfDelivery")}`}
                     isRequired
-                    options={options}
+                    options={options.map(option => ({ ...option, label: t(option.label) }))}
                     activeInput={formData.delivery}
                     onChange={radioChangeHandler}
                     className={styles.radios}
