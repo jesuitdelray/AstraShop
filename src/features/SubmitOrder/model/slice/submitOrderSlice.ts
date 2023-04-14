@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { SubmitOrderSchema } from "../types/submitOrderSchema"
+import { SubmitOrderSchema, submitOrderResponse } from "../types/submitOrderSchema"
 import { createNewOrder } from "../services/createNewOrder/createNewOrder"
 
 const initialState: SubmitOrderSchema = {
@@ -18,7 +18,7 @@ const submitOrderSlice = createSlice({
             })
             .addCase(
                 createNewOrder.fulfilled,
-                (state, action: PayloadAction<SubmitOrderSchema>) => {
+                (state, action: PayloadAction<submitOrderResponse>) => {
                     state.isLoading = false
                     if (action.payload.url) {
                         window.location.href = action.payload.url
