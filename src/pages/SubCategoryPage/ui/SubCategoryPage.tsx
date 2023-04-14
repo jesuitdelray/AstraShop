@@ -65,30 +65,34 @@ export function SubCategoryPage() {
                     className={styles.sidebar}
                     onChangeFilters={updateCategoryProducts}
                 />
-                <Breadcrumbs />
+                <div className={styles.container}>
+                    <Breadcrumbs />
 
-                {categoryRequestLoading ? (
-                    <Skeleton height={28} width={200} border="5px" className={styles.title} />
-                ) : (
-                    <Typography variant={TypographyVariant.H3} className={styles.title}>
-                        {categoryName}
-                    </Typography>
-                )}
+                    {categoryRequestLoading ? (
+                        <Skeleton height={28} width={200} border="5px" className={styles.title} />
+                    ) : (
+                        <Typography variant={TypographyVariant.H3} className={styles.title}>
+                            {categoryName}
+                        </Typography>
+                    )}
 
-                <SortProducts
-                    className={styles.desktopFilters}
-                    onChangeSort={updateCategoryProducts}
-                />
-
-                <MobileFilterControllers className={styles.mobileFilters} />
-
-                {!categoryProducts?.length && !categoryRequestLoading ? (
-                    <NoProducts
-                        onReturnClick={() => navigate(`${RoutePath.category}/${parentCategoryId}`)}
+                    <SortProducts
+                        className={styles.desktopFilters}
+                        onChangeSort={updateCategoryProducts}
                     />
-                ) : (
-                    <Products isLoading={categoryRequestLoading} products={categoryProducts} />
-                )}
+
+                    <MobileFilterControllers className={styles.mobileFilters} />
+
+                    {!categoryProducts?.length && !categoryRequestLoading ? (
+                        <NoProducts
+                            onReturnClick={() => {
+                                navigate(`${RoutePath.category}/${parentCategoryId}`)
+                            }}
+                        />
+                    ) : (
+                        <Products isLoading={categoryRequestLoading} products={categoryProducts} />
+                    )}
+                </div>
             </div>
         </>
     )

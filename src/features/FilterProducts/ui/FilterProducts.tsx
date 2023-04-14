@@ -1,14 +1,14 @@
-import { Sidebar } from "shared/ui/Sidebar/Sidebar"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entities/ModalSlider"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { Logo } from "entities/Logo/Logo"
 import { useTranslation } from "react-i18next"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
 import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
-import { FilterItemAttribute, FilterItemPriceRange, filtersDataType } from "../model/types/types"
+import { FilterItemAttribute, FilterItemPriceRange } from "../model/types/types"
 
 interface FilterProductsProps {
     className?: string
@@ -19,7 +19,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
     const data = useSelector(getProductFilters) || []
 
     const content = (
-        <div>
+        <div className={styles.sidebarContainer}>
             {data.map(item => {
                 if (item.type === "price_range") {
                     const range = item.info as FilterItemPriceRange
@@ -32,6 +32,9 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                         />
                     )
                 }
+                return null
+            })}
+            {data.map(item => {
                 if (item.type === "attributes") {
                     const range = item.info as FilterItemAttribute[]
                     return (
@@ -68,7 +71,12 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 </Button>
             </ModalSlider>
 
-            <Sidebar className={classNames("", {}, [className])}>{content}</Sidebar>
+            <div className={classNames(styles.sidebarWrapper, {}, [className])}>
+                <div className={styles.container}>
+                    <Logo className={styles.logo} />
+                    {content}
+                </div>
+            </div>
         </>
     )
 }

@@ -92,8 +92,7 @@ export function OrderForm() {
         setIsDirty(initialIsDirty)
         if (!checkOrderValid()) return
         if (!checkInputsValid(formData)) return
-        console.log("submit")
-        // dispatch(createNewOrder(formData))
+        dispatch(createNewOrder(formData))
     }
     return (
         <div>
