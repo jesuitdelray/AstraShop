@@ -3,12 +3,12 @@ export interface IPriceRange {
     max: number
 }
 
-interface FilterItemAttribute {
+export interface FilterItemAttribute {
     id: number
     name: string
 }
 
-interface FilterItemPriceRange {
+export interface FilterItemPriceRange {
     from: number
     to: number
 }

@@ -4,12 +4,12 @@ import { Typography } from "shared/ui/Typography/Typography"
 import { deleteQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
 import { getProductFiltersAttributes } from "../../model/selectors/subcategoryPageSelectors"
 import { filterProductsActions } from "../../model/slice/filterProductsSlice"
-import { filtersDataType } from "../../model/types/types"
+import { FilterItemAttribute } from "../../model/types/types"
 import styles from "./CheckboxGroup.module.scss"
 
 interface CheckboxGroupProps {
     title: string
-    list?: filtersDataType
+    list?: FilterItemAttribute[]
     onChangeFilters: () => void
 }
 

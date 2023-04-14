@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { Sidebar } from "shared/ui/Sidebar/Sidebar"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
@@ -7,10 +6,8 @@ import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
-import {
-    getProductFilters,
-    getProductFiltersPriceRange,
-} from "../model/selectors/subcategoryPageSelectors"
+import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
+import { FilterItemAttribute, FilterItemPriceRange, filtersDataType } from "../model/types/types"
 
 interface FilterProductsProps {
     className?: string
@@ -18,28 +15,28 @@ interface FilterProductsProps {
 }
 
 export function FilterProducts({ className, onChangeFilters }: FilterProductsProps) {
-    const data: any[] = useSelector(getProductFilters) || []
+    const data = useSelector(getProductFilters) || []
 
     const content = (
         <div>
             {data.map(item => {
                 if (item.type === "price_range") {
+                    const range = item.info as FilterItemPriceRange
                     return (
                         <PriceFilter
                             key={item.id}
-                            groupId={item.id}
                             title={item.name}
-                            range={item.info}
+                            range={range}
                             onChangeFilters={onChangeFilters}
                         />
                     )
                 }
                 if (item.type === "attributes") {
+                    const range = item.info as FilterItemAttribute[]
                     return (
                         <CheckboxGroup
                             key={item.id}
-                            groupId={item.id}
-                            list={item.info}
+                            list={range}
                             title={item.name}
                             onChangeFilters={onChangeFilters}
                         />
@@ -47,10 +44,6 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 }
                 return null
             })}
-            {/* <PriceFilter />
-            {list.map(item => (
-                <CheckboxGroup key={item.id} list={item.list} title={item.title} />
-            ))} */}
         </div>
     )
 
