@@ -4,6 +4,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entities/ModalSlider"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { useTranslation } from "react-i18next"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
@@ -54,7 +55,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
 
     const dispatch = useDispatch()
     const currentModal = useSelector(getModalsCurrent)
-
+    const { t } = useTranslation()
     function onClose() {
         dispatch(modalsActions.close())
     }
@@ -68,7 +69,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
             >
                 {content}
                 <Button variant={ButtonVariant.FILLED_RED} className={styles.btn} onClick={onClose}>
-                    Применить
+                    {t("apply")}
                 </Button>
             </ModalSlider>
 
