@@ -17,6 +17,7 @@ export function buildPlugins({
     const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
+            favicon: paths.public,
         }),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
