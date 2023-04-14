@@ -4,7 +4,7 @@ export interface BuildPaths {
     entry: string
     build: string
     html: string
-    public: string
+    favicon: string
     src: string
     locales: string
     buildLocales: string
