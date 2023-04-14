@@ -1,29 +1,26 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
-import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
-import {
-    getProductFilters,
-    getProductFiltersAttributes,
-} from "../../model/selectors/subcategoryPageSelectors"
-import styles from "./CheckboxGroup.module.scss"
-import { filterProductsActions } from "../../model/slice/filterProductsSlice"
+import { Typography } from "shared/ui/Typography/Typography"
 import { deleteQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
+import { getProductFiltersAttributes } from "../../model/selectors/subcategoryPageSelectors"
+import { filterProductsActions } from "../../model/slice/filterProductsSlice"
+import { filtersDataType } from "../../model/types/types"
+import styles from "./CheckboxGroup.module.scss"
 
 interface CheckboxGroupProps {
     title: string
-    list?: any[] /* filterListsItemType[] */
-    groupId: number
+    list?: filtersDataType
     onChangeFilters: () => void
 }
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
-    const { title, list, groupId, onChangeFilters } = props
+    const { title, list, onChangeFilters } = props
 
     const dispatch = useDispatch()
     const attributes = useSelector(getProductFiltersAttributes)
 
     function onChangeCheck(checkId: number) {
-        dispatch(filterProductsActions.setFilterAttributes(checkId))
+        dispatch(filterProductsActions.toggleFilterAttribute(checkId))
         deleteQueryParams("attr")
         onChangeFilters?.()
     }
@@ -34,13 +31,13 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
             <div className={styles.list}>
                 {list?.map(item => {
                     const { name, id } = item
-                    const isChecked = attributes.some(item => item == id)
+                    const isChecked = attributes.some(item => item === id)
 
                     return (
                         <div className={styles.item} key={id}>
                             <Checkbox
                                 label={name}
-                                id={id}
+                                id={id.toString()}
                                 checked={isChecked || false}
                                 onChange={() => onChangeCheck(id)}
                             />

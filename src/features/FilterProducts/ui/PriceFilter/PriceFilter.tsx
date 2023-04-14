@@ -3,12 +3,14 @@ import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { useDispatch, useSelector } from "react-redux"
-import styles from "./PriceFilter.module.scss"
 import { getProductFiltersPriceRange } from "../../model/selectors/subcategoryPageSelectors"
 import { filterProductsActions } from "../../model/slice/filterProductsSlice"
+import styles from "./PriceFilter.module.scss"
+import { IPriceRange } from "../../model/types/types"
+
+type setPriceSortType = (prev: any) => IPriceRange
 
 interface PriceFilterProps {
-    groupId: number
     title: string
     range: any
     onChangeFilters: () => void
@@ -27,8 +29,8 @@ export function PriceFilter(props: PriceFilterProps) {
     const priceSort = useSelector(getProductFiltersPriceRange) || { min: range.from, max: range.to }
     const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
 
-    function setPriceSort(range) {
-        dispatch(filterProductsActions.setPriceRange({ range }))
+    function setPriceSort(range: IPriceRange) {
+        dispatch(filterProductsActions.setPriceRange(range))
         debounsedChangeFilters()
     }
 
@@ -59,36 +61,36 @@ export function PriceFilter(props: PriceFilterProps) {
 
         if (side === "min") {
             if (max - +value < GAP) {
-                setPriceSort(prev => ({ ...prev, min: prev.max - GAP }))
+                setPriceSort((prev: IPriceRange): IPriceRange => ({ ...prev, min: prev.max - GAP }))
                 if (minRef.current) minRef.current.value = (max - GAP).toString()
                 const left = `${((+max - GAP - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, left }))
             } else if (+value < MINIMUM_PRICE) {
-                setPriceSort(prev => ({ ...prev, min: +value }))
+                setPriceSort((prev: any) => ({ ...prev, min: +value }))
                 if (minRef.current) minRef.current.value = MINIMUM_PRICE.toString()
                 setPosition(prev => ({ ...prev, left: "0%" }))
             } else {
                 const left = `${((+value - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, left }))
-                setPriceSort(prev => ({ ...prev, min: +value }))
+                setPriceSort((prev: IPriceRange) => ({ ...prev, min: +value }))
                 if (minRef.current) minRef.current.value = value
             }
         } else if (side === "max") {
             if (+value - min < GAP) {
-                setPriceSort(prev => ({ ...prev, max: +value }))
+                setPriceSort((prev: IPriceRange) => ({ ...prev, max: +value }))
                 if (maxRef.current) {
                     maxRef.current.value = (min + GAP).toString()
                 }
                 const right = `${100 - ((min + GAP - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, right }))
             } else if (+value > MAXIMUM_PRICE) {
-                setPriceSort(prev => ({ ...prev, max: +value }))
+                setPriceSort((prev: IPriceRange) => ({ ...prev, max: +value }))
                 if (maxRef.current) maxRef.current.value = MAXIMUM_PRICE.toString()
                 setPosition(prev => ({ ...prev, right: "0%" }))
             } else {
                 const right = `${100 - ((+value - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, right }))
-                setPriceSort(prev => ({ ...prev, max: +value }))
+                setPriceSort((prev: IPriceRange) => ({ ...prev, max: +value }))
                 if (maxRef.current) maxRef.current.value = value
             }
         }
@@ -96,17 +98,17 @@ export function PriceFilter(props: PriceFilterProps) {
 
     function onMinBlur(e: any) {
         if (e.target.value < MINIMUM_PRICE) {
-            setPriceSort(prev => ({ ...prev, min: MINIMUM_PRICE }))
+            setPriceSort((prev: IPriceRange) => ({ ...prev, min: MINIMUM_PRICE }))
         } else if (e.target.value > priceSort.max) {
-            setPriceSort(prev => ({ ...prev, min: prev.max - GAP }))
+            setPriceSort((prev: IPriceRange) => ({ ...prev, min: prev.max - GAP }))
         }
     }
 
     function onMaxBlur(e: any) {
         if (e.target.value > MAXIMUM_PRICE) {
-            setPriceSort(prev => ({ ...prev, max: MAXIMUM_PRICE }))
+            setPriceSort((prev: IPriceRange) => ({ ...prev, max: MAXIMUM_PRICE }))
         } else if (e.target.value < priceSort.min) {
-            setPriceSort(prev => ({ ...prev, max: prev.min + GAP }))
+            setPriceSort((prev: IPriceRange) => ({ ...prev, max: prev.min + GAP }))
         }
     }
 

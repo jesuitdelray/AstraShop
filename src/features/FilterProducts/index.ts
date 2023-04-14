@@ -6,3 +6,5 @@ export {
     getProductFiltersPriceRange,
     getProductFiltersAttributes,
 } from "./model/selectors/subcategoryPageSelectors"
+
+export { filterProductsActions } from "./model/slice/filterProductsSlice"

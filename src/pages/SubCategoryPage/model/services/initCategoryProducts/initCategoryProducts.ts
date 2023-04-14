@@ -1,11 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
 import { sortProductsAction, sortProductsOrderType } from "features/SortProducts"
-import { fetchCategoryFilters } from "features/FilterProducts"
+import { fetchCategoryFilters, filterProductsActions } from "features/FilterProducts"
 import { fetchCategoryProducts } from "../fetchCategoryProducts/fetchCategoryProducts"
 import { subcategoryPageActions } from "../../slice/subcategoryPageSlice"
 import { getSubCategoryInited } from "../../selectors/subcategoryPageSelectors"
-import { filterProductsActions } from "features/FilterProducts/model/slice/filterProductsSlice"
 
 interface InitCategoryProductsProps {
     searchParams: URLSearchParams
@@ -32,7 +31,7 @@ export const initCategoryProducts = createAsyncThunk<
 
         if (price) {
             const [min, max] = price.split("-")
-            dispatch(filterProductsActions.setPriceRange({ range: { min: +min, max: +max } }))
+            dispatch(filterProductsActions.setPriceRange({ min: +min, max: +max }))
         }
 
         if (attr) {

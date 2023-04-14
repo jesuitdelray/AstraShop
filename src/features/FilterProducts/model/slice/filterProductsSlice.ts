@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { fetchCategoryFilters } from "../services/fetchCategoryFilters/fetchCategoryFilters"
+import { FilterProductsSchema } from "../types/filterProductsSchema"
+import { IPriceRange } from "../types/types"
 
-const initialState: any = {
+const initialState: FilterProductsSchema = {
     filters: [],
-    priceRange: { min: 0, max: 0 },
     attributes: [],
-    error: undefined,
     isLoading: false,
 }
 
@@ -13,20 +13,20 @@ const filterProductsSlice = createSlice({
     name: "filterProductsSlice",
     initialState,
     reducers: {
-        setFilterAttributes: (state, action) => {
-            const arr = state.attributes.filter(item => item == action.payload)
+        toggleFilterAttribute: (state, action: PayloadAction<number>) => {
+            const arr = state.attributes.filter(item => item === action.payload)
 
             if (arr.length) {
-                state.attributes = state.attributes.filter(item => item != action.payload)
+                state.attributes = state.attributes.filter(item => item !== action.payload)
             } else {
                 state.attributes = [...state.attributes, action.payload]
             }
         },
-        setPriceRange: (state, action) => {
-            // groupId, range: {min: number, max:number}
-            const { range } = action.payload
-
-            state.priceRange = range
+        setFilterAttributes: (state, action: PayloadAction<number[]>) => {
+            state.attributes = action.payload
+        },
+        setPriceRange: (state, action: PayloadAction<IPriceRange>) => {
+            state.priceRange = action.payload
         },
     },
     extraReducers: builder => {
@@ -37,7 +37,6 @@ const filterProductsSlice = createSlice({
             })
             .addCase(fetchCategoryFilters.fulfilled, (state, action) => {
                 state.isLoading = false
-                // @ts-ignore
                 state.filters = action.payload
             })
             .addCase(fetchCategoryFilters.rejected, (state, action) => {

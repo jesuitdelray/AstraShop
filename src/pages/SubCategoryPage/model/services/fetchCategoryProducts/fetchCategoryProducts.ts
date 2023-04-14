@@ -2,8 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/providers/StoreProvider"
 import { getSortProductsOrder } from "features/SortProducts"
 import { getProductFiltersPriceRange, getProductFiltersAttributes } from "features/FilterProducts"
-import { addQueryParams, deleteQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
+import { addQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
 import { SubCategoryPageSchema } from "../../types/subcategoryPageSchema"
+import { FilterParams } from "../../types/filterParams"
 
 export const fetchCategoryProducts = createAsyncThunk<
     SubCategoryPageSchema,
@@ -16,7 +17,7 @@ export const fetchCategoryProducts = createAsyncThunk<
     const filterAttributes = getProductFiltersAttributes(getState())
 
     try {
-        const params = {}
+        const params: FilterParams = {}
         if (orderBy) {
             addQueryParams({ orderBy })
             params.orderBy = orderBy
