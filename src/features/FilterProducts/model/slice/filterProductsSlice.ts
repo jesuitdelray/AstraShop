@@ -1,60 +1,54 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { fetchCategoryFilters } from "../services/fetchCategoryFilters/fetchCategoryFilters"
+import { FilterProductsSchema } from "../types/filterProductsSchema"
+import { IPriceRange, filtersDataType } from "../types/types"
 
-const initialState: any = {
+const initialState: FilterProductsSchema = {
     filters: [],
-    error: undefined,
+    attributes: [],
     isLoading: false,
 }
 
 const filterProductsSlice = createSlice({
-    name: "subcategoryPage",
+    name: "filterProductsSlice",
     initialState,
     reducers: {
-        setFilterAttributes: (state, action) => {
-            // {groupId: number, checkId:number}
-            const { groupId, checkId } = action.payload
+        toggleFilterAttribute: (state, action: PayloadAction<number>) => {
+            const arr = state.attributes.filter(item => item === action.payload)
 
-            state.filters = state.filters.map((group: any) => {
-                if (group.id === groupId) {
-                    group.info.map((check: any) => {
-                        if (check.id === checkId) {
-                            check.isChecked = !check.isChecked
-                        }
-                        return check
-                    })
-                }
-                return group
-            })
+            if (arr.length) {
+                state.attributes = state.attributes.filter(item => item !== action.payload)
+            } else {
+                state.attributes = [...state.attributes, action.payload]
+            }
         },
-        setPriceRange: (state, action) => {
-            // groupId, range: {min: number, max:number}
-            const { range, groupId } = action.payload
-
-            state.filters = state.filters.map((item: any) => {
-                if (item.type === "price_range" && item.id === groupId) {
-                    item.range = range
-                }
-
-                return item
-            })
+        setFilterAttributes: (state, action: PayloadAction<number[]>) => {
+            state.attributes = action.payload
+        },
+        setPriceRange: (state, action: PayloadAction<IPriceRange>) => {
+            state.priceRange = action.payload
         },
     },
     extraReducers: builder => {
         builder
-            .addCase(fetchCategoryFilters.pending, (state, action) => {
+            .addCase(fetchCategoryFilters.pending, state => {
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(fetchCategoryFilters.fulfilled, (state, action) => {
-                state.isLoading = false
-                // @ts-ignore
-                state.filters = action.payload
-            })
-            .addCase(fetchCategoryFilters.rejected, (state, action) => {
-                state.isLoading = false
-                state.error = action.payload
-            })
+            .addCase(
+                fetchCategoryFilters.fulfilled,
+                (state, action: PayloadAction<filtersDataType>) => {
+                    state.isLoading = false
+                    state.filters = action.payload
+                }
+            )
+            .addCase(
+                fetchCategoryFilters.rejected,
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.isLoading = false
+                    state.error = action.payload
+                }
+            )
     },
 })
 

@@ -1,46 +1,46 @@
-import { useEffect, useRef, useState } from "react"
+import { FocusEvent, useEffect, useRef, useState } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
-import { useDispatch } from "react-redux"
-import { filterProductsActions } from "features/FilterProducts/model/slice/filterProductsSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { getProductFiltersPriceRange } from "../../model/selectors/subcategoryPageSelectors"
+import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 import styles from "./PriceFilter.module.scss"
+import { FilterItemPriceRange, IPriceRange } from "../../model/types/types"
 
 interface PriceFilterProps {
-    groupId: number
     title: string
-    range: any
+    range: FilterItemPriceRange
     onChangeFilters: () => void
 }
 
 export function PriceFilter(props: PriceFilterProps) {
-    const { title, groupId, range, onChangeFilters } = props
+    const { title, range, onChangeFilters } = props
 
     const GAP = 100
     const MINIMUM_PRICE = range.from
     const MAXIMUM_PRICE = range.to
     const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
 
-    const [priceSort, setPriceSort] = useState({
-        min: MINIMUM_PRICE,
-        max: MAXIMUM_PRICE,
-    })
-    const [position, setPosition] = useState({
-        left: "0%",
-        right: "0%",
-    })
+    const dispatch = useDispatch()
+
+    const priceSort = useSelector(getProductFiltersPriceRange) || { min: range.from, max: range.to }
+    const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
+
+    function setPriceSort(range: IPriceRange) {
+        dispatch(filterProductsActions.setPriceRange(range))
+        debounsedChangeFilters()
+    }
+
+    const left = priceSort ? `${((priceSort.min - MINIMUM_PRICE) / PRICE_RANGE) * 100}%` : "0%"
+    const right = priceSort
+        ? `${100 - ((priceSort.max - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
+        : "0%"
+
+    const [position, setPosition] = useState({ left, right })
 
     const minRef = useRef<HTMLInputElement>(null)
     const maxRef = useRef<HTMLInputElement>(null)
-
-    const dispatch = useDispatch()
-
-    const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
-
-    /* useEffect(() => {
-        dispatch(filterProductsActions.setPriceRange({ groupId, range: priceSort }))
-        debounsedChangeFilters()
-    }, [priceSort, dispatch, groupId, debounsedChangeFilters]) */ // cycling
 
     useEffect(() => {
         if (minRef.current && maxRef.current) {
@@ -59,54 +59,57 @@ export function PriceFilter(props: PriceFilterProps) {
 
         if (side === "min") {
             if (max - +value < GAP) {
-                setPriceSort(prev => ({ ...prev, min: prev.max - GAP }))
+                setPriceSort({ max, min: max - GAP })
                 if (minRef.current) minRef.current.value = (max - GAP).toString()
                 const left = `${((+max - GAP - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, left }))
             } else if (+value < MINIMUM_PRICE) {
-                setPriceSort(prev => ({ ...prev, min: +value }))
+                setPriceSort({ max, min: +value })
                 if (minRef.current) minRef.current.value = MINIMUM_PRICE.toString()
                 setPosition(prev => ({ ...prev, left: "0%" }))
             } else {
                 const left = `${((+value - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, left }))
-                setPriceSort(prev => ({ ...prev, min: +value }))
+                setPriceSort({ max, min: +value })
                 if (minRef.current) minRef.current.value = value
             }
         } else if (side === "max") {
             if (+value - min < GAP) {
-                setPriceSort(prev => ({ ...prev, max: +value }))
+                setPriceSort({ min, max: +value })
                 if (maxRef.current) {
                     maxRef.current.value = (min + GAP).toString()
                 }
                 const right = `${100 - ((min + GAP - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, right }))
             } else if (+value > MAXIMUM_PRICE) {
-                setPriceSort(prev => ({ ...prev, max: +value }))
+                setPriceSort({ min, max: +value })
                 if (maxRef.current) maxRef.current.value = MAXIMUM_PRICE.toString()
                 setPosition(prev => ({ ...prev, right: "0%" }))
             } else {
                 const right = `${100 - ((+value - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                 setPosition(prev => ({ ...prev, right }))
-                setPriceSort(prev => ({ ...prev, max: +value }))
+                setPriceSort({ min, max: +value })
                 if (maxRef.current) maxRef.current.value = value
             }
         }
     }
 
-    function onMinBlur(e: any) {
-        if (e.target.value < MINIMUM_PRICE) {
-            setPriceSort(prev => ({ ...prev, min: MINIMUM_PRICE }))
-        } else if (e.target.value > priceSort.max) {
-            setPriceSort(prev => ({ ...prev, min: prev.max - GAP }))
+    function onMinBlur(e: FocusEvent<HTMLInputElement>) {
+        const { max } = priceSort
+
+        if (+e.target.value < MINIMUM_PRICE) {
+            setPriceSort({ max, min: MINIMUM_PRICE })
+        } else if (+e.target.value > max) {
+            setPriceSort({ max, min: max - GAP })
         }
     }
 
-    function onMaxBlur(e: any) {
-        if (e.target.value > MAXIMUM_PRICE) {
-            setPriceSort(prev => ({ ...prev, max: MAXIMUM_PRICE }))
-        } else if (e.target.value < priceSort.min) {
-            setPriceSort(prev => ({ ...prev, max: prev.min + GAP }))
+    function onMaxBlur(e: FocusEvent<HTMLInputElement>) {
+        const { min } = priceSort
+        if (+e.target.value > MAXIMUM_PRICE) {
+            setPriceSort({ min, max: MAXIMUM_PRICE })
+        } else if (+e.target.value < priceSort.min) {
+            setPriceSort({ min, max: min + GAP })
         }
     }
 
@@ -117,18 +120,18 @@ export function PriceFilter(props: PriceFilterProps) {
 
             if (max - min < GAP) {
                 if (name === "min") {
-                    const min = Number(max - GAP).toString()
-                    minRef.current.value = min
-                    setPriceSort((prev: any) => ({ ...prev, min }))
+                    const min = Number(max - GAP)
+                    minRef.current.value = min.toString()
+                    setPriceSort({ max, min })
                     const left = `${((+minRef.current.value - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                     const right = `${
                         100 - ((+maxRef.current.value - MINIMUM_PRICE) / PRICE_RANGE) * 100
                     }%`
                     setPosition({ left, right })
                 } else {
-                    const max = Number(min + GAP).toString()
-                    maxRef.current.value = max
-                    setPriceSort((prev: any) => ({ ...prev, max }))
+                    const max = Number(min + GAP)
+                    maxRef.current.value = max.toString()
+                    setPriceSort({ min, max })
                     const left = `${((+minRef.current.value - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
                     const right = `${
                         100 - ((+maxRef.current.value - MINIMUM_PRICE) / PRICE_RANGE) * 100
