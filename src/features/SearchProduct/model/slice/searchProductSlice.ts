@@ -23,7 +23,7 @@ const searchProductsSlice = createSlice({
             })
             .addCase(
                 fetchSearchProducts.fulfilled,
-                (state, action: PayloadAction<ProductListItem[]>) => {
+                (state, action: PayloadAction<ProductListItem[] | []>) => {
                     state.isLoading = false
                     state.productsList = action.payload
                 }
