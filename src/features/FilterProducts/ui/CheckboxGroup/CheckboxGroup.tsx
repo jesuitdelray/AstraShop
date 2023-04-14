@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
+import { deleteQueryParams } from "shared/lib/url/deleteQueryParams/deleteQueryParams"
 import { Typography } from "shared/ui/Typography/Typography"
-import { deleteQueryParams } from "shared/lib/url/addQueryParams/addQueryParams"
 import { getProductFiltersAttributes } from "../../model/selectors/subcategoryPageSelectors"
 import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 import { FilterItemAttribute } from "../../model/types/types"
