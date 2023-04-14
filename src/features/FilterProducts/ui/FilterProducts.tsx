@@ -18,7 +18,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
     const data = useSelector(getProductFilters) || []
 
     const content = (
-        <div>
+        <div className={styles.sidebarContainer}>
             {data.map(item => {
                 if (item.type === "price_range") {
                     const range = item.info as FilterItemPriceRange
@@ -67,7 +67,9 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 </Button>
             </ModalSlider>
 
-            <Sidebar className={classNames("", {}, [className])}>{content}</Sidebar>
+            <Sidebar className={classNames(styles.sidebarWrapper, {}, [className])}>
+                {content}
+            </Sidebar>
         </>
     )
 }
