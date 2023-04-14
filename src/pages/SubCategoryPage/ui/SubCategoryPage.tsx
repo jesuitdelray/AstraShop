@@ -53,14 +53,6 @@ export function SubCategoryPage() {
         return null
     }
 
-    if (!categoryProducts?.length && !categoryRequestLoading) {
-        return (
-            <NoProducts
-                onReturnClick={() => navigate(`${RoutePath.category}/${parentCategoryId}`)}
-            />
-        )
-    }
-
     if (categoryRequestError) {
         return <UnexpectedError />
     }
@@ -90,10 +82,13 @@ export function SubCategoryPage() {
 
                 <MobileFilterControllers className={styles.mobileFilters} />
 
-                <Products isLoading={categoryRequestLoading} products={categoryProducts} />
-                {/* <Button variant={ButtonVariant.OUTLINE} className={styles.btn}>
-                            {t("showMoreProducts")}
-                        </Button> */}
+                {!categoryProducts?.length && !categoryRequestLoading ? (
+                    <NoProducts
+                        onReturnClick={() => navigate(`${RoutePath.category}/${parentCategoryId}`)}
+                    />
+                ) : (
+                    <Products isLoading={categoryRequestLoading} products={categoryProducts} />
+                )}
             </div>
         </>
     )
