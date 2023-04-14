@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { SubmitOrderSchema } from "../types/submitOrderSchema"
 import { createNewOrder } from "../services/createNewOrder/createNewOrder"
 
@@ -12,20 +12,26 @@ const submitOrderSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(createNewOrder.pending, (state, action) => {
+            .addCase(createNewOrder.pending, state => {
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(createNewOrder.fulfilled, (state, action) => {
-                state.isLoading = false
-                if (action.payload.url) {
-                    window.location.href = action.payload.url
+            .addCase(
+                createNewOrder.fulfilled,
+                (state, action: PayloadAction<SubmitOrderSchema>) => {
+                    state.isLoading = false
+                    if (action.payload.url) {
+                        window.location.href = action.payload.url
+                    }
                 }
-            })
-            .addCase(createNewOrder.rejected, (state, action) => {
-                state.isLoading = false
-                state.error = action.payload
-            })
+            )
+            .addCase(
+                createNewOrder.rejected,
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.isLoading = false
+                    state.error = action.payload
+                }
+            )
     },
 })
 

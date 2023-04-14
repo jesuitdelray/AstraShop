@@ -17,21 +17,24 @@ const searchProductsSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-            .addCase(fetchSearchProducts.pending, (state, action) => {
+            .addCase(fetchSearchProducts.pending, state => {
                 state.error = undefined
                 state.isLoading = true
             })
             .addCase(
                 fetchSearchProducts.fulfilled,
-                (state, action: PayloadAction<ProductListItem[] | []>) => {
+                (state, action: PayloadAction<ProductListItem[]>) => {
                     state.isLoading = false
                     state.productsList = action.payload
                 }
             )
-            .addCase(fetchSearchProducts.rejected, (state, action) => {
-                state.isLoading = false
-                state.error = action.payload
-            })
+            .addCase(
+                fetchSearchProducts.rejected,
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.isLoading = false
+                    state.error = action.payload
+                }
+            )
     },
 })
 
