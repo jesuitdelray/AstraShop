@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
-import { useDispatch } from "react-redux"
-import { filterProductsActions } from "features/FilterProducts/model/slice/filterProductsSlice"
+import { useDispatch, useSelector } from "react-redux"
 import styles from "./PriceFilter.module.scss"
+import { getProductFiltersPriceRange } from "../../model/selectors/subcategoryPageSelectors"
+import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 
 interface PriceFilterProps {
     groupId: number
@@ -14,34 +15,32 @@ interface PriceFilterProps {
 }
 
 export function PriceFilter(props: PriceFilterProps) {
-    const { title, groupId, range, onChangeFilters } = props
+    const { title, range, onChangeFilters } = props
 
     const GAP = 100
     const MINIMUM_PRICE = range.from
     const MAXIMUM_PRICE = range.to
     const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
 
-    const [priceSort, setPriceSort] = useState({
-        min: MINIMUM_PRICE,
-        max: MAXIMUM_PRICE,
-    })
-    const [position, setPosition] = useState({
-        left: "0%",
-        right: "0%",
-    })
+    const dispatch = useDispatch()
+
+    const priceSort = useSelector(getProductFiltersPriceRange) || { min: range.from, max: range.to }
+    const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
+
+    function setPriceSort(range) {
+        dispatch(filterProductsActions.setPriceRange({ range }))
+        debounsedChangeFilters()
+    }
+
+    const left = priceSort ? `${((priceSort.min - MINIMUM_PRICE) / PRICE_RANGE) * 100}%` : "0%"
+    const right = priceSort
+        ? `${100 - ((priceSort.max - MINIMUM_PRICE) / PRICE_RANGE) * 100}%`
+        : "0%"
+
+    const [position, setPosition] = useState({ left, right })
 
     const minRef = useRef<HTMLInputElement>(null)
     const maxRef = useRef<HTMLInputElement>(null)
-
-    const dispatch = useDispatch()
-
-    const debounsedChangeFilters = useDebounce(() => onChangeFilters(), 500)
-
-    useEffect(() => {
-        dispatch(filterProductsActions.setPriceRange({ groupId, range: priceSort }))
-        debounsedChangeFilters()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [priceSort, dispatch, groupId])
 
     useEffect(() => {
         if (minRef.current && maxRef.current) {

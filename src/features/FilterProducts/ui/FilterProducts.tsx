@@ -7,7 +7,10 @@ import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
-import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
+import {
+    getProductFilters,
+    getProductFiltersPriceRange,
+} from "../model/selectors/subcategoryPageSelectors"
 
 interface FilterProductsProps {
     className?: string
@@ -16,8 +19,6 @@ interface FilterProductsProps {
 
 export function FilterProducts({ className, onChangeFilters }: FilterProductsProps) {
     const data: any[] = useSelector(getProductFilters) || []
-
-    const filters = 1
 
     const content = (
         <div>
@@ -40,6 +41,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                             groupId={item.id}
                             list={item.info}
                             title={item.name}
+                            onChangeFilters={onChangeFilters}
                         />
                     )
                 }

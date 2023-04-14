@@ -15,3 +15,10 @@ export function getQueryParams(params: OptionalRecord<string, string>) {
 export function addQueryParams(params: OptionalRecord<string, string>) {
     window.history.pushState(null, "", getQueryParams(params))
 }
+
+export function deleteQueryParams(key) {
+    const url = new URL(window.location.href)
+    url.searchParams.delete(key)
+    const newUrl = url.pathname + url.search
+    window.history.pushState({ path: newUrl }, "", newUrl)
+}

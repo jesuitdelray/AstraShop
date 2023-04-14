@@ -5,6 +5,7 @@ import { fetchCategoryFilters } from "features/FilterProducts"
 import { fetchCategoryProducts } from "../fetchCategoryProducts/fetchCategoryProducts"
 import { subcategoryPageActions } from "../../slice/subcategoryPageSlice"
 import { getSubCategoryInited } from "../../selectors/subcategoryPageSelectors"
+import { filterProductsActions } from "features/FilterProducts/model/slice/filterProductsSlice"
 
 interface InitCategoryProductsProps {
     searchParams: URLSearchParams
@@ -22,9 +23,21 @@ export const initCategoryProducts = createAsyncThunk<
 
     if (!inited) {
         const orderBy = searchParams.get("orderBy") as sortProductsOrderType
+        const price = searchParams.get("price")
+        const attr = searchParams.get("attr")
 
         if (orderBy) {
             dispatch(sortProductsAction.setOrder(orderBy))
+        }
+
+        if (price) {
+            const [min, max] = price.split("-")
+            dispatch(filterProductsActions.setPriceRange({ range: { min: +min, max: +max } }))
+        }
+
+        if (attr) {
+            const attributes = attr.split(",").map(item => +item)
+            dispatch(filterProductsActions.setFilterAttributes(attributes))
         }
 
         dispatch(subcategoryPageActions.initState())
