@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { fetchCategoryFilters } from "../services/fetchCategoryFilters/fetchCategoryFilters"
 import { FilterProductsSchema } from "../types/filterProductsSchema"
-import { IPriceRange } from "../types/types"
+import { IPriceRange, filtersDataType } from "../types/types"
 
 const initialState: FilterProductsSchema = {
     filters: [],
@@ -31,18 +31,24 @@ const filterProductsSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-            .addCase(fetchCategoryFilters.pending, (state, action) => {
+            .addCase(fetchCategoryFilters.pending, state => {
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(fetchCategoryFilters.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.filters = action.payload
-            })
-            .addCase(fetchCategoryFilters.rejected, (state, action) => {
-                state.isLoading = false
-                state.error = action.payload
-            })
+            .addCase(
+                fetchCategoryFilters.fulfilled,
+                (state, action: PayloadAction<filtersDataType>) => {
+                    state.isLoading = false
+                    state.filters = action.payload
+                }
+            )
+            .addCase(
+                fetchCategoryFilters.rejected,
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.isLoading = false
+                    state.error = action.payload
+                }
+            )
     },
 })
 

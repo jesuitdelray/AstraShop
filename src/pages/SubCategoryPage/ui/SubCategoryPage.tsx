@@ -1,23 +1,13 @@
-import { useCallback, useEffect, useMemo } from "react"
+import { useCallback, useEffect } from "react"
 import { useNavigate, useParams, useSearchParams } from "react-router-dom"
-import { SortProducts, sortProductsOrderType } from "features/SortProducts"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { SortProducts } from "features/SortProducts"
 import { RoutePath } from "shared/config/routeConfig/const"
-import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
 import { SortModalSlider } from "widgets/SortModalSlider"
 import { Skeleton } from "shared/ui/Skeleton/Skeleton"
-import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { FilterProducts } from "features/FilterProducts"
-import { fetchCategoryFilters } from "features/FilterProducts/model/services/fetchCategoryFilters/fetchCategoryFilters"
-import {
-    Breadcrumbs,
-    getNavigationTree,
-    catalogNavigationActions,
-    CurrentTreeItemType,
-} from "entities/CatalogNavigation"
-import { useTranslation } from "react-i18next"
+import { Breadcrumbs } from "entities/CatalogNavigation"
 import { MobileFilterControllers } from "./MobileFilterControllers/MobileFilterControllers"
 import styles from "./SubCategoryPage.module.scss"
 import { fetchCategoryProducts } from "../model/services/fetchCategoryProducts/fetchCategoryProducts"
@@ -28,7 +18,6 @@ import {
     getSubCategoryParentId,
     getSubCategoryProducts,
 } from "../model/selectors/subcategoryPageSelectors"
-import { subcategoryPageActions } from "../model/slice/subcategoryPageSlice"
 import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
 import { NoProducts } from "./NoProducts/NoProducts"
 import { UnexpectedError } from "./UnexpectedError/UnexpectedError"
