@@ -7,6 +7,7 @@ import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
 import { Product } from "../../model/types"
+import { ProductDetailsSkeleton } from "../ProductDetailsSkeleton/ProductDetailsSkeleton"
 
 interface ProductDetailsProps extends Product {
     isLoading: boolean
@@ -35,7 +36,14 @@ export function ProductDetails(props: ProductDetailsProps) {
 
     switch (true) {
         case isLoading:
-            content = <div>{t("loadingProcessLoading")}</div>
+            content = (
+                <ProductDetailsSkeleton
+                    headerStyles={styles.header}
+                    imagesStyles={styles.images}
+                    btnStyles={styles.btn}
+                    descriptionStyles={styles.description}
+                />
+            )
             break
         case !!error:
             navigate(RoutePath.not_found)
