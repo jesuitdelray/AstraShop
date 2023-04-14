@@ -2,6 +2,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import styles from "./SortProducts.module.scss"
 import { sortProductsOrderType } from "../model/types/types"
 import { getSortProductsOrder } from "../model/selectors/sortProductsSelectors"
@@ -23,9 +24,11 @@ export function SortProducts(props: SortProductsProps) {
         onChangeSort?.()
     }
 
+    const { t } = useTranslation()
+
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <Typography color={TypographyColor.DARK_GRAY}>Сортировать</Typography>
+            <Typography color={TypographyColor.DARK_GRAY}>{t("sortBy")}</Typography>
             <Button
                 className={styles.btn}
                 variant={
@@ -35,7 +38,7 @@ export function SortProducts(props: SortProductsProps) {
                 }
                 onClick={() => clickHandler(sortProductsOrderType.ASC)}
             >
-                По возрастанию
+                {t("sortByLowToHigh")}
             </Button>
             <Button
                 className={styles.btn}
@@ -46,7 +49,7 @@ export function SortProducts(props: SortProductsProps) {
                 }
                 onClick={() => clickHandler(sortProductsOrderType.DESC)}
             >
-                По убыванию
+                {t("sortByHighToLow")}
             </Button>
         </div>
     )

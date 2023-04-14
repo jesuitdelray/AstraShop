@@ -9,6 +9,7 @@ import {
     ModalsList,
 } from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import styles from "./SuccessOrderModal.module.scss"
 
 export function SuccessOrderModal() {
@@ -16,6 +17,8 @@ export function SuccessOrderModal() {
 
     const dispatch = useDispatch()
     const value = useSelector(getModalsCurrent)
+
+    const { t } = useTranslation()
 
     const isOpen = value === ModalsList.SUCCESS
 
@@ -35,13 +38,13 @@ export function SuccessOrderModal() {
                 className={styles.title}
                 variant={isSlideTop ? TypographyVariant.H3 : TypographyVariant.H1}
             >
-                Успешная оплата
+                {t("successfulPayment")}
             </Typography>
             <Typography className={styles.text} variant={TypographyVariant.P}>
-                Детали заказа и чек отправлены Вам на почту
+                {t("orderDetailsSent")}
             </Typography>
             <Button variant={ButtonVariant.FILLED_RED} className={styles.btn} onClick={onClose}>
-                Вернуться
+                {t("return")}
             </Button>
         </ModalSlider>
     )

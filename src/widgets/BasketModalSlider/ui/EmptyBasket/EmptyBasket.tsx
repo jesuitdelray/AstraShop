@@ -1,5 +1,6 @@
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import styles from "./EmptyBasket.module.scss"
 
 interface EmptyBasketProps {
@@ -7,6 +8,7 @@ interface EmptyBasketProps {
 }
 
 export function EmptyBasket({ onClose }: EmptyBasketProps) {
+    const { t } = useTranslation()
     return (
         <div className={styles.container}>
             <Typography
@@ -14,10 +16,10 @@ export function EmptyBasket({ onClose }: EmptyBasketProps) {
                 color={TypographyColor.DARK_GRAY}
                 className={styles.emptyBasketText}
             >
-                Пусто
+                {t("empty")}
             </Typography>
             <Button variant={ButtonVariant.FILLED_RED} onClick={onClose}>
-                Продолжить покупки
+                {t("continueShopping")}
             </Button>
         </div>
     )

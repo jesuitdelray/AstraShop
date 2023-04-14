@@ -1,6 +1,7 @@
-import { FocusEvent, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, FocusEvent } from "react"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
+import { useTranslation } from "react-i18next"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { useDispatch, useSelector } from "react-redux"
 import { getProductFiltersPriceRange } from "../../model/selectors/subcategoryPageSelectors"
@@ -147,6 +148,8 @@ export function PriceFilter(props: PriceFilterProps) {
         }
     }
 
+    const { t } = useTranslation()
+
     return (
         <div className={styles.container}>
             <Typography variant={TypographyVariant.P} className={styles.title}>
@@ -154,7 +157,7 @@ export function PriceFilter(props: PriceFilterProps) {
             </Typography>
             <div className={styles.info}>
                 <Typography variant={TypographyVariant.P} color={TypographyColor.DARK_GRAY}>
-                    от
+                    {t("from")}
                 </Typography>
                 <Input
                     value={priceSort.min.toString()}
@@ -163,7 +166,7 @@ export function PriceFilter(props: PriceFilterProps) {
                     className={styles.input}
                 />
                 <Typography variant={TypographyVariant.P} color={TypographyColor.DARK_GRAY}>
-                    до
+                    {t("to")}
                 </Typography>
                 <Input
                     value={priceSort.max.toString()}
