@@ -83,13 +83,16 @@ export function SubCategoryPage() {
 
                     <MobileFilterControllers className={styles.mobileFilters} />
 
-                {!categoryProducts?.length && !categoryRequestLoading ? (
-                    <NoProducts
-                        onReturnClick={() => navigate(`${RoutePath.category}/${parentCategoryId}`)}
-                    />
-                ) : (
-                    <Products isLoading={categoryRequestLoading} products={categoryProducts} />
-                )}
+                    {!categoryProducts?.length && !categoryRequestLoading ? (
+                        <NoProducts
+                            onReturnClick={() => {
+                                navigate(`${RoutePath.category}/${parentCategoryId}`)
+                            }}
+                        />
+                    ) : (
+                        <Products isLoading={categoryRequestLoading} products={categoryProducts} />
+                    )}
+                </div>
             </div>
         </>
     )

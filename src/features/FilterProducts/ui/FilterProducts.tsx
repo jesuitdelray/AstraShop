@@ -1,4 +1,3 @@
-import { Sidebar } from "shared/ui/Sidebar/Sidebar"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entities/ModalSlider"
@@ -8,7 +7,7 @@ import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
 import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
-import { FilterItemAttribute, FilterItemPriceRange, filtersDataType } from "../model/types/types"
+import { FilterItemAttribute, FilterItemPriceRange } from "../model/types/types"
 
 interface FilterProductsProps {
     className?: string
@@ -32,6 +31,9 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                         />
                     )
                 }
+                return null
+            })}
+            {data.map(item => {
                 if (item.type === "attributes") {
                     const range = item.info as FilterItemAttribute[]
                     return (
