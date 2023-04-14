@@ -40,7 +40,7 @@ export const fetchCategoryProducts = createAsyncThunk<
 
         const response = await extra.api.get(`category/${id}/products`, { params })
 
-        if (!response.data) {
+        if (!response.data && response.status !== 204) {
             throw new Error()
         }
 
