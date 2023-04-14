@@ -1,23 +1,28 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
-import { Typography, TypographyColor } from "shared/ui/Typography/Typography"
-import { getProductFilters } from "../../model/selectors/subcategoryPageSelectors"
-import styles from "./CheckboxGroup.module.scss"
+import { deleteQueryParams } from "shared/lib/url/deleteQueryParams/deleteQueryParams"
+import { Typography } from "shared/ui/Typography/Typography"
+import { getProductFiltersAttributes } from "../../model/selectors/subcategoryPageSelectors"
 import { filterProductsActions } from "../../model/slice/filterProductsSlice"
+import { FilterItemAttribute } from "../../model/types/types"
+import styles from "./CheckboxGroup.module.scss"
 
 interface CheckboxGroupProps {
     title: string
-    list?: any[] /* filterListsItemType[] */
-    groupId: number
+    list?: FilterItemAttribute[]
+    onChangeFilters: () => void
 }
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
-    const { title, list, groupId } = props
+    const { title, list, onChangeFilters } = props
 
     const dispatch = useDispatch()
+    const attributes = useSelector(getProductFiltersAttributes)
 
-    function onChangeCheck(groupId: number, checkId: number) {
-        dispatch(filterProductsActions.setFilterAttributes({ groupId, checkId }))
+    function onChangeCheck(checkId: number) {
+        dispatch(filterProductsActions.toggleFilterAttribute(checkId))
+        deleteQueryParams("attr")
+        onChangeFilters?.()
     }
 
     return (
@@ -25,20 +30,17 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
             <Typography className={styles.title}>{title}</Typography>
             <div className={styles.list}>
                 {list?.map(item => {
-                    const { name, id, products, isChecked } = item
+                    const { name, id } = item
+                    const isChecked = attributes.some(item => item === id)
+
                     return (
                         <div className={styles.item} key={id}>
                             <Checkbox
                                 label={name}
-                                id={id}
+                                id={id.toString()}
                                 checked={isChecked || false}
-                                onChange={() => onChangeCheck(groupId, id)}
+                                onChange={() => onChangeCheck(id)}
                             />
-                            {/* {!isChecked && (
-                                <Typography color={TypographyColor.DARK_GRAY}>
-                                    {products}
-                                </Typography>
-                            )} */}
                         </div>
                     )
                 })}
