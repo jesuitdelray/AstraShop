@@ -11,7 +11,7 @@ export interface RadioGroupOptios {
 
 interface RadioGroupProps {
     title: string
-    isRequired: boolean
+    isRequired?: boolean
     options: RadioGroupOptios[]
     activeInput: string
     onChange: (value: string) => void
@@ -26,7 +26,10 @@ export function RadioGroup(props: RadioGroupProps) {
     }
 
     return (
-        <div className={classNames(styles.container, {}, [className])}>
+        <div
+            data-testid="radioGroupContainer"
+            className={classNames(styles.container, {}, [className])}
+        >
             <Typography className={styles.title}>
                 {title}
                 {isRequired && <span className={styles.required}>*</span>}
