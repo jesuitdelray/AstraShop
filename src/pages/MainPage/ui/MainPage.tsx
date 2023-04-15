@@ -7,8 +7,8 @@ export function MainPage() {
         <div>
             <TopBanner />
             <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
-            {/* <BannersRow />
-            <ProductCarousel variant={ProductCarouselVariant.NEW_PRODUCTS} /> */}
+            <BannersRow />
+            <ProductCarousel variant={ProductCarouselVariant.NEW_PRODUCTS} />
         </div>
     )
 }

@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useSearchParams } from "react-router-dom"
 import { BannersRow } from "widgets/BannersRow"
+import { basketActions } from "entities/Basket"
 import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { SuccessOrderModal } from "./SuccessOrderModal/SuccessOrderModal"
 import { PaymentErrorModal } from "./PaymentErrorModal/PaymentErrorModal"
@@ -18,8 +19,8 @@ export function OrderPage() {
 
         if (payment === "success") {
             dispatch(modalsActions.openSuccess())
+            dispatch(basketActions.clearBasket())
         } else if (payment === "failure") {
-            console.log("e")
             dispatch(modalsActions.openPaymentError())
         }
     }, [searchParams, dispatch])

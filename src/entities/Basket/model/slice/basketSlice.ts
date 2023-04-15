@@ -24,6 +24,10 @@ const basketSlice = createSlice({
             state.products = state.products?.filter(product => product.id !== payload)
             localStorage.setItem(BASKET_LOCALSTORAGE_PRODUCTS, JSON.stringify(state.products))
         },
+        clearBasket: state => {
+            state.products = []
+            localStorage.setItem(BASKET_LOCALSTORAGE_PRODUCTS, JSON.stringify(state.products))
+        },
         incrementInBasket: (state, { payload }) => {
             state.products = state.products.map(product => {
                 if (product.id === payload) {

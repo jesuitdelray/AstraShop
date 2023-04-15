@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react"
 import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { SortProducts } from "features/SortProducts"
+import { UnexpectedError } from "shared/components/UnexpectedError/UnexpectedError"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useDispatch, useSelector } from "react-redux"
@@ -20,7 +21,6 @@ import {
 } from "../model/selectors/subcategoryPageSelectors"
 import { initCategoryProducts } from "../model/services/initCategoryProducts/initCategoryProducts"
 import { NoProducts } from "./NoProducts/NoProducts"
-import { UnexpectedError } from "./UnexpectedError/UnexpectedError"
 import { useSetBreadcrumbs } from "../lib/useSetBreadcrumbs"
 import { Products } from "./Products/Products"
 

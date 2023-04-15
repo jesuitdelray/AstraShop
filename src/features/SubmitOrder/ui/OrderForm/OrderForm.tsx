@@ -1,3 +1,4 @@
+import { UnexpectedError } from "shared/components/UnexpectedError/UnexpectedError"
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -7,6 +8,7 @@ import {
     getBasketProductsTotalPrice,
     getBasketProductsTotalQuantity,
 } from "entities/Basket"
+import { Loader } from "shared/ui/Loader/Loader"
 import { Input } from "shared/ui/Input/Input"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Checkbox } from "shared/ui/Checkbox/Checkbox"
@@ -20,6 +22,10 @@ import styles from "./OrderForm.module.scss"
 import { inputValidations } from "../../lib/inputValidations"
 import { IFormData } from "../../model/types/types"
 import { createNewOrder } from "../../model/services/createNewOrder/createNewOrder"
+import {
+    getSubmitOrderError,
+    getSubmitOrderLoading,
+} from "../../model/selectors/submitOrderSelectors"
 
 export function OrderForm() {
     const [formData, setFormData] = useState<IFormData>({
@@ -56,6 +62,11 @@ export function OrderForm() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const totalPrice = useSelector(getBasketProductsTotalPrice)
+    const totalQuantity = useSelector(getBasketProductsTotalQuantity)
+    const error = useSelector(getSubmitOrderError)
+    const isLoading = useSelector(getSubmitOrderLoading)
+
     function inputChangeHandler(value: string, input: string) {
         setFormData(prev => ({ ...prev, [input]: value }))
         setIsDirty(prev => ({ ...prev, [input]: true }))
@@ -77,9 +88,6 @@ export function OrderForm() {
         return !Object.values(errors).some(item => item.length > 0)
     }
 
-    const totalPrice = useSelector(getBasketProductsTotalPrice)
-    const totalQuantity = useSelector(getBasketProductsTotalQuantity)
-
     function checkOrderValid() {
         if (totalPrice > 0 && totalQuantity > 0) {
             return true
@@ -94,8 +102,17 @@ export function OrderForm() {
         if (!checkInputsValid(formData)) return
         dispatch(createNewOrder(formData))
     }
+
+    if (isLoading) {
+        return <Loader />
+    }
+
+    if (error) {
+        return <UnexpectedError />
+    }
+
     return (
-        <div>
+        <div className={styles.container}>
             <Typography variant={TypographyVariant.H3} className={styles.title}>
                 {`${t("orderForm")}`}
             </Typography>
