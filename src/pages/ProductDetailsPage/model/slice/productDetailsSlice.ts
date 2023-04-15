@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { Product } from "entities/Product"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { fetchProductDetails } from "../services/fetchProductDetails/fetchProductDetails"
 import { ProductDetailsSchema } from "../types/productDetailsSchema"
 
@@ -18,14 +19,17 @@ const productDetailsSlice = createSlice({
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(fetchProductDetails.fulfilled, (state, action) => {
+            .addCase(fetchProductDetails.fulfilled, (state, action: PayloadAction<Product>) => {
                 state.isLoading = false
                 state.data = action.payload
             })
-            .addCase(fetchProductDetails.rejected, (state, action) => {
-                state.isLoading = false
-                state.error = action.payload
-            })
+            .addCase(
+                fetchProductDetails.rejected,
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.isLoading = false
+                    state.error = action.payload
+                }
+            )
     },
 })
 

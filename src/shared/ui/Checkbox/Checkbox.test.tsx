@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { Checkbox } from "./Checkbox"
 
-describe("Checkbox", () => {
+describe("Checkbox test", () => {
     function CheckboxTest() {
         const [checked, setChecked] = useState(false)
         const handleChange = () => setChecked(prev => !prev)

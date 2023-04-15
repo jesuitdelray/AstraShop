@@ -92,8 +92,7 @@ export function OrderForm() {
         setIsDirty(initialIsDirty)
         if (!checkOrderValid()) return
         if (!checkInputsValid(formData)) return
-        console.log("submit")
-        // dispatch(createNewOrder(formData))
+        dispatch(createNewOrder(formData))
     }
     return (
         <div>
@@ -140,7 +139,7 @@ export function OrderForm() {
                 <RadioGroup
                     title={`${t("orderFormTypeOfDelivery")}`}
                     isRequired
-                    options={options}
+                    options={options.map(option => ({ ...option, label: t(option.label) }))}
                     activeInput={formData.delivery}
                     onChange={radioChangeHandler}
                     className={styles.radios}

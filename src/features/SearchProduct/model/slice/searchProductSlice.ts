@@ -17,7 +17,7 @@ const searchProductsSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-            .addCase(fetchSearchProducts.pending, (state, action) => {
+            .addCase(fetchSearchProducts.pending, state => {
                 state.error = undefined
                 state.isLoading = true
             })
@@ -28,10 +28,13 @@ const searchProductsSlice = createSlice({
                     state.productsList = action.payload
                 }
             )
-            .addCase(fetchSearchProducts.rejected, (state, action) => {
-                state.isLoading = false
-                state.error = action.payload
-            })
+            .addCase(
+                fetchSearchProducts.rejected,
+                (state, action: PayloadAction<string | undefined>) => {
+                    state.isLoading = false
+                    state.error = action.payload
+                }
+            )
     },
 })
 
