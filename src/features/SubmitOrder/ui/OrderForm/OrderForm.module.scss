@@ -1,0 +1,101 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    margin-bottom: 40px;
+}
+
+.input,
+.radios {
+    margin-bottom: 24px;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "name" "phone" "email" "city" "radios" "department" "consent" "orderInfo";
+
+    .name {
+        grid-area: name;
+    }
+
+    .phone {
+        grid-area: phone;
+    }
+
+    .email {
+        grid-area: email;
+    }
+
+    .city {
+        grid-area: city;
+    }
+
+    .radios {
+        grid-area: radios;
+    }
+
+    .department {
+        grid-area: department;
+    }
+
+    .consent {
+        grid-area: consent;
+        margin-bottom: 50px;
+    }
+
+    .orderInfo {
+        grid-area: orderInfo;
+    }
+}
+
+@media (min-width: 660px) {
+    .form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "name city"
+            "phone radios"
+            "email department"
+            "consent consent"
+            "orderInfo orderInfo";
+        column-gap: 20px;
+
+        .radios > div:last-child {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 380px;
+            height: 56px;
+
+            > div {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@media (min-width: 901px) {
+    .form {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "name city orderInfo"
+            "phone radios orderInfo"
+            "email department orderInfo"
+            "consent consent orderInfo";
+        column-gap: 20px;
+
+        .radios > div:last-child {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 380px;
+            height: 56px;
+
+            > div {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

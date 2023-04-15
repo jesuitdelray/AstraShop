@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    align-items: center;
+    color: var(--color-base);
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.link {
+    display: flex;
+}
+
+.icon {
+    fill: var(--color-accent);
+    margin-right: 5px;
+}
+
+.name {
+    margin-top: 4px;
+    color: var(--color-base);
+}

@@ -1,0 +1,10 @@
+.icon {
+    fill: var(--color-dark-gray);
+    cursor: pointer;
+}
+
+@include tablet {
+    .icon {
+        margin-right: 10px;
+    }
+}

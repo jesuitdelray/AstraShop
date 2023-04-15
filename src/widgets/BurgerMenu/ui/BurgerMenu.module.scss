@@ -1,0 +1,54 @@
+.container {
+    padding: 32px;
+    position: relative;
+}
+
+.logo {
+    margin-bottom: 24px;
+    width: fit-content;
+}
+
+.searchbar {
+    margin-bottom: 40px;
+}
+
+.navlist {
+    display: flex;
+    flex-direction: column;
+
+    a {
+        margin-bottom: 24px;
+    }
+
+    a:last-child {
+        margin-bottom: 0;
+    }
+
+    margin-bottom: 60px;
+}
+
+@include tablet {
+    .searchbar {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        padding-left: var(--sidebar-width);
+
+        > div {
+            margin-left: var(--sidebar-width);
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+        }
+    }
+}
+
+@media (min-width: 1280px) {
+    .wrapper {
+        display: none;
+    }
+}

@@ -1,0 +1,42 @@
+.radio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.input {
+    appearance: none;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+    }
+
+    &:checked::after {
+        background-color: var(--color-accent);
+    }
+}
+
+.label {
+    cursor: pointer;
+    color: var(--color-dark-gray);
+}

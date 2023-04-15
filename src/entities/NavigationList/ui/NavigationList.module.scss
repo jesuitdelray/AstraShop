@@ -1,0 +1,41 @@
+.changeLanguage {
+    position: absolute;
+    display: flex;
+    top: 38px;
+    right: 20px;
+}
+
+.list {
+    .link {
+        width: fit-content;
+    }
+}
+
+@include desktop {
+    .changeLanguage {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .list {
+        display: flex;
+        align-items: center;
+        margin-right: 44px;
+
+        .link {
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+
+            &.active {
+                color: var(--color-accent);
+            }
+        }
+
+        .link:last-child {
+            margin-right: 0;
+        }
+    }
+}
