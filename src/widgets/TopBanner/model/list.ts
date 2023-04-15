@@ -1,4 +1,4 @@
-import { image2 } from "shared/assets/images/banners"
+import { image2, image10, image11 } from "shared/assets/images/banners"
 
 export interface topBannerSlidesType {
     id: string
@@ -18,18 +18,12 @@ export const topBannerSlides: topBannerSlidesType[] = [
         id: "2",
         title: "topBannerTitle2",
         desc: "topBannerDesc2",
-        img: image2,
+        img: image10,
     },
     {
         id: "3",
         title: "topBannerTitle3",
         desc: "topBannerDesc3",
-        img: image2,
-    },
-    {
-        id: "4",
-        title: "topBannerTitle4",
-        desc: "topBannerDesc4",
-        img: image2,
+        img: image11,
     },
 ]
