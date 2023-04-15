@@ -7,7 +7,8 @@ function validateName(value: string): string {
         error = i18n.t("requiredField")
     }
 
-    const OnlyLetters = "^(?:|[^0-9\\W]+)$"
+    const OnlyLetters = "^[A-Za-zÀ-ȕА-Яа-я][A-Za-zÀ-ȕА-Яа-я -]*$"
+
     const regex = new RegExp(OnlyLetters)
     if (!regex.test(value)) {
         error = i18n.t("onlyLetters")
@@ -60,7 +61,7 @@ function validateCity(value: string): string {
         error = i18n.t("requiredField")
     }
 
-    const OnlyLetters = "^(?:|[^0-9\\W]+)$"
+    const OnlyLetters = "^[A-Za-zÀ-ȕА-Яа-я][A-Za-zÀ-ȕА-Яа-я -]*$"
     const regex = new RegExp(OnlyLetters)
     if (!regex.test(value)) {
         error = i18n.t("onlyLetters")
