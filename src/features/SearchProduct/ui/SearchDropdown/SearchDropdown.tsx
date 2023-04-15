@@ -57,5 +57,9 @@ export function SearchDropdown(props: SearchDropdownProps) {
         }
     })()
 
-    return <div className={styles.container}>{content}</div>
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.container}>{content}</div>
+        </div>
+    )
 }
