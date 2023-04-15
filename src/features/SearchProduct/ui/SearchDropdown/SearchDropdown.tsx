@@ -3,6 +3,7 @@ import { RoutePath } from "shared/config/routeConfig/const"
 import { useDispatch, useSelector } from "react-redux"
 import { modalsActions } from "entities/ModalSlider"
 import { useTranslation } from "react-i18next"
+import { Skeleton } from "shared/ui/Skeleton/Skeleton"
 import {
     getSearchProductsError,
     getSearchProductsList,
@@ -31,7 +32,13 @@ export function SearchDropdown(props: SearchDropdownProps) {
             case !!error:
                 return <div>{error}</div>
             case isLoading:
-                return <div>{t("loadingProcessLoading")}</div>
+                return (
+                    <div>
+                        <Skeleton style={{ width: "50%", height: "16px", marginBottom: "8px" }} />
+                        <Skeleton style={{ width: "30%", height: "16px", marginBottom: "8px" }} />
+                        <Skeleton style={{ width: "40%", height: "16px" }} />
+                    </div>
+                )
             case productsList.length < 1:
                 return <div>{t("loadingProcessNoProduct")}</div>
             case productsList.length > 0:
