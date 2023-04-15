@@ -52,4 +52,8 @@
         margin: 0;
         margin-bottom: 80px;
     }
+
+    .error {
+        grid-column: 1 / -1;
+    }
 }

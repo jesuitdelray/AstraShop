@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { ReactElement } from "react"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useTranslation } from "react-i18next"
+import { UnexpectedError } from "shared/components/UnexpectedError/UnexpectedError"
 import styles from "./ProductDetails.module.scss"
 import { ProductImages } from "./ProductImages/ProductImages"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
@@ -80,7 +81,7 @@ export function ProductDetails(props: ProductDetailsProps) {
             )
             break
         default:
-            content = <div>{t("loadingProcessUnexpectedError")}</div>
+            content = <UnexpectedError className={styles.error} />
     }
 
     return <div className={styles.container}>{content}</div>
