@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
+import { BoxIcon } from "shared/assets/icons/list"
 import styles from "./CatalogSidebarNav.module.scss"
 import { navigationSubcategory, navigationTreeType } from "../../../model/types/list"
 import { fetchNavigationTree } from "../../../model/services/fetchNavigationTree/fetchNavigationTree"
@@ -69,7 +70,7 @@ export function CatalogSidebarNav() {
             <div className={classNames(styles.overlay, { [styles.overlayOn]: hovered !== -1 })} />
             <div className={styles.container}>
                 {navigationTree.map(item => {
-                    const { id, categories: subCategories } = item
+                    const { id, categories: subCategories, icon } = item
                     return (
                         <div
                             key={id}
@@ -82,7 +83,7 @@ export function CatalogSidebarNav() {
                                 onClick={() => setHovered(-1)}
                                 className={styles.link}
                             >
-                                <img src={item.icon} alt="svg" />
+                                {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
                                 {item.name}
                             </AppLink>
                             <SubMenu
