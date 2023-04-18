@@ -24,22 +24,23 @@ export function CatalogLinks() {
     return (
         <div className={styles.container}>
             {navigationTree.map(item => {
-                const { id, name, categories } = item
+                const { id, name, categories = [] } = item
                 return (
                     <div className={styles.links} key={id}>
                         <AppLink to={`${RoutePath.category}/${id}`} className={styles.title}>
                             {name}
                         </AppLink>
                         <div className={styles.list}>
-                            {categories.map(item => {
-                                const { id, name } = item
+                            {categories.length > 0 &&
+                                categories.map(item => {
+                                    const { id, name } = item
 
-                                return (
-                                    <AppLink key={id} to={`${RoutePath.sub_category}/${id}`}>
-                                        {name}
-                                    </AppLink>
-                                )
-                            })}
+                                    return (
+                                        <AppLink key={id} to={`${RoutePath.sub_category}/${id}`}>
+                                            {name}
+                                        </AppLink>
+                                    )
+                                })}
                         </div>
                     </div>
                 )
