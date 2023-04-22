@@ -14,18 +14,18 @@ export const bannersRowList: bannersRowListType[] = [
         title: "banner1",
         desc: "bannerDesc",
         img: image4,
-        link: "/",
+        link: "/86",
     },
     {
         id: "2",
         title: "banner2",
         img: image5,
-        link: "/",
+        link: "/95",
     },
     {
         id: "3",
         title: "banner3",
         img: image6,
-        link: "/",
+        link: "/94",
     },
 ]

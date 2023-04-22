@@ -24,6 +24,7 @@ interface BannerProps {
     img: string
     variant?: BannerVariant
     color?: BannerColor
+    link?: string
 }
 
 export function Banner(props: BannerProps) {
@@ -34,6 +35,7 @@ export function Banner(props: BannerProps) {
         img,
         variant = BannerVariant.NORMAL,
         color = BannerColor.NORMAL,
+        link,
     } = props
 
     const navigate = useNavigate()
@@ -73,14 +75,14 @@ export function Banner(props: BannerProps) {
                 {isMain ? (
                     <Button
                         variant={ButtonVariant.FILLED_RED}
-                        onClick={() => navigate(RoutePath.catalog)}
+                        onClick={() => navigate(RoutePath.sub_category + link)}
                     >
                         {t("view")}
                     </Button>
                 ) : (
                     <Button
                         variant={ButtonVariant.CLEAR_INVERTED}
-                        onClick={() => navigate(RoutePath.catalog)}
+                        onClick={() => navigate(RoutePath.sub_category + link)}
                     >
                         {t("viewProducts")}
                     </Button>
