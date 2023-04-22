@@ -21,7 +21,7 @@ export function ProductCardBasket(props: ProductCardBasketProps) {
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
             <img src={imgSrc} alt="" className={styles.img} onClick={() => onProductClick?.(id)} />
             <div className={styles.info} onClick={() => onProductClick?.(id)}>
-                <Typography variant={TypographyVariant.P}>{name}</Typography>
+                <Typography variant={TypographyVariant.P} className={styles.productName}>{name}</Typography>
                 <Typography variant={TypographyVariant.H3} isBold>
                     {`${price} ${currency}`}
                 </Typography>
