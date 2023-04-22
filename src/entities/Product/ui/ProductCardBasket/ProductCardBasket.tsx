@@ -18,7 +18,9 @@ export function ProductCardBasket(props: ProductCardBasketProps) {
         <div className={styles.container}>
             <img src={imgSrc} alt="" className={styles.img} />
             <div className={styles.info}>
-                <Typography variant={TypographyVariant.P}>{name}</Typography>
+                <Typography variant={TypographyVariant.P} className={styles.productName}>
+                    {name}
+                </Typography>
                 <Typography variant={TypographyVariant.H3} isBold>
                     {`${price} ${currency}`}
                 </Typography>
