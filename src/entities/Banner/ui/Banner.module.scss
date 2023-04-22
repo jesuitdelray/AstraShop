@@ -43,6 +43,7 @@
 .main {
     .img {
         max-height: 50%;
+        filter: brightness(80%);
         left: auto;
         right: auto;
     }
@@ -70,6 +71,7 @@
 
     .main {
         .img {
+            filter: brightness(100%);
             max-height: 100%;
             margin-right: 30px;
             right: 0;
