@@ -6,6 +6,7 @@
     "scripts": {
         "start": "webpack serve --env port=3000",
         "build:prod": "webpack  --env mode=production",
+        "build:prod:main": "webpack  --env mode=production apiUrl=https://developed-by.me:4000/api/v1",
         "build:dev": "webpack  --env mode=development",
         "lint:ts": "eslint \"**/*.{ts,tsx}\"",
         "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
