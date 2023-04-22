@@ -17,16 +17,15 @@
     text-align: center;
     padding: 47px 15px 0;
     height: 100%;
+    margin: 50px;
     z-index: 1;
 
     .title {
         margin-bottom: 12px;
-        text-shadow: var(--color-base) 0 1px 0;
     }
 
     .description {
         margin-bottom: 24px;
-        text-shadow: var(--color-base) 0 1px 0;
     }
 }
 
@@ -52,6 +51,7 @@
 .top {
     .img {
         max-height: 40%;
+        margin: 0 auto;
     }
 }
 
@@ -101,6 +101,13 @@
 @media (min-width: 825px) {
     .img {
         max-width: 70%;
+    }
+
+    .top {
+        .img {
+            max-height: 80%;
+            margin-right: 80px;
+        }
     }
 
     .content {
