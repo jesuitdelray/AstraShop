@@ -5,6 +5,7 @@ export interface topBannerSlidesType {
     title: string
     desc: string
     img: string
+    link: string
 }
 
 export const topBannerSlides: topBannerSlidesType[] = [
@@ -13,17 +14,20 @@ export const topBannerSlides: topBannerSlidesType[] = [
         title: "topBannerTitle1",
         desc: "topBannerDesc1",
         img: image2,
+        link: "/85",
     },
     {
         id: "2",
         title: "topBannerTitle2",
         desc: "topBannerDesc2",
         img: image10,
+        link: "/88",
     },
     {
         id: "3",
         title: "topBannerTitle3",
         desc: "topBannerDesc3",
         img: image11,
+        link: "/86",
     },
 ]

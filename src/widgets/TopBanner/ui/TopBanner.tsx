@@ -40,7 +40,7 @@ export function TopBanner() {
     return (
         <div className={styles.wrapper}>
             {slides.map((item, index) => {
-                const { id, title, desc, img } = item
+                const { id, title, desc, img, link } = item
                 return index === current ? (
                     <Banner
                         key={id}
@@ -50,6 +50,7 @@ export function TopBanner() {
                         title={t(title)}
                         desc={t(desc)}
                         className={styles.banner}
+                        link={link}
                     />
                 ) : null
             })}

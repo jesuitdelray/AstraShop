@@ -94,7 +94,7 @@
     "returnBtn": "Вернуться",
     "requiredField": "Обязательное поле",
     "onlyLetters": "Только буквы",
-    "incorrectNumber": "Номер телефона включает в себя только цифры",
+    "incorrectNumber": "Только цифры",
     "emailPattern": "Только латинские буквы, цифры и специальные символы",
     "incorrectEmail": "Введите правильный Email",
     "paymentError": "Ошибка!",
