@@ -1,5 +1,9 @@
 import { Product, ProductCardBasket } from "entities/Product"
 import { ChangeProductAmountInBasket, RemoveProductFromBasket } from "features/basketFeatures"
+import { useNavigate } from "react-router-dom"
+import { RoutePath } from "shared/config/routeConfig/const"
+import { useDispatch } from "react-redux"
+import { modalsActions } from "entities/ModalSlider"
 import styles from "./BasketItemsList.module.scss"
 
 interface BasketItemsListProps {
@@ -7,6 +11,14 @@ interface BasketItemsListProps {
 }
 
 export function BasketItemsList({ list }: BasketItemsListProps) {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    function onProductClick(id: number) {
+        navigate(`${RoutePath.product_details}/${id}`)
+        dispatch(modalsActions.close())
+    }
+
     return (
         <div className={styles.container}>
             {!!list &&
@@ -22,6 +34,7 @@ export function BasketItemsList({ list }: BasketItemsListProps) {
                             currency="$"
                             Delete={<RemoveProductFromBasket id={id} />}
                             Counter={<ChangeProductAmountInBasket id={id} />}
+                            onProductClick={onProductClick}
                         />
                     )
                 })}
