@@ -9,10 +9,17 @@ export function BannersRow() {
     return (
         <div className={styles.container}>
             {bannersRowList.map((item, index) => {
-                const { id, title, desc = "", img } = item
+                const { id, title, desc = "", img, link } = item
                 const variant = index === 0 ? BannerVariant.MAIN : BannerVariant.NORMAL
                 return (
-                    <Banner key={id} variant={variant} title={t(title)} desc={t(desc)} img={img} />
+                    <Banner
+                        key={id}
+                        variant={variant}
+                        title={t(title)}
+                        desc={t(desc)}
+                        img={img}
+                        link={link}
+                    />
                 )
             })}
         </div>
