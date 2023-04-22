@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "webpack serve --env port=3000",
+        "start:main": "webpack serve --env port=3000 apiUrl=https://developed-by.me:4000/api/v1",
         "build:prod": "webpack  --env mode=production",
         "build:prod:main": "webpack  --env mode=production apiUrl=https://developed-by.me:4000/api/v1",
         "build:dev": "webpack  --env mode=development",
