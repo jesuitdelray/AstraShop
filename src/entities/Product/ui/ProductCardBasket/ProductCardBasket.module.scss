@@ -5,10 +5,12 @@
         "info ." auto
         "counter ." auto / calc(100% - 20px) 20px;
     border-bottom: 1px solid var(--color-light-gray);
-    height: 200px;
+    margin-bottom: 10px;
+    height: fit-content;
 
     &:last-child {
         border-bottom: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -38,9 +40,8 @@
 
 @media (min-width: 500px) {
     .container {
-        grid-template: "img info counter delete" auto / 180px auto auto auto;
+        grid-template: "img info counter delete" auto / 120px 180px 1fr 1fr;
         column-gap: 20px;
-        height: 130px;
         align-items: center;
         justify-items: center;
     }
@@ -54,5 +55,11 @@
     .counter {
         justify-content: center;
         margin-bottom: 0;
+    }
+}
+
+@media (min-width: 600px) {
+    .container {
+        grid-template: "img info counter delete" auto / 120px 250px 1fr 1fr;
     }
 }
