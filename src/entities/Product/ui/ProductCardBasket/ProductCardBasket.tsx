@@ -1,7 +1,6 @@
 import { ReactElement } from "react"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
-import { useNavigate } from "react-router-dom"
 import styles from "./ProductCardBasket.module.scss"
 import { Product } from "../../model/types"
 
