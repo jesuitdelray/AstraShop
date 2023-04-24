@@ -10,3 +10,5 @@ export {
     getBasketProductsTotalPrice,
     getBasketProductsTotalQuantity,
 } from "./model/selectors/basketSelectors"
+
+export { getBasketProductQuantityById } from "./model/selectors/basketSelectors"
