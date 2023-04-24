@@ -42,7 +42,7 @@ export function AsyncImage(props: AsyncImageProps) {
 
     return (
         <div className={styles.imageContainer}>
-            {isLoading && !isError && (
+            {!isLoading && !isError && (
                 <>
                     <Skeleton className={styles.placeholder} />
                     <img src={placeholder} className={styles.placeholder} alt="" />
