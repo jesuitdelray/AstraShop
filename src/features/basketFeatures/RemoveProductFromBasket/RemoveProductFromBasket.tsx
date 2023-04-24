@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { CrossRIcon, DeleteBucketIcon } from "shared/assets/icons/others"
 import { ModalSlider, ModalSliderVariant } from "entities/ModalSlider"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { MODAL_ANIMATION_DELAY } from "shared/ui/Modal"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./RemoveProductFromBasket.module.scss"
 
@@ -20,7 +21,10 @@ export function RemoveProductFromBasket({ id }: RemoveProductFromBasketProps) {
     }
 
     function confirmClickHandler() {
-        dispatch(basketActions.removeFromBasket(id))
+        setIsOpen(false)
+        setTimeout(() => {
+            dispatch(basketActions.removeFromBasket(id))
+        }, MODAL_ANIMATION_DELAY)
     }
 
     function closeModalHandler() {

@@ -26,16 +26,27 @@
     border-radius: 12px;
     background: var(--color-bg);
     transition: 0.3s all ease;
-    transform: scale(0.5);
     max-width: 60%;
 }
 
-.opened {
+.isOpen {
     pointer-events: auto;
     opacity: 1;
     z-index: var(--modal-z-index);
+}
 
+.isOpening {
     .content {
+        animation: animate-in 0.3s forwards;
+    }
+}
+
+@keyframes animate-in {
+    from {
+        transform: scale(0);
+    }
+
+    to {
         transform: scale(1);
         opacity: 1;
     }
