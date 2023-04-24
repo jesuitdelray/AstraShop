@@ -8,11 +8,22 @@ interface ProductCardBasketProps extends Product {
     Delete: ReactElement
     Counter: ReactElement
     currency: string
+    quantity: number
     onProductClick?: (id: number) => void
 }
 
 export function ProductCardBasket(props: ProductCardBasketProps) {
-    const { images = [], name, price, Delete, Counter, currency, id, onProductClick } = props
+    const {
+        images = [],
+        name,
+        price,
+        Delete,
+        Counter,
+        currency,
+        id,
+        quantity,
+        onProductClick,
+    } = props
     const imgSrc = images?.[0] ? images[0] : productPlaceholder
 
     return (
@@ -24,7 +35,7 @@ export function ProductCardBasket(props: ProductCardBasketProps) {
                     {name}
                 </Typography>
                 <Typography variant={TypographyVariant.H3} isBold>
-                    {`${price} ${currency}`}
+                    {`${price * quantity} ${currency}`}
                 </Typography>
             </div>
             <div className={styles.counter}>{Counter}</div>

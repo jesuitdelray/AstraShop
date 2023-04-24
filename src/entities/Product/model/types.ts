@@ -18,4 +18,5 @@ export interface Product {
     attributes?: ProductAttributes
     parent_category_id?: number
     parentCategories?: ProductParentCategory[]
+    quantity?: number
 }
