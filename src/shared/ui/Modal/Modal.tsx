@@ -20,13 +20,19 @@ export const Modal = (props: ModalProps) => {
     const [isMounted, setIsMounted] = useState(false)
     const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
 
+    console.log("isClosing: ", isClosing, "isMounted: ", isMounted, "isOpen: ", isOpen)
+
     useEffect(() => {
-        if (isOpen) {
+        if (isOpen && !isMounted) {
             setIsMounted(true)
+        } else if (!isOpen && isMounted) {
+            setTimeout(() => {
+                setIsMounted(false)
+            }, ANIMATION_DELAY)
         }
     }, [isOpen])
 
-    const closeHandler = useCallback(() => {
+    /*  const closeHandler = () => {
         if (onClose) {
             setIsClosing(true)
             timerRef.current = setTimeout(() => {
@@ -34,22 +40,34 @@ export const Modal = (props: ModalProps) => {
                 setIsClosing(false)
             }, ANIMATION_DELAY)
         }
-    }, [onClose])
+    } */
 
-    const onKeyDown = useCallback(
+    /* useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true)
+        } else {
+            setIsClosing(true)
+            setTimeout(() => {
+                setIsClosing(false)
+                setIsMounted(false)
+            }, ANIMATION_DELAY)
+        }
+    }, [isOpen]) */
+
+    /* const onKeyDown = useCallback(
         (e: KeyboardEvent) => {
             if (e.key === "Escape") {
                 closeHandler()
             }
         },
         [closeHandler]
-    )
+    ) */
 
-    const onContentClick = (e: React.MouseEvent) => {
+    /* const onContentClick = (e: React.MouseEvent) => {
         e.stopPropagation()
-    }
+    } */
 
-    useEffect(() => {
+    /*   useEffect(() => {
         if (isOpen) {
             window.addEventListener("keydown", onKeyDown)
         }
@@ -58,14 +76,14 @@ export const Modal = (props: ModalProps) => {
             clearTimeout(timerRef.current)
             window.removeEventListener("keydown", onKeyDown)
         }
-    }, [isOpen, onKeyDown])
+    }, [isOpen, onKeyDown]) */
 
     const mods: Mods = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
     }
 
-    if (lazy && !isMounted) {
+    if (!isMounted) {
         return null
     }
 
@@ -73,7 +91,7 @@ export const Modal = (props: ModalProps) => {
         <Portal>
             <div className={classNames(cls.Modal, mods, [className])}>
                 <div className={cls.overlay} onClick={closeHandler}>
-                    <div className={cls.content} onClick={onContentClick}>
+                    <div className={cls.content} onClick={e => e.stopPropagation()}>
                         {children}
                     </div>
                 </div>
