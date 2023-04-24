@@ -2,6 +2,7 @@ import { useState } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
 import { v4 as uuid } from "uuid"
+import { AsyncImage } from "shared/ui/AsyncImage"
 import styles from "./ProductImages.module.scss"
 
 interface ProductImagesProps {
@@ -17,7 +18,7 @@ export function ProductImages({ className, list }: ProductImagesProps) {
             <div className={styles.mainImg}>
                 {list?.[0] ? (
                     list.map(
-                        (item, index) => index === active && <img src={item} alt="" key={uuid()} />
+                        (item, index) => index === active && <AsyncImage src={item} key={uuid()} />
                     )
                 ) : (
                     <img src={productPlaceholder} alt="No_Images" />
@@ -32,7 +33,7 @@ export function ProductImages({ className, list }: ProductImagesProps) {
                             [styles.active]: active === index,
                         })}
                     >
-                        <img src={item} alt="" />
+                        <AsyncImage src={item} />
                     </div>
                 ))}
             </div>
