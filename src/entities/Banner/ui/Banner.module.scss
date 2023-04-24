@@ -25,7 +25,9 @@
     }
 
     .description {
+        height: 74px;
         margin-bottom: 24px;
+        padding: 10px 0;
     }
 }
 
@@ -52,7 +54,23 @@
 .top {
     .img {
         max-height: 40%;
-        margin: 0 auto;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 440px) {
+    .content {
+        .description {
+            max-width: 325px;
+        }
+    }
+}
+
+@media (min-width: 250px) and (max-width: 641px) {
+    .top {
+        .img {
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
 
@@ -91,7 +109,7 @@
         display: block;
         padding: 0;
         height: auto;
-        max-width: 300px;
+        max-width: 400px;
 
         .description {
             display: block;
@@ -100,7 +118,19 @@
     }
 }
 
-@media (min-width: 825px) {
+@media (min-width: 641px) and (max-width: 805px) {
+    .content {
+        .description {
+            max-width: 300px;
+        }
+
+        .title {
+            max-width: 350px;
+        }
+    }
+}
+
+@media (min-width: 990px) {
     .img {
         max-width: 70%;
     }
@@ -120,6 +150,14 @@
     .main {
         .content {
             margin-left: 80px;
+        }
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+    .content {
+        .description {
+            max-width: 350px;
         }
     }
 }
