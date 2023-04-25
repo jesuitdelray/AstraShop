@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { DeleteSeacrhbarIcon, ShoppingBagIcon } from "shared/assets/icons/others"
+import { CrossIcon, ShoppingBagIcon } from "shared/assets/icons/others"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import {
     getModalsCurrent,
@@ -32,7 +32,7 @@ export function PaymentErrorModal() {
             className={isSlideTop ? styles.sliderWrapper : styles.wrapper}
             variant={isSlideTop ? ModalSliderVariant.SLIDER : ModalSliderVariant.MODAL}
         >
-            <DeleteSeacrhbarIcon className={styles.closeBtn} onClick={onClose} />
+            <CrossIcon className={styles.closeBtn} onClick={onClose} />
             <ShoppingBagIcon className={styles.shoppingBag} />
             <Typography
                 className={styles.title}

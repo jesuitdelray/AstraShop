@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { basketActions } from "entities/Basket"
 import { useDispatch } from "react-redux"
-import { CrossRIcon, DeleteBucketIcon } from "shared/assets/icons/others"
+import { CrossIcon, DeleteBucketIcon } from "shared/assets/icons/others"
 import { ModalSlider, ModalSliderVariant } from "entities/ModalSlider"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { MODAL_ANIMATION_DELAY } from "shared/ui/Modal"
@@ -40,7 +40,7 @@ export function RemoveProductFromBasket({ id }: RemoveProductFromBasketProps) {
                 className={styles.modal}
             >
                 <div className={styles.modalContainer}>
-                    <CrossRIcon className={styles.cross} onClick={closeModalHandler} />
+                    <CrossIcon className={styles.cross} onClick={closeModalHandler} />
                     <Typography variant={TypographyVariant.H3} className={styles.title}>
                         Are you sure?
                     </Typography>
