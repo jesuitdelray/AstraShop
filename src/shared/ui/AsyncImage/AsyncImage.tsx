@@ -6,7 +6,7 @@ import styles from "./AsyncImage.module.scss"
 
 type HTMLImageAttributes = Omit<
     HTMLAttributes<HTMLImageElement>,
-    "onLoad" | "className" | "onError" | "src"
+    "onLoad" | "className" | "onError" | "src" | "decoding"
 >
 
 export enum ImageFit {
@@ -22,7 +22,6 @@ interface AsyncImageProps extends HTMLImageAttributes {
     className?: string
     objectFit?: ImageFit
     alt?: string
-    decoding?: "async" | "auto" | "sync"
 }
 
 export function AsyncImage(props: AsyncImageProps) {
@@ -42,7 +41,7 @@ export function AsyncImage(props: AsyncImageProps) {
 
     return (
         <div className={styles.imageContainer}>
-            {!isLoading && !isError && (
+            {isLoading && !isError && (
                 <>
                     <Skeleton className={styles.placeholder} />
                     <img src={placeholder} className={styles.placeholder} alt="" />
@@ -75,6 +74,7 @@ export function AsyncImage(props: AsyncImageProps) {
                     },
                     [className]
                 )}
+                decoding="async"
                 src={src}
                 alt=""
                 {...otherProps}

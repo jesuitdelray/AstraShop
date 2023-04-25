@@ -34,7 +34,6 @@ export const ProductCard = (props: ProductCardProps) => {
                     objectFit={ImageFit.COVER}
                     className={styles.image}
                     src={productImage}
-                    decoding="async"
                 />
             </div>
             <div className={styles.footer}>

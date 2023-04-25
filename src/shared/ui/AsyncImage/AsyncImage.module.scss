@@ -35,21 +35,21 @@
 }
 
 .contain {
-    object-fit: contain;
+    object-fit: contain !important;
 }
 
 .cover {
-    object-fit: cover;
+    object-fit: cover !important;
 }
 
 .none {
-    object-fit: none;
+    object-fit: none !important;
 }
 
 .fill {
-    object-fit: fill;
+    object-fit: fill !important;
 }
 
 .scale_down {
-    object-fit: scale-down;
+    object-fit: scale-down !important;
 }
