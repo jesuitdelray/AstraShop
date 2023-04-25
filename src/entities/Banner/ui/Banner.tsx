@@ -76,6 +76,7 @@ export function Banner(props: BannerProps) {
                     <Button
                         variant={ButtonVariant.FILLED_RED}
                         onClick={() => navigate(RoutePath.sub_category + link)}
+                        className={styles.btnView}
                     >
                         {t("view")}
                     </Button>
