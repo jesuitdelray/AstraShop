@@ -1,6 +1,6 @@
 import { UnexpectedError } from "shared/components/UnexpectedError/UnexpectedError"
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import {
     BasketSummary,
@@ -18,7 +18,6 @@ import { modalsActions } from "entities/ModalSlider"
 import { deliveryOptions as options } from "features/SubmitOrder/model/lists"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { useTranslation } from "react-i18next"
-import { ORDER_LOCALSTORAGE } from "shared/const/localstorage"
 import styles from "./OrderForm.module.scss"
 import { inputValidations } from "../../lib/inputValidations"
 import { IFormData } from "../../model/types/types"
@@ -29,8 +28,7 @@ import {
 } from "../../model/selectors/submitOrderSelectors"
 
 export function OrderForm() {
-    const orderDataFromStorage = localStorage.getItem(ORDER_LOCALSTORAGE)
-    const initialFormData = {
+    const [formData, setFormData] = useState<IFormData>({
         name: "",
         phone: "",
         email: "",
@@ -38,12 +36,9 @@ export function OrderForm() {
         department: "",
         delivery: "option1",
         isConsent: true,
-    }
+    })
 
-    const [formData, setFormData] = useState<IFormData>(
-        orderDataFromStorage ? JSON.parse(orderDataFromStorage) : initialFormData
-    )
-
+    const { t } = useTranslation()
     const [formErrors, setFormErrors] = useState({
         name: "",
         phone: "",
@@ -64,7 +59,6 @@ export function OrderForm() {
 
     const [isDirty, setIsDirty] = useState(initialIsDirty)
 
-    const { t } = useTranslation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -72,10 +66,6 @@ export function OrderForm() {
     const totalQuantity = useSelector(getBasketProductsTotalQuantity)
     const error = useSelector(getSubmitOrderError)
     const isLoading = useSelector(getSubmitOrderLoading)
-
-    useEffect(() => {
-        localStorage.setItem(ORDER_LOCALSTORAGE, JSON.stringify(formData))
-    }, [formData])
 
     function inputChangeHandler(value: string, input: string) {
         setFormData(prev => ({ ...prev, [input]: value }))
