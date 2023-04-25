@@ -48,7 +48,7 @@ AsyncImageScaleDown.args = {
 
 export const AsyncImageBrokenSrc = Template.bind({})
 AsyncImageBrokenSrc.args = {
-    src,
+    src: "https://developed-by.me:4000/uploads/images-1682078415893.pg",
 }
 
 export const AsyncImageUndefinedSrc = Template.bind({})

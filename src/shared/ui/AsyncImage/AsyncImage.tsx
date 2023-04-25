@@ -14,7 +14,7 @@ export enum ImageFit {
     COVER = "cover",
     NONE = "none",
     FILL = "fill",
-    SCALE_DOWN = "scale-down",
+    SCALE_DOWN = "scale_down",
 }
 
 interface AsyncImageProps extends HTMLImageAttributes {
@@ -47,7 +47,7 @@ export function AsyncImage(props: AsyncImageProps) {
                     <img
                         src={placeholder}
                         className={styles.placeholder}
-                        data-testid="skeleton"
+                        data-testid="loadingSkeleton"
                         alt=""
                     />
                 </>
@@ -59,7 +59,7 @@ export function AsyncImage(props: AsyncImageProps) {
                     <img
                         src={placeholder}
                         className={styles.placeholder}
-                        data-testid="skeleton"
+                        data-testid="srcSkeleton"
                         alt=""
                     />
                 </>
