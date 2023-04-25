@@ -18,7 +18,7 @@ function App() {
     useEffect(() => {
         dispatch(basketActions.initBasketData())
         dispatch(changeLanguageActions.initLanguage())
-    })
+    }, [])
 
     const isSubCategoryPage = useMatch(`${RoutePath.sub_category}/:id`)
 
