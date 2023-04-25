@@ -6,8 +6,7 @@ import DeleteBucketIcon from "./delete-bucket.svg"
 import PlusIcon from "./plus.svg"
 import MinusIcon from "./minus.svg"
 import MobileBurgerIcon from "./mobile-burger.svg"
-import CrossIcon from "./cross.svg"
-import CrossRIcon from "./crossR.svg"
+import { CrossIcon } from "./CrossIcon"
 import MasterCardIcon from "./mastercard.svg"
 import VisaIcon from "./visa.svg"
 import FilterIcon from "./filter.svg"
@@ -20,7 +19,6 @@ import MainHome from "./home.svg"
 import BasketSuccess from "./basket-succsess.svg"
 import AddToBasket from "./basket-add.svg"
 import ChangeLanguageIcon from "./language.svg"
-import DeleteSeacrhbarIcon from "./deleteSeacrhbaricon.svg"
 
 export {
     MinusIcon,
@@ -32,7 +30,6 @@ export {
     ShoppingBagIcon,
     MobileBurgerIcon,
     CrossIcon,
-    CrossRIcon,
     MasterCardIcon,
     VisaIcon,
     FilterIcon,
@@ -45,5 +42,4 @@ export {
     BasketSuccess,
     AddToBasket,
     ChangeLanguageIcon,
-    DeleteSeacrhbarIcon,
 }
