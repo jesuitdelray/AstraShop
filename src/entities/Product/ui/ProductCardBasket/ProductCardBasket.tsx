@@ -1,6 +1,7 @@
 import { ReactElement } from "react"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
+import { AsyncImage } from "shared/ui/AsyncImage"
 import styles from "./ProductCardBasket.module.scss"
 import { Product } from "../../model/types"
 
@@ -29,7 +30,7 @@ export function ProductCardBasket(props: ProductCardBasketProps) {
     return (
         <div className={styles.container}>
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-            <img src={imgSrc} alt="" className={styles.img} onClick={() => onProductClick?.(id)} />
+            <AsyncImage src={imgSrc} className={styles.img} onClick={() => onProductClick?.(id)} />
             <div className={styles.info} onClick={() => onProductClick?.(id)}>
                 <Typography variant={TypographyVariant.P} className={styles.productName}>
                     {name}

@@ -4,6 +4,8 @@ import { AppLink } from "shared/ui/AppLink/AppLink"
 import { useNavigate } from "react-router-dom"
 import { navigationCategory } from "entities/CatalogNavigation/model/types/list"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
+import { AsyncImage } from "shared/ui/AsyncImage"
+import { ImageFit } from "shared/ui/AsyncImage/AsyncImage"
 import styles from "./CategoryLinks.module.scss"
 
 interface CategoryLinksProps {
@@ -31,7 +33,12 @@ export function CategoryLinks({ data, className }: CategoryLinksProps) {
                             onClick={() => navigate(`${RoutePath.sub_category}/${id}`)}
                             className={styles.list}
                         >
-                            <img src={categoryImage} alt="pic" className={styles.image} />
+                            <AsyncImage
+                                objectFit={ImageFit.COVER}
+                                src={categoryImage}
+                                alt="pic"
+                                className={styles.image}
+                            />
                             <AppLink key={id} to={`${RoutePath.sub_category}/${id}`}>
                                 {name}
                             </AppLink>
