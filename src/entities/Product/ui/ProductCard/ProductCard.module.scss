@@ -45,22 +45,21 @@
     padding: 15px 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 
     .footerDescription {
+        height: 38px;
         /* stylelint-disable-next-line value-no-vendor-prefix */
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
-        border: 1px solid red;
-        height: 48px;
 
-        &::after {
+        /*  &::after {
             content: " \A\A";
             white-space: pre;
-        }
+        } */
     }
 
     .price {
