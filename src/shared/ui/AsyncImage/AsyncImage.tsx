@@ -1,6 +1,6 @@
 import { HTMLAttributes, useState } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
-import placeholder from "./placholder.png"
+import placeholder from "shared/ui/AsyncImage/placeholder.png"
 import { Skeleton } from "./Skeleton/Skeleton"
 import styles from "./AsyncImage.module.scss"
 
@@ -44,14 +44,24 @@ export function AsyncImage(props: AsyncImageProps) {
             {isLoading && !isError && (
                 <>
                     <Skeleton className={styles.placeholder} />
-                    <img src={placeholder} className={styles.placeholder} alt="" />
+                    <img
+                        src={placeholder}
+                        className={styles.placeholder}
+                        data-testid="skeleton"
+                        alt=""
+                    />
                 </>
             )}
 
             {!src && (
                 <>
                     <Skeleton className={styles.placeholder} />
-                    <img src={placeholder} className={styles.placeholder} alt="" />
+                    <img
+                        src={placeholder}
+                        className={styles.placeholder}
+                        data-testid="skeleton"
+                        alt=""
+                    />
                 </>
             )}
 
@@ -59,6 +69,7 @@ export function AsyncImage(props: AsyncImageProps) {
                 <img
                     src={placeholder}
                     className={classNames(styles.placeholderError, {}, [className])}
+                    data-testid="placeholder"
                     alt=""
                 />
             )}
@@ -76,6 +87,7 @@ export function AsyncImage(props: AsyncImageProps) {
                 )}
                 decoding="async"
                 src={src}
+                data-testid="async-image"
                 alt=""
                 {...otherProps}
             />
