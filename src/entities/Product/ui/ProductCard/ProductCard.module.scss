@@ -54,6 +54,8 @@
         -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
+        border: 1px solid red;
+        line-height: normal;
     }
 
     .price {
