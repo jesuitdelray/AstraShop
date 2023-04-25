@@ -1,6 +1,6 @@
 import { HTMLAttributes, useState } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
-import placeholder from "shared/ui/AsyncImage/placeholder.png"
+import placeholder from "./placeholder.png"
 import { Skeleton } from "./Skeleton/Skeleton"
 import styles from "./AsyncImage.module.scss"
 
