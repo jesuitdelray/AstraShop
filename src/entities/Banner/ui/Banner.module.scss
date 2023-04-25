@@ -29,6 +29,11 @@
         margin-bottom: 24px;
         padding: 10px 0;
     }
+
+    .btnView {
+        max-width: 260px;
+        align-self: center;
+    }
 }
 
 .img {
@@ -57,10 +62,19 @@
     }
 }
 
+@media (min-width: 300px) and (max-width: 425px) {
+    .content {
+        margin-bottom: 120px;
+    }
+}
+
 @media (min-width: 300px) and (max-width: 440px) {
     .content {
+        padding-top: 0;
+
         .description {
-            max-width: 325px;
+            max-width: 500px;
+            margin-bottom: 40px;
         }
     }
 }
@@ -77,7 +91,6 @@
 @media (min-width: 641px) {
     .wrapper {
         flex-direction: row;
-        padding: 47px 0;
     }
 
     .img {
@@ -137,6 +150,7 @@
 
     .top {
         .img {
+            min-height: 90%;
             max-height: 80%;
             margin-right: 80px;
         }
@@ -157,6 +171,10 @@
 @media (min-width: 1200px) and (max-width: 1300px) {
     .content {
         .description {
+            max-width: 350px;
+        }
+
+        .title {
             max-width: 350px;
         }
     }
