@@ -48,10 +48,8 @@
     gap: 10px;
 
     .footerDescription {
-        /* stylelint-disable-next-line value-no-vendor-prefix */
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        display: inline;
+        line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
         border: 1px solid red;
