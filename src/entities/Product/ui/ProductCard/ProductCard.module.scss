@@ -48,12 +48,19 @@
     gap: 10px;
 
     .footerDescription {
-        display: inline;
-        line-clamp: 2;
+        /* stylelint-disable-next-line value-no-vendor-prefix */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
         border: 1px solid red;
-        line-height: normal;
+        height: 100%;
+
+        &::after {
+            content: " \A\A";
+            white-space: pre;
+        }
     }
 
     .price {
