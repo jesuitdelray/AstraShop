@@ -45,7 +45,7 @@
     padding: 15px 20px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 
     .footerDescription {
         height: 38px;
@@ -55,11 +55,6 @@
         -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
-
-        /*  &::after {
-            content: " \A\A";
-            white-space: pre;
-        } */
     }
 
     .price {
