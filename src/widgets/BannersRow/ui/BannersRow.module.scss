@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .container {
     width: 100%;
     display: grid;
@@ -6,16 +7,60 @@
     row-gap: 23px;
     margin-bottom: 81px;
 
-    div:nth-child(1) {
+    & > div:nth-child(1) {
         grid-area: first;
+
+        img {
+            height: 35%;
+            object-position: center;
+        }
+
+        & > div {
+            margin-bottom: 140px;
+        }
     }
 
-    div:nth-child(2) {
+    & > div:nth-child(2) {
         grid-area: second;
+
+        > div {
+            margin-bottom: 0;
+            padding: 0;
+        }
     }
 
-    div:nth-child(3) {
+    & > div:nth-child(3) {
         grid-area: third;
+
+        > div {
+            margin-bottom: 0;
+            padding: 0;
+        }
+    }
+}
+
+@media (min-width: 441px) {
+    .container {
+        > div:nth-child(1) {
+            img {
+                min-height: 45%;
+            }
+        }
+    }
+}
+
+@media (min-width: 641px) {
+    .container {
+        > div:nth-child(1) {
+            & > div {
+                margin-bottom: 0;
+            }
+
+            img {
+                object-position: right;
+                min-height: 60%;
+            }
+        }
     }
 }
 
@@ -25,6 +70,12 @@
             "first first" 457px
             "second third" 217px / 1fr 1fr;
         column-gap: 23px;
+
+        > div:nth-child(1) {
+            img {
+                min-height: 100%;
+            }
+        }
     }
 }
 
