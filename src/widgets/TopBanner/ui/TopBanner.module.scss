@@ -8,6 +8,10 @@
     height: 100%;
     padding: 40px 0 20%;
 
+    div:nth-child(2) {
+        margin-bottom: 40px;
+    }
+
     div:nth-child(1) > div:first-child {
         min-height: 130px;
         display: flex;
