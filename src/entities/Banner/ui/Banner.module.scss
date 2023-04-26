@@ -30,7 +30,13 @@
     }
 
     .description {
+        height: 74px;
         margin-bottom: 24px;
+    }
+
+    .btnView {
+        max-width: 260px;
+        align-self: center;
     }
 }
 
@@ -56,14 +62,33 @@
 .top {
     .img {
         max-height: 40%;
-        margin: 0 auto;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 440px) {
+    .content {
+        padding-top: 25px;
+        margin-bottom: 120px;
+
+        .description {
+            max-width: 500px;
+            margin-bottom: 70px;
+        }
+    }
+}
+
+@media (min-width: 250px) and (max-width: 641px) {
+    .top {
+        .img {
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
 
 @media (min-width: 641px) {
     .wrapper {
         flex-direction: row;
-        padding: 47px 0;
     }
 
     .img {
@@ -94,7 +119,7 @@
         display: block;
         padding: 0;
         height: auto;
-        max-width: 300px;
+        max-width: 400px;
 
         .description {
             display: block;
@@ -103,13 +128,26 @@
     }
 }
 
-@media (min-width: 825px) {
+@media (min-width: 641px) and (max-width: 805px) {
+    .content {
+        .description {
+            max-width: 300px;
+        }
+
+        .title {
+            max-width: 350px;
+        }
+    }
+}
+
+@media (min-width: 990px) {
     .img {
         max-width: 70%;
     }
 
     .top {
         .img {
+            min-height: 90%;
             max-height: 80%;
             margin-right: 80px;
         }
@@ -127,6 +165,18 @@
 
         .img {
             max-height: none;
+        }
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+    .content {
+        .description {
+            max-width: 350px;
+        }
+
+        .title {
+            max-width: 350px;
         }
     }
 }

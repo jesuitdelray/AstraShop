@@ -6,10 +6,37 @@
 
 .banner {
     height: 100%;
-    padding-bottom: 35%;
+    padding: 40px 0 20%;
+
+    div:nth-child(2) {
+        margin-bottom: 30px;
+    }
+
+    div:nth-child(1) > div:first-child {
+        min-height: 130px;
+        display: flex;
+        align-items: center;
+    }
 
     img {
-        align-self: flex-end;
+        height: 200px;
+        object-position: center;
+    }
+}
+
+@media (min-width: 441px) {
+    .banner {
+        div:nth-child(2) {
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-bottom: 120px;
+        }
+
+        img {
+            height: 100%;
+        }
     }
 }
 
@@ -22,7 +49,25 @@
 
     .banner {
         height: 100%;
-        padding-bottom: 0;
+        padding: 0;
+
+        div:nth-child(2) {
+            margin-bottom: 30px;
+        }
+
+        button {
+            margin: 0;
+        }
+
+        div:nth-child(1) > div:first-child {
+            min-height: fit-content;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        img {
+            padding: 0;
+        }
     }
 }
 
