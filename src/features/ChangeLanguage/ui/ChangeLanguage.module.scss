@@ -19,7 +19,7 @@
         position: absolute;
         display: flex;
         flex-direction: column;
-        padding: 10px;
+        padding: 15px;
         border-radius: 5px;
         background-color: var(--color-white);
         box-shadow: 0 0 10px 0 rgba(0 0 0 / 20%);
@@ -34,8 +34,8 @@
             cursor: pointer;
 
             .icon {
-                width: 24px;
-                height: 24px;
+                width: 26px;
+                height: 26px;
                 margin-right: 10px;
                 border: 1px solid var(--color-light-gray);
                 border-radius: 50%;
