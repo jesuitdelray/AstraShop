@@ -51,24 +51,39 @@ export function ChangeLanguage() {
             {dropdownActive && (
                 <div ref={dropdownRef} className={styles.languageListContainer}>
                     {languagesData.map(language => {
-                        const { id, text, languagesCode } = language
+                        const { id, text, languagesCode, Icon } = language
 
                         return (
-                            <Button
-                                key={id}
-                                variant={ButtonVariant.CLEAR_INVERTED}
+                            <div
+                                className={styles.languageContainer}
                                 onClick={e => {
                                     e.stopPropagation()
                                     languageClickHandler(languagesCode)
                                 }}
-                                className={classNames(
-                                    styles.btn,
-                                    { [styles.active]: currentLanguage === languagesCode },
-                                    []
-                                )}
                             >
-                                {text}
-                            </Button>
+                                <Icon
+                                    className={classNames(
+                                        styles.icon,
+                                        { [styles.active]: currentLanguage === languagesCode },
+                                        []
+                                    )}
+                                />
+                                <Button
+                                    key={id}
+                                    variant={ButtonVariant.CLEAR_INVERTED}
+                                    /* onClick={e => {
+                                        e.stopPropagation()
+                                        languageClickHandler(languagesCode)
+                                    }} */
+                                    className={classNames(
+                                        styles.btn,
+                                        { [styles.active]: currentLanguage === languagesCode },
+                                        []
+                                    )}
+                                >
+                                    {text}
+                                </Button>
+                            </div>
                         )
                     })}
                 </div>

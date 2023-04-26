@@ -27,18 +27,42 @@
         right: 0;
         z-index: var(--modal-z-index);
 
-        .btn {
-            color: black;
-            height: fit-content;
-            padding: 5px 0;
-            user-select: none;
+        .languageContainer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
 
-            &:hover {
-                color: var(--color-accent);
+            .icon {
+                width: 24px;
+                height: 24px;
+                margin-right: 10px;
+                border: 1px solid var(--color-light-gray);
+                border-radius: 50%;
+
+                &.active {
+                    border: 2px solid var(--color-accent);
+                }
             }
 
-            &.active {
-                color: var(--color-accent);
+            .btn {
+                color: var(--color-dark-gray);
+                height: fit-content;
+                padding: 5px 0;
+                user-select: none;
+
+                &.active {
+                    color: var(--color-accent);
+                }
+            }
+
+            &:hover {
+                .icon {
+                    border: 2px solid var(--color-accent);
+                }
+
+                .btn {
+                    color: var(--color-accent);
+                }
             }
         }
     }
