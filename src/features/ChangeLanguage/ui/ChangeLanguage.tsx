@@ -71,10 +71,6 @@ export function ChangeLanguage() {
                                 <Button
                                     key={id}
                                     variant={ButtonVariant.CLEAR_INVERTED}
-                                    /* onClick={e => {
-                                        e.stopPropagation()
-                                        languageClickHandler(languagesCode)
-                                    }} */
                                     className={classNames(
                                         styles.btn,
                                         { [styles.active]: currentLanguage === languagesCode },

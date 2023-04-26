@@ -31,6 +31,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+            cursor: pointer;
 
             .icon {
                 width: 24px;
@@ -38,10 +39,6 @@
                 margin-right: 10px;
                 border: 1px solid var(--color-light-gray);
                 border-radius: 50%;
-
-                &.active {
-                    border: 2px solid var(--color-accent);
-                }
             }
 
             .btn {
@@ -56,10 +53,6 @@
             }
 
             &:hover {
-                .icon {
-                    border: 2px solid var(--color-accent);
-                }
-
                 .btn {
                     color: var(--color-accent);
                 }
