@@ -1,4 +1,5 @@
 import { classNames } from "shared/lib/classNames/classNames"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entities/ModalSlider"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
@@ -7,8 +8,9 @@ import { useTranslation } from "react-i18next"
 import { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup"
 import { PriceFilter } from "./PriceFilter/PriceFilter"
 import styles from "./FilterProducts.module.scss"
-import { getProductFilters } from "../model/selectors/subcategoryPageSelectors"
+import { getProductFilters } from "../model/selectors/filterProductsSelectors"
 import { FilterItemAttribute, FilterItemPriceRange } from "../model/types/types"
+import { filterProductsActions } from "../model/slice/filterProductsSlice"
 
 interface FilterProductsProps {
     className?: string
@@ -17,6 +19,19 @@ interface FilterProductsProps {
 
 export function FilterProducts({ className, onChangeFilters }: FilterProductsProps) {
     const data = useSelector(getProductFilters) || []
+    const dispatch = useDispatch()
+    const currentModal = useSelector(getModalsCurrent)
+    const { t } = useTranslation()
+    function onClose() {
+        dispatch(modalsActions.close())
+    }
+
+    useEffect(
+        () => () => {
+            dispatch(filterProductsActions.resetFilters())
+        },
+        [dispatch]
+    )
 
     const content = (
         <div className={styles.sidebarContainer}>
@@ -50,13 +65,6 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
             })}
         </div>
     )
-
-    const dispatch = useDispatch()
-    const currentModal = useSelector(getModalsCurrent)
-    const { t } = useTranslation()
-    function onClose() {
-        dispatch(modalsActions.close())
-    }
 
     return (
         <>
