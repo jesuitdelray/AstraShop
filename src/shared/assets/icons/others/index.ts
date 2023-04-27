@@ -46,8 +46,4 @@ export {
     BasketSuccess,
     AddToBasket,
     ChangeLanguageIcon,
-    EnglishFlag,
-    RussianFlag,
-    FranceFlag,
-    SpainFlag,
 }
