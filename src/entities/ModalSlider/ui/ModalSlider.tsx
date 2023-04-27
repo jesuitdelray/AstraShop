@@ -53,7 +53,11 @@ export function ModalSlider(props: ModalSliderProps) {
     }
 
     useEffect(() => {
-        document.documentElement.className = currentModal && "noScroll"
+        if (currentModal) {
+            document.body.classList.add("noScroll")
+        } else {
+            document.body.classList.remove("noScroll")
+        }
     }, [currentModal])
 
     return variant === ModalSliderVariant.MODAL ? (
