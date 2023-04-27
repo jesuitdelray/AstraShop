@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable no-restricted-syntax */
 import { Children, ReactNode, useEffect, useState } from "react"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
@@ -26,11 +28,15 @@ export function Row({ children, schema = {}, height, gap }: IRowProps) {
     if (childrenArray.length === 0) return null
 
     const content = () => {
+        if (!schema || !schemaArray.length) {
+            return childrenArray[0]
+        }
+
         for (const slot of schemaArray) {
             const [key, value] = slot
 
             if (width >= +key) {
-                return value.map((item, index) => (
+                return value.map((_, index) => (
                     <div
                         style={{
                             flexGrow: value[index],
@@ -68,15 +74,3 @@ interface ILayoutProps {
 export function Layout({ children, gap }: ILayoutProps) {
     return <div style={{ display: "flex", flexDirection: "column", gap }}>{children}</div>
 }
-
-/* {Children.map(children, (item, index) => (
-    <div
-        style={{
-            flexGrow: schema?.[index] || 1,
-            display: "flex",
-            justifyContent: "center",
-        }}
-    >
-        {item}
-    </div>
-))} */
