@@ -1,6 +1,5 @@
 .container {
-    max-width: calc(100vw - 72px);
-    margin-bottom: 81px;
+    max-width: calc(100vw - 114px);
 }
 
 .swiper {
@@ -16,16 +15,4 @@
 
     margin-bottom: 27px;
     text-align: center;
-}
-
-.maxWidth1200 {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-@media (min-width: 1200px) {
-    .container {
-        max-width: calc(100vw - var(--sidebar-width) - 72px);
-    }
 }

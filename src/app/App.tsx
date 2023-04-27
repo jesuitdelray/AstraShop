@@ -21,11 +21,12 @@ function App() {
     }, [dispatch])
 
     const isSubCategoryPage = useMatch(`${RoutePath.sub_category}/:id`)
+    const isMainPage = window.location.pathname === "/"
 
     return (
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                {!isSubCategoryPage && <CatalogSidebar />}
+                {!isSubCategoryPage && !isMainPage && <CatalogSidebar />}
                 <div className="content-page">
                     <Header BasketModal={<BasketModalSlider />} BurgerModal={<BurgerMenu />} />
                     <AppRouter />
