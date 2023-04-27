@@ -27,7 +27,7 @@ export function Row({ children, schema = {}, height, gap }: IRowProps) {
 
     if (childrenArray.length === 0) return null
 
-    const content = () => {
+    function Content(): ReactNode {
         if (!schema || !schemaArray.length) {
             return childrenArray[0]
         }
@@ -61,7 +61,7 @@ export function Row({ children, schema = {}, height, gap }: IRowProps) {
                 gap,
             }}
         >
-            {content()}
+            {Content()}
         </div>
     )
 }
