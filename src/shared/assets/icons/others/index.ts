@@ -19,10 +19,6 @@ import MainHome from "./home.svg"
 import BasketSuccess from "./basket-succsess.svg"
 import AddToBasket from "./basket-add.svg"
 import ChangeLanguageIcon from "./language.svg"
-import EnglishFlag from "./gb_flag_icon.svg"
-import RussianFlag from "./russia_flag_icon.svg"
-import FranceFlag from "./france_flag_icon.svg"
-import SpainFlag from "./spain_flag_icon.svg"
 
 export {
     MinusIcon,
