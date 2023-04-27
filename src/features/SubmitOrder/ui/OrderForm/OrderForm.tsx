@@ -46,8 +46,16 @@ export function OrderForm() {
             const [key, value] = error
             if (value.length > 0) {
                 const element = getInputByName(key, styles.input)
-                element?.focus()
-                break
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "center",
+                    })
+
+                    element.focus({ preventScroll: true })
+                    break
+                }
             }
         }
     }, [formErrors])
