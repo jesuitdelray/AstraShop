@@ -43,6 +43,7 @@ export function Row({ children, schema = {}, height, gap }: IRowProps) {
                             flexShrink: 1 / value[index],
                             display: value[index] === 0 ? "none" : "flex",
                             justifyContent: "center",
+                            width: "100%",
                         }}
                     >
                         {childrenArray[index]}
