@@ -1,10 +1,8 @@
-/* eslint-disable indent */
-/* eslint-disable react/jsx-indent */
 /* eslint-disable no-restricted-syntax */
-import { Children, ReactNode, useEffect, useState } from "react"
+import { Children, ReactElement, ReactNode, useEffect, useState } from "react"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 
-type CSSDimensionType = `${number | string}px` | `${number | string}%`
+type CSSDimensionType = `${number | string}px` | `${number | string}%` | "auto" | 0
 
 interface IRowProps {
     children: ReactNode
@@ -13,7 +11,12 @@ interface IRowProps {
     gap?: CSSDimensionType
 }
 
-export function Row({ children, schema = {}, height, gap }: IRowProps) {
+export function Row({
+    children,
+    schema = {},
+    height = "auto",
+    gap = 0,
+}: IRowProps): ReactElement | null {
     const [width, setWidth] = useState(window.innerWidth)
     const debouncedResize = useDebounce(() => setWidth(window.innerWidth), 200)
 
@@ -27,44 +30,39 @@ export function Row({ children, schema = {}, height, gap }: IRowProps) {
 
     if (childrenArray.length === 0) return null
 
-    function Content(): ReactNode {
-        if (!schema || !schemaArray.length) {
-            return childrenArray[0]
-        }
-
-        for (const slot of schemaArray) {
-            const [key, value] = slot
-
-            if (width >= +key) {
-                return value.map((_, index) => (
-                    <div
-                        style={{
-                            flexGrow: value[index],
-                            flexShrink: 1 / value[index],
-                            display: value[index] === 0 ? "none" : "flex",
-                            justifyContent: "center",
-                            width: "100%",
-                        }}
-                    >
-                        {childrenArray[index]}
-                    </div>
-                ))
-            }
-        }
-        return null
+    if (!schema || !schemaArray.length) {
+        return <div>{childrenArray[0]}</div>
     }
 
-    return (
-        <div
-            style={{
-                display: "flex",
-                height,
-                gap,
-            }}
-        >
-            {Content()}
-        </div>
-    )
+    for (const slot of schemaArray) {
+        const [key, value] = slot
+
+        if (width >= +key) {
+            const gridTemplateColumns = value
+                .filter(item => item !== 0)
+                .map(item => `${item}fr`)
+                .join(" ")
+
+            return (
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns,
+                        gap,
+                        height,
+                    }}
+                >
+                    {value.map((_, index) => (
+                        <div style={{ display: value[index] === 0 ? "none" : "block" }}>
+                            {childrenArray[index]}
+                        </div>
+                    ))}
+                </div>
+            )
+        }
+    }
+
+    return null
 }
 
 interface ILayoutProps {
@@ -72,6 +70,6 @@ interface ILayoutProps {
     gap: CSSDimensionType
 }
 
-export function Layout({ children, gap }: ILayoutProps) {
+export function Layout({ children, gap = 0 }: ILayoutProps) {
     return <div style={{ display: "flex", flexDirection: "column", gap }}>{children}</div>
 }
