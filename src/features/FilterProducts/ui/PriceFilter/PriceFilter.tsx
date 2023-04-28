@@ -18,10 +18,10 @@ interface PriceFilterProps {
 export function PriceFilter(props: PriceFilterProps) {
     const { title, range, onChangeFilters } = props
 
-    const GAP = 100
     const MINIMUM_PRICE = range.from
     const MAXIMUM_PRICE = range.to
     const PRICE_RANGE = MAXIMUM_PRICE - MINIMUM_PRICE
+    const GAP = Math.floor(PRICE_RANGE * 0.05) || 100
 
     const dispatch = useDispatch()
 
