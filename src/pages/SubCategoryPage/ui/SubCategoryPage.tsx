@@ -29,7 +29,6 @@ export function SubCategoryPage() {
     const dispatch = useDispatch()
     const [searchParams] = useSearchParams()
     const navigate = useNavigate()
-
     const categoryName = useSelector(getSubCategoryName)
     const categoryProducts = useSelector(getSubCategoryProducts)
     const categoryRequestLoading = useSelector(getSubCategoryLoading)
