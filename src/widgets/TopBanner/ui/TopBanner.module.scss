@@ -1,5 +1,5 @@
 .wrapper {
-    height: max-content;
+    height: 100%;
     margin: 0 -36px 81px;
     position: relative;
 }
@@ -42,7 +42,7 @@
 
 @media (min-width: 641px) {
     .wrapper {
-        height: 457px;
+        height: 100%;
         width: 100%;
         margin: 0 0 81px;
     }

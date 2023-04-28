@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
-import { memo, useEffect, useMemo } from "react"
+import { memo, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
@@ -80,55 +80,57 @@ export const ProductCarousel = memo((props: ProductCarouselProps) => {
     return (
         <div className={classNames(styles.container, {}, [className, "productCarousel"])}>
             <div className={styles.title}>{title}</div>
-            <Swiper
-                slidesPerView={1}
-                className={styles.swiper}
-                pagination={{ clickable: true }}
-                modules={isLoading ? [] : [Pagination]}
-                spaceBetween={30}
-                breakpoints={{
-                    480: {
-                        slidesPerView: 2,
-                    },
-                    768: {
-                        slidesPerView: 3,
-                    },
-                    1024: {
-                        slidesPerView: 4,
-                    },
-                    1300: {
-                        slidesPerView: 5,
-                    },
-                }}
-            >
-                {isLoading
-                    ? [1, 2, 3, 4, 5, 6, 7, 8].map(item => (
-                          <SwiperSlide key={item}>
-                              <ProductCardSkeleton />
-                          </SwiperSlide>
-                      ))
-                    : list?.map(item => {
-                          const { id, is_new: isNew, name, price, images } = item
-                          return (
-                              <SwiperSlide key={id}>
-                                  <ProductCard
-                                      id={id}
-                                      is_new={isNew}
-                                      name={name}
-                                      price={price}
-                                      images={images}
-                                      Basket={
-                                          <ToggleProductInBasket
-                                              variant={ToggleProductInBasketVariant.ICON}
-                                              product={item}
-                                          />
-                                      }
-                                      className={styles.product}
-                                  />
+            <div className={styles.content}>
+                <Swiper
+                    slidesPerView={1}
+                    className={styles.swiper}
+                    pagination={{ clickable: true }}
+                    modules={isLoading ? [] : [Pagination]}
+                    spaceBetween={30}
+                    breakpoints={{
+                        480: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                        },
+                        1300: {
+                            slidesPerView: 5,
+                        },
+                    }}
+                >
+                    {isLoading
+                        ? [1, 2, 3, 4, 5, 6, 7, 8].map(item => (
+                              <SwiperSlide key={item}>
+                                  <ProductCardSkeleton />
                               </SwiperSlide>
-                          )
-                      })}
-            </Swiper>
+                          ))
+                        : list?.map(item => {
+                              const { id, is_new: isNew, name, price, images } = item
+                              return (
+                                  <SwiperSlide key={id}>
+                                      <ProductCard
+                                          id={id}
+                                          is_new={isNew}
+                                          name={name}
+                                          price={price}
+                                          images={images}
+                                          Basket={
+                                              <ToggleProductInBasket
+                                                  variant={ToggleProductInBasketVariant.ICON}
+                                                  product={item}
+                                              />
+                                          }
+                                          className={styles.product}
+                                      />
+                                  </SwiperSlide>
+                              )
+                          })}
+                </Swiper>
+            </div>
         </div>
     )
 })
