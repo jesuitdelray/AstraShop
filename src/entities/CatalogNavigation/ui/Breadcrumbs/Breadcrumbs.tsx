@@ -10,7 +10,7 @@ import { CurrentTreeItem, CurrentTreeItemType } from "../../model/types/catalogN
 import styles from "./Breadcrumbs.module.scss"
 
 export function Breadcrumbs() {
-    const [toolTip, setToolTip] = useState(false)
+    const [toolTip, setToolTip] = useState(-1)
 
     const currentTree = useSelector(getCurrentTree)
 
@@ -58,9 +58,9 @@ export function Breadcrumbs() {
                         <div
                             className={styles.crumbs}
                             onMouseEnter={() => {
-                                if (index === data.length - 1) setToolTip(true)
+                                setToolTip(index)
                             }}
-                            onMouseLeave={() => setToolTip(false)}
+                            onMouseLeave={() => setToolTip(-1)}
                         >
                             <AppLink
                                 to={link()}
@@ -71,7 +71,7 @@ export function Breadcrumbs() {
                             >
                                 {name.length > 20 ? `${name.substring(0, 20)}...` : name}
                             </AppLink>
-                            {name.length > 20 && toolTip && (
+                            {name.length > 20 && toolTip === index && (
                                 <Portal>
                                     <p
                                         style={{
