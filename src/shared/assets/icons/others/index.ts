@@ -19,6 +19,8 @@ import MainHome from "./home.svg"
 import BasketSuccess from "./basket-succsess.svg"
 import AddToBasket from "./basket-add.svg"
 import ChangeLanguageIcon from "./language.svg"
+import { ChevronRight } from "./ChevronRight"
+import { ChevronLeft } from "./ChevronLeft"
 
 export {
     MinusIcon,
@@ -42,4 +44,6 @@ export {
     BasketSuccess,
     AddToBasket,
     ChangeLanguageIcon,
+    ChevronLeft,
+    ChevronRight,
 }
