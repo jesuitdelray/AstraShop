@@ -1,31 +1,31 @@
-import { useEffect, useRef, useState } from "react"
+import { CSSProperties, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { classNames } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { BoxIcon } from "shared/assets/icons/list"
-import { Modal } from "shared/ui/Modal"
 import styles from "./CatalogSidebarNav.module.scss"
+import { CatalogModal } from "./CatalogModal"
 import { navigationSubcategory, navigationTreeType } from "../../../model/types/list"
 import { fetchNavigationTree } from "../../../model/services/fetchNavigationTree/fetchNavigationTree"
 import {
     getNavigationTree,
     getNavigationTreeError,
 } from "../../../model/selectors/sidebarNavigationSelectors"
-import { CatalogModal } from "./CatalogModal"
 
 interface SubMenuProps {
     list: navigationSubcategory[]
     isOpen: boolean
     closeLink: any
+    style?: CSSProperties
     onLinkClick?: () => void
 }
 
-function SubMenu({ list, isOpen, onLinkClick, closeLink }: SubMenuProps) {
+function SubMenu({ list, isOpen, onLinkClick, closeLink, style }: SubMenuProps) {
     if (!isOpen) return null
 
     return (
-        <div className={styles.subMenu} onMouseLeave={closeLink}>
+        <div className={styles.subMenu} onMouseLeave={closeLink} style={style}>
             {list.map(item => {
                 const { id, name } = item
                 return (
@@ -97,7 +97,6 @@ export function CatalogSidebarNav() {
 
     return (
         <div className={styles.wrapper} ref={containerRef}>
-            <div className={classNames(styles.overlay, { [styles.overlayOn]: modalIsOpen })} />
             <div className={styles.container} onMouseEnter={modalOpen}>
                 {navigationTree.map(item => {
                     const { id, icon } = item
@@ -153,6 +152,10 @@ export function CatalogSidebarNav() {
                         const { id, categories: subCategories } = item
                         return (
                             <SubMenu
+                                /*  style={{
+                                    right: `-${Number(containerCoordinate?.right)}px`,
+                                    top: `${Number(containerCoordinate?.top)}px`,
+                                }} */
                                 closeLink={mouseLeaveHandler}
                                 list={subCategories}
                                 isOpen={

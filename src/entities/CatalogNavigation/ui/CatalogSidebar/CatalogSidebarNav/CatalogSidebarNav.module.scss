@@ -1,21 +1,21 @@
 .wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 
     .container {
         position: relative;
         width: 100%;
         max-width: 1200px;
         height: 100%;
-        padding: 40px 0 40px 40px;
+        padding: 40px 0 40px 5px;
         display: flex;
         flex-direction: column;
         background-color: var(--color-white);
         z-index: 4;
 
         .linkContainer {
-            padding: 10px 0 10px 5px;
+            padding: 10px 0 15px 5px;
 
             & img {
                 width: 25px;
@@ -31,35 +31,18 @@
     .link {
         display: flex;
         align-items: center;
-
-        &:last-child {
-            margin-bottom: 5px;
-        }
+        font-size: 14px;
 
         .icon {
             fill: var(--color-dark-gray);
             margin-right: 12px;
         }
     }
-
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 3;
-        background: var(--color-modal-overlay);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-
-        &.overlayOn {
-            opacity: 1;
-        }
-    }
 }
 
 .modal {
+    width: 100%;
+
     & > div:last-child > div:first-child {
         padding: 0;
         border-radius: 0;
@@ -70,10 +53,7 @@
     .modalLink {
         display: flex;
         align-items: center;
-
-        &:last-child {
-            margin-bottom: 5px;
-        }
+        font-size: 14px;
 
         .icon {
             fill: var(--color-dark-gray);
@@ -82,29 +62,39 @@
     }
 
     .subMenu {
+        position: absolute;
+        top: 2px;
+        right: -400%;
         overflow-y: scroll;
         display: flex;
         flex-direction: column;
-        padding: 45px 24px;
-        min-width: 200px;
         width: 100%;
+        min-width: 1000px;
+        padding: 45px 24px;
         height: 100%;
         background: var(--color-white);
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: -100%;
         color: var(--color-base);
         cursor: auto;
+        border: 1px solid red;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            background-color: transparent;
+            border-radius: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-dark-gray);
+            border-radius: 10px;
+            background-clip: padding-box;
+        }
 
         & a {
             display: block;
             color: var(--color-base);
             padding: 10px 0;
+            font-size: 14px;
             width: fit-content;
-
-            &:last-child {
-            }
 
             &:hover {
                 color: var(--color-accent);
@@ -113,15 +103,27 @@
     }
 
     .modalContainer {
-        padding: 40px 0 40px 40px;
+        padding: 40px 0 40px 5px;
         display: flex;
         flex-direction: column;
         background-color: var(--color-white);
         z-index: 4;
         overflow-y: scroll;
 
+        &::-webkit-scrollbar {
+            width: 5px;
+            background-color: transparent;
+            border-radius: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-dark-gray);
+            border-radius: 10px;
+            background-clip: padding-box;
+        }
+
         .modalLinkContainer {
-            padding: 10px 0 10px 5px;
+            padding: 10px 0 15px 5px;
             display: flex;
             align-items: center;
 
