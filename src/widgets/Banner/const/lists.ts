@@ -16,7 +16,7 @@ export const bannerSliderList = [
 ]
 
 export const singleBannerList = [
-    { id: 1, link: `${RoutePath.category}/87`, img: single1 },
-    { id: 2, link: `${RoutePath.category}/34`, img: single2 },
+    { id: 1, link: `${RoutePath.category}/86`, img: single1 },
+    { id: 2, link: `${RoutePath.category}/101`, img: single2 },
     { id: 3, link: `${RoutePath.category}/93`, img: single3 },
 ]
