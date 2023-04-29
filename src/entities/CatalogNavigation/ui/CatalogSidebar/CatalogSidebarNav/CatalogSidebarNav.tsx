@@ -58,8 +58,9 @@ export function CatalogSidebarNav() {
             clearTimeout(timeoutRef.current)
             timeoutRef.current = null
         }
-
-        setHovered(id)
+        setTimeout(() => {
+            setHovered(id)
+        }, 200)
     }
 
     /* function mouseLeaveHandler() {
@@ -101,72 +102,68 @@ export function CatalogSidebarNav() {
                     )
                 })}
             </div>
-            {modalIsOpen && (
-                <>
-                    <CatalogModal
-                        isOpen={modalIsOpen}
-                        onClose={modalClose}
+            {/* {modalIsOpen && ( */}
+
+            <CatalogModal
+                isOpen={modalIsOpen}
+                onClose={modalClose}
+                styles={{
+                    width: `${containerWidth}px`,
+                    height: `${containerHeight}px`,
+                    top: `${Number(containerCoordinate?.top)}px`,
+                    left: `${Number(containerCoordinate?.left)}px`,
+                }}
+                className={styles.modal}
+            >
+                <div className={styles.modalContainer}>
+                    {navigationTree.map(item => {
+                        const { id, icon } = item
+                        return (
+                            <div
+                                key={id}
+                                onMouseEnter={() => mouseEnterHandler(id)}
+                                className={styles.modalLinkContainer}
+                            >
+                                <AppLink
+                                    to={`${RoutePath.category}/${id}`}
+                                    onClick={() => setHovered(-1)}
+                                    className={styles.modalLink}
+                                >
+                                    {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
+                                    {item.name}
+                                </AppLink>
+                            </div>
+                        )
+                    })}
+                </div>
+            </CatalogModal>
+            {navigationTree.map(item => {
+                const { id, categories: subCategories } = item
+                return (
+                    <SubCatalogModal
                         styles={{
-                            width: `${containerWidth}px`,
                             height: `${containerHeight}px`,
                             top: `${Number(containerCoordinate?.top)}px`,
-                            left: `${Number(containerCoordinate?.left)}px`,
+                            left: `${Number(containerCoordinate?.right)}px`,
                         }}
-                        className={styles.modal}
+                        isOpen={hovered === id && !!subCategories && subCategories?.length > 0}
+                        onClose={modalClose}
+                        className={styles.subMenuModal}
                     >
-                        <div className={styles.modalContainer}>
-                            {navigationTree.map(item => {
-                                const { id, icon } = item
-                                return (
-                                    <div
-                                        key={id}
-                                        onMouseEnter={() => mouseEnterHandler(id)}
-                                        className={styles.modalLinkContainer}
-                                    >
-                                        <AppLink
-                                            to={`${RoutePath.category}/${id}`}
-                                            onClick={() => setHovered(-1)}
-                                            className={styles.modalLink}
-                                        >
-                                            {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
-                                            {item.name}
-                                        </AppLink>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </CatalogModal>
-                    {navigationTree.map(item => {
-                        const { id, categories: subCategories } = item
-                        return (
-                            <SubCatalogModal
-                                styles={{
-                                    height: `${containerHeight}px`,
-                                    top: `${Number(containerCoordinate?.top)}px`,
-                                    left: `${Number(containerCoordinate?.right)}px`,
-                                }}
+                        <div className={styles.subMenuModalContainer}>
+                            <SubMenu
+                                list={subCategories}
                                 isOpen={
                                     hovered === id && !!subCategories && subCategories?.length > 0
                                 }
-                                onClose={modalClose}
-                                className={styles.subMenuModal}
-                            >
-                                <div className={styles.subMenuModalContainer}>
-                                    <SubMenu
-                                        list={subCategories}
-                                        isOpen={
-                                            hovered === id &&
-                                            !!subCategories &&
-                                            subCategories?.length > 0
-                                        }
-                                        onLinkClick={() => setHovered(-1)}
-                                    />
-                                </div>
-                            </SubCatalogModal>
-                        )
-                    })}
-                </>
-            )}
+                                onLinkClick={() => setHovered(-1)}
+                            />
+                        </div>
+                    </SubCatalogModal>
+                )
+            })}
+
+            {/* )} */}
         </div>
     )
 }

@@ -7,18 +7,23 @@ interface ModalProps {
     className?: string
     children: ReactNode
     isOpen: boolean
-    styles?: CSSProperties
     onClose: () => void
+    styles?: CSSProperties
 }
 
 export const CatalogModal = (props: ModalProps) => {
-    const { className, children, isOpen, onClose, styles } = props
+    const { className, children, isOpen, styles, onClose } = props
+    const [isOpening, setIsOpening] = useState(false)
     const [isClosing, setIsClosing] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
         if (isOpen && !isMounted) {
+            setIsOpening(true)
             setIsMounted(true)
+            setTimeout(() => {
+                setIsOpening(false)
+            }, 500)
         } else if (!isOpen && isMounted) {
             setIsClosing(true)
             setTimeout(() => {
@@ -31,6 +36,7 @@ export const CatalogModal = (props: ModalProps) => {
     const mods: Mods = {
         [cls.isOpen]: isMounted,
         [cls.isClosing]: isClosing,
+        [cls.isOpening]: isOpening,
     }
 
     if (!isMounted) return null
