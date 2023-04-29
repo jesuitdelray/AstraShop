@@ -14,7 +14,7 @@ export function MainPage() {
                 <Row
                     schema={{
                         0: [0, 1, 0],
-                        1200: [0, 5, 1],
+                        1200: [2, 5, 2],
                         1600: [15, 65, 20],
                     }}
                     gap="10px"

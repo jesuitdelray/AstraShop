@@ -12,20 +12,20 @@ import {
     getNavigationTree,
     getNavigationTreeError,
 } from "../../../model/selectors/sidebarNavigationSelectors"
-import { SubCatalogModal } from "./SubCatalogModal"
 
 interface SubMenuProps {
     list: navigationSubcategory[]
     isOpen: boolean
-    className?: string
+    closeLink: any
+    style?: CSSProperties
     onLinkClick?: () => void
 }
 
-function SubMenu({ list, isOpen, onLinkClick, className }: SubMenuProps) {
+function SubMenu({ list, isOpen, onLinkClick, closeLink, style }: SubMenuProps) {
     if (!isOpen) return null
 
     return (
-        <div className={classNames(styles.subMenu, {}, [className])}>
+        <div className={styles.subMenu} onMouseLeave={closeLink} style={style}>
             {list.map(item => {
                 const { id, name } = item
                 return (
@@ -48,7 +48,6 @@ export function CatalogSidebarNav() {
 
     function modalClose() {
         setmodalIsOpen(false)
-        setHovered(-1)
     }
 
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -62,10 +61,11 @@ export function CatalogSidebarNav() {
         setHovered(id)
     }
 
-    /* function mouseLeaveHandler() {
-         timeoutRef.current = setTimeout(() => {
-         }, 200)
-    } */
+    function mouseLeaveHandler() {
+        timeoutRef.current = setTimeout(() => {
+            setHovered(-1)
+        }, 200)
+    }
 
     const dispatch = useDispatch()
     const navigationTree: navigationTreeType = useSelector(getNavigationTree)
@@ -114,32 +114,30 @@ export function CatalogSidebarNav() {
                         }}
                         className={styles.modal}
                     >
-                        <div className={styles.modalContainer}>
-                            {navigationTree.map(item => {
-                                const { id, icon } = item
-                                return (
-                                    <div
-                                        key={id}
-                                        onMouseEnter={() => mouseEnterHandler(id)}
-                                        className={styles.modalLinkContainer}
+                        {navigationTree.map(item => {
+                            const { id, icon } = item
+                            return (
+                                <div
+                                    key={id}
+                                    onMouseEnter={() => mouseEnterHandler(id)}
+                                    className={styles.modalLinkContainer}
+                                >
+                                    <AppLink
+                                        to={`${RoutePath.category}/${id}`}
+                                        onClick={() => setHovered(-1)}
+                                        className={styles.modalLink}
                                     >
-                                        <AppLink
-                                            to={`${RoutePath.category}/${id}`}
-                                            onClick={() => setHovered(-1)}
-                                            className={styles.modalLink}
-                                        >
-                                            {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
-                                            {item.name}
-                                        </AppLink>
-                                    </div>
-                                )
-                            })}
-                        </div>
+                                        {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
+                                        {item.name}
+                                    </AppLink>
+                                </div>
+                            )
+                        })}
                     </CatalogModal>
                     {navigationTree.map(item => {
                         const { id, categories: subCategories } = item
                         return (
-                            <SubCatalogModal
+                            <CatalogModal
                                 styles={{
                                     height: `${containerHeight}px`,
                                     top: `${Number(containerCoordinate?.top)}px`,
@@ -148,21 +146,20 @@ export function CatalogSidebarNav() {
                                 isOpen={
                                     hovered === id && !!subCategories && subCategories?.length > 0
                                 }
-                                onClose={modalClose}
+                                onClose={mouseLeaveHandler}
                                 className={styles.subMenuModal}
                             >
-                                <div className={styles.subMenuModalContainer}>
-                                    <SubMenu
-                                        list={subCategories}
-                                        isOpen={
-                                            hovered === id &&
-                                            !!subCategories &&
-                                            subCategories?.length > 0
-                                        }
-                                        onLinkClick={() => setHovered(-1)}
-                                    />
-                                </div>
-                            </SubCatalogModal>
+                                <SubMenu
+                                    closeLink={mouseLeaveHandler}
+                                    list={subCategories}
+                                    isOpen={
+                                        hovered === id &&
+                                        !!subCategories &&
+                                        subCategories?.length > 0
+                                    }
+                                    onLinkClick={() => setHovered(-1)}
+                                />
+                            </CatalogModal>
                         )
                     })}
                 </>
