@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
-import { singleBannerList } from "widgets/Banner/const/lists"
+import { singleBannerList as slides } from "widgets/Banner/const/lists"
 import { classNames } from "shared/lib/classNames/classNames"
+import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { useState } from "react"
 import styles from "./SingleBanner.module.scss"
 
 interface ISingleBannerProps {
@@ -9,7 +11,9 @@ interface ISingleBannerProps {
 }
 
 export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
-    const banner = singleBannerList[imgIndex]
+    const banner = slides[imgIndex]
+
+    const [current, setCurrent] = useState(0)
 
     const navigate = useNavigate()
 
@@ -25,6 +29,11 @@ export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
             }}
         >
             <img src={img} alt="" className={styles.img} />
+            <div className={styles.cta}>
+                <Button variant={ButtonVariant.FILLED_RED} onClick={() => navigate(link)}>
+                    Click
+                </Button>
+            </div>
         </div>
     )
 }
