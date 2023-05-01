@@ -8,7 +8,7 @@ import {
     catalogNavigationActions,
 } from "entities/CatalogNavigation"
 import { BannersRow } from "widgets/BannersRow"
-import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
+import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { fetchProductDetails } from "../model/services/fetchProductDetails/fetchProductDetails"
 import {
@@ -97,7 +97,7 @@ export function ProductDetailsPage() {
                     />
                 }
             />
-            <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
+            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )
