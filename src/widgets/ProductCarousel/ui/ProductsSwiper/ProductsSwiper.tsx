@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
+import { Dispatch, SetStateAction } from "react"
 import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper"
+import { Swiper as SwiperClass } from "swiper/types"
+import { Pagination, Navigation } from "swiper"
 import "swiper/scss"
 import "swiper/scss/navigation"
 import "swiper/scss/pagination"
@@ -20,21 +22,48 @@ interface IProductSwiperProps {
     isLoading: boolean
     list: Product[]
     variant: IProductSwiperVariant
+    slidesPerView?: number
+    className?: string
+    isWithPagination?: boolean
+    onSwiper?: Dispatch<SetStateAction<SwiperClass | undefined>>
 }
 
 export function ProductsSwiper(props: IProductSwiperProps) {
-    const { isLoading, list, variant } = props
+    const {
+        isLoading,
+        list,
+        variant,
+        slidesPerView,
+        className,
+        onSwiper,
+        isWithPagination = false,
+    } = props
+
+    const modules = (() => {
+        switch (true) {
+            case isLoading:
+                return []
+            case isWithPagination:
+                return [Pagination, Navigation]
+            case !isWithPagination:
+                return [Navigation]
+            default:
+                return []
+        }
+    })()
 
     return (
         <Swiper
-            slidesPerView="auto"
-            className={classNames(styles.swiper, {}, ["productCarousel"])}
+            slidesPerView={slidesPerView || "auto"}
+            className={classNames(styles.swiper, {}, [className, "productCarousel"])}
             pagination={{
                 clickable: true,
                 el: styles.paginationEl,
             }}
-            modules={[Pagination]}
+            modules={modules}
+            navigation={{ prevEl: "#prevEl", nextEl: "#nextEl" }}
             spaceBetween={20}
+            onSwiper={onSwiper}
         >
             {isLoading
                 ? [1, 2, 3, 4, 5, 6, 7, 8].map(item => (
@@ -63,6 +92,7 @@ export function ProductsSwiper(props: IProductSwiperProps) {
                           </SwiperSlide>
                       )
                   })}
+
             <div
                 className={classNames(styles.paginationEl, {}, [
                     "swiper-pagination swiper-pagination-timeline-page",
