@@ -1,0 +1,64 @@
+.wrapper {
+    background: rgb(247 158 27);
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background: linear-gradient(
+        135deg,
+        rgb(247 158 27) 0%,
+        rgb(247 158 27) 2.5%,
+        rgb(255 224 178) 2.5%,
+        rgb(255 224 178) 4%,
+        var(--color-white) 4%,
+        var(--color-white) 96%,
+        rgb(255 224 178) 96%,
+        rgb(255 224 178) 97.5%,
+        rgb(247 158 27) 97.5%,
+        rgb(247 158 27) 100%
+    );
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.container {
+    display: grid;
+    margin: 10px;
+    padding: 10px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    .title {
+        margin: 0 auto;
+    }
+}
+
+.swiper {
+    padding-bottom: 15px;
+}
+
+.chevronContainerLeft,
+.chevronContainerRight {
+    border-radius: 50%;
+    background-color: var(--color-white);
+    height: 28px;
+    position: absolute;
+    z-index: 10;
+    width: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.chevronContainerLeft {
+    left: 10px;
+}
+
+.chevronContainerRight {
+    right: 10px;
+}

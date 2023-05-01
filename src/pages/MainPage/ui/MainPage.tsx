@@ -1,5 +1,10 @@
 import { BannersRow } from "widgets/BannersRow"
-import { BannerWithProductsRow, ProductsRow, ProducstRowVariant } from "widgets/ProductCarousel"
+import {
+    BannerWithProductsRow,
+    ProductsRow,
+    ProducstRowVariant,
+    ProductsSale,
+} from "widgets/ProductCarousel"
 import { BannerSlider, SingleBanner } from "widgets/Banner"
 
 import { CatalogSidebarNav } from "entities/CatalogNavigation/ui/CatalogSidebar/CatalogSidebarNav/CatalogSidebarNav" // change
@@ -22,7 +27,7 @@ export function MainPage() {
                         <CatalogSidebarNav />
                     </div>
                     <BannerSlider />
-                    <div style={{ background: "white", width: "100%" }}>Content 2</div>
+                    <ProductsSale />
                 </Row>
 
                 <Row

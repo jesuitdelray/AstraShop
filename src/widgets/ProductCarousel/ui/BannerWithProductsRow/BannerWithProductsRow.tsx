@@ -35,6 +35,7 @@ export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
                     isLoading={false}
                     list={topProducts || []}
                     variant={IProductSwiperVariant.WITH_BANNER}
+                    isWithPagination
                 />
             </div>
         </div>

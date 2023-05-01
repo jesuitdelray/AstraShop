@@ -74,6 +74,7 @@ export function ProductsRow(props: IProductsRowProps) {
                     variant={IProductSwiperVariant.FULL}
                     isLoading={false}
                     list={topProducts || []}
+                    isWithPagination
                 />
             </div>
         </div>
