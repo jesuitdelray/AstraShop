@@ -1,0 +1,20 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 20px;
+}
+
+.banner {
+    img {
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+}
+
+.title {
+    @include typography-size-h1;
+
+    margin-bottom: 27px;
+    text-align: center;
+}

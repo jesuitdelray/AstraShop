@@ -1,6 +1,5 @@
 import { BannersRow } from "widgets/BannersRow"
-import { TopBanner } from "widgets/TopBanner"
-import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
+import { BannerWithProductsRow, ProductsRow, ProducstRowVariant } from "widgets/ProductCarousel"
 import { BannerSlider, SingleBanner } from "widgets/Banner"
 
 import { CatalogSidebarNav } from "entities/CatalogNavigation/ui/CatalogSidebar/CatalogSidebarNav/CatalogSidebarNav" // change
@@ -38,7 +37,7 @@ export function MainPage() {
                 </Row>
 
                 <Row>
-                    <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
+                    <BannerWithProductsRow id={1} />
                 </Row>
 
                 <Row>
@@ -46,7 +45,7 @@ export function MainPage() {
                 </Row>
 
                 <Row>
-                    <ProductCarousel variant={ProductCarouselVariant.NEW_PRODUCTS} />
+                    <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
                 </Row>
 
                 <Row>
