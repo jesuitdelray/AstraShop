@@ -27,46 +27,48 @@ export function ProductsSwiper(props: IProductSwiperProps) {
     const { isLoading, list, variant } = props
 
     return (
-        <>
-            <Swiper
-                slidesPerView="auto"
-                className={classNames(styles.swiper, {}, ["productCarousel"])}
-                pagination={{
-                    clickable: true,
-                    el: "#pagination",
-                }}
-                modules={[Pagination]}
-                spaceBetween={20}
-            >
-                {isLoading
-                    ? [1, 2, 3, 4, 5, 6, 7, 8].map(item => (
-                          <SwiperSlide key={item}>
-                              <ProductCardSkeleton />
+        <Swiper
+            slidesPerView="auto"
+            className={classNames(styles.swiper, {}, ["productCarousel"])}
+            pagination={{
+                clickable: true,
+                el: styles.paginationEl,
+            }}
+            modules={[Pagination]}
+            spaceBetween={20}
+        >
+            {isLoading
+                ? [1, 2, 3, 4, 5, 6, 7, 8].map(item => (
+                      <SwiperSlide key={item}>
+                          <ProductCardSkeleton />
+                      </SwiperSlide>
+                  ))
+                : list?.map(item => {
+                      const { id, is_new: isNew, name, price, images } = item
+                      return (
+                          <SwiperSlide key={id} className={styles.slide}>
+                              <ProductCard
+                                  id={id}
+                                  is_new={isNew}
+                                  name={name}
+                                  price={price}
+                                  images={images}
+                                  Basket={
+                                      <ToggleProductInBasket
+                                          variant={ToggleProductInBasketVariant.ICON}
+                                          product={item}
+                                      />
+                                  }
+                                  className={styles.product}
+                              />
                           </SwiperSlide>
-                      ))
-                    : list?.map(item => {
-                          const { id, is_new: isNew, name, price, images } = item
-                          return (
-                              <SwiperSlide key={id} className={styles.slide}>
-                                  <ProductCard
-                                      id={id}
-                                      is_new={isNew}
-                                      name={name}
-                                      price={price}
-                                      images={images}
-                                      Basket={
-                                          <ToggleProductInBasket
-                                              variant={ToggleProductInBasketVariant.ICON}
-                                              product={item}
-                                          />
-                                      }
-                                      className={styles.product}
-                                  />
-                              </SwiperSlide>
-                          )
-                      })}
-            </Swiper>
-            <div id="pagination" />
-        </>
+                      )
+                  })}
+            <div
+                className={classNames(styles.paginationEl, {}, [
+                    "swiper-pagination swiper-pagination-timeline-page",
+                ])}
+            />
+        </Swiper>
     )
 }

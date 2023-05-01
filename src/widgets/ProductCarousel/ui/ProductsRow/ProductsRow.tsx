@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -27,6 +28,7 @@ interface IProductsRowProps {
 export function ProductsRow(props: IProductsRowProps) {
     const { className, variant } = props
 
+    const { t } = useTranslation()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -64,8 +66,9 @@ export function ProductsRow(props: IProductsRowProps) {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            {/* make translations */}
-            <div className={styles.title}>{isTop ? "Top Products" : "New Products"}</div>
+            <div className={styles.title}>
+                {isTop ? t("productsTopProducts") : t("productsNewProducts")}
+            </div>
             <div className={styles.content}>
                 <ProductsSwiper
                     variant={IProductSwiperVariant.FULL}
