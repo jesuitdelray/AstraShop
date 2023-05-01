@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
-
 import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Swiper, SwiperSlide } from "swiper/react"
