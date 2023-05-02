@@ -6,6 +6,7 @@ import {
     ProductsSale,
 } from "widgets/ProductCarousel"
 import { BannerSlider, SingleBanner } from "widgets/Banner"
+import { ScrollToTop } from "shared/components/ScrollToTop"
 
 import { CatalogSidebarNav } from "entities/CatalogNavigation/ui/CatalogSidebar/CatalogSidebarNav/CatalogSidebarNav" // change
 
@@ -57,6 +58,7 @@ export function MainPage() {
                     <BannersRow />
                 </Row>
             </Layout>
+            <ScrollToTop offsetY={300} />
         </div>
     )
 }
