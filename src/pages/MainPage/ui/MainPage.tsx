@@ -25,7 +25,7 @@ export function MainPage() {
                     gap="10px"
                 >
                     <div style={{ background: "white", width: "100%" }}>
-                        <CatalogSidebarNav />
+                        {/* <CatalogSidebarNav /> */}
                     </div>
                     <BannerSlider />
                     <ProductsSale />
