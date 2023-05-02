@@ -77,15 +77,15 @@ export function CatalogSidebarNav() {
                             onMouseEnter={modalOpenHandler}
                             onMouseLeave={mouseLeaveHandler}
                         >
+                            {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
                             <AppLink
                                 to={`${RoutePath.category}/${id}`}
                                 onClick={() => setHovered(-1)}
                                 className={styles.link}
                             >
-                                {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
                                 {item.name}
-                                <ChevronRightSimple size={14} />
                             </AppLink>
+                            <ChevronRightSimple size={14} />
                         </div>
                     )
                 })}

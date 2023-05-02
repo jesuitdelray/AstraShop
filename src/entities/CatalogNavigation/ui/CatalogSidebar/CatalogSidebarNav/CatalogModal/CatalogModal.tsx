@@ -65,15 +65,15 @@ export const CatalogModal = (props: ModalProps) => {
                                     onMouseLeave={mouseLeave}
                                     className={cls.modalLinkContainer}
                                 >
+                                    {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
                                     <AppLink
                                         to={`${RoutePath.category}/${id}`}
                                         onClick={() => onClose?.()}
                                         className={cls.modalLink}
                                     >
-                                        {icon ? <img src={icon} alt="svg" /> : <BoxIcon />}
                                         {item.name}
-                                        <ChevronRightSimple size={14} />
                                     </AppLink>
+                                    <ChevronRightSimple size={14} />
                                 </div>
                             )
                         })}

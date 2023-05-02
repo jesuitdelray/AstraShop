@@ -54,21 +54,33 @@
 }
 
 .modalLinkContainer {
-    padding: 10px 0 10px 5px;
     min-height: 45px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 20px minmax(150px, 1fr) 40px;
+    column-gap: 10px;
 
     svg {
-        margin: 0 5px 0 auto;
+        justify-self: center;
     }
 
     img {
         width: 25px;
-        margin-right: 5px;
+        margin: 0 5px;
+    }
+
+    .modalLink {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 14px;
     }
 
     &:hover {
         background-color: var(--color-accent);
-        border-radius: 5px;
+        border-radius: 6px;
 
         a {
             text-decoration: none;
@@ -78,12 +90,6 @@
         img {
             fill: var(--color-white);
         }
-    }
-
-    .modalLink {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
     }
 }
 
