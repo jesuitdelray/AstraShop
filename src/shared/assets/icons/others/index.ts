@@ -22,6 +22,7 @@ import ChangeLanguageIcon from "./language.svg"
 import { ChevronRight } from "./ChevronRight"
 import { ChevronLeft } from "./ChevronLeft"
 import { ChevronRightSimple } from "./ChevronRightSimple"
+import { ChevronTop } from "./ChevronTop"
 
 export {
     MinusIcon,
@@ -48,4 +49,5 @@ export {
     ChevronLeft,
     ChevronRight,
     ChevronRightSimple,
+    ChevronTop,
 }
