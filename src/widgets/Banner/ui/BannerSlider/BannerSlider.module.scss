@@ -10,6 +10,18 @@
     height: 100%;
     object-fit: cover;
     border-radius: 6px;
+    opacity: 0;
+    animation: fade-in 0.8s ease forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .pagination {
