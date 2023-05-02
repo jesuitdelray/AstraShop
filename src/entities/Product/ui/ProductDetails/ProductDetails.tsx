@@ -67,7 +67,7 @@ export function ProductDetails(props: ProductDetailsProps) {
                             color={TypographyColor.DARK_GRAY}
                             className={styles.price}
                         >
-                            {`${price} ${currency}`}
+                            {`${currency} ${price.toLocaleString()}`}
                         </Typography>
                     </div>
                     <ProductImages list={images} className={styles.images} />
