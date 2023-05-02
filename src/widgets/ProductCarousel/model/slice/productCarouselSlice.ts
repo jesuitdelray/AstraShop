@@ -6,8 +6,8 @@ import { ProductCarouselSchema } from "../types/productDetailsSchema"
 import { plugProductsData } from "../../const/plug"
 
 const initialState: ProductCarouselSchema = {
-    topProducts: plugProductsData /* undefined */,
-    newProducts: plugProductsData /* undefined */,
+    topProducts: undefined,
+    newProducts: undefined,
     isLoadingTop: false,
     isLoadingNew: false,
     errorTop: undefined,
