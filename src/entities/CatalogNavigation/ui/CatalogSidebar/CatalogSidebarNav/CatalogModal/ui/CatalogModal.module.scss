@@ -5,10 +5,9 @@
     right: 0;
     left: 0;
     pointer-events: none;
-    z-index: -1;
+    z-index: 10;
     color: var(--color-base);
     transition: 0.3s all ease;
-    border: 1px solid red;
 }
 
 .overlay {
@@ -18,26 +17,93 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.3s all ease;
+    opacity: 0;
+    transition: 0.3s opacity ease;
     cursor: pointer;
 }
 
 .content {
-    padding: 20px;
-    border-radius: 12px;
-    background: var(--color-bg);
-    transition: 0.3s all ease;
-    max-width: 60%;
+    background-color: white;
+    position: absolute;
+    padding: 10px 5px;
+    border-radius: 5px 0 0 5px;
+
+    .modalContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
+        &:hover::-webkit-scrollbar {
+            width: 3px;
+            background-color: var(--color-light-gray);
+            border-radius: 10px;
+        }
+
+        &:hover::-webkit-scrollbar-thumb {
+            background-color: var(--color-dark-gray);
+            border-radius: 10px;
+            background-clip: padding-box;
+        }
+    }
+}
+
+.modalLinkContainer {
+    padding: 10px 0 10px 5px;
+
+    svg {
+        margin: 0 5px 0 auto;
+    }
+
+    img {
+        width: 25px;
+        margin-right: 5px;
+    }
+
+    &:hover {
+        background-color: var(--color-accent);
+        border-radius: 5px 0 0 5px;
+
+        a {
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        img {
+            fill: var(--color-white);
+        }
+    }
+
+    .modalLink {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
 }
 
 .isOpen {
     pointer-events: auto;
     z-index: var(--modal-z-index);
     transition: 0.3s all ease;
+
+    .overlay {
+        opacity: 1;
+    }
 }
 
 .isOpening {
+    .overlay {
+        opacity: 0;
+    }
 }
 
 .isClosing {
+    .overlay {
+        opacity: 0;
+    }
 }

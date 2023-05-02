@@ -1,44 +1,105 @@
 import { classNames, Mods } from "shared/lib/classNames/classNames"
-import { CSSProperties, ReactNode, useEffect, useState } from "react"
+import { CSSProperties, useEffect, useState } from "react"
+import { AppLink } from "shared/ui/AppLink/AppLink"
+import { RoutePath } from "shared/config/routeConfig/const"
+import { CrossIcon } from "shared/assets/icons/others"
+import {
+    navigationSubcategory,
+    navigationTreeType,
+} from "entities/CatalogNavigation/model/types/list"
 import cls from "./SubCatalogModal.module.scss"
 import { Portal } from "./components/Portal"
 
+interface SubMenuProps {
+    list: navigationSubcategory[]
+    isOpen: boolean
+    className?: string
+    onLinkClick?: () => void
+}
+
+function SubMenu({ list, isOpen, onLinkClick, className }: SubMenuProps) {
+    if (!isOpen) return null
+
+    return (
+        <div className={classNames(cls.subMenu, {}, [className])}>
+            {list.map(item => {
+                const { id, name } = item
+                return (
+                    <AppLink key={id} to={`${RoutePath.sub_category}/${id}`} onClick={onLinkClick}>
+                        {name}
+                    </AppLink>
+                )
+            })}
+        </div>
+    )
+}
+
 interface ModalProps {
     className?: string
-    children: ReactNode
     isOpen: boolean
-    styles?: CSSProperties
+    navTree: navigationTreeType
+    hoveredId: number
+    styles: CSSProperties
     onClose: () => void
 }
 
 export const SubCatalogModal = (props: ModalProps) => {
-    const { className, children, isOpen, onClose, styles } = props
+    const { className, isOpen, onClose, styles, navTree, hoveredId } = props
+    const [isOpening, setIsOpening] = useState(false)
     const [isClosing, setIsClosing] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
 
-    /*   useEffect(() => {
+    useEffect(() => {
         if (isOpen && !isMounted) {
+            setIsOpening(true)
             setIsMounted(true)
+            setTimeout(() => {
+                setIsOpening(false)
+            }, 200)
         } else if (!isOpen && isMounted) {
             setIsClosing(true)
             setTimeout(() => {
                 setIsClosing(false)
                 setIsMounted(false)
-            }, 500)
+            }, 100)
         }
-    }, [isOpen, isMounted]) */
+    }, [isOpen, isMounted])
 
     const mods: Mods = {
+        [cls.isOpen]: isMounted,
         [cls.isClosing]: isClosing,
+        [cls.isOpening]: isOpening,
     }
 
     if (!isOpen) return null
 
     return (
         <Portal>
-            <div className={classNames(cls.Modal, mods, [className])} onClick={() => onClose?.()}>
+            <div className={classNames(cls.modal, mods, [className])} onClick={() => onClose?.()}>
                 <div className={cls.content} style={styles} onClick={e => e.stopPropagation()}>
-                    {children}
+                    {navTree?.map(item => {
+                        const { id, categories: subCategories } = item
+                        return (
+                            <div
+                                className={classNames(
+                                    cls.subMenuModalContainer,
+                                    { [cls.none]: hoveredId !== id },
+                                    []
+                                )}
+                            >
+                                <SubMenu
+                                    list={subCategories}
+                                    isOpen={
+                                        hoveredId === id &&
+                                        !!subCategories &&
+                                        subCategories?.length > 0
+                                    }
+                                    onLinkClick={() => onClose?.()}
+                                />
+                            </div>
+                        )
+                    })}
+                    <CrossIcon className={cls.crossIcon} onClick={() => onClose?.()} />
                 </div>
             </div>
         </Portal>
