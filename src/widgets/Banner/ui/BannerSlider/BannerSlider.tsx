@@ -76,8 +76,9 @@ export function BannerSlider() {
                 <Button
                     variant={ButtonVariant.FILLED_RED}
                     onClick={() => navigate(slides[current].link)}
+                    className={styles.btn}
                 >
-                    Click
+                    Explore
                 </Button>
             </div>
         </div>

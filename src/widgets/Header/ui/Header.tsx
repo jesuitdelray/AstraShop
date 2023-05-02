@@ -31,7 +31,7 @@ export function Header(props: HeaderProps) {
 
                     <SearchProduct className={styles.search} />
 
-                    <HeaderLeft className={styles.headerLeft} />
+                    <HeaderLeft className={styles.headerLeft} isMainPage={isMainPage} />
 
                     <NavigationList
                         ChangeLanguage={
