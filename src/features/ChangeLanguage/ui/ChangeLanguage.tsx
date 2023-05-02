@@ -9,7 +9,16 @@ import { getStorageLanguage } from "../model/selectors/changeLanguageSelectors"
 import { Languages, languagesData } from "../config/config"
 import styles from "./ChangeLanguage.module.scss"
 
-export function ChangeLanguage() {
+export enum ChangeLanguageColor {
+    NORMAL = "normal",
+    INVERTED = "inverted",
+}
+
+interface IChangeLanguageProps {
+    color?: ChangeLanguageColor
+}
+
+export function ChangeLanguage({ color = ChangeLanguageColor.NORMAL }: IChangeLanguageProps) {
     const currentLanguage = useSelector(getStorageLanguage)
     const [dropdownActive, setDropdownActive] = useState(false)
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -40,6 +49,7 @@ export function ChangeLanguage() {
             setDropdownActive(false)
         }, delay)
     }
+
     return (
         <div
             className={styles.wrapper}
@@ -47,7 +57,7 @@ export function ChangeLanguage() {
             onMouseEnter={onMouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
         >
-            <ChangeLanguageIcon className={styles.menuItem} />
+            <ChangeLanguageIcon className={classNames(styles.menuItem, {}, [styles[color]])} />
             {dropdownActive && (
                 <div ref={dropdownRef} className={styles.languageListContainer}>
                     {languagesData.map(language => {
