@@ -5,14 +5,14 @@ import { AppLink } from "shared/ui/AppLink/AppLink"
 import { BoxIcon } from "shared/assets/icons/list"
 import { ChevronRightSimple } from "shared/assets/icons/others"
 import styles from "./CatalogSidebarNav.module.scss"
-import { CatalogModal } from "./CatalogModal"
+import { CatalogModal } from "./CatalogModal/CatalogModal"
+import { SubCatalogModal } from "./SubCatalogModal/SubCatalogModal"
 import { navigationTreeType } from "../../../model/types/list"
 import { fetchNavigationTree } from "../../../model/services/fetchNavigationTree/fetchNavigationTree"
 import {
     getNavigationTree,
     getNavigationTreeError,
 } from "../../../model/selectors/sidebarNavigationSelectors"
-import { SubCatalogModal } from "./SubCatalogModal"
 
 export function CatalogSidebarNav() {
     const [hovered, setHovered] = useState(-1)
@@ -67,15 +67,16 @@ export function CatalogSidebarNav() {
 
     return (
         <div className={styles.wrapper} ref={containerRef}>
-            <div
-                className={styles.container}
-                onMouseEnter={modalOpenHandler}
-                onMouseLeave={mouseLeaveHandler}
-            >
+            <div className={styles.container}>
                 {navigationTree.map(item => {
                     const { id, icon } = item
                     return (
-                        <div key={id} className={styles.linkContainer}>
+                        <div
+                            key={id}
+                            className={styles.linkContainer}
+                            onMouseEnter={modalOpenHandler}
+                            onMouseLeave={mouseLeaveHandler}
+                        >
                             <AppLink
                                 to={`${RoutePath.category}/${id}`}
                                 onClick={() => setHovered(-1)}

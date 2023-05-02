@@ -55,6 +55,7 @@
 
 .modalLinkContainer {
     padding: 10px 0 10px 5px;
+    min-height: 45px;
 
     svg {
         margin: 0 5px 0 auto;
@@ -67,7 +68,7 @@
 
     &:hover {
         background-color: var(--color-accent);
-        border-radius: 5px 0 0 5px;
+        border-radius: 5px;
 
         a {
             text-decoration: none;

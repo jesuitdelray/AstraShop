@@ -56,6 +56,7 @@
         .crossIcon {
             border-radius: 50%;
             margin-right: 10px;
+            cursor: pointer;
 
             &:hover > :last-child {
                 fill: red;

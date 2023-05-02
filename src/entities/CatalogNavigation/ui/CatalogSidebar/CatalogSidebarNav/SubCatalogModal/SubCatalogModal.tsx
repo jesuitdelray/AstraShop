@@ -1,14 +1,11 @@
-import { classNames, Mods } from "shared/lib/classNames/classNames"
 import { CSSProperties, useEffect, useState } from "react"
+import { classNames, Mods } from "shared/lib/classNames/classNames"
 import { AppLink } from "shared/ui/AppLink/AppLink"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { CrossIcon } from "shared/assets/icons/others"
-import {
-    navigationSubcategory,
-    navigationTreeType,
-} from "entities/CatalogNavigation/model/types/list"
+import { navigationSubcategory, navigationTreeType } from "../../../../model/types/list"
+import { Portal } from "../Portal/Portal"
 import cls from "./SubCatalogModal.module.scss"
-import { Portal } from "./components/Portal"
 
 interface SubMenuProps {
     list: navigationSubcategory[]

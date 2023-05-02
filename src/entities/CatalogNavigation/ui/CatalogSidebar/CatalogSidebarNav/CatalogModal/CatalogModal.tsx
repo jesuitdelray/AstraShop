@@ -2,11 +2,11 @@ import { classNames, Mods } from "shared/lib/classNames/classNames"
 import { CSSProperties, useEffect, useState } from "react"
 import { BoxIcon } from "shared/assets/icons/list"
 import { AppLink } from "shared/ui/AppLink/AppLink"
-import { navigationTreeType } from "entities/CatalogNavigation/model/types/list"
 import { ChevronRightSimple } from "shared/assets/icons/others"
 import { RoutePath } from "shared/config/routeConfig/const"
+import { navigationTreeType } from "../../../../model/types/list"
+import { Portal } from "../Portal/Portal"
 import cls from "./CatalogModal.module.scss"
-import { Portal } from "./components/Portal"
 
 interface ModalProps {
     className?: string
