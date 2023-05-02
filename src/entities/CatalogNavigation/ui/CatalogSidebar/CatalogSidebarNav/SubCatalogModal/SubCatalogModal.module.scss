@@ -4,7 +4,7 @@
         position: fixed;
         display: flex;
         border-radius: 0 6px 6px 0;
-        min-width: 300px;
+        min-width: 400px;
         padding: 10px 5px 10px 10px;
         z-index: var(--modal-z-index);
         opacity: 0;
@@ -43,7 +43,7 @@
 
                 a {
                     width: fit-content;
-                    font-size: 14px;
+                    font-size: var(--font-size-base);
                     margin-bottom: 10px;
                 }
 
