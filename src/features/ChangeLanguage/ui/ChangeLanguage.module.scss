@@ -5,9 +5,16 @@
     .menuItem {
         position: relative;
         width: 22px;
-        fill: var(--color-dark-gray);
         margin: 0 16px;
         cursor: pointer;
+
+        &.normal {
+            fill: var(--color-dark-gray);
+        }
+
+        &.inverted {
+            fill: var(--color-white);
+        }
 
         &:hover {
             fill: var(--color-accent);

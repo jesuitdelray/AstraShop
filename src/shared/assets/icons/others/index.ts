@@ -21,6 +21,7 @@ import AddToBasket from "./basket-add.svg"
 import ChangeLanguageIcon from "./language.svg"
 import { ChevronRight } from "./ChevronRight"
 import { ChevronLeft } from "./ChevronLeft"
+import { ChevronTop } from "./ChevronTop"
 
 export {
     MinusIcon,
@@ -46,4 +47,5 @@ export {
     ChangeLanguageIcon,
     ChevronLeft,
     ChevronRight,
+    ChevronTop,
 }

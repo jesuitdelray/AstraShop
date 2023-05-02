@@ -1,7 +1,12 @@
 import { BannersRow } from "widgets/BannersRow"
-import { TopBanner } from "widgets/TopBanner"
-import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
+import {
+    BannerWithProductsRow,
+    ProductsRow,
+    ProducstRowVariant,
+    ProductsSale,
+} from "widgets/ProductCarousel"
 import { BannerSlider, SingleBanner } from "widgets/Banner"
+import { ScrollToTop } from "shared/components/ScrollToTop"
 
 import { CatalogSidebarNav } from "entities/CatalogNavigation/ui/CatalogSidebar/CatalogSidebarNav/CatalogSidebarNav" // change
 
@@ -14,31 +19,32 @@ export function MainPage() {
                 <Row
                     schema={{
                         0: [0, 1, 0],
-                        1200: [0, 5, 1],
-                        1600: [15, 65, 20],
+                        960: [2, 5, 0],
+                        1200: [2, 5, 2],
+                        1600: [1, 3, 1],
                     }}
                     gap="10px"
+                    height="480px"
                 >
-                    <div style={{ background: "white", width: "100%" }}>
+                    <div style={{ background: "white", width: "100%", height: "100%" }}>
                         <CatalogSidebarNav />
                     </div>
                     <BannerSlider />
-                    <div style={{ background: "white", width: "100%" }}>Content 2</div>
+                    <ProductsSale />
                 </Row>
 
                 <Row
                     schema={{
-                        0: [1, 1],
-                        1200: [0, 0],
+                        0: [1],
+                        1200: [0],
                     }}
                     gap="10px"
                 >
-                    <CatalogSidebarNav />
-                    <div style={{ background: "white", width: "100%" }}>Content 2</div>
+                    <ProductsSale />
                 </Row>
 
                 <Row>
-                    <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
+                    <BannerWithProductsRow id={1} />
                 </Row>
 
                 <Row>
@@ -46,13 +52,14 @@ export function MainPage() {
                 </Row>
 
                 <Row>
-                    <ProductCarousel variant={ProductCarouselVariant.NEW_PRODUCTS} />
+                    <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
                 </Row>
 
                 <Row>
                     <BannersRow />
                 </Row>
             </Layout>
+            <ScrollToTop offsetY={300} />
         </div>
     )
 }

@@ -4,8 +4,8 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useSearchParams } from "react-router-dom"
 import { BannersRow } from "widgets/BannersRow"
+import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
 import { basketActions } from "entities/Basket"
-import { ProductCarousel, ProductCarouselVariant } from "widgets/ProductCarousel"
 import { SuccessOrderModal } from "./SuccessOrderModal/SuccessOrderModal"
 import { PaymentErrorModal } from "./PaymentErrorModal/PaymentErrorModal"
 
@@ -31,9 +31,10 @@ export function OrderPage() {
             <PaymentErrorModal />
             <div>
                 <SubmitOrder />
-                <ProductCarousel variant={ProductCarouselVariant.TOP_PRODUCTS} />
+                <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
+
                 <BannersRow />
-                <ProductCarousel variant={ProductCarouselVariant.NEW_PRODUCTS} />
+                <ProductsRow variant={ProducstRowVariant.NEW_PRODUCTS} />
             </div>
         </>
     )

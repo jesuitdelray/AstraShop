@@ -1,0 +1,14 @@
+.container {
+    padding-bottom: 40px;
+}
+
+.title {
+    @include typography-size-h1;
+
+    margin-bottom: 27px;
+    text-align: center;
+}
+
+.content {
+    display: grid;
+}

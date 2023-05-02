@@ -1,0 +1,30 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+}
+
+.banner {
+    padding-bottom: 40px;
+    min-height: 300px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+}
+
+.title {
+    @include typography-size-h1;
+
+    margin-bottom: 27px;
+    text-align: center;
+}
+
+@media (min-width: 960px) {
+    .content {
+        grid-template-columns: 1fr 2fr;
+    }
+}

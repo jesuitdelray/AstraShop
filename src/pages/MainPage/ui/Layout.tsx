@@ -49,11 +49,10 @@ export function Row({
                         display: "grid",
                         gridTemplateColumns,
                         gap,
-                        height,
                     }}
                 >
                     {value.map((_, index) => (
-                        <div style={{ display: value[index] === 0 ? "none" : "block" }}>
+                        <div style={{ display: value[index] === 0 ? "none" : "block", height }}>
                             {childrenArray[index]}
                         </div>
                     ))}

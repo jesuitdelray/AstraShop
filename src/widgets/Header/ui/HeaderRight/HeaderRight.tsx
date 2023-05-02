@@ -1,10 +1,14 @@
 import { getModalsCurrent, modalsActions, ModalsList } from "entities/ModalSlider"
-import { getBasketProducts, SmallBasket } from "entities/Basket"
+import { getBasketProducts, SmallBasket, SmallBasketColor } from "entities/Basket"
 import { useDispatch, useSelector } from "react-redux"
 import { CrossIcon } from "shared/assets/icons/others"
 import styles from "./HeaderRight.module.scss"
 
-export function HeaderRight() {
+interface IHeaderRightProps {
+    isMainPage: boolean
+}
+
+export function HeaderRight({ isMainPage }: IHeaderRightProps) {
     const dispatch = useDispatch()
     const currentModal = useSelector(getModalsCurrent)
     const basketProducts = useSelector(getBasketProducts)
@@ -20,6 +24,7 @@ export function HeaderRight() {
             className={styles.basket}
             onClick={() => dispatch(modalsActions.openBasket())}
             basketCount={totalProducts || 0}
+            color={isMainPage ? SmallBasketColor.INVERTED : SmallBasketColor.NORMAL}
         />
     )
 }
