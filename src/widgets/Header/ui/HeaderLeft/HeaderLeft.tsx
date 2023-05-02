@@ -9,9 +9,10 @@ import styles from "./HeaderLeft.module.scss"
 
 interface HeaderLeftProps {
     className?: string
+    isMainPage?: boolean
 }
 
-export function HeaderLeft({ className }: HeaderLeftProps) {
+export function HeaderLeft({ className, isMainPage }: HeaderLeftProps) {
     const dispatch = useDispatch()
 
     const currentModal = useSelector(getModalsCurrent)
@@ -24,7 +25,7 @@ export function HeaderLeft({ className }: HeaderLeftProps) {
                 return (
                     <CrossIcon
                         onClick={() => dispatch(modalsActions.close())}
-                        className={styles.icon}
+                        className={classNames(styles.icon, { [styles.inverted]: isMainPage })}
                     />
                 )
             case ModalsList.BASKET:
@@ -32,19 +33,19 @@ export function HeaderLeft({ className }: HeaderLeftProps) {
                     <Typography variant={TypographyVariant.H3}>{t("basket")}</Typography>
                 ) : (
                     <MobileBurgerIcon
-                        className={styles.icon}
+                        className={classNames(styles.icon, { [styles.inverted]: isMainPage })}
                         onClick={() => dispatch(modalsActions.openBurger())}
                     />
                 )
             default:
                 return (
                     <MobileBurgerIcon
-                        className={styles.icon}
+                        className={classNames(styles.icon, { [styles.inverted]: isMainPage })}
                         onClick={() => dispatch(modalsActions.openBurger())}
                     />
                 )
         }
-    }, [currentModal, dispatch, t])
+    }, [currentModal, dispatch, t, isMainPage])
 
     return <div className={classNames(styles.container, {}, [className])}>{switcher}</div>
 }

@@ -19,13 +19,15 @@ export function MainPage() {
                 <Row
                     schema={{
                         0: [0, 1, 0],
-                        1200: [0, 5, 1],
-                        1600: [15, 65, 20],
+                        960: [2, 5, 0],
+                        1200: [2, 5, 2],
+                        1600: [1, 3, 1],
                     }}
                     gap="10px"
+                    height="480px"
                 >
-                    <div style={{ background: "white", width: "100%" }}>
-                        {/* <CatalogSidebarNav /> */}
+                    <div style={{ background: "white", width: "100%", height: "100%" }}>
+                        <CatalogSidebarNav />
                     </div>
                     <BannerSlider />
                     <ProductsSale />
@@ -33,13 +35,12 @@ export function MainPage() {
 
                 <Row
                     schema={{
-                        0: [1, 1],
-                        1200: [0, 0],
+                        0: [1],
+                        1200: [0],
                     }}
                     gap="10px"
                 >
-                    <CatalogSidebarNav />
-                    <div style={{ background: "white", width: "100%" }}>Content 2</div>
+                    <ProductsSale />
                 </Row>
 
                 <Row>
