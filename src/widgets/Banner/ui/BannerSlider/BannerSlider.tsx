@@ -50,7 +50,8 @@ export function BannerSlider() {
         <div className={styles.container}>
             {slides.map(({ img }, index) => {
                 if (current === index) {
-                    return <img src={img} alt="" className={styles.img} />
+                    // return <div className={styles.img} style={{ backgroundImage: `url(${img})` }} />
+                    return <div className={styles.img} />
                 }
                 return null
             })}

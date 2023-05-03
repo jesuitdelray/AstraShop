@@ -32,15 +32,15 @@ export const bannerSliderList = [
     { id: 3, link: `${RoutePath.category}/93`, img: phoneImage3 },
     { id: 4, link: `${RoutePath.category}/100`, img: phoneImage4 },
 
-    { id: 1, link: `${RoutePath.category}/87`, img: tabletImage1 },
-    { id: 2, link: `${RoutePath.category}/34`, img: tabletImage2 },
-    { id: 3, link: `${RoutePath.category}/93`, img: tabletImage3 },
-    { id: 4, link: `${RoutePath.category}/100`, img: tabletImage4 },
+    { id: 5, link: `${RoutePath.category}/87`, img: tabletImage1 },
+    { id: 6, link: `${RoutePath.category}/34`, img: tabletImage2 },
+    { id: 7, link: `${RoutePath.category}/93`, img: tabletImage3 },
+    { id: 8, link: `${RoutePath.category}/100`, img: tabletImage4 },
 
-    { id: 1, link: `${RoutePath.category}/87`, img: desktopImg1 },
-    { id: 2, link: `${RoutePath.category}/34`, img: desktopImg2 },
-    { id: 3, link: `${RoutePath.category}/93`, img: desktopImg3 },
-    { id: 4, link: `${RoutePath.category}/100`, img: desktopImg4 },
+    { id: 9, link: `${RoutePath.category}/87`, img: desktopImg1 },
+    { id: 10, link: `${RoutePath.category}/34`, img: desktopImg2 },
+    { id: 11, link: `${RoutePath.category}/93`, img: desktopImg3 },
+    { id: 12, link: `${RoutePath.category}/100`, img: desktopImg4 },
 ]
 
 export const singleBannerList = [
@@ -48,11 +48,11 @@ export const singleBannerList = [
     { id: 2, link: `${RoutePath.category}/101`, img: phoneSingle2 },
     { id: 3, link: `${RoutePath.category}/93`, img: phoneSingle3 },
 
-    { id: 1, link: `${RoutePath.category}/86`, img: tabletSingle1 },
-    { id: 2, link: `${RoutePath.category}/101`, img: tabletSingle2 },
-    { id: 3, link: `${RoutePath.category}/93`, img: tabletSingle3 },
+    { id: 4, link: `${RoutePath.category}/86`, img: tabletSingle1 },
+    { id: 5, link: `${RoutePath.category}/101`, img: tabletSingle2 },
+    { id: 6, link: `${RoutePath.category}/93`, img: tabletSingle3 },
 
-    { id: 1, link: `${RoutePath.category}/86`, img: desktopSingle1 },
-    { id: 2, link: `${RoutePath.category}/101`, img: desktopSingle2 },
-    { id: 3, link: `${RoutePath.category}/93`, img: desktopSingle3 },
+    { id: 7, link: `${RoutePath.category}/86`, img: desktopSingle1 },
+    { id: 8, link: `${RoutePath.category}/101`, img: desktopSingle2 },
+    { id: 9, link: `${RoutePath.category}/93`, img: desktopSingle3 },
 ]

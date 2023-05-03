@@ -28,7 +28,7 @@ export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
                 navigate(link)
             }}
         >
-            <img src={img} alt="" className={styles.img} />
+            <div className={styles.img} />
             <div className={styles.cta}>
                 <Button variant={ButtonVariant.FILLED_RED} onClick={() => navigate(link)}>
                     Click
