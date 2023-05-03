@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { singleBannerList as slides } from "widgets/Banner/const/lists"
 import { classNames } from "shared/lib/classNames/classNames"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
+import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./SingleBanner.module.scss"
 
 interface ISingleBannerProps {
@@ -12,15 +14,22 @@ interface ISingleBannerProps {
 
 export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
     const banner = slides[imgIndex]
-
-    const [current, setCurrent] = useState(0)
-
     const navigate = useNavigate()
 
+    const [device, setDevice] = useState<DeviceType>("desktop")
+
+    const debouncedResizeHandler = useDebounce(() => {
+        getCurrentDevice(window.innerWidth, setDevice)
+    }, 500)
+
+    useEffect(() => {
+        window.addEventListener("resize", debouncedResizeHandler)
+        return () => window.removeEventListener("resize", debouncedResizeHandler)
+    }, [debouncedResizeHandler])
+
     if (!banner) return null
-
-    const { link, img } = banner
-
+    const { link, images } = banner
+    const imgSrc = images[device]
     return (
         <div
             className={classNames(styles.container, {}, [className])}
@@ -28,7 +37,7 @@ export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
                 navigate(link)
             }}
         >
-            <div className={styles.img} />
+            <img className={styles.img} src={imgSrc} alt="" />
             <div className={styles.cta}>
                 <Button variant={ButtonVariant.FILLED_RED} onClick={() => navigate(link)}>
                     Click

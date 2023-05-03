@@ -1,3 +1,4 @@
+import { DeviceType } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { RoutePath } from "shared/config/routeConfig/const"
 import phoneImage1 from "./phoneImage31.jpg"
 import phoneImage2 from "./phoneImage32.jpg"
@@ -26,6 +27,12 @@ import phoneSingle1 from "./phoneSingle1.jpg"
 import phoneSingle2 from "./phoneSingle2.jpg"
 import phoneSingle3 from "./phoneSingle3.jpg"
 
+interface IBannerList {
+    id: number
+    link: string
+    images: { [key in DeviceType]: string }
+}
+
 export const bannerSliderList = [
     { id: 1, link: `${RoutePath.category}/87`, img: phoneImage1 },
     { id: 2, link: `${RoutePath.category}/34`, img: phoneImage2 },
@@ -43,16 +50,20 @@ export const bannerSliderList = [
     { id: 12, link: `${RoutePath.category}/100`, img: desktopImg4 },
 ]
 
-export const singleBannerList = [
-    { id: 1, link: `${RoutePath.category}/86`, img: phoneSingle1 },
-    { id: 2, link: `${RoutePath.category}/101`, img: phoneSingle2 },
-    { id: 3, link: `${RoutePath.category}/93`, img: phoneSingle3 },
-
-    { id: 4, link: `${RoutePath.category}/86`, img: tabletSingle1 },
-    { id: 5, link: `${RoutePath.category}/101`, img: tabletSingle2 },
-    { id: 6, link: `${RoutePath.category}/93`, img: tabletSingle3 },
-
-    { id: 7, link: `${RoutePath.category}/86`, img: desktopSingle1 },
-    { id: 8, link: `${RoutePath.category}/101`, img: desktopSingle2 },
-    { id: 9, link: `${RoutePath.category}/93`, img: desktopSingle3 },
+export const singleBannerList: IBannerList[] = [
+    {
+        id: 1,
+        link: `${RoutePath.category}/86`,
+        images: { mobile: phoneSingle1, tablet: tabletSingle1, desktop: desktopSingle1 },
+    },
+    {
+        id: 2,
+        link: `${RoutePath.category}/101`,
+        images: { mobile: phoneSingle2, tablet: tabletSingle2, desktop: desktopSingle2 },
+    },
+    {
+        id: 3,
+        link: `${RoutePath.category}/93`,
+        images: { mobile: phoneSingle3, tablet: tabletSingle3, desktop: desktopSingle3 },
+    },
 ]
