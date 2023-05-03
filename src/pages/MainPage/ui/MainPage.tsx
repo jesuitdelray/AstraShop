@@ -1,11 +1,10 @@
-import { BannersRow } from "widgets/BannersRow"
 import {
     BannerWithProductsRow,
     ProductsRow,
     ProducstRowVariant,
     ProductsSale,
 } from "widgets/ProductCarousel"
-import { BannerSlider, SingleBanner } from "widgets/Banner"
+import { BannersRow, BannerSlider, SingleBanner } from "widgets/Banner"
 import { ScrollToTop } from "shared/components/ScrollToTop"
 import { CatalogSidebarNav } from "entities/CatalogNavigation"
 import { Layout, Row } from "./Layout"

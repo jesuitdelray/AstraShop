@@ -7,7 +7,7 @@ import {
     CurrentTreeItemType,
     catalogNavigationActions,
 } from "entities/CatalogNavigation"
-import { BannersRow } from "widgets/BannersRow"
+import { BannersRow } from "widgets/Banner"
 import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { fetchProductDetails } from "../model/services/fetchProductDetails/fetchProductDetails"

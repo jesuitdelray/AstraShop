@@ -1,5 +1,5 @@
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
-import { BannersRow } from "widgets/BannersRow"
+import { BannersRow } from "widgets/Banner"
 import { useTranslation } from "react-i18next"
 import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
 import styles from "./AboutPage.module.scss"

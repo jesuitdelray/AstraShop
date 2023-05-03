@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
+import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { useNavigate } from "react-router-dom"
 import { classNames } from "shared/lib/classNames/classNames"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
@@ -46,6 +48,17 @@ export function BannerSlider() {
         paginate(direction)
     }
 
+    const [device, setDevice] = useState<DeviceType>("desktop")
+
+    const debouncedResizeHandler = useDebounce(() => {
+        getCurrentDevice(window.innerWidth, setDevice)
+    }, 500)
+
+    useEffect(() => {
+        window.addEventListener("resize", debouncedResizeHandler)
+        return () => window.removeEventListener("resize", debouncedResizeHandler)
+    }, [debouncedResizeHandler])
+
     if (!slides || !slides?.length) return null
     return (
         <div
@@ -58,9 +71,9 @@ export function BannerSlider() {
                 className={styles.carousel}
                 style={{ gridTemplateColumns: `repeat(${slides.length}, 100%)` }}
             >
-                {slides.map(({ img }) => (
+                {slides.map(({ images }) => (
                     <img
-                        src={img}
+                        src={images[device]}
                         alt=""
                         className={styles.img}
                         style={{ transform: `translateX(-${current * 100}%)` }}
