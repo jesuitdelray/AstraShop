@@ -39,27 +39,36 @@
     }
 }
 
+.swiperContainer {
+    display: grid;
+}
+
 .swiper {
     padding-bottom: 15px;
 }
 
-.chevronContainerLeft,
-.chevronContainerRight {
-    border-radius: 50%;
-    background-color: var(--color-white);
-    height: 28px;
+.chevronLeft,
+.chevronRight {
+    height: 40px;
+    width: 40px;
     position: absolute;
+    background: var(--color-light-gray);
     z-index: calc(var(--z-content) + 10);
-    width: 28px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    &.chevronVisible {
+        opacity: 1;
+    }
 }
 
-.chevronContainerLeft {
+.chevronLeft {
     left: 10px;
 }
 
-.chevronContainerRight {
+.chevronRight {
     right: 10px;
 }
