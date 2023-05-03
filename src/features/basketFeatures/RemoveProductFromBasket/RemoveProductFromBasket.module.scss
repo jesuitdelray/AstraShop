@@ -10,7 +10,7 @@
 }
 
 .modal {
-    z-index: 100;
+    z-index: var(--z-modal);
 }
 
 .modalContainer {

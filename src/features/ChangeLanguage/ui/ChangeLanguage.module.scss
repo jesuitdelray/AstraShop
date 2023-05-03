@@ -1,6 +1,6 @@
 .wrapper {
     display: flex;
-    z-index: var(--modal-z-index);
+    z-index: var(--z-modal);
 
     .menuItem {
         position: relative;
@@ -32,7 +32,7 @@
         box-shadow: 0 0 10px 0 rgba(0 0 0 / 20%);
         top: 30px;
         right: 0;
-        z-index: var(--modal-z-index);
+        z-index: var(--z-modal);
 
         .languageContainer {
             display: flex;

@@ -5,7 +5,6 @@
     right: 0;
     left: 0;
     pointer-events: none;
-    z-index: 10;
     color: var(--color-base);
     transition: 0.3s all ease;
 }
@@ -95,7 +94,7 @@
 
 .isOpen {
     pointer-events: auto;
-    z-index: var(--modal-z-index);
+    z-index: var(--z-modal);
     transition: 0.3s all ease;
 
     .overlay {
