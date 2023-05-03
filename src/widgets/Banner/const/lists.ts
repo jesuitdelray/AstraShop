@@ -1,20 +1,69 @@
+import { DeviceType } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { RoutePath } from "shared/config/routeConfig/const"
-import img1 from "./image31.jpg"
-import img2 from "./image32.jpg"
-import img3 from "./image33.jpg"
+import phoneImage1 from "./phoneImage31.jpg"
+import phoneImage2 from "./phoneImage32.jpg"
+import phoneImage3 from "./phoneImage33.jpg"
+import phoneImage4 from "./phoneImage34.jpg"
 
-import single1 from "./single1.jpg"
-import single2 from "./single2.jpg"
-import single3 from "./single3.jpg"
+import tabletImage1 from "./tabletImage31.jpg"
+import tabletImage2 from "./tabletImage32.jpg"
+import tabletImage3 from "./tabletImage33.jpg"
+import tabletImage4 from "./tabletImage34.jpg"
+
+import desktopImg1 from "./desktopImage31.jpg"
+import desktopImg2 from "./desktopImage32.jpg"
+import desktopImg3 from "./desktopImage33.jpg"
+import desktopImg4 from "./desktopImage34.jpg"
+
+import desktopSingle1 from "./desktopSingle1.jpg"
+import desktopSingle2 from "./desktopSingle2.jpg"
+import desktopSingle3 from "./desktopSingle3.jpg"
+
+import tabletSingle1 from "./tabletSingle1.jpg"
+import tabletSingle2 from "./tabletSingle2.jpg"
+import tabletSingle3 from "./tabletSingle3.jpg"
+
+import phoneSingle1 from "./phoneSingle1.jpg"
+import phoneSingle2 from "./phoneSingle2.jpg"
+import phoneSingle3 from "./phoneSingle3.jpg"
+
+interface IBannerList {
+    id: number
+    link: string
+    images: { [key in DeviceType]: string }
+}
 
 export const bannerSliderList = [
-    { id: 1, link: `${RoutePath.category}/87`, img: img1 },
-    { id: 2, link: `${RoutePath.category}/34`, img: img2 },
-    { id: 3, link: `${RoutePath.category}/93`, img: img3 },
+    { id: 1, link: `${RoutePath.category}/87`, img: phoneImage1 },
+    { id: 2, link: `${RoutePath.category}/34`, img: phoneImage2 },
+    { id: 3, link: `${RoutePath.category}/93`, img: phoneImage3 },
+    { id: 4, link: `${RoutePath.category}/100`, img: phoneImage4 },
+
+    { id: 5, link: `${RoutePath.category}/87`, img: tabletImage1 },
+    { id: 6, link: `${RoutePath.category}/34`, img: tabletImage2 },
+    { id: 7, link: `${RoutePath.category}/93`, img: tabletImage3 },
+    { id: 8, link: `${RoutePath.category}/100`, img: tabletImage4 },
+
+    { id: 9, link: `${RoutePath.category}/87`, img: desktopImg1 },
+    { id: 10, link: `${RoutePath.category}/34`, img: desktopImg2 },
+    { id: 11, link: `${RoutePath.category}/93`, img: desktopImg3 },
+    { id: 12, link: `${RoutePath.category}/100`, img: desktopImg4 },
 ]
 
-export const singleBannerList = [
-    { id: 1, link: `${RoutePath.category}/87`, img: single1 },
-    { id: 2, link: `${RoutePath.category}/34`, img: single2 },
-    { id: 3, link: `${RoutePath.category}/93`, img: single3 },
+export const singleBannerList: IBannerList[] = [
+    {
+        id: 1,
+        link: `${RoutePath.category}/86`,
+        images: { mobile: phoneSingle1, tablet: tabletSingle1, desktop: desktopSingle1 },
+    },
+    {
+        id: 2,
+        link: `${RoutePath.category}/101`,
+        images: { mobile: phoneSingle2, tablet: tabletSingle2, desktop: desktopSingle2 },
+    },
+    {
+        id: 3,
+        link: `${RoutePath.category}/93`,
+        images: { mobile: phoneSingle3, tablet: tabletSingle3, desktop: desktopSingle3 },
+    },
 ]
