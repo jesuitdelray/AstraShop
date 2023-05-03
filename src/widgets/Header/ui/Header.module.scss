@@ -47,7 +47,7 @@
     .container {
         grid-template-columns: 1fr;
         grid-template-areas: "search headerLeft basket";
-        z-index: 3;
+        z-index: calc(var(--z-header) + 3);
     }
 
     .search {
@@ -65,7 +65,6 @@
 
     .container {
         grid-template-areas: "search navlist basket";
-        z-index: 3;
     }
 
     .search {
