@@ -38,7 +38,7 @@ export const ProductCard = (props: ProductCardProps) => {
             </div>
             <div className={styles.footer}>
                 <Typography className={styles.footerDescription}>{name}</Typography>
-                <div className={styles.price.toLocaleString()}>
+                <div className={styles.price}>
                     <Typography className={styles.footerPrice} isBold>
                         {`${currency} ${price.toLocaleString()}`}
                     </Typography>

@@ -3,23 +3,29 @@
     height: 100%;
     position: relative;
     border-radius: 6px;
+    z-index: var(--z-content);
 }
 
 .img {
     width: 500px;
     height: 500px;
     border-radius: 6px;
-    background-image: url("../../const/phoneImage31.jpg");
+    opacity: 0;
+    animation: fade-in 0.8s ease forwards;
 }
 
-@media (min-width: 280px) and (max-width: 500) {
-    .img {
-        width: 200px;
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 
 .pagination {
-    z-index: 100;
+    z-index: calc(var(--z-content) + 1);
     position: absolute;
     bottom: 30px;
     left: 50%;

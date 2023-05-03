@@ -7,9 +7,7 @@ import {
 } from "widgets/ProductCarousel"
 import { BannerSlider, SingleBanner } from "widgets/Banner"
 import { ScrollToTop } from "shared/components/ScrollToTop"
-
-import { CatalogSidebarNav } from "entities/CatalogNavigation/ui/CatalogSidebar/CatalogSidebarNav/CatalogSidebarNav" // change
-
+import { CatalogSidebarNav } from "entities/CatalogNavigation"
 import { Layout, Row } from "./Layout"
 
 export function MainPage() {
@@ -26,9 +24,7 @@ export function MainPage() {
                     gap="10px"
                     height="480px"
                 >
-                    <div style={{ background: "white", width: "100%", height: "100%" }}>
-                        <CatalogSidebarNav />
-                    </div>
+                    <CatalogSidebarNav />
                     <BannerSlider />
                     <ProductsSale />
                 </Row>

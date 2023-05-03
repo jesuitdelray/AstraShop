@@ -1,5 +1,7 @@
 import { Logo, LogoVariant } from "entities/Logo/Logo"
+import { useMatch } from "react-router-dom"
 import { ReactElement } from "react"
+import { RoutePath } from "shared/config/routeConfig/const"
 import { classNames } from "shared/lib/classNames/classNames"
 import { SearchProduct } from "features/SearchProduct"
 import { NavigationList, NavigationListVariant, NavigationListColor } from "entities/NavigationList"
@@ -17,27 +19,29 @@ export function Header(props: HeaderProps) {
     const { BurgerModal, BasketModal } = props
 
     const isMainPage = window.location.pathname === "/"
+    const isSubCategoryPage = useMatch(`${RoutePath.sub_category}/:id`)
+    const fullHeader = isMainPage || !!isSubCategoryPage
 
     return (
         <>
             {BurgerModal}
             {BasketModal}
-            <div className={classNames(styles.wrapper, { [styles.main]: isMainPage })}>
+            <div className={classNames(styles.wrapper, { [styles.main]: fullHeader })}>
                 <div className={styles.container}>
                     <Logo
-                        variant={isMainPage ? LogoVariant.INVERTED : LogoVariant.NORMAL}
+                        variant={fullHeader ? LogoVariant.INVERTED : LogoVariant.NORMAL}
                         className={styles.logo}
                     />
 
                     <SearchProduct className={styles.search} />
 
-                    <HeaderLeft className={styles.headerLeft} isMainPage={isMainPage} />
+                    <HeaderLeft className={styles.headerLeft} isMainPage={fullHeader} />
 
                     <NavigationList
                         ChangeLanguage={
                             <ChangeLanguage
                                 color={
-                                    isMainPage
+                                    fullHeader
                                         ? ChangeLanguageColor.INVERTED
                                         : ChangeLanguageColor.NORMAL
                                 }
@@ -46,11 +50,11 @@ export function Header(props: HeaderProps) {
                         className={styles.navlist}
                         variant={NavigationListVariant.DESKTOP}
                         color={
-                            isMainPage ? NavigationListColor.INVERTED : NavigationListColor.NORMAL
+                            fullHeader ? NavigationListColor.INVERTED : NavigationListColor.NORMAL
                         }
                     />
 
-                    <HeaderRight isMainPage={isMainPage} />
+                    <HeaderRight isMainPage={fullHeader} />
                 </div>
             </div>
         </>
