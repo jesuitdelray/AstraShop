@@ -19,7 +19,8 @@ export function Products({ isLoading, products }: ProductsProps) {
                       const { id, is_new: isNew, images, name, price } = product
                       return (
                           <ProductCard
-                              discount="34"
+                              discount={34}
+                              rating={2.4464}
                               key={id}
                               id={id}
                               is_new={isNew}
