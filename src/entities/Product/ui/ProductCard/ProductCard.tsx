@@ -43,7 +43,7 @@ export const ProductCard = (props: ProductCardProps) => {
             className={classNames(styles.container, {}, [className])}
             onClick={() => navigate(`${RoutePath.product_details}/${id}`)}
         >
-            <div className={styles.header}>
+            <div className={styles.imageContainer}>
                 {!!isNew && !isTop && (
                     <Label value={`${t("newProductLabel")}`} className={styles.label} />
                 )}
@@ -54,8 +54,8 @@ export const ProductCard = (props: ProductCardProps) => {
                     src={productImage}
                 />
             </div>
-            <div className={styles.footer}>
-                <Typography className={styles.footerDescription}>{name}</Typography>
+            <div className={styles.descriptionContainer}>
+                <Typography className={styles.name}>{name}</Typography>
                 <div className={styles.price}>
                     {!discount ? (
                         <Typography className={styles.footerPrice} isBold>
