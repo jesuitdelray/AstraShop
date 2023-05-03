@@ -1,7 +1,7 @@
 import { Contacts } from "entities/Contacts"
 import { Schedule } from "entities/Schedule"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
-import { BannersRow } from "widgets/BannersRow"
+import { BannersRow } from "widgets/Banner"
 import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
 import { useTranslation } from "react-i18next"
 import styles from "./ContactsPage.module.scss"

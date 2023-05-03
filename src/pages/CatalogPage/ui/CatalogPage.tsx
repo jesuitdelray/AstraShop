@@ -1,6 +1,6 @@
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Breadcrumbs, CatalogLinks, catalogNavigationActions } from "entities/CatalogNavigation"
-import { BannersRow } from "widgets/BannersRow"
+import { BannersRow } from "widgets/Banner"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
