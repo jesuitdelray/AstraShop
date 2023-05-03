@@ -4,6 +4,7 @@
     position: relative;
     border-radius: 6px;
     z-index: var(--z-content);
+    cursor: pointer;
 }
 
 .img {
@@ -28,42 +29,50 @@
 .pagination {
     z-index: calc(var(--z-content) + 1);
     position: absolute;
-    bottom: 30px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 7px;
+    background: rgba(0 0 0 / 40%);
+    border-radius: 6px;
+    padding: 3px 7px;
 
     .bullet {
-        border: 1px solid var(--color-white);
+        background: var(--color-light-gray);
         border-radius: 50%;
-        width: 17px;
-        height: 17px;
+        width: 7px;
+        height: 7px;
         cursor: pointer;
 
         &.active {
             border: 0;
-            background: yellow;
+            background: var(--color-accent);
         }
     }
 }
 
-.navigation {
+.chevronLeftContainer,
+.chevronRightContainer {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
-    display: flex;
-    gap: 10px;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 
-    svg {
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-
-        path {
-            fill: var(--color-light-gray);
-        }
+    &.isVisible {
+        opacity: 1;
     }
+}
+
+.chevronLeftContainer {
+    left: 20px;
+}
+
+.chevronRightContainer {
+    right: 20px;
 }
 
 .cta {

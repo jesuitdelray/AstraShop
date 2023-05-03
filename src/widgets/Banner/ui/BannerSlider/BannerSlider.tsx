@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { classNames } from "shared/lib/classNames/classNames"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
 import { bannerSliderList as slides } from "../../const/lists"
 import { SLIDER_DELAY } from "../../const/const"
@@ -10,6 +9,7 @@ import styles from "./BannerSlider.module.scss"
 export function BannerSlider() {
     const [isAutoScroll, setIsAutoScroll] = useState(true)
     const [current, setCurrent] = useState(0)
+    const [isHovered, setIsHovered] = useState(false)
 
     const navigate = useNavigate()
 
@@ -47,7 +47,12 @@ export function BannerSlider() {
     }
 
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            onClick={() => navigate(slides[current].link)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             {slides.map(({ img }, index) => {
                 if (current === index) {
                     return <img src={img} alt="" className={styles.img} />
@@ -55,7 +60,7 @@ export function BannerSlider() {
                 return null
             })}
 
-            <div className={styles.pagination}>
+            <div className={styles.pagination} onClick={e => e.stopPropagation()}>
                 {slides.map((item, index) => (
                     <div
                         key={item.id}
@@ -67,20 +72,25 @@ export function BannerSlider() {
                 ))}
             </div>
 
-            <div className={styles.navigation}>
-                <ChevronLeft onClick={() => navigationClickHandler("left")} />
-                <ChevronRight onClick={() => navigationClickHandler("right")} />
-            </div>
+            <ChevronLeft
+                className={classNames(styles.chevronLeftContainer, {
+                    [styles.isVisible]: isHovered,
+                })}
+                onClick={e => {
+                    e.stopPropagation()
+                    navigationClickHandler("left")
+                }}
+            />
 
-            <div className={styles.cta}>
-                <Button
-                    variant={ButtonVariant.FILLED_RED}
-                    onClick={() => navigate(slides[current].link)}
-                    className={styles.btn}
-                >
-                    Explore
-                </Button>
-            </div>
+            <ChevronRight
+                className={classNames(styles.chevronRightContainer, {
+                    [styles.isVisible]: isHovered,
+                })}
+                onClick={e => {
+                    e.stopPropagation()
+                    navigationClickHandler("right")
+                }}
+            />
         </div>
     )
 }
