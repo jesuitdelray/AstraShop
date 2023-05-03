@@ -46,6 +46,7 @@ export function BannerSlider() {
         paginate(direction)
     }
 
+    if (!slides || !slides?.length) return null
     return (
         <div
             className={styles.container}
@@ -53,12 +54,19 @@ export function BannerSlider() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {slides.map(({ img }, index) => {
-                if (current === index) {
-                    return <img src={img} alt="" className={styles.img} />
-                }
-                return null
-            })}
+            <div
+                className={styles.carousel}
+                style={{ gridTemplateColumns: `repeat(${slides.length}, 100%)` }}
+            >
+                {slides.map(({ img }) => (
+                    <img
+                        src={img}
+                        alt=""
+                        className={styles.img}
+                        style={{ transform: `translateX(-${current * 100}%)` }}
+                    />
+                ))}
+            </div>
 
             <div className={styles.pagination} onClick={e => e.stopPropagation()}>
                 {slides.map((item, index) => (
