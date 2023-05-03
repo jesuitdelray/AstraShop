@@ -1,5 +1,5 @@
 import { classNames } from "shared/lib/classNames/classNames"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchTopProducts } from "../../model/services/fetchTopProducts/fetchTopProducts"
 import { getProductCarouselTopProducts } from "../../model/selectors/productCarouselSelector"
@@ -15,6 +15,7 @@ interface IBannerWithProductsRowProps {
 export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
     const { className, id } = props
     const dispatch = useDispatch()
+    const [isHovered, setIsHovered] = useState(false)
 
     useEffect(() => {
         dispatch(fetchTopProducts())
@@ -31,12 +32,19 @@ export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
                 <div className={styles.banner}>
                     <img src={img} alt="" />
                 </div>
-                <ProductsSwiper
-                    isLoading={false}
-                    list={topProducts || []}
-                    variant={IProductSwiperVariant.WITH_BANNER}
-                    isWithPagination
-                />
+
+                <div
+                    className={styles.swiperContainer}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    <ProductsSwiper
+                        isLoading={false}
+                        list={topProducts || []}
+                        variant={IProductSwiperVariant.WITH_BANNER}
+                        isWithPagination={isHovered}
+                    />
+                </div>
             </div>
         </div>
     )

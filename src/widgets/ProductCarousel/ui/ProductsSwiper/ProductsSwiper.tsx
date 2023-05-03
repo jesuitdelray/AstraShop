@@ -39,28 +39,18 @@ export function ProductsSwiper(props: IProductSwiperProps) {
         isWithPagination = false,
     } = props
 
-    const modules = (() => {
-        switch (true) {
-            case isLoading:
-                return []
-            case isWithPagination:
-                return [Pagination, Navigation]
-            case !isWithPagination:
-                return [Navigation]
-            default:
-                return []
-        }
-    })()
-
     return (
         <Swiper
             slidesPerView={slidesPerView || "auto"}
-            className={classNames(styles.swiper, {}, [className, "productCarousel"])}
+            className={classNames(styles.swiper, {}, [
+                className,
+                "productCarousel",
+                isWithPagination ? "" : "noPagination",
+            ])}
             pagination={{
                 clickable: true,
-                el: styles.paginationEl,
             }}
-            modules={modules}
+            modules={[Pagination, Navigation]}
             navigation={{ prevEl: "#prevEl", nextEl: "#nextEl" }}
             spaceBetween={20}
             onSwiper={onSwiper}
@@ -92,12 +82,6 @@ export function ProductsSwiper(props: IProductSwiperProps) {
                           </SwiperSlide>
                       )
                   })}
-
-            <div
-                className={classNames(styles.paginationEl, {}, [
-                    "swiper-pagination swiper-pagination-timeline-page",
-                ])}
-            />
         </Swiper>
     )
 }
