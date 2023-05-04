@@ -2,8 +2,6 @@
 import { Children, ReactElement, ReactNode, useEffect, useState } from "react"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 
-type CSSDimensionType = `${number | string}px` | `${number | string}%` | "auto" | 0
-
 interface IRowProps {
     children: ReactNode
     schema?: { [key: number]: number[] }
