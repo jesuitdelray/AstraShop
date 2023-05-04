@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { v4 as uuid } from "uuid"
 import { classNames } from "shared/lib/classNames/classNames"
 import styles from "./ProductGallery.module.scss"
 import { getProductDetailsImages } from "../../../../model/selectors/productDetailsSelectors"
@@ -15,6 +16,7 @@ export function ProductGallery() {
             <div className={styles.navigation}>
                 {productImages?.map((item, index) => (
                     <div
+                        key={uuid()}
                         className={classNames(styles.smallImgContainer, {
                             [styles.active]: index === current,
                         })}
@@ -27,7 +29,7 @@ export function ProductGallery() {
             <div className={styles.bigImage}>
                 {productImages?.map((item, index) => {
                     if (index === current) {
-                        return <img src={item} alt="" />
+                        return <img src={item} alt="" key={uuid()} />
                     }
                     return null
                 })}
