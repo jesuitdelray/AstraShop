@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, useMemo } from "react"
 import styles from "./Layout.module.scss"
-import { getLayoutColumns } from "../../lib/getLayoutColumns"
+import { getLayoutColumns } from "../../../lib/getLayoutColumns"
 
 type columnType = "left" | "right"
 
