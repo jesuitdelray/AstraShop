@@ -3,7 +3,7 @@
 
 import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
-import { ComparisonProduct, FavoriteProduct } from "features/productCardFeatures"
+import { CompareProducts, AddProductToFavorite } from "features/productFeatures"
 import styles from "./Products.module.scss"
 
 interface ProductsProps {
@@ -33,8 +33,8 @@ export function Products({ isLoading, products }: ProductsProps) {
                                       product={product}
                                   />
                               }
-                              FavoriteProduct={<FavoriteProduct />}
-                              ComparisonProduct={<ComparisonProduct />}
+                              AddProductToFavorite={<AddProductToFavorite />}
+                              CompareProducts={<CompareProducts />}
                           />
                       )
                   })}

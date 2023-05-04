@@ -16,8 +16,8 @@ import { renderStars } from "../../lib/renderStars"
 interface ProductCardProps extends Product {
     currency?: string
     Basket?: ReactElement
-    FavoriteProduct?: ReactElement
-    ComparisonProduct?: ReactElement
+    AddProductToFavorite?: ReactElement
+    CompareProducts?: ReactElement
     isTop?: boolean
     oldPrice?: number
     rating?: number
@@ -29,16 +29,16 @@ export const ProductCard = (props: ProductCardProps) => {
         id,
         is_new: isNew,
         isTop,
-        rating = 0,
+        rating = 5,
         images,
         className,
         name,
         price,
-        oldPrice,
+        oldPrice = 100,
         currency = "$",
         Basket,
-        FavoriteProduct,
-        ComparisonProduct,
+        AddProductToFavorite,
+        CompareProducts,
     } = props
     const productImage = images?.[0] ? images[0] : productPlaceholder
     const { t } = useTranslation()
@@ -63,8 +63,8 @@ export const ProductCard = (props: ProductCardProps) => {
                     )}
                 </div>
                 <div className={styles.cardFeatures}>
-                    {FavoriteProduct}
-                    {ComparisonProduct}
+                    {AddProductToFavorite}
+                    {CompareProducts}
                 </div>
                 <AsyncImage
                     objectFit={ImageFit.COVER}
@@ -110,7 +110,7 @@ export const ProductCard = (props: ProductCardProps) => {
                         </>
                     )}
                 </div>
-                {Basket}
+                <div className={styles.basket}>{Basket}</div>
             </div>
         </div>
     )

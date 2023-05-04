@@ -1,13 +1,13 @@
 import { Heart } from "shared/assets/icons/productCardFeatures"
 import { useState } from "react"
 import { classNames } from "shared/lib/classNames/classNames"
-import styles from "./FavoriteProduct.module.scss"
+import styles from "./AddProductToFavorite.module.scss"
 
-interface FavoriteProductProps {
+interface AddProductToFavoriteProps {
     className?: string
 }
 
-export function FavoriteProduct({ className }: FavoriteProductProps) {
+export function AddProductToFavorite({ className }: AddProductToFavoriteProps) {
     const [isActive, setIsActive] = useState(false)
 
     function clickHandler(e: MouseEvent) {
