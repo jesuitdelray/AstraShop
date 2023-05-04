@@ -7,16 +7,19 @@ import { RoutePath } from "shared/config/routeConfig/const"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
 import { AsyncImage } from "shared/ui/AsyncImage"
 import { useTranslation } from "react-i18next"
-import { ProductRating } from "features/productCardFeatures"
+import { StarRating } from "shared/assets/icons/productCardFeatures"
 import { ImageFit } from "shared/ui/AsyncImage/AsyncImage"
 import styles from "./ProductCard.module.scss"
 import { Product } from "../../model/types"
+import { renderStars } from "../../lib/renderStars"
 
 interface ProductCardProps extends Product {
     currency?: string
     Basket?: ReactElement
+    FavoriteProduct?: ReactElement
+    ComparisonProduct?: ReactElement
     isTop?: boolean
-    discount?: number
+    oldPrice?: number
     rating?: number
     className?: string
 }
@@ -26,20 +29,24 @@ export const ProductCard = (props: ProductCardProps) => {
         id,
         is_new: isNew,
         isTop,
-        discount,
+        rating = 0,
         images,
         className,
         name,
         price,
-        rating,
+        oldPrice,
         currency = "$",
         Basket,
+        FavoriteProduct,
+        ComparisonProduct,
     } = props
     const productImage = images?.[0] ? images[0] : productPlaceholder
     const { t } = useTranslation()
     const navigate = useNavigate()
 
-    const newPrice = !!discount && price - (price * discount) / 100
+    const discount = !!oldPrice && Math.round(((oldPrice - price) / oldPrice) * 100)
+
+    const starsArray = renderStars(rating)
 
     return (
         <div
@@ -55,6 +62,10 @@ export const ProductCard = (props: ProductCardProps) => {
                         <Label value="top" className={styles.label} color={LabelColor.ATTENTION} />
                     )}
                 </div>
+                <div className={styles.cardFeatures}>
+                    {FavoriteProduct}
+                    {ComparisonProduct}
+                </div>
                 <AsyncImage
                     objectFit={ImageFit.COVER}
                     className={styles.image}
@@ -63,9 +74,23 @@ export const ProductCard = (props: ProductCardProps) => {
             </div>
             <div className={styles.descriptionContainer}>
                 <Typography className={styles.name}>{name}</Typography>
-                <ProductRating rating={rating} className={styles.rating} />
+                {rating ? (
+                    <div className={styles.rating}>
+                        {starsArray.slice(0, 5).map(item => (
+                            <StarRating precentage={item * 100} />
+                        ))}
+                    </div>
+                ) : (
+                    <Typography
+                        variant={TypographyVariant.EXTRA_SMALL}
+                        color={TypographyColor.DARK_GRAY}
+                        className={styles.rating}
+                    >
+                        No reviews
+                    </Typography>
+                )}
                 <div className={styles.priceContainer}>
-                    {!discount ? (
+                    {!oldPrice ? (
                         <Typography className={styles.price} isBold>
                             {`${currency} ${price.toLocaleString()}`}
                         </Typography>
@@ -76,11 +101,11 @@ export const ProductCard = (props: ProductCardProps) => {
                                 color={TypographyColor.DARK_GRAY}
                                 className={styles.priceDiscount}
                             >
-                                <s>{`${currency} ${price.toLocaleString()}`}</s>
+                                <s>{`${currency} ${oldPrice.toLocaleString()}`}</s>
                             </Typography>
                             <Label value={`${discount}%`} className={styles.discountLabel} />
                             <Typography isBold className={styles.newPrice}>
-                                {`${currency} ${newPrice.toLocaleString()}`}
+                                {`${currency} ${price.toLocaleString()}`}
                             </Typography>
                         </>
                     )}

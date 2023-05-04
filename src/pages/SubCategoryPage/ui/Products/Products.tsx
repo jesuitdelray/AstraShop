@@ -3,6 +3,7 @@
 
 import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
+import { ComparisonProduct, FavoriteProduct } from "features/productCardFeatures"
 import styles from "./Products.module.scss"
 
 interface ProductsProps {
@@ -19,8 +20,6 @@ export function Products({ isLoading, products }: ProductsProps) {
                       const { id, is_new: isNew, images, name, price } = product
                       return (
                           <ProductCard
-                              discount={34}
-                              rating={2.4464}
                               key={id}
                               id={id}
                               is_new={isNew}
@@ -34,6 +33,8 @@ export function Products({ isLoading, products }: ProductsProps) {
                                       product={product}
                                   />
                               }
+                              FavoriteProduct={<FavoriteProduct />}
+                              ComparisonProduct={<ComparisonProduct />}
                           />
                       )
                   })}

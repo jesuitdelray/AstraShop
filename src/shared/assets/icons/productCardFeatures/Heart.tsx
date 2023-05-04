@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-export function Heart() {
+export function Heart({ ...props }) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +8,7 @@ export function Heart() {
             strokeWidth={1.5}
             stroke="currentColor"
             className="w-6 h-6"
+            {...props}
         >
             <path
                 strokeLinecap="round"
