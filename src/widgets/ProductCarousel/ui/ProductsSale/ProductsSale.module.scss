@@ -32,10 +32,16 @@
 .description {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     .title {
-        margin: 0 auto;
+        margin-bottom: 10px;
+        letter-spacing: 1.5px;
+        color: var(--color-dark-gray);
+    }
+
+    .saleDesc {
+        margin-bottom: 2px;
     }
 }
 
@@ -45,6 +51,14 @@
 
 .swiper {
     padding-bottom: 15px;
+}
+
+.chevronLeft {
+    left: 10px;
+}
+
+.chevronRight {
+    right: 10px;
 }
 
 .chevronLeft,
@@ -60,15 +74,17 @@
     opacity: 0;
     transition: opacity 0.2s ease;
 
+    &:hover {
+        background: var(--color-light-gray);
+
+        svg {
+            path {
+                fill: var(--color-accent);
+            }
+        }
+    }
+
     &.chevronVisible {
         opacity: 1;
     }
-}
-
-.chevronLeft {
-    left: 10px;
-}
-
-.chevronRight {
-    right: 10px;
 }
