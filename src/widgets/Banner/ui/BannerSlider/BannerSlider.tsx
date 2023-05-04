@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react"
+import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
+import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { useNavigate } from "react-router-dom"
 import { classNames } from "shared/lib/classNames/classNames"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
 import { bannerSliderList as slides } from "../../const/lists"
 import { SLIDER_DELAY } from "../../const/const"
@@ -10,6 +11,7 @@ import styles from "./BannerSlider.module.scss"
 export function BannerSlider() {
     const [isAutoScroll, setIsAutoScroll] = useState(true)
     const [current, setCurrent] = useState(0)
+    const [isHovered, setIsHovered] = useState(false)
 
     const navigate = useNavigate()
 
@@ -46,16 +48,40 @@ export function BannerSlider() {
         paginate(direction)
     }
 
-    return (
-        <div className={styles.container}>
-            {slides.map(({ img }, index) => {
-                if (current === index) {
-                    return <img src={img} alt="" className={styles.img} />
-                }
-                return null
-            })}
+    const [device, setDevice] = useState<DeviceType>("desktop")
 
-            <div className={styles.pagination}>
+    const debouncedResizeHandler = useDebounce(() => {
+        getCurrentDevice(window.innerWidth, setDevice)
+    }, 500)
+
+    useEffect(() => {
+        window.addEventListener("resize", debouncedResizeHandler)
+        return () => window.removeEventListener("resize", debouncedResizeHandler)
+    }, [debouncedResizeHandler])
+
+    if (!slides || !slides?.length) return null
+    return (
+        <div
+            className={styles.container}
+            onClick={() => navigate(slides[current].link)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <div
+                className={styles.carousel}
+                style={{ gridTemplateColumns: `repeat(${slides.length}, 100%)` }}
+            >
+                {slides.map(({ images }) => (
+                    <img
+                        src={images[device]}
+                        alt=""
+                        className={styles.img}
+                        style={{ transform: `translateX(-${current * 100}%)` }}
+                    />
+                ))}
+            </div>
+
+            <div className={styles.pagination} onClick={e => e.stopPropagation()}>
                 {slides.map((item, index) => (
                     <div
                         key={item.id}
@@ -67,20 +93,25 @@ export function BannerSlider() {
                 ))}
             </div>
 
-            <div className={styles.navigation}>
-                <ChevronLeft onClick={() => navigationClickHandler("left")} />
-                <ChevronRight onClick={() => navigationClickHandler("right")} />
-            </div>
+            <ChevronLeft
+                className={classNames(styles.chevronLeftContainer, {
+                    [styles.isVisible]: isHovered,
+                })}
+                onClick={e => {
+                    e.stopPropagation()
+                    navigationClickHandler("left")
+                }}
+            />
 
-            <div className={styles.cta}>
-                <Button
-                    variant={ButtonVariant.FILLED_RED}
-                    onClick={() => navigate(slides[current].link)}
-                    className={styles.btn}
-                >
-                    Explore
-                </Button>
-            </div>
+            <ChevronRight
+                className={classNames(styles.chevronRightContainer, {
+                    [styles.isVisible]: isHovered,
+                })}
+                onClick={e => {
+                    e.stopPropagation()
+                    navigationClickHandler("right")
+                }}
+            />
         </div>
     )
 }

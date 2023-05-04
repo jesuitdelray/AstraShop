@@ -17,13 +17,12 @@
         display: block;
         flex-shrink: 0;
         width: var(--sidebar-width);
-        margin-top: calc(0px - var(--navbar-height));
         padding-bottom: 50px;
     }
 
     .container {
         position: sticky;
-        top: 0;
+        top: var(--navbar-height);
         margin-right: 36px;
         margin-left: -36px;
         padding: 26px 36px 42px;

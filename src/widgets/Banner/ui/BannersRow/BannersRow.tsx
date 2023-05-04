@@ -1,6 +1,6 @@
-import { Banner, BannerVariant } from "entities/Banner"
 import { useTranslation } from "react-i18next"
-import { bannersRowList } from "../model/list"
+import { Banner, BannerVariant } from "./OldBanner/Banner"
+import { bannersRowList } from "../../const/lists"
 import styles from "./BannersRow.module.scss"
 
 export function BannersRow() {

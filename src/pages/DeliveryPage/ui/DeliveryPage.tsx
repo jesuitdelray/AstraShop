@@ -2,7 +2,7 @@ import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typogr
 import { NovaPochtaIcon, IntimeIcon, AutoluxIcon } from "shared/assets/icons/others"
 import { useTranslation } from "react-i18next"
 import { ProducstRowVariant, ProductsRow } from "widgets/ProductCarousel"
-import { BannersRow } from "widgets/BannersRow"
+import { BannersRow } from "widgets/Banner"
 import styles from "./DeliveryPage.module.scss"
 
 export function DeliveryPage() {

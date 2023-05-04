@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
-import { Dispatch, SetStateAction } from "react"
+import { Children, Dispatch, ReactNode, SetStateAction } from "react"
 import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -20,7 +20,7 @@ export enum IProductSwiperVariant {
 
 interface IProductSwiperProps {
     isLoading: boolean
-    list: Product[]
+    children: ReactNode
     variant: IProductSwiperVariant
     slidesPerView?: number
     className?: string
@@ -31,36 +31,28 @@ interface IProductSwiperProps {
 export function ProductsSwiper(props: IProductSwiperProps) {
     const {
         isLoading,
-        list,
         variant,
         slidesPerView,
         className,
         onSwiper,
+        children,
         isWithPagination = false,
     } = props
 
-    const modules = (() => {
-        switch (true) {
-            case isLoading:
-                return []
-            case isWithPagination:
-                return [Pagination, Navigation]
-            case !isWithPagination:
-                return [Navigation]
-            default:
-                return []
-        }
-    })()
+    const childrenArray = Children.toArray(children)
 
     return (
         <Swiper
             slidesPerView={slidesPerView || "auto"}
-            className={classNames(styles.swiper, {}, [className, "productCarousel"])}
+            className={classNames(styles.swiper, {}, [
+                className,
+                "productCarousel",
+                isWithPagination ? "" : "noPagination",
+            ])}
             pagination={{
                 clickable: true,
-                el: styles.paginationEl,
             }}
-            modules={modules}
+            modules={[Pagination, Navigation]}
             navigation={{ prevEl: "#prevEl", nextEl: "#nextEl" }}
             spaceBetween={20}
             onSwiper={onSwiper}
@@ -71,33 +63,11 @@ export function ProductsSwiper(props: IProductSwiperProps) {
                           <ProductCardSkeleton />
                       </SwiperSlide>
                   ))
-                : list?.map(item => {
-                      const { id, is_new: isNew, name, price, images } = item
-                      return (
-                          <SwiperSlide key={id} className={styles.slide}>
-                              <ProductCard
-                                  id={id}
-                                  is_new={isNew}
-                                  name={name}
-                                  price={price}
-                                  images={images}
-                                  Basket={
-                                      <ToggleProductInBasket
-                                          variant={ToggleProductInBasketVariant.ICON}
-                                          product={item}
-                                      />
-                                  }
-                                  className={styles.product}
-                              />
-                          </SwiperSlide>
-                      )
-                  })}
-
-            <div
-                className={classNames(styles.paginationEl, {}, [
-                    "swiper-pagination swiper-pagination-timeline-page",
-                ])}
-            />
+                : childrenArray?.map(item => (
+                      <SwiperSlide key={1} className={styles.slide}>
+                          {item}
+                      </SwiperSlide>
+                  ))}
         </Swiper>
     )
 }

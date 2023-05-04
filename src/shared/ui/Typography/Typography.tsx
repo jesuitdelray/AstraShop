@@ -16,7 +16,7 @@ export enum TypographyVariant {
     H4 = "variantH4",
     P = "variantP",
     SMALL = "variantSmall",
-    EXTRA_SMALL = "variantExtra",
+    EXTRA_SMALL = "variantExtraSmall",
 }
 
 interface TextProps extends HTMLAttributes<HTMLDivElement> {
@@ -25,6 +25,7 @@ interface TextProps extends HTMLAttributes<HTMLDivElement> {
     variant?: TypographyVariant
     color?: TypographyColor
     isBold?: boolean
+    isCentered?: boolean
 }
 
 export const Typography = memo((props: TextProps) => {
@@ -34,16 +35,18 @@ export const Typography = memo((props: TextProps) => {
         variant = TypographyVariant.P,
         color = TypographyColor.BASE,
         isBold = false,
+        isCentered = false,
         ...restProps
     } = props
 
     return (
         <div
             data-testid="typography"
-            className={classNames(styles.Text, { [styles[color]]: color, [styles.bold]: isBold }, [
-                className,
-                styles[variant],
-            ])}
+            className={classNames(
+                styles.Text,
+                { [styles[color]]: color, [styles.bold]: isBold, [styles.centered]: isCentered },
+                [className, styles[variant]]
+            )}
             {...restProps}
         >
             {children}
