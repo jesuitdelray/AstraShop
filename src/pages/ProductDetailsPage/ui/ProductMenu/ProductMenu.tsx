@@ -1,25 +1,27 @@
-import { ProductAll } from "./ProductAll/ProductAll"
+import { useState } from "react"
+import { classNames } from "shared/lib/classNames/classNames"
+import styles from "./ProductMenu.module.scss"
+import { navList as list } from "./const/navList"
 
 export function ProductMenu() {
+    const [current, setCurrent] = useState(0)
+
     return (
         <div>
-            <div
-                style={{
-                    background: "white",
-                    marginBottom: "30px",
-                    height: "40px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: "6px",
-                }}
-            >
-                Navigation
+            <div className={styles.navigation}>
+                {list.map((item, index) => (
+                    <div
+                        className={classNames(styles.navItem, {
+                            [styles.navActive]: index === current,
+                        })}
+                        onClick={() => setCurrent(index)}
+                    >
+                        {item.name}
+                    </div>
+                ))}
             </div>
 
-            <div>
-                <ProductAll />
-            </div>
+            <div>{list.map((item, index) => (index === current ? item.el : null))}</div>
         </div>
     )
 }
