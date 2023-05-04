@@ -22,6 +22,7 @@ import {
     getProductDetailsPrice,
     getProductParents,
 } from "../model/selectors/productDetailsSelectors"
+import { Layout, LayoutIsland } from "./Layout/Layout"
 
 export function ProductDetailsPage() {
     const dispatch = useDispatch()
@@ -79,7 +80,49 @@ export function ProductDetailsPage() {
     return (
         <div>
             <Breadcrumbs />
-            <ProductDetails
+
+            <div
+                style={{
+                    background: "white",
+                    marginBottom: "30px",
+                    height: "40px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "6px",
+                }}
+            >
+                Navigation
+            </div>
+
+            <Layout>
+                <LayoutIsland column="left" height="200px">
+                    Gallery
+                </LayoutIsland>
+
+                <LayoutIsland column="right" height="100px">
+                    Price
+                </LayoutIsland>
+
+                <LayoutIsland column="left" height="50px">
+                    Info
+                </LayoutIsland>
+
+                <LayoutIsland column="right" height="200px">
+                    Filters
+                </LayoutIsland>
+
+                <LayoutIsland column="left" height="200px">
+                    Extra
+                </LayoutIsland>
+            </Layout>
+            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
+            <BannersRow />
+        </div>
+    )
+}
+
+/*  <ProductDetails
                 isLoading={productRequestLoading}
                 error={productRequestError}
                 is_new={prodductIsNew}
@@ -98,7 +141,4 @@ export function ProductDetailsPage() {
                 }
             />
             <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
-            <BannersRow />
-        </div>
-    )
-}
+            <BannersRow /> */

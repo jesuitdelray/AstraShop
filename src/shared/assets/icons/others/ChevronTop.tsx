@@ -4,7 +4,7 @@ import { SVGProps } from "react"
 type SVGPropsType = Omit<SVGProps<SVGSVGElement>, "width" | "height">
 
 interface IIconProps extends SVGPropsType {
-    size?: number
+    size?: CSSDimensionType
 }
 
 export function ChevronTop({ size, ...props }: IIconProps) {
