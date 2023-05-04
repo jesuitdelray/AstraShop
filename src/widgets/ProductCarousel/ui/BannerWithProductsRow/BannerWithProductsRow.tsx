@@ -51,6 +51,7 @@ export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
 
                             return (
                                 <ProductCard
+                                    key={id}
                                     id={id}
                                     is_new={isNew}
                                     name={name}

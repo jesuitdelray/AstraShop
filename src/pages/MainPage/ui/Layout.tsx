@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import { Children, ReactElement, ReactNode, useEffect, useState } from "react"
+import { v4 as uuid } from "uuid"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 
 interface IRowProps {
@@ -50,7 +51,10 @@ export function Row({
                     }}
                 >
                     {value.map((_, index) => (
-                        <div style={{ display: value[index] === 0 ? "none" : "block", height }}>
+                        <div
+                            key={uuid()}
+                            style={{ display: value[index] === 0 ? "none" : "block", height }}
+                        >
                             {childrenArray[index]}
                         </div>
                     ))}

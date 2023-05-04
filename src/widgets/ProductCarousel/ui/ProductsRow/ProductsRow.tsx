@@ -85,6 +85,7 @@ export function ProductsRow(props: IProductsRowProps) {
 
                         return (
                             <ProductCard
+                                key={id}
                                 id={id}
                                 is_new={isNew}
                                 name={name}

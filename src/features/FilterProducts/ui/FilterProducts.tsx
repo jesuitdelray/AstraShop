@@ -2,6 +2,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ModalSlider, ModalsList, getModalsCurrent, modalsActions } from "entities/ModalSlider"
+import { v4 as uuid } from "uuid"
 import { Button, ButtonVariant } from "shared/ui/Button/Button"
 import { Logo } from "entities/Logo/Logo"
 import { useTranslation } from "react-i18next"
@@ -47,9 +48,6 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                         />
                     )
                 }
-                return null
-            })}
-            {data.map(item => {
                 if (item.type === "attributes") {
                     const range = item.info as FilterItemAttribute[]
                     return (
@@ -63,6 +61,9 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 }
                 return null
             })}
+            {/* {data.map(item => {
+                return null
+            })} */}
         </div>
     )
 
