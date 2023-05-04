@@ -1,11 +1,13 @@
+import { ProductCard } from "entities/Product"
+import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchTopProducts } from "../../model/services/fetchTopProducts/fetchTopProducts"
 import { getProductCarouselTopProducts } from "../../model/selectors/productCarouselSelector"
 import styles from "./BannerWithProductsRow.module.scss"
-import img from "../../const/image31.jpg"
 import { IProductSwiperVariant, ProductsSwiper } from "../ProductsSwiper/ProductsSwiper"
+import img from "../../const/image31.jpg"
 
 interface IBannerWithProductsRowProps {
     className?: string
@@ -40,10 +42,30 @@ export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
                 >
                     <ProductsSwiper
                         isLoading={false}
-                        list={topProducts || []}
                         variant={IProductSwiperVariant.WITH_BANNER}
                         isWithPagination={isHovered}
-                    />
+                    >
+                        {topProducts?.map(item => {
+                            const { id, name, price, images, is_new: isNew } = item
+
+                            return (
+                                <ProductCard
+                                    id={id}
+                                    is_new={isNew}
+                                    name={name}
+                                    price={price}
+                                    images={images}
+                                    Basket={
+                                        <ToggleProductInBasket
+                                            variant={ToggleProductInBasketVariant.ICON}
+                                            product={item}
+                                        />
+                                    }
+                                    className={styles.product}
+                                />
+                            )
+                        })}
+                    </ProductsSwiper>
                 </div>
             </div>
         </div>
