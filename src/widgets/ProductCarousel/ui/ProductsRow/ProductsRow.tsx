@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { CompareProducts, AddProductToFavorite } from "features/productFeatures"
 import {
     getProductCarouselErrorNew,
     getProductCarouselErrorTop,
@@ -95,6 +96,8 @@ export function ProductsRow(props: IProductsRowProps) {
                                         product={item}
                                     />
                                 }
+                                AddProductToFavorite={<AddProductToFavorite />}
+                                CompareProducts={<CompareProducts />}
                                 className={styles.product}
                             />
                         )

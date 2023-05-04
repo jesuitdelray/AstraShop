@@ -2,6 +2,7 @@ import { ProductCard } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect, useState } from "react"
+import { CompareProducts, AddProductToFavorite } from "features/productFeatures"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchTopProducts } from "../../model/services/fetchTopProducts/fetchTopProducts"
 import { getProductCarouselTopProducts } from "../../model/selectors/productCarouselSelector"
@@ -61,6 +62,8 @@ export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
                                             product={item}
                                         />
                                     }
+                                    AddProductToFavorite={<AddProductToFavorite />}
+                                    CompareProducts={<CompareProducts />}
                                     className={styles.product}
                                 />
                             )
