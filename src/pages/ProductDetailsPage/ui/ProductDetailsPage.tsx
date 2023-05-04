@@ -22,7 +22,7 @@ import {
     getProductDetailsPrice,
     getProductParents,
 } from "../model/selectors/productDetailsSelectors"
-import { Layout, LayoutIsland } from "./Layout/Layout"
+import { ProductMenu } from "./ProductMenu/ProductMenu"
 
 export function ProductDetailsPage() {
     const dispatch = useDispatch()
@@ -80,42 +80,7 @@ export function ProductDetailsPage() {
     return (
         <div>
             <Breadcrumbs />
-
-            <div
-                style={{
-                    background: "white",
-                    marginBottom: "30px",
-                    height: "40px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: "6px",
-                }}
-            >
-                Navigation
-            </div>
-
-            <Layout>
-                <LayoutIsland column="left" height="200px">
-                    Gallery
-                </LayoutIsland>
-
-                <LayoutIsland column="right" height="100px">
-                    Price
-                </LayoutIsland>
-
-                <LayoutIsland column="left" height="50px">
-                    Info
-                </LayoutIsland>
-
-                <LayoutIsland column="right" height="200px">
-                    Filters
-                </LayoutIsland>
-
-                <LayoutIsland column="left" height="200px">
-                    Extra
-                </LayoutIsland>
-            </Layout>
+            <ProductMenu />
             <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
             <BannersRow />
         </div>
