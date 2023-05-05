@@ -1,10 +1,11 @@
 import { Layout, LayoutIsland } from "../Layout/Layout"
+import { ProductGallery } from "./ProductGallery/ProductGallery"
 
 export function ProductAll() {
     return (
         <Layout>
-            <LayoutIsland column="left" height="200px">
-                Gallery
+            <LayoutIsland column="left">
+                <ProductGallery />
             </LayoutIsland>
 
             <LayoutIsland column="right" height="100px">
