@@ -64,7 +64,8 @@ export function ProductsSwiper(props: IProductSwiperProps) {
                       </SwiperSlide>
                   ))
                 : childrenArray?.map((item, index) => (
-                      <SwiperSlide key={uuid()} className={styles.slide}>
+                      // eslint-disable-next-line react/no-array-index-key
+                      <SwiperSlide key={index} className={styles.slide}>
                           {item}
                       </SwiperSlide>
                   ))}
