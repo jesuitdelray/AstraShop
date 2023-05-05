@@ -21,10 +21,7 @@
 }
 
 .title {
-    @include typography-size-h1;
-
-    margin-bottom: 27px;
-    text-align: center;
+    margin-bottom: 10px;
 }
 
 @media (min-width: 960px) {

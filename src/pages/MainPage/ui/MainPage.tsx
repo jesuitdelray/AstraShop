@@ -13,7 +13,7 @@ import styles from "./MainPage.module.scss"
 export function MainPage() {
     return (
         <div>
-            <Layout gap="20px">
+            <Layout gap="40px">
                 <Row
                     schema={{
                         0: [0, 1, 0],
