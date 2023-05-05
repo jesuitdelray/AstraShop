@@ -1,5 +1,5 @@
 .container {
-    min-width: 300px;
+    min-width: 280px;
     height: 300px;
     cursor: pointer;
     display: flex;
@@ -20,6 +20,10 @@
     justify-content: center;
     border-radius: 6px;
     margin-bottom: 20px;
+
+    & div {
+        border-radius: 6px;
+    }
 }
 
 .footer {

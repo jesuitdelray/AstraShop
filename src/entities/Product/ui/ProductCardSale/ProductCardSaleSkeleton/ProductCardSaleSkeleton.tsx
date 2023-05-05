@@ -10,7 +10,7 @@ export function ProductCardSaleSkeleton({ className }: ProductCarSkeletonProps) 
     return (
         <div className={classNames(styles.container, {}, [className])}>
             <div className={styles.header}>
-                <Skeleton width="100%" style={{ borderRadius: "6px" }} />
+                <Skeleton width="100%" />
             </div>
             <div className={styles.footer}>
                 <Skeleton width="100%" height={16} />
