@@ -4,4 +4,4 @@ export { ProductCardSkeleton } from "./ui/ProductCard/ProductCardSkeleton/Produc
 export { ProductDetails } from "./ui/ProductDetails/ProductDetails"
 export { ProductCardBasket } from "./ui/ProductCardBasket/ProductCardBasket"
 
-export type { Product } from "./model/types"
+export type { Product, ProductAttribute } from "./model/types"

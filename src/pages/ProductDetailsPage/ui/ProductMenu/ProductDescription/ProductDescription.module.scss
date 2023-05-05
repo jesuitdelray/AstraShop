@@ -1,0 +1,19 @@
+.container {
+    height: 200px;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 70px;
+
+    &.expanded {
+        min-height: 200px;
+        height: fit-content;
+    }
+}
+
+.btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
