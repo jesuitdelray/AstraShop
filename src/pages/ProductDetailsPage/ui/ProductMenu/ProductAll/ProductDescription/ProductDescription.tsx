@@ -3,7 +3,7 @@ import { ShowMoreContainer } from "shared/components/ShowMoreContainer"
 import {
     getProductDetailsAttributes,
     getProductDetailsDescription,
-} from "../../../model/selectors/productDetailsSelectors"
+} from "../../../../model/selectors/productDetailsSelectors"
 import { ProductInfo } from "./ProductInfo/ProductInfo"
 
 export function ProductDescription() {
