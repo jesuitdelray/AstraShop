@@ -1,4 +1,4 @@
-import { ProductCardSale } from "entities/Product"
+import { ProductCardSale, ProductCardSaleSkeleton } from "entities/Product"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { useEffect, useState } from "react"
 import { Swiper as SwiperClass } from "swiper/types"
@@ -6,7 +6,7 @@ import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDispatch, useSelector } from "react-redux"
-import { SaleCountdown } from "features/SaleCountdown"
+import { SaleCountdown } from "shared/ui/SaleCountdown"
 import { IProductSwiperVariant, ProductsSwiper } from "../ProductsSwiper/ProductsSwiper"
 import styles from "./ProductsSale.module.scss"
 import { getProductCarouselTopProducts } from "../../model/selectors/productCarouselSelector"
@@ -58,27 +58,31 @@ export function ProductsSale() {
                         onSwiper={setSwiperRef}
                         isWithPagination
                     >
-                        {topProducts?.map(item => {
-                            const { id, name, price, images, is_new: isNew } = item
+                        {topProducts ? (
+                            topProducts?.map(item => {
+                                const { id, name, price, images, is_new: isNew } = item
 
-                            return (
-                                <ProductCardSale
-                                    key={id}
-                                    id={id}
-                                    is_new={isNew}
-                                    name={name}
-                                    price={price}
-                                    images={images}
-                                    Basket={
-                                        <ToggleProductInBasket
-                                            variant={ToggleProductInBasketVariant.ICON}
-                                            product={item}
-                                        />
-                                    }
-                                    className={styles.product}
-                                />
-                            )
-                        })}
+                                return (
+                                    <ProductCardSale
+                                        key={id}
+                                        id={id}
+                                        is_new={isNew}
+                                        name={name}
+                                        price={price}
+                                        images={images}
+                                        Basket={
+                                            <ToggleProductInBasket
+                                                variant={ToggleProductInBasketVariant.ICON}
+                                                product={item}
+                                            />
+                                        }
+                                        className={styles.product}
+                                    />
+                                )
+                            })
+                        ) : (
+                            <ProductCardSaleSkeleton />
+                        )}
                     </ProductsSwiper>
 
                     <ChevronLeft
