@@ -1,4 +1,5 @@
 import { Layout, LayoutIsland } from "../Layout/Layout"
+import { ProductDescription } from "../ProductDescription/ProductDescription"
 import { ProductGallery } from "./ProductGallery/ProductGallery"
 
 export function ProductAll() {
@@ -12,8 +13,8 @@ export function ProductAll() {
                 Price
             </LayoutIsland>
 
-            <LayoutIsland column="left" height="50px">
-                Info
+            <LayoutIsland column="left">
+                <ProductDescription />
             </LayoutIsland>
 
             <LayoutIsland column="right" height="200px">
