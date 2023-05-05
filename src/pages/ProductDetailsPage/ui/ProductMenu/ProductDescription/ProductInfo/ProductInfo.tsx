@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { v4 as uuid } from "uuid"
-import { useAttributesData } from "pages/ProductDetailsPage/lib/useAttributesData"
 import { ProductAttribute } from "entities/Product"
+import { useAttributesData } from "../../../../lib/useAttributesData"
 import styles from "./ProductInfo.module.scss"
 
 export interface ArticleData {
