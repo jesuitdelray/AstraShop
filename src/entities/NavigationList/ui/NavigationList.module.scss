@@ -8,6 +8,10 @@
 .list {
     .link {
         width: fit-content;
+
+        &.mobileLink {
+            color: var(--color-base);
+        }
     }
 }
 

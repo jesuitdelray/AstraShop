@@ -52,7 +52,10 @@ export const NavigationList = memo((props: NavigationListProps) => {
                         variant={isInverted ? AppLinkVariant.INVERTED : AppLinkVariant.NORMAL}
                         className={classNames(
                             styles.link,
-                            { [styles.active]: path === pathname },
+                            {
+                                [styles.active]: path === pathname,
+                                [styles.mobileLink]: variant === NavigationListVariant.MOBILE,
+                            },
                             []
                         )}
                         onClick={onLinkClick}
