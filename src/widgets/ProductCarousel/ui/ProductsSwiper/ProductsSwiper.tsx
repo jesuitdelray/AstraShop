@@ -1,16 +1,16 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
 import { Children, Dispatch, ReactNode, SetStateAction } from "react"
-import { Product, ProductCard, ProductCardSkeleton } from "entities/Product"
+import { ProductCardSkeleton } from "entities/Product"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Swiper as SwiperClass } from "swiper/types"
 import { Pagination, Navigation } from "swiper"
+import { v4 as uuid } from "uuid"
 import "swiper/scss"
 import "swiper/scss/navigation"
 import "swiper/scss/pagination"
 import "swiper/scss/scrollbar"
-import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import styles from "./ProductSwiper.module.scss"
 
 export enum IProductSwiperVariant {
@@ -63,8 +63,8 @@ export function ProductsSwiper(props: IProductSwiperProps) {
                           <ProductCardSkeleton />
                       </SwiperSlide>
                   ))
-                : childrenArray?.map(item => (
-                      <SwiperSlide key={1} className={styles.slide}>
+                : childrenArray?.map((item, index) => (
+                      <SwiperSlide key={uuid()} className={styles.slide}>
                           {item}
                       </SwiperSlide>
                   ))}

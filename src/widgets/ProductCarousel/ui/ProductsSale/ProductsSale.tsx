@@ -63,6 +63,7 @@ export function ProductsSale() {
 
                             return (
                                 <ProductCardSale
+                                    key={id}
                                     id={id}
                                     is_new={isNew}
                                     name={name}

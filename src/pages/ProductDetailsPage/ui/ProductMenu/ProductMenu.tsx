@@ -12,6 +12,7 @@ export function ProductMenu() {
             <div className={styles.navigation}>
                 {list.map((item, index) => (
                     <Typography
+                        key={item.name}
                         variant={TypographyVariant.H4}
                         color={TypographyColor.DARK_GRAY}
                         isBold
@@ -24,8 +25,12 @@ export function ProductMenu() {
                     </Typography>
                 ))}
             </div>
-
-            <div>{list.map((item, index) => (index === current ? item.el : null))}</div>
+            {list.map((item, index) => {
+                if (index === current) {
+                    return <div key={item.name}>{item.el}</div>
+                }
+                return null
+            })}
         </div>
     )
 }

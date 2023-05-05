@@ -8,6 +8,7 @@ import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
 import { AsyncImage } from "shared/ui/AsyncImage"
 import { useTranslation } from "react-i18next"
 import { StarRating } from "shared/assets/icons/productCardFeatures"
+import { v4 as uuid } from "uuid"
 import { ImageFit } from "shared/ui/AsyncImage/AsyncImage"
 import styles from "./ProductCard.module.scss"
 import { Product } from "../../model/types"
@@ -29,12 +30,12 @@ export const ProductCard = (props: ProductCardProps) => {
         id,
         is_new: isNew,
         isTop,
-        rating = 5,
+        rating = 0,
         images,
         className,
         name,
         price,
-        oldPrice = 100,
+        oldPrice,
         currency = "$",
         Basket,
         AddProductToFavorite,
@@ -77,7 +78,7 @@ export const ProductCard = (props: ProductCardProps) => {
                 {rating ? (
                     <div className={styles.rating}>
                         {starsArray.slice(0, 5).map(item => (
-                            <StarRating precentage={item * 100} />
+                            <StarRating key={uuid()} precentage={item * 100} />
                         ))}
                     </div>
                 ) : (
