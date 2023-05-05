@@ -1,6 +1,6 @@
 import { Children, ReactElement, ReactNode, isValidElement } from "react"
 
-export function getLayoutColumns(children: ReactElement[], columns: string[]) {
+export function getLayoutColumns(children: ReactElement[] | ReactElement, columns: string[]) {
     const childrenArray: {
         [key: string]: ReactElement
     }[] = []

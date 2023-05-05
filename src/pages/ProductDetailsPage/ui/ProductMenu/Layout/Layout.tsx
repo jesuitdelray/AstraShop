@@ -18,7 +18,7 @@ export function LayoutIsland({ children, height = "auto", column }: ILayoutIslan
     )
 }
 
-export function Layout({ children }: { children: ReactElement[] }) {
+export function Layout({ children }: { children: ReactElement[] | ReactElement }) {
     const { all, left, right } = useMemo(() => {
         const columns: columnType[] = ["left", "right"]
         return getLayoutColumns(children, columns)
