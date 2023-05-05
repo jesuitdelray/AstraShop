@@ -73,8 +73,9 @@ export function BannerSlider() {
                 style={{ gridTemplateColumns: `repeat(${slides.length}, 100%)` }}
             >
                 {slides ? (
-                    slides.map(({ images }) => (
+                    slides.map(({ images, id }) => (
                         <img
+                            key={id}
                             src={images[device]}
                             alt=""
                             className={styles.img}
