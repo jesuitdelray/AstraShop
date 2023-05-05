@@ -56,6 +56,7 @@ export function BannerSlider() {
     }, 500)
 
     useEffect(() => {
+        getCurrentDevice(window.innerWidth, setDevice)
         window.addEventListener("resize", debouncedResizeHandler)
         return () => window.removeEventListener("resize", debouncedResizeHandler)
     }, [debouncedResizeHandler])
