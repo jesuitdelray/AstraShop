@@ -67,6 +67,7 @@ export function ProductInfo({ className, description = "", attributes = [] }: Pr
     const { t } = useTranslation()
 
     if (!description || !attributes) return null
+
     return (
         <div className={classNames(styles.info, {}, [className])}>
             <Typography variant={TypographyVariant.H4} isBold className={styles.title}>

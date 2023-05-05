@@ -1,5 +1,4 @@
 import { ProductAttribute } from "entities/Product"
-import { useTranslation } from "react-i18next"
 
 interface AttributesDataProps {
     description: string
@@ -12,8 +11,6 @@ interface ArticleData {
 }
 
 export function useAttributesData({ description, attributes }: AttributesDataProps) {
-    const { t } = useTranslation()
-
     function formatAttributes(attributes: ProductAttribute[]): ArticleData[] {
         const formattedAttributes: ArticleData[] = []
 
