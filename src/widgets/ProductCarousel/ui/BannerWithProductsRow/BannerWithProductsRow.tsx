@@ -1,4 +1,5 @@
 import { ProductCard } from "entities/Product"
+import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect, useState } from "react"
@@ -8,7 +9,7 @@ import { fetchTopProducts } from "../../model/services/fetchTopProducts/fetchTop
 import { getProductCarouselTopProducts } from "../../model/selectors/productCarouselSelector"
 import styles from "./BannerWithProductsRow.module.scss"
 import { IProductSwiperVariant, ProductsSwiper } from "../ProductsSwiper/ProductsSwiper"
-import img from "../../const/image31.jpg"
+import img from "../../const/categoryBanner.jpg"
 
 interface IBannerWithProductsRowProps {
     className?: string
@@ -30,7 +31,9 @@ export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <div className={styles.title}>{title}</div>
+            <Typography variant={TypographyVariant.H3} isBold className={styles.title}>
+                {title}
+            </Typography>
             <div className={styles.content}>
                 <div className={styles.banner}>
                     <img src={img} alt="" />

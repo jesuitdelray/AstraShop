@@ -5,6 +5,7 @@ import { classNames } from "shared/lib/classNames/classNames"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { CompareProducts, AddProductToFavorite } from "features/productFeatures"
+import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import {
     getProductCarouselErrorNew,
     getProductCarouselErrorTop,
@@ -71,9 +72,9 @@ export function ProductsRow(props: IProductsRowProps) {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <div className={styles.title}>
+            <Typography variant={TypographyVariant.H3} isBold className={styles.title}>
                 {isTop ? t("productsTopProducts") : t("productsNewProducts")}
-            </div>
+            </Typography>
             <div className={styles.content}>
                 <ProductsSwiper
                     variant={IProductSwiperVariant.FULL}
