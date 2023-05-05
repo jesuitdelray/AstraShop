@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { v4 as uuid } from "uuid"
 import { classNames } from "shared/lib/classNames/classNames"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./ProductMenu.module.scss"
@@ -12,6 +13,7 @@ export function ProductMenu() {
             <div className={styles.navigation}>
                 {list.map((item, index) => (
                     <Typography
+                        key={uuid()}
                         variant={TypographyVariant.H4}
                         color={TypographyColor.DARK_GRAY}
                         isBold
@@ -24,8 +26,12 @@ export function ProductMenu() {
                     </Typography>
                 ))}
             </div>
-
-            <div>{list.map((item, index) => (index === current ? item.el : null))}</div>
+            {list.map((item, index) => {
+                if (index === current) {
+                    return <div key={item.name}>{item.el}</div>
+                }
+                return null
+            })}
         </div>
     )
 }

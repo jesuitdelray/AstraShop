@@ -41,7 +41,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                     const range = item.info as FilterItemPriceRange
                     return (
                         <PriceFilter
-                            key={item.id}
+                            key={item.name + item.id}
                             title={item.name}
                             range={range}
                             onChangeFilters={onChangeFilters}
@@ -52,7 +52,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                     const range = item.info as FilterItemAttribute[]
                     return (
                         <CheckboxGroup
-                            key={item.id}
+                            key={item.name + item.id}
                             list={range}
                             title={item.name}
                             onChangeFilters={onChangeFilters}
@@ -61,9 +61,6 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 }
                 return null
             })}
-            {/* {data.map(item => {
-                return null
-            })} */}
         </div>
     )
 
