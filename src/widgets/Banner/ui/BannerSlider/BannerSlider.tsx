@@ -2,14 +2,13 @@ import { useCallback, useEffect, useState } from "react"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { useNavigate } from "react-router-dom"
+import { AsyncImage, ImageFit } from "shared/ui/AsyncImage"
 import { classNames } from "shared/lib/classNames/classNames"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
 import { bannerSliderList as slides } from "../../const/lists"
 import { SLIDER_DELAY } from "../../const/const"
 import styles from "./BannerSlider.module.scss"
 import { BannerSkeleton } from "../BannerSkeleton/BannerSkeleton"
-import { AsyncImage } from "shared/ui/AsyncImage"
-import { ImageFit } from "shared/ui/AsyncImage/AsyncImage"
 
 export function BannerSlider() {
     const [isAutoScroll, setIsAutoScroll] = useState(true)
@@ -124,13 +123,4 @@ export function BannerSlider() {
             />
         </div>
     )
-}
-{
-    /* <img
-                            key={id}
-                            src={images[device]}
-                            alt=""
-                            className={styles.img}
-                            style={{ transform: `translateX(-${current * 100}%)` }}
-                        /> */
 }
