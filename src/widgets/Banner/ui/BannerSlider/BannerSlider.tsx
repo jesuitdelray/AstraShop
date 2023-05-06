@@ -8,6 +8,8 @@ import { bannerSliderList as slides } from "../../const/lists"
 import { SLIDER_DELAY } from "../../const/const"
 import styles from "./BannerSlider.module.scss"
 import { BannerSkeleton } from "../BannerSkeleton/BannerSkeleton"
+import { AsyncImage } from "shared/ui/AsyncImage"
+import { ImageFit } from "shared/ui/AsyncImage/AsyncImage"
 
 export function BannerSlider() {
     const [isAutoScroll, setIsAutoScroll] = useState(true)
@@ -75,12 +77,13 @@ export function BannerSlider() {
             >
                 {slides ? (
                     slides.map(({ images, id }) => (
-                        <img
+                        <AsyncImage
                             key={id}
                             src={images[device]}
                             alt=""
                             className={styles.img}
                             style={{ transform: `translateX(-${current * 100}%)` }}
+                            objectFit={ImageFit.COVER}
                         />
                     ))
                 ) : (
@@ -121,4 +124,13 @@ export function BannerSlider() {
             />
         </div>
     )
+}
+{
+    /* <img
+                            key={id}
+                            src={images[device]}
+                            alt=""
+                            className={styles.img}
+                            style={{ transform: `translateX(-${current * 100}%)` }}
+                        /> */
 }
