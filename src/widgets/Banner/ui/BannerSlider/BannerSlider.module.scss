@@ -53,11 +53,14 @@
     height: 40px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease;
+}
 
-    &.isVisible {
-        opacity: 1;
+@media (min-width: 961px) {
+    .chevronLeftContainer,
+    .chevronRightContainer {
+        opacity: 0;
     }
 }
 
@@ -73,4 +76,8 @@
     position: absolute;
     bottom: 30px;
     right: 30px;
+}
+
+.isVisible {
+    opacity: 1;
 }
