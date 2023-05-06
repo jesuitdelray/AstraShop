@@ -65,6 +65,7 @@ export function ChangeLanguage({ color = ChangeLanguageColor.NORMAL }: IChangeLa
 
                         return (
                             <div
+                                key={id}
                                 className={styles.languageContainer}
                                 onClick={e => {
                                     e.stopPropagation()

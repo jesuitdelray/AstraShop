@@ -7,6 +7,28 @@
     column-gap: 5px;
 
     svg {
+        flex-shrink: 0;
+    }
+
+    .iconSuccess {
+        fill: var(--color-accent);
+
+        & > path:last-child {
+            fill: var(--color-white); // for tick on cart icon
+        }
+    }
+
+    .iconToBasket {
         fill: var(--color-white);
+    }
+}
+
+.btnRemove:hover {
+    .iconSuccess {
+        fill: var(--color-white);
+
+        & > path:last-child {
+            fill: var(--color-accent); // for tick on cart icon
+        }
     }
 }

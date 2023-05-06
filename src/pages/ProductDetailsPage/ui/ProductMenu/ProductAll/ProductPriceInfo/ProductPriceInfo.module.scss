@@ -16,11 +16,37 @@
     }
 
     .btnContainer {
+        row-gap: 10px;
         column-gap: 20px;
         display: flex;
+        flex-direction: column;
 
         & button {
             width: 100%;
+        }
+    }
+}
+
+@media (min-width: 481px) {
+    .container {
+        .btnContainer {
+            flex-direction: row;
+        }
+    }
+}
+
+@media (min-width: 961px) {
+    .container {
+        .btnContainer {
+            flex-direction: column;
+        }
+    }
+}
+
+@media (min-width: 1350px) {
+    .container {
+        .btnContainer {
+            flex-direction: row;
         }
     }
 }

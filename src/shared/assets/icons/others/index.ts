@@ -16,8 +16,8 @@ import IntimeIcon from "./intime.svg"
 import AutoluxIcon from "./autolux.svg"
 import ChevronBack from "./chevron-back.svg"
 import MainHome from "./home.svg"
-import BasketSuccess from "./basket-succsess.svg"
-import AddToBasket from "./basket-add.svg"
+import { BasketSuccessIcon } from "./BasketSuccessIcon"
+import AddToBasketIcon from "./basket-add.svg"
 import ChangeLanguageIcon from "./language.svg"
 import { ChevronRight } from "./ChevronRight/ChevronRight"
 import { ChevronLeft } from "./ChevronLeft/ChevronLeft"
@@ -43,8 +43,8 @@ export {
     AutoluxIcon,
     ChevronBack,
     MainHome,
-    BasketSuccess,
-    AddToBasket,
+    BasketSuccessIcon,
+    AddToBasketIcon,
     ChangeLanguageIcon,
     ChevronLeft,
     ChevronRight,

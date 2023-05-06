@@ -1,6 +1,6 @@
 import { basketActions, getBasketProducts } from "entities/Basket"
 import { Product } from "entities/Product"
-import { AddToBasket } from "shared/assets/icons/others"
+import { AddToBasketIcon, BasketSuccessIcon } from "shared/assets/icons/others"
 import { MouseEvent } from "react"
 import { useTranslation } from "react-i18next"
 import { useDispatch, useSelector } from "react-redux"
@@ -51,6 +51,7 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
         case ToggleProductInBasketVariant.BUTTON:
             return isProductInBasket ? (
                 <Button onClick={clickHandler} className={styles.btnRemove}>
+                    <BasketSuccessIcon className={styles.iconSuccess} />
                     {t("basketTakeOutBtn")}
                 </Button>
             ) : (
@@ -59,7 +60,7 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
                     className={styles.btnAdd}
                     variant={ButtonVariant.FILLED}
                 >
-                    <AddToBasket />
+                    <AddToBasketIcon className={styles.iconToBasket} />
                     {t("basketAddBtn")}
                 </Button>
             )

@@ -4,9 +4,9 @@ import { Button } from "shared/ui/Button/Button"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { basketActions, getBasketProducts } from "entities/Basket"
 import { useDispatch, useSelector } from "react-redux"
-import { getProductDetails } from "pages/ProductDetailsPage/model/selectors/productDetailsSelectors"
 import { useNavigate } from "react-router-dom"
 import { RoutePath } from "shared/config/routeConfig/const"
+import { getProductDetails } from "../../../../model/selectors/productDetailsSelectors"
 import styles from "./ProductPriceInfo.module.scss"
 
 export function ProductPriceInfo() {
