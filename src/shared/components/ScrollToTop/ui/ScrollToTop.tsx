@@ -6,10 +6,10 @@ import styles from "./ScrollToTop.module.scss"
 
 interface IScrollToTopProps {
     className?: string
-    offsetY: number
+    offsetY?: number
 }
 
-export function ScrollToTop({ className, offsetY = 0 }: IScrollToTopProps) {
+export function ScrollToTop({ className, offsetY = 300 }: IScrollToTopProps) {
     const [isShow, setIsShow] = useState(false)
 
     const buttonVisibilityHandler = useDebounce(() => setIsShow(window.pageYOffset > offsetY), 500)

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
 import { useNavigate } from "react-router-dom"
+import { AsyncImage, ImageFit } from "shared/ui/AsyncImage"
 import { classNames } from "shared/lib/classNames/classNames"
 import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
 import { bannerSliderList as slides } from "../../const/lists"
@@ -56,6 +57,7 @@ export function BannerSlider() {
     }, 500)
 
     useEffect(() => {
+        getCurrentDevice(window.innerWidth, setDevice)
         window.addEventListener("resize", debouncedResizeHandler)
         return () => window.removeEventListener("resize", debouncedResizeHandler)
     }, [debouncedResizeHandler])
@@ -72,19 +74,16 @@ export function BannerSlider() {
                 className={styles.carousel}
                 style={{ gridTemplateColumns: `repeat(${slides.length}, 100%)` }}
             >
-                {slides ? (
-                    slides.map(({ images, id }) => (
-                        <img
-                            key={id}
-                            src={images[device]}
-                            alt=""
-                            className={styles.img}
-                            style={{ transform: `translateX(-${current * 100}%)` }}
-                        />
-                    ))
-                ) : (
-                    <BannerSkeleton />
-                )}
+                {slides.map(({ images, id }) => (
+                    <AsyncImage
+                        key={id}
+                        src={images[device]}
+                        alt=""
+                        className={styles.img}
+                        style={{ transform: `translateX(-${current * 100}%)` }}
+                        objectFit={ImageFit.COVER}
+                    />
+                ))}
             </div>
 
             <div className={styles.pagination} onClick={e => e.stopPropagation()}>
