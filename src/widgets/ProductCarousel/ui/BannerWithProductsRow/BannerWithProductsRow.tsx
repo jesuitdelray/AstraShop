@@ -1,4 +1,5 @@
 import { ProductCard } from "entities/Product"
+import { AsyncImage, ImageFit } from "shared/ui/AsyncImage"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/basketFeatures"
 import { classNames } from "shared/lib/classNames/classNames"
@@ -36,7 +37,7 @@ export function BannerWithProductsRow(props: IBannerWithProductsRowProps) {
             </Typography>
             <div className={styles.content}>
                 <div className={styles.banner}>
-                    <img src={img} alt="" />
+                    <AsyncImage src={img} alt="" objectFit={ImageFit.COVER} />
                 </div>
 
                 <div

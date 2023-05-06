@@ -3,10 +3,9 @@ import { singleBannerList as slides } from "widgets/Banner/const/lists"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce"
 import { DeviceType, getCurrentDevice } from "shared/lib/getCurrentDevice/getCurrentDevice"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { AsyncImage, ImageFit } from "shared/ui/AsyncImage"
 import { useEffect, useState } from "react"
 import styles from "./SingleBanner.module.scss"
-import { BannerSkeleton } from "../BannerSkeleton/BannerSkeleton"
 
 interface ISingleBannerProps {
     imgIndex: number
@@ -38,7 +37,7 @@ export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
                 navigate(link)
             }}
         >
-            {banner ? <img className={styles.img} src={imgSrc} alt="" /> : <BannerSkeleton />}
+            <AsyncImage objectFit={ImageFit.COVER} src={imgSrc} alt="" />
         </div>
     )
 }
