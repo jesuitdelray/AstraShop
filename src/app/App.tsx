@@ -7,6 +7,7 @@ import { changeLanguageActions } from "features/ChangeLanguage"
 import { basketActions } from "entities/Basket"
 import { BasketModalSlider } from "widgets/BasketModalSlider"
 import { BurgerMenu } from "widgets/BurgerMenu"
+import { ScrollToTop } from "shared/components/ScrollToTop"
 import { CatalogSidebar } from "entities/CatalogNavigation"
 import { RoutePath } from "shared/config/routeConfig/const"
 import { useMatch } from "react-router-dom"
@@ -34,6 +35,7 @@ function App() {
                     <Footer />
                 </div>
             </Suspense>
+            <ScrollToTop />
         </div>
     )
 }
