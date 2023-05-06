@@ -1,6 +1,7 @@
 import { Layout, LayoutIsland } from "../Layout/Layout"
 import { ProductDescription } from "./ProductDescription/ProductDescription"
 import { ProductGallery } from "./ProductGallery/ProductGallery"
+import { ProductPriceInfo } from "./ProductPriceInfo/ProductPriceInfo"
 
 export function ProductAll() {
     return (
@@ -9,8 +10,8 @@ export function ProductAll() {
                 <ProductGallery />
             </LayoutIsland>
 
-            <LayoutIsland column="right" height="100px">
-                Price
+            <LayoutIsland column="right">
+                <ProductPriceInfo />
             </LayoutIsland>
 
             <LayoutIsland column="right">

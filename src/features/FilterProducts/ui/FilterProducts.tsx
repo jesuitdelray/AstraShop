@@ -71,7 +71,7 @@ export function FilterProducts({ className, onChangeFilters }: FilterProductsPro
                 className={classNames(styles.modal, {}, [className])}
             >
                 {content}
-                <Button variant={ButtonVariant.FILLED_RED} className={styles.btn} onClick={onClose}>
+                <Button variant={ButtonVariant.FILLED} className={styles.btn} onClick={onClose}>
                     {t("apply")}
                 </Button>
             </ModalSlider>

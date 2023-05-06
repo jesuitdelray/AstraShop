@@ -1,4 +1,4 @@
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { Button, ButtonColor, ButtonVariant } from "shared/ui/Button/Button"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import { classNames } from "shared/lib/classNames/classNames"
 import { RoutePath } from "shared/config/routeConfig/const"
@@ -74,7 +74,7 @@ export function Banner(props: BannerProps) {
                 )}
                 {isMain ? (
                     <Button
-                        variant={ButtonVariant.FILLED_RED}
+                        variant={ButtonVariant.FILLED}
                         onClick={() => navigate(RoutePath.sub_category + link)}
                         className={styles.btnView}
                     >
@@ -82,7 +82,8 @@ export function Banner(props: BannerProps) {
                     </Button>
                 ) : (
                     <Button
-                        variant={ButtonVariant.CLEAR_INVERTED}
+                        variant={ButtonVariant.CLEAR}
+                        color={ButtonColor.INVERTED}
                         onClick={() => navigate(RoutePath.sub_category + link)}
                     >
                         {t("viewProducts")}
