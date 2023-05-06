@@ -39,6 +39,7 @@ export function PriceFilter(props: PriceFilterProps) {
     }
 
     const [priceSort, setPriceSort] = useState<IPriceRange>(initialPriceSort)
+    const [isInited, setIsInited] = useState(false)
 
     const debouncedFetchFuncton = useDebounce(() => {
         dispatch(filterProductsActions.setPriceRange(priceSort))
@@ -49,7 +50,11 @@ export function PriceFilter(props: PriceFilterProps) {
     const maxRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
-        debouncedFetchFuncton()
+        if (isInited) {
+            debouncedFetchFuncton()
+        }
+
+        setIsInited(true)
 
         if (minRef.current && maxRef.current) {
             minRef.current.value = priceSort.min.toString()
@@ -58,6 +63,7 @@ export function PriceFilter(props: PriceFilterProps) {
 
         return () => {
             dispatch(filterProductsActions.resetPriceRange())
+            setIsInited(false)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [priceSort])
