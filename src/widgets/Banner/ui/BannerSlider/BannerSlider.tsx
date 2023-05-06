@@ -74,20 +74,16 @@ export function BannerSlider() {
                 className={styles.carousel}
                 style={{ gridTemplateColumns: `repeat(${slides.length}, 100%)` }}
             >
-                {slides ? (
-                    slides.map(({ images, id }) => (
-                        <AsyncImage
-                            key={id}
-                            src={images[device]}
-                            alt=""
-                            className={styles.img}
-                            style={{ transform: `translateX(-${current * 100}%)` }}
-                            objectFit={ImageFit.COVER}
-                        />
-                    ))
-                ) : (
-                    <BannerSkeleton />
-                )}
+                {slides.map(({ images, id }) => (
+                    <AsyncImage
+                        key={id}
+                        src={images[device]}
+                        alt=""
+                        className={styles.img}
+                        style={{ transform: `translateX(-${current * 100}%)` }}
+                        objectFit={ImageFit.COVER}
+                    />
+                ))}
             </div>
 
             <div className={styles.pagination} onClick={e => e.stopPropagation()}>
