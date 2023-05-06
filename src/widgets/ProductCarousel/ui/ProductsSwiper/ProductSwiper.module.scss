@@ -46,8 +46,10 @@
     }
 }
 
-:global(.productCarousel.noPagination) {
-    :global(.swiper-pagination) {
-        opacity: 0;
+@media (min-width: 961px) {
+    :global(.productCarousel.noPagination) {
+        :global(.swiper-pagination) {
+            opacity: 0;
+        }
     }
 }
