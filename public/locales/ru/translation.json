@@ -21,6 +21,8 @@
     "loadingProcessNoProduct": "Товары не найдены",
     "loadingProcessLoading": "Загрузка...",
     "loadingProcessProductExist": "В наличии",
+    "OutOfStock": "Не в наличии",
+    "buyNowBtn": "Купить сейчас",
     "loadingProcessProductNotExist": "Продукт не существует",
     "loadingProcessUnexpectedError": "Неизвестная ошибка",
     "newProductLabel": "новый",

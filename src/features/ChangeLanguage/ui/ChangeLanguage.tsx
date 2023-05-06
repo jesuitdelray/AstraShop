@@ -2,7 +2,7 @@ import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ChangeLanguageIcon } from "shared/assets/icons/others"
 import { classNames } from "shared/lib/classNames/classNames"
-import { Button, ButtonVariant } from "shared/ui/Button/Button"
+import { Button, ButtonColor, ButtonVariant } from "shared/ui/Button/Button"
 import i18n from "shared/config/i18n/i18n"
 import { changeLanguageActions } from "../model/slice/changeLanguageSlice"
 import { getStorageLanguage } from "../model/selectors/changeLanguageSelectors"
@@ -80,7 +80,8 @@ export function ChangeLanguage({ color = ChangeLanguageColor.NORMAL }: IChangeLa
                                 />
                                 <Button
                                     key={id}
-                                    variant={ButtonVariant.CLEAR_INVERTED}
+                                    variant={ButtonVariant.CLEAR}
+                                    color={ButtonColor.INVERTED}
                                     className={classNames(
                                         styles.btn,
                                         { [styles.active]: currentLanguage === languagesCode },

@@ -45,7 +45,7 @@ export function RemoveProductFromBasket({ id }: RemoveProductFromBasketProps) {
                         Are you sure?
                     </Typography>
                     <div className={styles.buttons}>
-                        <Button onClick={confirmClickHandler} variant={ButtonVariant.FILLED_RED}>
+                        <Button onClick={confirmClickHandler} variant={ButtonVariant.FILLED}>
                             Delete
                         </Button>
                         <button className={styles.btnCancel} onClick={closeModalHandler}>

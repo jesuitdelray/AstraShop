@@ -32,16 +32,15 @@ export const Button = memo((props: ButtonProps) => {
         ...restProps
     } = props
 
-    const mods: Mods = {
-        [styles[variant]]: true,
-        [styles.disabled]: disabled,
-    }
-
     return (
         <button
             data-testid="button"
             type="button"
-            className={classNames(styles.button, mods, [className])}
+            className={classNames(styles.button, { [styles.disabled]: disabled }, [
+                styles[variant],
+                styles[color],
+                className,
+            ])}
             disabled={disabled}
             {...restProps}
         >

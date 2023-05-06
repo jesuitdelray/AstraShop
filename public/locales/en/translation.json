@@ -23,6 +23,8 @@
     "loadingProcessNoProduct": "No products found",
     "loadingProcessLoading": "Loading...",
     "loadingProcessProductExist": "In stock",
+    "outOfStock": "Out of stock",
+    "buyNowBtn": "Buy Now",
     "loadingProcessProductNotExist": "Product does not exist",
     "loadingProcessUnexpectedError": "Unexpected error",
     "deliveryTypes1": "Mail",

@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react"
+/* import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { DarkBgDecorator } from "shared/config/storybook/DarkBgDecorator/DarkBgDecorator"
 import { Button, ButtonVariant } from "./Button"
 
@@ -65,3 +65,4 @@ InvertedButtonDisabled.args = {
     disabled: true,
 }
 InvertedButtonDisabled.decorators = [DarkBgDecorator()]
+ */

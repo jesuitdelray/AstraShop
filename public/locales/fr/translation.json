@@ -23,6 +23,8 @@
     "loadingProcessNoProduct": "Aucun produit",
     "loadingProcessLoading": "Chargement...",
     "loadingProcessProductExist": "En stock",
+    "outOfStock": "Rupture de stock",
+    "buyNowBtn": "Acheter maintenant",
     "loadingProcessProductNotExist": "Le produit n'existe pas",
     "loadingProcessUnexpectedError": "Erreur inattendue",
     "deliveryTypes1": "Courrier",
