@@ -12,9 +12,9 @@ import {
 } from "entities/ModalSlider"
 import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { useTranslation } from "react-i18next"
-import styles from "./Basket.module.scss"
 import { BasketItemsList } from "./BasketItemsList/BasketItemsList"
 import { EmptyBasket } from "./EmptyBasket/EmptyBasket"
+import styles from "./Basket.module.scss"
 
 export function BasketModalSlider() {
     const height = window.innerHeight

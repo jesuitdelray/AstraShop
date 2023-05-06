@@ -8,7 +8,6 @@ import { ChevronLeft, ChevronRight } from "shared/assets/icons/others"
 import { bannerSliderList as slides } from "../../const/lists"
 import { SLIDER_DELAY } from "../../const/const"
 import styles from "./BannerSlider.module.scss"
-import { BannerSkeleton } from "../BannerSkeleton/BannerSkeleton"
 
 export function BannerSlider() {
     const [isAutoScroll, setIsAutoScroll] = useState(true)

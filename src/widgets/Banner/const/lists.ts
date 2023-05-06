@@ -56,7 +56,7 @@ export const bannerSliderList: IBannerList[] = [
     },
     {
         id: 4,
-        link: `${RoutePath.category}/100`,
+        link: `${RoutePath.category}/95`,
         images: { mobile: phoneImage4, tablet: tabletImage4, desktop: desktopImg4 },
     },
 ]
