@@ -1,5 +1,4 @@
 import { ReactElement } from "react"
-import { Label } from "shared/ui/Label/Label"
 import { Typography } from "shared/ui/Typography/Typography"
 import { classNames } from "shared/lib/classNames/classNames"
 import { useNavigate } from "react-router-dom"
@@ -10,7 +9,7 @@ import { useTranslation } from "react-i18next"
 import { Product } from "../../model/types"
 import styles from "./ProductCardSale.module.scss"
 
-interface ProductCardProps extends Product {
+export interface ProductCardProps extends Product {
     currency?: string
     Basket?: ReactElement
     className?: string

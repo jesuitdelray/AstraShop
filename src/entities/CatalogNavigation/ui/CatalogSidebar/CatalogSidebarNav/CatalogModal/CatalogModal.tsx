@@ -8,7 +8,7 @@ import { navigationTreeType } from "../../../../model/types/list"
 import { Portal } from "../Portal/Portal"
 import cls from "./CatalogModal.module.scss"
 
-interface ModalProps {
+export interface ModalProps {
     className?: string
     isOpen: boolean
     navTree: navigationTreeType

@@ -8,7 +8,7 @@ export enum SmallBasketColor {
     INVERTED = "inverted",
 }
 
-interface SmallBasketProps {
+export interface SmallBasketProps {
     className?: string
     onClick: () => void
     basketCount: number

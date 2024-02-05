@@ -5,7 +5,7 @@ import { AsyncImage } from "shared/ui/AsyncImage"
 import styles from "./ProductCardBasket.module.scss"
 import { Product } from "../../model/types"
 
-interface ProductCardBasketProps extends Product {
+export interface ProductCardBasketProps extends Product {
     Delete: ReactElement
     Counter: ReactElement
     currency: string

@@ -13,7 +13,7 @@ import styles from "./ProductCard.module.scss"
 import { Product } from "../../model/types"
 import { renderStars } from "../../lib/renderStars"
 
-interface ProductCardProps extends Product {
+export interface ProductCardProps extends Product {
     currency?: string
     Basket?: ReactElement
     AddProductToFavorite?: ReactElement

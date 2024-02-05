@@ -15,7 +15,7 @@ export enum ModalSliderDirection {
     RIGHT = "right",
 }
 
-interface ModalSliderProps {
+export interface ModalSliderProps {
     isOpen: boolean
     onClose: () => void
     children: ReactNode

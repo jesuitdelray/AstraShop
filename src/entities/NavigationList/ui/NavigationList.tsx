@@ -16,7 +16,7 @@ export enum NavigationListVariant {
     DESKTOP = "desktop",
 }
 
-interface NavigationListProps {
+export interface NavigationListProps {
     className?: string
     variant: NavigationListVariant
     onLinkClick?: () => void

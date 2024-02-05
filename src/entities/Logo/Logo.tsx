@@ -8,7 +8,7 @@ export enum LogoVariant {
     INVERTED = "inverted",
 }
 
-interface LogoProps {
+export interface LogoProps {
     className?: string
     onClick?: () => void
     variant?: LogoVariant

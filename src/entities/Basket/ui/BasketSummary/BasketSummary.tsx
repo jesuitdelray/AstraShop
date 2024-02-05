@@ -15,7 +15,7 @@ export enum BasketSummaryVariant {
     VERTICAL = "vertical",
 }
 
-interface BasketSummaryProps {
+export interface BasketSummaryProps {
     isCentered?: boolean
     className?: string
     variant?: BasketSummaryVariant

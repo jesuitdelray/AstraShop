@@ -16,14 +16,14 @@ export function CatalogLinks() {
     const error = useSelector(getNavigationTreeError)
 
     useEffect(() => {
-        if (!navigationTree.length && !error) {
+        if (!navigationTree?.length && !error) {
             dispatch(fetchNavigationTree())
         }
     }, [dispatch, navigationTree, error])
 
     return (
         <div className={styles.container}>
-            {navigationTree.map(item => {
+            {navigationTree?.map(item => {
                 const { id, name, categories = [], icon } = item
                 return (
                     <div className={styles.links} key={id}>
