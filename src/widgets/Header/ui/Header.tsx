@@ -10,7 +10,7 @@ import styles from "./Header.module.scss"
 import { HeaderLeft } from "./HeaderLeft/HeaderLeft"
 import { HeaderRight } from "./HeaderRight/HeaderRight"
 
-interface HeaderProps {
+export interface HeaderProps {
     BurgerModal: ReactElement
     BasketModal: ReactElement
 }

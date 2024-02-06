@@ -9,7 +9,7 @@ import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 import styles from "./PriceFilter.module.scss"
 import { FilterItemPriceRange, IPriceRange } from "../../model/types/types"
 
-interface PriceFilterProps {
+export interface PriceFilterProps {
     title: string
     range: FilterItemPriceRange
     onChangeFilters: () => void

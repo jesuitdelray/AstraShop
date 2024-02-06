@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next"
 import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typography/Typography"
 import styles from "./HeaderLeft.module.scss"
 
-interface HeaderLeftProps {
+export interface HeaderLeftProps {
     className?: string
     isMainPage?: boolean
 }

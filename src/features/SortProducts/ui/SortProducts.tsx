@@ -8,7 +8,7 @@ import { sortProductsOrderType } from "../model/types/types"
 import { getSortProductsOrder } from "../model/selectors/sortProductsSelectors"
 import { sortProductsAction } from "../model/slice/sortProductsSlice"
 
-interface SortProductsProps {
+export interface SortProductsProps {
     className?: string
     onChangeSort?: () => void
 }

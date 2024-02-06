@@ -16,7 +16,7 @@ interface LinksListItem {
     list: ListItemType[]
 }
 
-interface LinksListProps {
+export interface LinksListProps {
     data: LinksListItem
     className?: string
 }

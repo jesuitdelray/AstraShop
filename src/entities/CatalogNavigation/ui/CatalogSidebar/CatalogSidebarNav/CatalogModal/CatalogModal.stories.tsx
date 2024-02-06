@@ -1,6 +1,7 @@
 import { Story, Meta } from "@storybook/react"
 import { CatalogModal, ModalProps } from "./CatalogModal"
 import { navigationCategory } from "../../../../model/types/list"
+import { Portal } from "../Portal/Portal"
 
 export default {
     title: "Components/CatalogModal",
@@ -9,25 +10,15 @@ export default {
 
 const mockNavTree: navigationCategory[] = [
     {
-        name: "Electronics",
-        id: 1,
+        name: "test",
+        id: 0,
         icon: "",
         categories: [
-            { name: "Laptops", id: 11, image: "", parent_category_id: 1 },
-            { name: "Cameras", id: 12, image: "", parent_category_id: 1 },
-        ],
-    },
-    {
-        name: "Clothing",
-        id: 2,
-        icon: "",
-        categories: [
-            { name: "Men", id: 21, image: "", parent_category_id: 2 },
             {
-                name: "Women",
-                id: 22,
+                name: "test2",
+                id: 1,
                 image: "",
-                parent_category_id: 2,
+                parent_category_id: 1,
             },
         ],
     },

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 import { modalsActions } from "entities/ModalSlider"
 import styles from "./BasketItemsList.module.scss"
 
-interface BasketItemsListProps {
+export interface BasketItemsListProps {
     list: Product[]
 }
 
@@ -22,7 +22,7 @@ export function BasketItemsList({ list }: BasketItemsListProps) {
     return (
         <div className={styles.container}>
             {!!list &&
-                list.map(item => {
+                list?.map(item => {
                     const { id, name, price, images, quantity = 1 } = item
                     return (
                         <ProductCardBasket

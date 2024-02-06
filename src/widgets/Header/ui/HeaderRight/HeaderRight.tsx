@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { CrossIcon } from "shared/assets/icons/others"
 import styles from "./HeaderRight.module.scss"
 
-interface IHeaderRightProps {
+export interface IHeaderRightProps {
     isMainPage: boolean
 }
 

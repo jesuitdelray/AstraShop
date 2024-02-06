@@ -11,7 +11,7 @@ import {
 } from "../../model/selectors/searchProductsSelectors"
 import styles from "./SearchDropdown.module.scss"
 
-interface SearchDropdownProps {
+export interface SearchDropdownProps {
     className?: string
     setIsDropdownOpen: (arg: boolean) => void
 }
@@ -39,9 +39,9 @@ export function SearchDropdown(props: SearchDropdownProps) {
                         <Skeleton style={{ width: "40%", height: "16px" }} />
                     </div>
                 )
-            case productsList.length < 1:
+            case productsList?.length < 1:
                 return <div>{t("loadingProcessNoProduct")}</div>
-            case productsList.length > 0:
+            case productsList?.length > 0:
                 return productsList.map(item => {
                     const { id, name } = item
 

@@ -12,7 +12,7 @@ import { getProductFilters } from "../model/selectors/filterProductsSelectors"
 import { FilterItemAttribute, FilterItemPriceRange } from "../model/types/types"
 import { filterProductsActions } from "../model/slice/filterProductsSlice"
 
-interface FilterProductsProps {
+export interface FilterProductsProps {
     className?: string
     onChangeFilters: () => void
 }

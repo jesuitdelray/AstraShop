@@ -3,7 +3,7 @@ import { Typography, TypographyColor, TypographyVariant } from "shared/ui/Typogr
 import { useTranslation } from "react-i18next"
 import styles from "./EmptyBasket.module.scss"
 
-interface EmptyBasketProps {
+export interface EmptyBasketProps {
     onClose: () => void
 }
 
