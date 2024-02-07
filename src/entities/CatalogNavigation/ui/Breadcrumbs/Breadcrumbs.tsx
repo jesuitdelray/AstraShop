@@ -32,7 +32,7 @@ export function Breadcrumbs() {
                 <MainHome className={styles.home} />
             </AppLink>
 
-            {data.map((route, index, array) => {
+            {data?.map((route, index, array) => {
                 const { name, id, type } = route
                 const link = () => {
                     switch (type) {

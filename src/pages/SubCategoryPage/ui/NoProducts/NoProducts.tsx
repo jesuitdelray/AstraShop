@@ -3,7 +3,7 @@ import { Typography, TypographyVariant } from "shared/ui/Typography/Typography"
 import { Button } from "shared/ui/Button/Button"
 import styles from "./NoProducts.module.scss"
 
-interface NoProductsProps {
+export interface NoProductsProps {
     onReturnClick: () => void
 }
 

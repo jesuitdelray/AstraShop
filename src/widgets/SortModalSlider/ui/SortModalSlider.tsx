@@ -4,7 +4,7 @@ import { SortProducts } from "features/SortProducts"
 import { Button } from "shared/ui/Button/Button"
 import styles from "./SortModalSlider.module.scss"
 
-interface SortModalSliderProps {
+export interface SortModalSliderProps {
     onChangeSort: () => void
 }
 

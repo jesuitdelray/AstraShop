@@ -28,7 +28,7 @@ export function ToggleProductInBasket({ product, variant }: ToggleProductInBaske
 
     const { id } = product
 
-    const isProductInBasket = basketProducts.some(item => item.id === id)
+    const isProductInBasket = basketProducts?.some(item => item.id === id)
 
     function clickHandler(e: MouseEvent) {
         e.stopPropagation()

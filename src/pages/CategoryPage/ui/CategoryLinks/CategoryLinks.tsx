@@ -8,7 +8,7 @@ import { AsyncImage } from "shared/ui/AsyncImage"
 import { ImageFit } from "shared/ui/AsyncImage/AsyncImage"
 import styles from "./CategoryLinks.module.scss"
 
-interface CategoryLinksProps {
+export interface CategoryLinksProps {
     data: navigationCategory
     className?: string
 }

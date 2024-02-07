@@ -24,7 +24,7 @@ export enum ProducstRowVariant {
     NEW_PRODUCTS = "new",
 }
 
-interface IProductsRowProps {
+export interface IProductsRowProps {
     className?: string
     variant: ProducstRowVariant
 }

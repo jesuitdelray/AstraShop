@@ -6,7 +6,7 @@ import { ToggleProductInBasket, ToggleProductInBasketVariant } from "features/ba
 import { CompareProducts, AddProductToFavorite } from "features/productFeatures"
 import styles from "./Products.module.scss"
 
-interface ProductsProps {
+export interface ProductsProps {
     isLoading: boolean
     products: Product[]
 }

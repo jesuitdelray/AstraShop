@@ -19,7 +19,7 @@ export function ProductPriceInfo() {
     const productInStock = true /* to be changed */
     const productCurrency = "$" /* to be changed */
 
-    const isProductInBasket = basketProducts.some(item => item.id === productDetails?.id)
+    const isProductInBasket = basketProducts?.some(item => item.id === productDetails?.id)
 
     function clickHandler() {
         if (productDetails && !isProductInBasket) {
@@ -37,7 +37,7 @@ export function ProductPriceInfo() {
                 {productInStock ? t("loadingProcessProductExist") : t("outOfStock")}
             </Typography>
             <Typography variant={TypographyVariant.H2} className={styles.price} isBold>
-                {`${productCurrency} ${productDetails?.price.toLocaleString()}`}
+                {`${productCurrency} ${productDetails?.price?.toLocaleString()}`}
             </Typography>
             <div className={styles.btnContainer}>
                 <ToggleProductInBasket

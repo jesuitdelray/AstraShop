@@ -66,7 +66,7 @@ export function Row({
     return null
 }
 
-interface ILayoutProps {
+export interface ILayoutProps {
     children: ReactNode
     gap: CSSDimensionType
 }

@@ -18,7 +18,7 @@ export enum IProductSwiperVariant {
     WITH_BANNER = "with_banner",
 }
 
-interface IProductSwiperProps {
+export interface IProductSwiperProps {
     isLoading: boolean
     children: ReactNode
     variant: IProductSwiperVariant

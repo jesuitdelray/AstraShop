@@ -44,7 +44,7 @@ export function ProductDetailsPage() {
             })) || []
 
         dispatch(
-            catalogNavigationActions.setCurrentTree([
+            catalogNavigationActions?.setCurrentTree([
                 ...parents,
                 {
                     id: id !== undefined ? +id : 0,
