@@ -1,41 +1,48 @@
-import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
 import { configureStore } from "@reduxjs/toolkit"
+import { Story, Meta } from "@storybook/react"
 import { ProductGallery } from "./ProductGallery"
-import { createSlice } from "@reduxjs/toolkit"
+import { Args } from "@storybook/addons"
 
-const mockImages = [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
-    "https://via.placeholder.com/150",
-    "https://via.placeholder.com/150",
-]
+interface initialState {
+    productDetails: {
+        data: {
+            images: string[]
+        }
+    }
+}
 
-const productDetailsSlice = createSlice({
-    name: "productDetails",
-    initialState: {
-        images: mockImages,
+const initialState = {
+    productDetails: {
+        data: {
+            images: [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150",
+            ],
+        },
     },
-    reducers: {},
-})
+}
 
-const store = configureStore({
-    reducer: {
-        productDetails: productDetailsSlice.reducer,
-    },
-})
+const createMockStore = (initialState: initialState) =>
+    configureStore({
+        reducer: () => initialState,
+    })
+
+const mockStore = createMockStore(initialState)
 
 export default {
-    title: "Components/ProductAll/ProductGallery",
+    title: "Pages/ProductGallery",
     component: ProductGallery,
     decorators: [
-        Story => (
-            <Provider store={store}>
-                <Story />
+        (StoryFn: Story) => (
+            <Provider store={mockStore}>
+                <StoryFn />
             </Provider>
         ),
     ],
 } as Meta
 
-const Template: Story = () => <ProductGallery />
+const Template: Story = (args: Args) => <ProductGallery {...args} />
 
 export const Default = Template.bind({})

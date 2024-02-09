@@ -1,28 +1,32 @@
+import { Provider, useSelector } from "react-redux"
+import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { Story, Meta } from "@storybook/react"
-import { Provider } from "react-redux"
 import { PaymentErrorModal } from "./PaymentErrorModal"
-import { ModalsList } from "entities/ModalSlider"
-import { configureStore } from "@reduxjs/toolkit"
-import { AnyAction, combineReducers } from "@reduxjs/toolkit"
+import { ModalsList, getModalsCurrent } from "entities/ModalSlider"
 
-const modalReducer = (state = { current: ModalsList.PAYMENT_ERROR }, action: AnyAction) => state
+const customInitialState = { current: ModalsList.PAYMENT_ERROR }
 
-const store = configureStore({
-    reducer: combineReducers({
-        modal: modalReducer,
-    }),
-    preloadedState: {
-        modal: {
-            current: ModalsList.PAYMENT_ERROR,
+const modalSlice = createSlice({
+    name: "modals",
+    initialState: customInitialState,
+    reducers: {
+        closeModal: state => {
+            state.current = ModalsList.NONE
         },
     },
 })
 
+const store = configureStore({
+    reducer: {
+        modals: modalSlice.reducer,
+    },
+})
+
 export default {
-    title: "Components/PaymentErrorModal",
+    title: "Pages/OrderPage/PaymentErrorModal",
     component: PaymentErrorModal,
     decorators: [
-        (Story: () => JSX.Element) => (
+        Story => (
             <Provider store={store}>
                 <Story />
             </Provider>
@@ -30,6 +34,6 @@ export default {
     ],
 } as Meta
 
-const Template: Story = () => <PaymentErrorModal />
+const Template: Story<typeof PaymentErrorModal> = args => <PaymentErrorModal {...args} />
 
 export const Default = Template.bind({})

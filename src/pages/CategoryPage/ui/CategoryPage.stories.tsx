@@ -1,7 +1,6 @@
 import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
 import { configureStore, combineReducers } from "@reduxjs/toolkit"
-import { MemoryRouter } from "react-router-dom"
 import { CategoryPage } from "./CategoryPage"
 import { CategoryLinks } from "./CategoryLinks/CategoryLinks"
 import { catalogNavigationReducer } from "entities/CatalogNavigation"
