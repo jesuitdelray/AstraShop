@@ -7,7 +7,7 @@ import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 import { FilterItemAttribute } from "../../model/types/types"
 import styles from "./CheckboxGroup.module.scss"
 
-interface CheckboxGroupProps {
+export interface CheckboxGroupProps {
     title: string
     list?: FilterItemAttribute[]
     onChangeFilters: () => void

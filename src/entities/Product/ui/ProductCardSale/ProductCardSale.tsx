@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next"
 import { Product } from "../../model/types"
 import styles from "./ProductCardSale.module.scss"
 
-interface ProductCardProps extends Product {
+export interface ProductCardProps extends Product {
     currency?: string
     Basket?: ReactElement
     className?: string
@@ -44,7 +44,7 @@ export const ProductCardSale = (props: ProductCardProps) => {
                     <Typography className={styles.footerPrice} isBold data-testid="product-price">
                         {`${currency} ${price.toLocaleString()}`}
                     </Typography>
-                    {Basket && <div data-testid="product-basket">{Basket}</div>}
+                    {Basket}
                 </div>
             </div>
         </div>

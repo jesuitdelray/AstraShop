@@ -13,7 +13,7 @@ export enum ToggleProductInBasketVariant {
     BUTTON = "button",
 }
 
-interface ToggleProductInBasketProps {
+export interface ToggleProductInBasketProps {
     product?: Product
     variant: ToggleProductInBasketVariant
 }
