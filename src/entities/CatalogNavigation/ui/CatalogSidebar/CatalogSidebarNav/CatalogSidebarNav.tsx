@@ -55,7 +55,7 @@ export function CatalogSidebarNav() {
     const error = useSelector(getNavigationTreeError)
 
     useEffect(() => {
-        if (!navigationTree.length && !error) {
+        if (!navigationTree?.length && !error) {
             dispatch(fetchNavigationTree())
         }
     }, [dispatch, navigationTree, error])
@@ -68,7 +68,7 @@ export function CatalogSidebarNav() {
     return (
         <div className={styles.wrapper} ref={containerRef}>
             <div className={styles.container}>
-                {navigationTree.map(item => {
+                {navigationTree?.map(item => {
                     const { id, icon } = item
                     return (
                         <div

@@ -13,7 +13,7 @@ import styles from "./ProductCard.module.scss"
 import { Product } from "../../model/types"
 import { renderStars } from "../../lib/renderStars"
 
-export interface ProductCardProps extends Product {
+interface ProductCardProps extends Product {
     currency?: string
     Basket?: ReactElement
     AddProductToFavorite?: ReactElement
@@ -59,7 +59,12 @@ export const ProductCard = (props: ProductCardProps) => {
                         <Label value={`${t("newProductLabel")}`} className={styles.label} />
                     )}
                     {!!isTop && (
-                        <Label value="top" className={styles.label} color={LabelColor.ATTENTION} />
+                        <Label
+                            value="top"
+                            className={styles.label}
+                            color={LabelColor.ATTENTION}
+                            data-testid="product-top-label"
+                        />
                     )}
                 </div>
                 <div className={styles.cardFeatures}>
@@ -91,7 +96,7 @@ export const ProductCard = (props: ProductCardProps) => {
                 )}
                 <div className={styles.priceContainer}>
                     {!oldPrice ? (
-                        <Typography className={styles.price} isBold>
+                        <Typography className={styles.price} isBold data-testid="product-price">
                             {`${currency} ${price.toLocaleString()}`}
                         </Typography>
                     ) : (

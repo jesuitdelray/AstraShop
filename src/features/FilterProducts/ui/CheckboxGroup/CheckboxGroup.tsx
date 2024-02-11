@@ -7,7 +7,7 @@ import { filterProductsActions } from "../../model/slice/filterProductsSlice"
 import { FilterItemAttribute } from "../../model/types/types"
 import styles from "./CheckboxGroup.module.scss"
 
-export interface CheckboxGroupProps {
+interface CheckboxGroupProps {
     title: string
     list?: FilterItemAttribute[]
     onChangeFilters: () => void
@@ -31,7 +31,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
             <div className={styles.list}>
                 {list?.map(item => {
                     const { name, id } = item
-                    const isChecked = attributes.some(item => item === id)
+                    const isChecked = attributes?.some(item => item === id)
 
                     return (
                         <div className={styles.item} key={id}>

@@ -5,7 +5,7 @@ import { AsyncImage } from "shared/ui/AsyncImage"
 import styles from "./ProductCardBasket.module.scss"
 import { Product } from "../../model/types"
 
-export interface ProductCardBasketProps extends Product {
+interface ProductCardBasketProps extends Product {
     Delete: ReactElement
     Counter: ReactElement
     currency: string
@@ -28,7 +28,7 @@ export function ProductCardBasket(props: ProductCardBasketProps) {
     const imgSrc = images?.[0] ? images[0] : productPlaceholder
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} data-testid="product-card-basket-container">
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
             <AsyncImage src={imgSrc} className={styles.img} onClick={() => onProductClick?.(id)} />
             <div className={styles.info} onClick={() => onProductClick?.(id)}>

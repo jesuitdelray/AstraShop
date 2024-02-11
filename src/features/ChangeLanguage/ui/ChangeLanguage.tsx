@@ -56,10 +56,15 @@ export function ChangeLanguage({ color = ChangeLanguageColor.NORMAL }: IChangeLa
             onClick={clickHandler}
             onMouseEnter={onMouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
+            data-testid="wrapper"
         >
             <ChangeLanguageIcon className={classNames(styles.menuItem, {}, [styles[color]])} />
             {dropdownActive && (
-                <div ref={dropdownRef} className={styles.languageListContainer}>
+                <div
+                    ref={dropdownRef}
+                    className={styles.languageListContainer}
+                    data-testid="dropdown-active"
+                >
                     {languagesData.map(language => {
                         const { id, text, languagesCode, Icon } = language
 
