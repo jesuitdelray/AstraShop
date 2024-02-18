@@ -17,6 +17,7 @@ export function CompareProducts({ className }: CompareProductsProps) {
 
     return (
         <Scale
+            data-testid="scale-icon"
             className={classNames(styles.scaleIcon, { [styles.active]: isActive }, [className])}
             onClick={clickHandler}
         />
