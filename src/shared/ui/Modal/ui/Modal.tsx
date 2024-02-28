@@ -45,7 +45,7 @@ export const Modal = (props: ModalProps) => {
     return (
         <Portal>
             <div className={classNames(cls.Modal, mods, [className])}>
-                <div className={cls.overlay} onClick={() => onClose?.()}>
+                <div className={cls.overlay} onClick={() => onClose?.()} data-testid="overlay">
                     <div className={cls.content} onClick={e => e.stopPropagation()}>
                         {children}
                     </div>

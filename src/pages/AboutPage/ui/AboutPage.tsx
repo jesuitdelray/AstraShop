@@ -28,7 +28,7 @@ export function AboutPage() {
                 <br />
                 {t("aboutUsDeliveryInfo4thPart")}
             </Typography>
-            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
+            <ProductsRow variant={ProducstRowVariant?.TOP_PRODUCTS} />
             <BannersRow />
         </div>
     )

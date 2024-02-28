@@ -15,8 +15,8 @@ export function Products({ isLoading, products }: ProductsProps) {
     return (
         <div className={styles.products}>
             {isLoading
-                ? [1, 2, 3, 4, 5].map(item => <ProductCardSkeleton key={item} />)
-                : products.map(product => {
+                ? [1, 2, 3, 4, 5]?.map(item => <ProductCardSkeleton key={item} />)
+                : products?.map(product => {
                       const { id, is_new: isNew, images, name, price } = product
                       return (
                           <ProductCard

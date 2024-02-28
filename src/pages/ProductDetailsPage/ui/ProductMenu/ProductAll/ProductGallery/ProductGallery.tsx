@@ -21,6 +21,7 @@ export function ProductGallery() {
                             [styles.active]: index === current,
                         })}
                         onClick={() => setCurrent(index)}
+                        data-testid={`smallImage-${index}`}
                     >
                         <img src={item} alt="" />
                     </div>
@@ -29,7 +30,9 @@ export function ProductGallery() {
             <div className={styles.bigImage}>
                 {productImages?.map((item, index) => {
                     if (index === current) {
-                        return <img src={item} alt="" key={uuid()} />
+                        return (
+                            <img src={item} alt="" key={uuid()} data-testid={`bigImage-${index}`} />
+                        )
                     }
                     return null
                 })}

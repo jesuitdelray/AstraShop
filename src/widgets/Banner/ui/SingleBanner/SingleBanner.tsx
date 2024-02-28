@@ -36,6 +36,7 @@ export function SingleBanner({ imgIndex, className }: ISingleBannerProps) {
             onClick={() => {
                 navigate(link)
             }}
+            data-testid="single-banner-container"
         >
             <AsyncImage objectFit={ImageFit.COVER} src={imgSrc} alt="" />
         </div>

@@ -46,10 +46,14 @@ export function BasketModalSlider() {
                     <Typography variant={TypographyVariant.H3} className={styles.slideRightTitle}>
                         {t("basket")}
                     </Typography>
-                    <CrossIcon onClick={onClose} className={styles.cross} />
+                    <CrossIcon
+                        onClick={onClose}
+                        className={styles.cross}
+                        data-testid="cross-icon"
+                    />
                 </div>
 
-                {basketProducts.length ? (
+                {basketProducts?.length ? (
                     <>
                         <BasketItemsList list={basketProducts || []} />
                         <BasketSummary onOrderClick={() => navigate(RoutePath.order)} />

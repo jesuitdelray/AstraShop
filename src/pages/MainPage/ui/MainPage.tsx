@@ -22,9 +22,9 @@ export function MainPage() {
                     gap="10px"
                     height="480px"
                 >
-                    <CatalogSidebarNav />
-                    <BannerSlider />
-                    <ProductsSale />
+                    <CatalogSidebarNav data-testid="catalog-sidebar-nav" />
+                    <BannerSlider data-testid="banner-slider" />
+                    <ProductsSale data-testid="products-sale" />
                 </Row>
 
                 <Row
@@ -38,19 +38,22 @@ export function MainPage() {
                 </Row>
 
                 <Row>
-                    <BannerWithProductsRow id={1} />
+                    <BannerWithProductsRow id={1} data-testid="banner-with-products-row" />
                 </Row>
 
                 <Row>
-                    <SingleBanner imgIndex={1} />
+                    <SingleBanner imgIndex={1} data-testid="single-banner" />
                 </Row>
 
                 <Row>
-                    <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
+                    <ProductsRow
+                        variant={ProducstRowVariant.TOP_PRODUCTS}
+                        data-testid="products-row"
+                    />
                 </Row>
 
                 <Row>
-                    <BannersRow />
+                    <BannersRow data-testid="banners-row" />
                 </Row>
             </Layout>
         </div>

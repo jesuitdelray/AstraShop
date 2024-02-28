@@ -31,7 +31,8 @@ export function SuccessOrderModal() {
             isOpen={isOpen}
             onClose={onClose}
             className={isSlideTop ? styles.sliderWrapper : styles.wrapper}
-            variant={isSlideTop ? ModalSliderVariant.SLIDER : ModalSliderVariant.MODAL}
+            variant={isSlideTop ? ModalSliderVariant.SLIDER : ModalSliderVariant?.MODAL}
+            data-testid="wrapper"
         >
             <ShoppingBagIcon className={styles.shoppingBag} />
             <Typography
