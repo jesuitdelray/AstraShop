@@ -1,8 +1,8 @@
 import { render, RenderResult } from "@testing-library/react"
 import { Provider, RootStateOrAny, useSelector } from "react-redux"
 import { createStore, Store } from "redux"
-import { SuccessOrderModal } from "./SuccessOrderModal"
 import { ModalsList } from "entities/ModalSlider"
+import { SuccessOrderModal } from "./SuccessOrderModal"
 
 const initialState: RootStateOrAny = {
     modals: {
@@ -10,9 +10,7 @@ const initialState: RootStateOrAny = {
     },
 }
 
-const mockStore = createStore((state: RootStateOrAny = initialState): RootStateOrAny => {
-    return state
-})
+const mockStore = createStore((state: RootStateOrAny = initialState): RootStateOrAny => state)
 
 jest.mock("react-redux", () => ({
     ...jest.requireActual("react-redux"),
@@ -24,7 +22,7 @@ describe("SuccessOrderModal", () => {
     let component: RenderResult
 
     beforeEach(() => {
-        ;(useSelector as jest.Mock).mockReturnValue(ModalsList.SUCCESS)
+        (useSelector as jest.Mock).mockReturnValue(ModalsList.SUCCESS)
         component = render(
             <Provider store={mockStore as Store}>
                 <SuccessOrderModal />

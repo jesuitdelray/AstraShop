@@ -46,7 +46,13 @@ const store = configureStore({
 export default {
     title: "Widgets/BannerWithProductsRow",
     component: BannerWithProductsRow,
-    decorators: [Story => <Provider store={store}>{<Story />}</Provider>],
+    decorators: [
+        Story => (
+            <Provider store={store}>
+                <Story />
+            </Provider>
+        ),
+    ],
 } as Meta
 
 const Template: Story = args => <BannerWithProductsRow {...args} id={1} />

@@ -1,9 +1,9 @@
 import { Provider } from "react-redux"
 import { configureStore } from "@reduxjs/toolkit"
 import { Story, Meta } from "@storybook/react"
-import { HeaderRight, IHeaderRightProps } from "./HeaderRight"
 import { ModalsList, modalsReducer } from "entities/ModalSlider"
 import { basketReducer } from "entities/Basket"
+import { HeaderRight, IHeaderRightProps } from "./HeaderRight"
 
 const initialState = {
     modals: {

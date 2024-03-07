@@ -1,19 +1,13 @@
 import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
+import { basketReducer } from "entities/Basket"
 import { configureStore } from "@reduxjs/toolkit"
+import { productDetailsReducer } from "pages/ProductDetailsPage"
 import {
     ToggleProductInBasket,
     ToggleProductInBasketProps,
     ToggleProductInBasketVariant,
 } from "./ToggleProductInBasket"
-import { basketReducer } from "entities/Basket"
-import { productDetailsReducer } from "pages/ProductDetailsPage"
-
-export default {
-    title: "Features/ToggleProductInBasket",
-    component: ToggleProductInBasket,
-    decorators: [Story => <Provider store={store}>{Story()}</Provider>],
-} as Meta
 
 const store = configureStore({
     reducer: {
@@ -21,6 +15,12 @@ const store = configureStore({
         product: productDetailsReducer,
     },
 })
+
+export default {
+    title: "Features/ToggleProductInBasket",
+    component: ToggleProductInBasket,
+    decorators: [Story => <Provider store={store}>{Story()}</Provider>],
+} as Meta
 
 const Template: Story<ToggleProductInBasketProps> = args => <ToggleProductInBasket {...args} />
 

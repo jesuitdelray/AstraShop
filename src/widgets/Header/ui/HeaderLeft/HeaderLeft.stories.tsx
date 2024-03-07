@@ -1,8 +1,8 @@
 import { Provider } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { Story, Meta } from "@storybook/react"
-import { HeaderLeft, HeaderLeftProps } from "./HeaderLeft"
 import { ModalsList } from "entities/ModalSlider"
+import { HeaderLeft, HeaderLeftProps } from "./HeaderLeft"
 
 const modalsSlice = createSlice({
     name: "modals",

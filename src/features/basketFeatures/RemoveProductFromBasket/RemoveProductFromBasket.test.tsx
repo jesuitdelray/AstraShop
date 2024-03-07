@@ -3,8 +3,8 @@ import { render, fireEvent, waitFor } from "@testing-library/react"
 import { Provider } from "react-redux"
 import { createStore, applyMiddleware, combineReducers } from "redux"
 import thunk from "redux-thunk"
-import { RemoveProductFromBasket } from "./RemoveProductFromBasket"
 import { basketActions } from "entities/Basket"
+import { RemoveProductFromBasket } from "./RemoveProductFromBasket"
 
 const configureStore = () => {
     const rootReducer = combineReducers({})

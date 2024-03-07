@@ -1,8 +1,7 @@
 import { Provider } from "react-redux"
-import { createStore, combineReducers } from "redux"
+import { createStore, combineReducers, applyMiddleware } from "redux"
 import { Story, Meta } from "@storybook/react/types-6-0"
 import thunkMiddleware from "redux-thunk"
-import { applyMiddleware } from "redux"
 
 import { SubmitOrder } from "./SubmitOrder"
 

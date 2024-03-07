@@ -1,7 +1,7 @@
-import { render, fireEvent } from "@testing-library/react"
-import { SortModalSlider } from "./SortModalSlider"
+import { render } from "@testing-library/react"
 import { Provider } from "react-redux"
 import { createStore, combineReducers } from "redux"
+import { SortModalSlider } from "./SortModalSlider"
 
 const initialState = {
     modal: {
@@ -9,6 +9,7 @@ const initialState = {
     },
 }
 
+// eslint-disable-next-line default-param-last
 function modalReducer(state = initialState, action: any) {
     switch (action.type) {
         case "MODAL_CLOSE":

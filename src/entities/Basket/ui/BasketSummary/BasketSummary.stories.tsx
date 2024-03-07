@@ -1,9 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react"
-import { BasketSummary, BasketSummaryProps, BasketSummaryVariant } from "./BasketSummary"
 import { StoreProvider } from "app/providers/StoreProvider"
-import { I18nextProvider } from "react-i18next"
-import i18next from "i18next"
-import i18n from "shared/config/i18n/i18n"
+import { BasketSummary, BasketSummaryProps, BasketSummaryVariant } from "./BasketSummary"
 
 export default {
     title: "Entities/BasketSummary",

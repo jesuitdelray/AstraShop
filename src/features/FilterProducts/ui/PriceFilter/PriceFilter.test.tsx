@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react"
-import { PriceFilter, PriceFilterProps } from "./PriceFilter"
 import { Provider } from "react-redux"
 import { createStore, AnyAction, Store } from "redux"
+import { PriceFilter, PriceFilterProps } from "./PriceFilter"
 
 jest.mock("react-redux", () => {
     const ActualReactRedux = jest.requireActual("react-redux")
@@ -13,13 +13,12 @@ jest.mock("react-redux", () => {
     }
 })
 
-const rootReducer = (state: RootState = initialState, action: AnyAction): RootState => {
+interface RootState {}
+const initialState: RootState = {}
+
+function rootReducer(state: RootState = initialState): RootState {
     return state
 }
-
-interface RootState {}
-
-const initialState: RootState = {}
 
 const store: Store<RootState, AnyAction> = createStore(rootReducer)
 

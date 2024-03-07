@@ -1,8 +1,8 @@
 import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
-import { BasketModalSlider } from "./BasketModalSlider"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { ModalsList } from "entities/ModalSlider"
+import { BasketModalSlider } from "./BasketModalSlider"
 
 const modalsSlice = createSlice({
     name: "modals",

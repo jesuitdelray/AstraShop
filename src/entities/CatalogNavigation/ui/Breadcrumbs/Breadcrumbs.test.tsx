@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react"
-import { Breadcrumbs } from "./Breadcrumbs"
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 import { BrowserRouter as Router } from "react-router-dom"
+import { Breadcrumbs } from "./Breadcrumbs"
 
 const initialState = {
     catalogNavigation: {
@@ -17,7 +17,7 @@ const mockReducer = (state = initialState) => state
 
 const mockStore = createStore(mockReducer)
 
-const renderWithProviders = (ui: any) => {
+function renderWithProviders(ui: any) {
     return render(
         <Provider store={mockStore}>
             <Router>{ui}</Router>

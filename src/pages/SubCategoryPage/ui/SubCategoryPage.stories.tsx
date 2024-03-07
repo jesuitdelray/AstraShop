@@ -1,8 +1,6 @@
-// SubCategoryPage.stories.tsx
-import React from "react"
 import { Story, Meta } from "@storybook/react"
-import { SubCategoryPage } from "./SubCategoryPage"
 import { StoreProvider } from "app/providers/StoreProvider"
+import { SubCategoryPage } from "./SubCategoryPage"
 
 export default {
     title: "Pages/SubCategoryPage",

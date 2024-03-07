@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react"
-import { EmptyBasket, EmptyBasketProps } from "./EmptyBasket"
 import { useTranslation } from "react-i18next"
+import { EmptyBasket, EmptyBasketProps } from "./EmptyBasket"
 
 jest.mock("react-i18next", () => ({
     ...jest.requireActual("react-i18next"),
@@ -18,7 +18,7 @@ describe("EmptyBasket", () => {
     }
 
     beforeEach(() => {
-        ;(useTranslation as jest.Mock).mockReturnValue({
+        (useTranslation as jest.Mock).mockReturnValue({
             t: jest.fn().mockReturnValue("empty"),
         })
     })

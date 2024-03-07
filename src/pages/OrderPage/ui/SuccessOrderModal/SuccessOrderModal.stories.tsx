@@ -1,8 +1,8 @@
 import { Provider } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { Story, Meta } from "@storybook/react"
-import { SuccessOrderModal } from "./SuccessOrderModal"
 import { ModalsList } from "entities/ModalSlider"
+import { SuccessOrderModal } from "./SuccessOrderModal"
 
 const customInitialState = { current: ModalsList.SUCCESS }
 

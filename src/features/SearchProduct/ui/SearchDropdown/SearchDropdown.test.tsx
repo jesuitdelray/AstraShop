@@ -1,8 +1,9 @@
 import { render } from "@testing-library/react"
 import { Provider } from "react-redux"
-import { SearchDropdown } from "./SearchDropdown"
 import { createStore } from "redux"
+import { SearchDropdown } from "./SearchDropdown"
 
+// eslint-disable-next-line default-param-last
 function reducer(state = {}, action: { type: string; payload?: any }) {
     switch (action.type) {
         case "SEARCH_PRODUCTS_START":

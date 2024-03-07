@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { BrowserRouter } from "react-router-dom"
-import { SubCatalogModal } from "./SubCatalogModal"
 import { navigationTreeType } from "entities/CatalogNavigation/model/types/list"
+import { SubCatalogModal } from "./SubCatalogModal"
 
 const mockNavTree: navigationTreeType = [
     {
@@ -33,7 +33,7 @@ const mockNavTree: navigationTreeType = [
     },
 ]
 
-const renderWithRouter = (component: any) => {
+function renderWithRouter(component: any) {
     return render(<BrowserRouter>{component}</BrowserRouter>)
 }
 
@@ -47,7 +47,7 @@ it("does not render when isOpen is false", () => {
 it("displays SubMenu for active hoveredId", () => {
     const { getByText } = renderWithRouter(
         <SubCatalogModal
-            isOpen={true}
+            isOpen={true || false}
             navTree={mockNavTree}
             hoveredId={1}
             onClose={() => {}}

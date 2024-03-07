@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react"
-import { Footer } from "./Footer"
 import { BrowserRouter } from "react-router-dom"
+import { Footer } from "./Footer"
 
 describe("Footer component", () => {
     it("renders without crashing", () => {

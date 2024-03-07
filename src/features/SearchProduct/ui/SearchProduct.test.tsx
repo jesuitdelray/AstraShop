@@ -1,9 +1,9 @@
-import { render, fireEvent, waitFor } from "@testing-library/react"
+import { render } from "@testing-library/react"
 import { Provider } from "react-redux"
-import { SearchProduct } from "./SearchProduct"
 import { createStore } from "redux"
+import { SearchProduct } from "./SearchProduct"
 
-const rootReducer = (state = {}) => {
+function rootReducer(state = {}) {
     return state
 }
 

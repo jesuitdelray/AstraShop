@@ -1,4 +1,5 @@
 import { render, fireEvent } from "@testing-library/react"
+import { useDispatch } from "react-redux"
 import { MobileFilterControllers } from "./MobileFilterControllers"
 
 jest.mock("react-redux", () => ({
@@ -7,8 +8,8 @@ jest.mock("react-redux", () => ({
 
 describe("MobileFilterControllers", () => {
     it("dispatches openFilters action when filter button is clicked", () => {
-        const mockDispatch = jest.fn()
-        jest.spyOn(require("react-redux"), "useDispatch").mockReturnValue(mockDispatch)
+        const mockDispatch = jest.fn();
+        (useDispatch as jest.Mock).mockReturnValue(mockDispatch)
 
         const { getByTestId } = render(<MobileFilterControllers />)
         fireEvent.click(getByTestId("filter"))

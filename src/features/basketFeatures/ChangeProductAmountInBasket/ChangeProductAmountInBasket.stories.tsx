@@ -1,8 +1,8 @@
 import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
 import { configureStore } from "@reduxjs/toolkit"
-import { ChangeProductAmountInBasket } from "./ChangeProductAmountInBasket"
 import { basketReducer } from "entities/Basket"
+import { ChangeProductAmountInBasket } from "./ChangeProductAmountInBasket"
 
 export default {
     title: "Features/ChangeProductAmountInBasket",
@@ -10,13 +10,14 @@ export default {
 } as Meta
 
 const Template: Story<{ id: number }> = args => {
+    const { id } = args
     const store = configureStore({
         reducer: {
             basket: basketReducer,
         },
         preloadedState: {
             basket: {
-                products: [{ id: args.id, quantity: 1, name: "123", images: [], price: 1 }],
+                products: [{ id, quantity: 1, name: "123", images: [], price: 1 }],
             },
         },
     })

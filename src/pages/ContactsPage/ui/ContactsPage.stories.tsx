@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
-import { ContactsPage } from "./ContactsPage"
 import { StoreProvider } from "app/providers/StoreProvider"
+import { ContactsPage } from "./ContactsPage"
 
 export default {
     title: "Pages/ContactsPage",

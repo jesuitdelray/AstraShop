@@ -3,7 +3,7 @@ import { Sidebar } from "./Sidebar"
 
 describe("Sidebar", () => {
     it("renders without crashing", () => {
-        render(<Sidebar children={["1", "2", "3"]} />)
+        render(<Sidebar>{["1", "2", "3"]}</Sidebar>)
     })
 
     it("renders children correctly", () => {
@@ -16,7 +16,7 @@ describe("Sidebar", () => {
     })
 
     it("applies additional classNames correctly", () => {
-        const { container } = render(<Sidebar children={["1", "2", "3"]} />)
+        const { container } = render(<Sidebar>{["1", "2", "3"]}</Sidebar>)
         expect(container.firstChild).toHaveClass("wrapper")
     })
 })

@@ -1,6 +1,6 @@
+import { useSelector, useDispatch } from "react-redux"
 import { render, screen, fireEvent } from "@testing-library/react"
 import { BasketModalSlider } from "./BasketModalSlider"
-import { useSelector, useDispatch } from "react-redux"
 
 jest.mock("react-redux", () => ({
     ...jest.requireActual("react-redux"),
@@ -15,12 +15,12 @@ jest.mock("react-router-dom", () => ({
 
 describe("BasketModalSlider", () => {
     beforeEach(() => {
-        ;(useDispatch as jest.Mock).mockClear()
-        ;(useSelector as jest.Mock).mockClear()
+        (useDispatch as jest.Mock).mockClear();
+        (useSelector as jest.Mock).mockClear()
     })
 
     test("renders BasketModalSlider component with empty basket", () => {
-        ;(useSelector as jest.Mock).mockReturnValueOnce([])
+        (useSelector as jest.Mock).mockReturnValueOnce([])
         render(<BasketModalSlider />)
 
         const emptyBasketMessage = screen.getByText("empty")
@@ -28,9 +28,9 @@ describe("BasketModalSlider", () => {
     })
 
     test("clicking on the cross icon closes the modal", () => {
-        const mockDispatch = jest.fn()
-        ;(useDispatch as jest.Mock).mockReturnValue(mockDispatch)
-        ;(useSelector as jest.Mock).mockReturnValueOnce([])
+        const mockDispatch = jest.fn();
+        (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
+        (useSelector as jest.Mock).mockReturnValueOnce([])
 
         render(<BasketModalSlider />)
 

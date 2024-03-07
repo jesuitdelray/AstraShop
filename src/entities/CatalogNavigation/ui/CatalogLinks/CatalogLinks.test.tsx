@@ -1,9 +1,8 @@
 import { render } from "@testing-library/react"
-import { CatalogLinks } from "./CatalogLinks"
-import { Provider } from "react-redux"
+import { Provider, useSelector } from "react-redux"
 import { createStore } from "redux"
-import { useSelector } from "react-redux"
 import { BrowserRouter as Router } from "react-router-dom"
+import { CatalogLinks } from "./CatalogLinks"
 
 jest.mock("react-redux", () => ({
     ...jest.requireActual("react-redux"),
@@ -15,9 +14,9 @@ describe("CatalogLinks component", () => {
         const mockNavigationTree = [
             { id: 1, name: "Category 1", categories: [] },
             { id: 2, name: "Category 2", categories: [] },
-        ]
+        ];
 
-        ;(useSelector as jest.Mock).mockReturnValue(mockNavigationTree)
+        (useSelector as jest.Mock).mockReturnValue(mockNavigationTree)
 
         const { getByText } = render(
             <Provider store={createStore(() => ({}))}>
@@ -35,9 +34,9 @@ describe("CatalogLinks component", () => {
         const mockNavigationTree = [
             { id: 1, name: "Category 1", categories: [{ id: 11, name: "Subcategory 1-1" }] },
             { id: 2, name: "Category 2", categories: [{ id: 21, name: "Subcategory 2-1" }] },
-        ]
+        ];
 
-        ;(useSelector as jest.Mock).mockReturnValue(mockNavigationTree)
+        (useSelector as jest.Mock).mockReturnValue(mockNavigationTree)
 
         const { getByText } = render(
             <Provider store={createStore(() => ({}))}>

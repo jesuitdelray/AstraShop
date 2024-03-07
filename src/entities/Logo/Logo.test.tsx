@@ -13,7 +13,6 @@ jest.mock("react-router-dom", () => ({
         children: React.ReactNode
         onClick?: () => void
         className?: string
-        to?: string
     }) => (
         <div data-testid="mockedLink" onClick={onClick} className={className}>
             {children}

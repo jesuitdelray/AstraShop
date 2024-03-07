@@ -1,9 +1,9 @@
 import { Provider } from "react-redux"
 import { createStore, combineReducers } from "redux"
 import { Story, Meta } from "@storybook/react"
-import { SortModalSlider, SortModalSliderProps } from "./SortModalSlider"
 import { ModalsList, modalsReducer } from "entities/ModalSlider"
 import { sortProductsOrderType, sortProductsReducer } from "features/SortProducts"
+import { SortModalSlider, SortModalSliderProps } from "./SortModalSlider"
 
 const initialState = {
     modals: {

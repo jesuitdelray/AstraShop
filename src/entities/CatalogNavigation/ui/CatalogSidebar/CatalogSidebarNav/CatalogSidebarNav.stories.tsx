@@ -1,4 +1,3 @@
-import React from "react"
 import { Provider } from "react-redux"
 import { createStore, combineReducers, AnyAction } from "redux"
 import { Story, Meta } from "@storybook/react"
@@ -16,10 +15,7 @@ interface AppState {
     catalogNavigation: CatalogNavigationState
 }
 
-const catalogNavigationReducer = (
-    state: CatalogNavigationState = { tree: [] },
-    action: AnyAction
-): CatalogNavigationState => {
+function catalogNavigationReducer(state: CatalogNavigationState = { tree: [] }) {
     return state
 }
 

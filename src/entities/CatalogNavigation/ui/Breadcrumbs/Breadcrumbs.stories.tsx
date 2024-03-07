@@ -1,6 +1,6 @@
-import { Breadcrumbs } from "./Breadcrumbs"
 import { Story, Meta } from "@storybook/react"
 import { StoreProvider } from "app/providers/StoreProvider"
+import { Breadcrumbs } from "./Breadcrumbs"
 
 export default {
     title: "Entities/Breadcrumbs",

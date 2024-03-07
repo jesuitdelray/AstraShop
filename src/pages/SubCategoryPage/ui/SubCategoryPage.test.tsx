@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react"
-import { SubCategoryPage } from "./SubCategoryPage"
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 import { MemoryRouter } from "react-router-dom"
+import { SubCategoryPage } from "./SubCategoryPage"
 
 jest.mock("entities/CatalogNavigation", () => ({
     __esModule: true,

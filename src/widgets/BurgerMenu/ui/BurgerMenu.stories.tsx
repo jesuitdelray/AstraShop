@@ -1,8 +1,8 @@
 import { Story, Meta } from "@storybook/react"
+import { ModalsList } from "entities/ModalSlider"
 import { Provider } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { BurgerMenu } from "./BurgerMenu"
-import { ModalsList } from "entities/ModalSlider"
 
 const modalsSlice = createSlice({
     name: "modals",

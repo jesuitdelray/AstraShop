@@ -3,18 +3,6 @@ import { Provider } from "react-redux"
 import { configureStore } from "@reduxjs/toolkit"
 import { ProductsSale } from "./ProductsSale"
 
-export default {
-    title: "Widgets/ProductsSale",
-    component: ProductsSale,
-    decorators: [
-        Story => (
-            <Provider store={store}>
-                <Story />
-            </Provider>
-        ),
-    ],
-} as Meta
-
 const mockTopProducts = [
     {
         id: 1,
@@ -41,6 +29,18 @@ const store = configureStore({
         }),
     },
 })
+
+export default {
+    title: "Widgets/ProductsSale",
+    component: ProductsSale,
+    decorators: [
+        Story => (
+            <Provider store={store}>
+                <Story />
+            </Provider>
+        ),
+    ],
+} as Meta
 
 const Template: Story = () => <ProductsSale />
 

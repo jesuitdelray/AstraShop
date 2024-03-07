@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
-import { CategoryLinks, CategoryLinksProps } from "./CategoryLinks"
 import { MemoryRouter } from "react-router-dom"
+import { CategoryLinks, CategoryLinksProps } from "./CategoryLinks"
 
 const mockData: CategoryLinksProps = {
     data: {

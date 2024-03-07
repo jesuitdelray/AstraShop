@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
-import { CatalogModal } from "./CatalogModal"
 import { BrowserRouter } from "react-router-dom"
+import { CatalogModal } from "./CatalogModal"
 
 describe("CatalogModal Component", () => {
     const mockClose = jest.fn()
@@ -18,7 +18,7 @@ describe("CatalogModal Component", () => {
     it("renders correctly", () => {
         const { getByText } = renderWithRouter(
             <CatalogModal
-                isOpen={true}
+                isOpen={true || false}
                 navTree={mockNavTree}
                 onClose={mockClose}
                 mouseEnter={mockMouseEnter}
@@ -31,7 +31,7 @@ describe("CatalogModal Component", () => {
     it("calls mouseEnter and mouseLeave on navigation item hover", () => {
         const { getByText } = renderWithRouter(
             <CatalogModal
-                isOpen={true}
+                isOpen={true || false}
                 navTree={mockNavTree}
                 onClose={mockClose}
                 mouseEnter={mockMouseEnter}

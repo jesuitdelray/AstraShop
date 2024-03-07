@@ -1,8 +1,8 @@
-import { Provider, useSelector } from "react-redux"
+import { Provider } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
 import { Story, Meta } from "@storybook/react"
+import { ModalsList } from "entities/ModalSlider"
 import { PaymentErrorModal } from "./PaymentErrorModal"
-import { ModalsList, getModalsCurrent } from "entities/ModalSlider"
 
 const customInitialState = { current: ModalsList.PAYMENT_ERROR }
 

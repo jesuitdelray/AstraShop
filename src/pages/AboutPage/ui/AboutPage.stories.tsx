@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
-import { AboutPage } from "./AboutPage"
 import { StoreProvider } from "app/providers/StoreProvider"
+import { AboutPage } from "./AboutPage"
 
 export default {
     title: "Pages/AboutPage",

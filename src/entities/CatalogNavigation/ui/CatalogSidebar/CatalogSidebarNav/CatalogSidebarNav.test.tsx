@@ -11,7 +11,7 @@ jest.mock("react-redux", () => ({
 
 describe("CatalogSidebarNav", () => {
     beforeEach(() => {
-        ;(useSelector as jest.Mock).mockImplementation(selector => {
+        (useSelector as jest.Mock).mockImplementation(selector => {
             if (selector.name === "getNavigationTree") {
                 return [{ id: 1, name: "Category 1", icon: "" }]
             }
@@ -19,8 +19,8 @@ describe("CatalogSidebarNav", () => {
                 return null
             }
             return []
-        })
-        ;(useDispatch as jest.Mock).mockReturnValue(jest.fn())
+        });
+        (useDispatch as jest.Mock).mockReturnValue(jest.fn())
     })
 
     afterEach(() => {

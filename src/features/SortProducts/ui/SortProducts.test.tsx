@@ -3,6 +3,7 @@ import { createStore } from "redux"
 import { Provider } from "react-redux"
 import { SortProducts } from ".."
 
+// eslint-disable-next-line default-param-last
 const mockReducer = (state = { sortOrder: null }, action: any) => {
     switch (action.type) {
         case "SET_ORDER":

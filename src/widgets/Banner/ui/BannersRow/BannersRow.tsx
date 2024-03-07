@@ -27,7 +27,7 @@ export function BannersRow() {
                       )
                   })
                 : [1, 2, 3].map(item => (
-                      <BannerSkeleton key={item} data-testid={`banner-skeleton-${item}`} />
+                    <BannerSkeleton key={item} data-testid={`banner-skeleton-${item}`} />
                   ))}
         </div>
     )

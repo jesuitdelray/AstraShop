@@ -1,7 +1,7 @@
 import { Story, Meta } from "@storybook/react"
-import { BasketItemsList, BasketItemsListProps } from "./BasketItemsList"
 import { StoreProvider } from "app/providers/StoreProvider"
 import { Product } from "entities/Product"
+import { BasketItemsList, BasketItemsListProps } from "./BasketItemsList"
 
 const mockProducts: Product[] = [
     {

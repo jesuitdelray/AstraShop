@@ -23,7 +23,7 @@ describe("Row component", () => {
 describe("Layout component", () => {
     it("renders correctly", () => {
         render(
-            <Layout gap={`10px`}>
+            <Layout gap="10px">
                 <div>Child 1</div>
                 <div>Child 2</div>
                 <div>Child 3</div>

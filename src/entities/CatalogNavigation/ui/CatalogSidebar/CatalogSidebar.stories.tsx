@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
-import { CatalogSidebar } from "./CatalogSidebar"
 import { StoreProvider } from "app/providers/StoreProvider"
+import { CatalogSidebar } from "./CatalogSidebar"
 
 export default {
     title: "entities/CatalogSidebar",

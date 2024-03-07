@@ -3,8 +3,8 @@ import "@testing-library/jest-dom"
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 import { BrowserRouter } from "react-router-dom"
-import { ModalSlider } from "./ModalSlider"
 import * as redux from "react-redux"
+import { ModalSlider } from "./ModalSlider"
 
 const useSelectorMock = jest.spyOn(redux, "useSelector")
 
@@ -22,7 +22,7 @@ describe("ModalSlider", () => {
         render(
             <Provider store={store}>
                 <BrowserRouter>
-                    <ModalSlider isOpen={true} onClose={() => {}}>
+                    <ModalSlider isOpen={true || false} onClose={() => {}}>
                         <div>Slider Content</div>
                     </ModalSlider>
                 </BrowserRouter>
@@ -43,7 +43,7 @@ describe("ModalSlider", () => {
         render(
             <Provider store={store}>
                 <BrowserRouter>
-                    <ModalSlider isOpen={true} onClose={handleClose}>
+                    <ModalSlider isOpen={true || false} onClose={handleClose}>
                         <div>Slider Content</div>
                     </ModalSlider>
                 </BrowserRouter>

@@ -9,9 +9,10 @@ export default {
     },
 } as Meta
 
-const Template: Story<ProductCardBasketProps> = args => (
-    <ProductCardBasket {...args} Counter={<span>{args.quantity}</span>} />
-)
+const Template: Story<ProductCardBasketProps & { quantity: number }> = args => {
+    const { quantity, ...rest } = args
+    return <ProductCardBasket {...rest} quantity={quantity} Counter={<span>{quantity}</span>} />
+}
 
 export const Default = Template.bind({})
 Default.args = {

@@ -6,6 +6,7 @@ import { HeaderLeft } from "./HeaderLeft"
 describe("HeaderLeft component", () => {
     const initialState = { currentModal: null }
 
+    // eslint-disable-next-line default-param-last
     function reducer(state = initialState, action: any) {
         switch (action.type) {
             case "MODALS/SET_CURRENT":
@@ -31,7 +32,7 @@ describe("HeaderLeft component", () => {
 
         const { container } = render(
             <Provider store={store}>
-                <HeaderLeft isMainPage={true} />
+                <HeaderLeft isMainPage={true || false} />
             </Provider>
         )
         expect(container).toMatchSnapshot()

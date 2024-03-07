@@ -1,7 +1,7 @@
 import { Story, Meta } from "@storybook/react"
-import { ProductAll } from "./ProductAll"
 import { Provider } from "react-redux"
 import { configureStore, createSlice } from "@reduxjs/toolkit"
+import { ProductAll } from "./ProductAll"
 
 const productDetailsSlice = createSlice({
     name: "productDetails",
