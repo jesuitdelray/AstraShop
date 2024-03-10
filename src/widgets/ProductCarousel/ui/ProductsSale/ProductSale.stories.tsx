@@ -8,14 +8,14 @@ const mockTopProducts = [
         id: 1,
         name: "Mock Product 1",
         price: 100,
-        images: ["https://example.com/image1.jpg"],
+        images: ["https://placehold.co/300x300"],
         is_new: true,
     },
     {
         id: 2,
         name: "Mock Product 2",
         price: 200,
-        images: ["https://example.com/image2.jpg"],
+        images: ["https://placehold.co/300x300"],
         is_new: false,
     },
 ]

@@ -12,7 +12,7 @@ describe("ProductCardBasket", () => {
             quantity: 1,
             Delete: <button>Delete</button>,
             Counter: <div>Counter</div>,
-            images: ["image1.jpg"],
+            images: [""],
         }
         render(<ProductCardBasket {...product} />)
 

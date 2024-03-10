@@ -13,11 +13,11 @@ const initialState = {
                 id: 1,
                 icon: "",
                 categories: [
-                    { name: "Laptops", id: 11, image: "laptops.jpg", parent_category_id: 1 },
+                    { name: "Laptops", id: 11, image: "", parent_category_id: 1 },
                     {
                         name: "Smartphones",
                         id: 12,
-                        image: "smartphones.jpg",
+                        image: "",
                         parent_category_id: 1,
                     },
                 ],

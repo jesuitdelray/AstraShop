@@ -13,7 +13,7 @@ describe("ProductGallery component", () => {
     })
 
     it("changes current image when clicking on small image", () => {
-        const productImages: string[] = ["image1.jpg", "image2.jpg", "image3.jpg"];
+        const productImages: string[] = ["", "", ""];
 
         (useSelector as jest.Mock).mockReturnValue(productImages)
 

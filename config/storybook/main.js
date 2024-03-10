@@ -5,8 +5,20 @@ module.exports = {
         "@storybook/addon-essentials",
         "@storybook/addon-interactions",
     ],
+    staticDirs: ["../../src/shared/assets"],
     framework: "@storybook/react",
     core: {
         builder: "webpack5",
+    },
+    webpackFinal: config => {
+        config.resolve.fallback = {
+            fs: false,
+            tls: false,
+            net: false,
+            module: false,
+            path: require.resolve("path-browserify"),
+        }
+
+        return config
     },
 }

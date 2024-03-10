@@ -9,7 +9,7 @@ describe("ProductCard", () => {
         is_new: true,
         isTop: true,
         rating: 4.5,
-        images: ["image1.jpg"],
+        images: ["https://placehold.co/300x300"],
         name: "Product Name",
         price: 100,
         oldPrice: 120,

@@ -12,12 +12,12 @@ const initialState = {
                 {
                     id: 11,
                     name: "Sub-category 1",
-                    image: "https://example.com/sub1.png",
+                    image: "https://placehold.co/300x300",
                 },
                 {
                     id: 12,
                     name: "Sub-category 2",
-                    image: "https://example.com/sub2.png",
+                    image: "https://placehold.co/300x300",
                 },
             ],
         },
@@ -29,12 +29,12 @@ const initialState = {
                 {
                     id: 21,
                     name: "Sub-category 1",
-                    image: "https://example.com/sub1.png",
+                    image: "https://placehold.co/300x300",
                 },
                 {
                     id: 22,
                     name: "Sub-category 2",
-                    image: "https://example.com/sub2.png",
+                    image: "https://placehold.co/300x300",
                 },
             ],
         },
