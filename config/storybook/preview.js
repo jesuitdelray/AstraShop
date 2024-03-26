@@ -1,6 +1,7 @@
 import React from "react"
 import { addDecorator } from "@storybook/react"
 import i18n from "i18next"
+import "loki/configure-react"
 import { initReactI18next, I18nextProvider } from "react-i18next"
 import { StyleDecorator } from "../../src/shared/config/storybook/StyleDecorator/StyleDecorator"
 import { RouterDecorator } from "../../src/shared/config/storybook/RouterDecorator/RouterDecorator"

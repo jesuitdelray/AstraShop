@@ -3,6 +3,13 @@ import { Provider } from "react-redux"
 import { configureStore } from "@reduxjs/toolkit"
 import { ProductsSale } from "./ProductsSale"
 
+const MockSaleCountdown = () => <div>00:00:00</div>
+
+jest.mock("./SaleCountdown", () => ({
+    __esModule: true,
+    default: MockSaleCountdown,
+}))
+
 const mockTopProducts = [
     {
         id: 1,

@@ -38,3 +38,7 @@ export default {
 const Template: Story = () => <BurgerMenu />
 
 export const Default = Template.bind({})
+
+Default.parameters = {
+    chromatic: { delay: 1000 },
+}
