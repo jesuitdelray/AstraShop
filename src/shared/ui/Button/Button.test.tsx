@@ -1,4 +1,4 @@
-/* import { render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { useState } from "react"
 import { Button, ButtonVariant } from "./Button"
@@ -18,19 +18,19 @@ describe("Button", () => {
     })
 
     test("Button with filled-red class", () => {
-        render(<Button variant={ButtonVariant.FILLED_RED}>Submit</Button>)
+        render(<Button variant={ButtonVariant.OUTLINED}>Submit</Button>)
         expect(screen.getByText("Submit")).toHaveClass("filled-red")
         screen.debug()
     })
 
     test("Button with filled-gray class", () => {
-        render(<Button variant={ButtonVariant.FILLED_GREY}>Submit</Button>)
+        render(<Button variant={ButtonVariant.FILLED}>Submit</Button>)
         expect(screen.getByText("Submit")).toHaveClass("filled-gray")
         screen.debug()
     })
 
     test("Button with clearInverted class", () => {
-        render(<Button variant={ButtonVariant.CLEAR_INVERTED}>Submit</Button>)
+        render(<Button variant={ButtonVariant.CLEAR}>Submit</Button>)
         expect(screen.getByText("Submit")).toHaveClass("clearInverted")
         screen.debug()
     })
@@ -65,4 +65,3 @@ describe("Button", () => {
         screen.debug()
     })
 })
- */

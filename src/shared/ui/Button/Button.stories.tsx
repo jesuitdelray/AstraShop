@@ -1,4 +1,4 @@
-/* import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { DarkBgDecorator } from "shared/config/storybook/DarkBgDecorator/DarkBgDecorator"
 import { Button, ButtonVariant } from "./Button"
 
@@ -28,41 +28,20 @@ OutlineButtonDisabled.args = {
 export const FilledRedButton = Template.bind({})
 FilledRedButton.args = {
     children: buttonText,
-    variant: ButtonVariant.FILLED_RED,
+    variant: ButtonVariant.FILLED,
 }
 
 export const FilledRedButtonDisabled = Template.bind({})
 FilledRedButtonDisabled.args = {
     children: buttonText,
-    variant: ButtonVariant.FILLED_RED,
+    variant: ButtonVariant.CLEAR,
     disabled: true,
 }
 
 export const FilledGreyButton = Template.bind({})
 FilledGreyButton.args = {
     children: buttonText,
-    variant: ButtonVariant.FILLED_GREY,
+    variant: ButtonVariant.OUTLINED,
 }
 
-export const FilledGreyButtonDisabled = Template.bind({})
-FilledGreyButtonDisabled.args = {
-    children: buttonText,
-    variant: ButtonVariant.FILLED_GREY,
-    disabled: true,
-}
-
-export const InvertedButton = Template.bind({})
-InvertedButton.args = {
-    children: buttonText,
-    variant: ButtonVariant.CLEAR_INVERTED,
-}
-InvertedButton.decorators = [DarkBgDecorator()]
-
-export const InvertedButtonDisabled = Template.bind({})
-InvertedButtonDisabled.args = {
-    children: buttonText,
-    variant: ButtonVariant.CLEAR_INVERTED,
-    disabled: true,
-}
-InvertedButtonDisabled.decorators = [DarkBgDecorator()]
- */
+FilledRedButtonDisabled.decorators = [DarkBgDecorator()]

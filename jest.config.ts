@@ -1,3 +1,4 @@
+export {}
 module.exports = {
     verbose: true,
     transform: {

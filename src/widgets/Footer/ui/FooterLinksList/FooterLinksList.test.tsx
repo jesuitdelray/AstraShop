@@ -1,6 +1,5 @@
-import React from "react"
 import { render } from "@testing-library/react"
-import { MemoryRouter } from "react-router-dom" // Import MemoryRouter
+import { MemoryRouter } from "react-router-dom"
 import { FooterLinksList, LinksListProps } from "./FooterLinksList"
 
 describe("FooterLinksList component", () => {
@@ -20,7 +19,6 @@ describe("FooterLinksList component", () => {
         const { getByText } = render(
             <MemoryRouter>
                 {" "}
-                {/* Wrap your component with MemoryRouter */}
                 <FooterLinksList {...testData} />
             </MemoryRouter>
         )

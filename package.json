@@ -123,5 +123,9 @@
                 "preset": "iPhone 7"
             }
         }
-    }
+    },
+    "jest": {
+        "collectCoverage": true,
+        "coverageReporters": ["json", "html"]
+      }
 }
