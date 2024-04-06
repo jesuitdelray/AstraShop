@@ -70,11 +70,16 @@ export function ProductInfo({ className, description = "", attributes = [] }: Pr
 
     return (
         <div className={classNames(styles.info, {}, [className])}>
-            <Typography variant={TypographyVariant.H4} isBold className={styles.title}>
+            <Typography
+                variant={TypographyVariant.H4}
+                isBold
+                className={styles.title}
+                data-testid="product-description-title"
+            >
                 {t("productDescriptionTitle")}
             </Typography>
             {data?.map(item => (
-                <Article key={uuid()} data={item} />
+                <Article key={uuid()} data={item} data-testid="article" />
             ))}
         </div>
     )

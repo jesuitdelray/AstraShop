@@ -25,19 +25,23 @@ export const ProductCardSale = (props: ProductCardProps) => {
         <div
             className={classNames(styles.container, {}, [className])}
             onClick={() => navigate(`${RoutePath.product_details}/${id}`)}
+            data-testid="product-card-sale"
         >
-            <div className={styles.header}>
+            <div className={styles.header} data-testid="product-header">
                 {/* {!!isNew && <Label value={`${t("newProductLabel")}`} className={styles.label} />} */}
                 <AsyncImage
                     objectFit={ImageFit.CONTAIN}
                     className={styles.image}
                     src={productImage}
+                    data-testid="product-image"
                 />
             </div>
-            <div className={styles.footer}>
-                <Typography className={styles.footerDescription}>{name}</Typography>
-                <div className={styles.price}>
-                    <Typography className={styles.footerPrice} isBold>
+            <div className={styles.footer} data-testid="product-footer">
+                <Typography className={styles.footerDescription} data-testid="product-name">
+                    {name}
+                </Typography>
+                <div className={styles.price} data-testid="product-price-container">
+                    <Typography className={styles.footerPrice} isBold data-testid="product-price">
                         {`${currency} ${price.toLocaleString()}`}
                     </Typography>
                     {Basket}

@@ -13,7 +13,7 @@ export function BannersRow() {
             {bannersRowList
                 ? bannersRowList.map((item, index) => {
                       const { id, title, desc = "", img, link } = item
-                      const variant = index === 0 ? BannerVariant.MAIN : BannerVariant.NORMAL
+                      const variant = index === 0 ? BannerVariant?.MAIN : BannerVariant?.NORMAL
                       return (
                           <Banner
                               key={id}
@@ -22,10 +22,13 @@ export function BannersRow() {
                               desc={t(desc)}
                               img={img}
                               link={link}
+                              data-testid={`banner-${id}`}
                           />
                       )
                   })
-                : [1, 2, 3].map(item => <BannerSkeleton key={item} />)}
+                : [1, 2, 3].map(item => (
+                    <BannerSkeleton key={item} data-testid={`banner-skeleton-${item}`} />
+                  ))}
         </div>
     )
 }

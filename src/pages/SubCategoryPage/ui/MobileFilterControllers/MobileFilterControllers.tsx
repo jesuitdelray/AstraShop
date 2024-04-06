@@ -21,6 +21,7 @@ export function MobileFilterControllers({ className }: MobileFilterControllersPr
                 color={TypographyColor.DARK_GRAY}
                 className={styles.filter}
                 onClick={() => dispatch(modalsActions.openFilters())}
+                data-testid="filter"
             >
                 <FilterIcon className={styles.icon} />
                 {t("filter")}
@@ -31,7 +32,7 @@ export function MobileFilterControllers({ className }: MobileFilterControllersPr
                 className={styles.filter}
                 onClick={() => dispatch(modalsActions.openSort())}
             >
-                <SortIcon className={styles.icon} />
+                <SortIcon className={styles.icon} data-testid="sort-by" />
                 {t("sortBy")}
             </Typography>
         </div>

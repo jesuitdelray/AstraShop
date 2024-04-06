@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
-import { ProductCard, ProductCardProps } from "./ProductCard"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
+import { ProductCard, ProductCardProps } from "./ProductCard"
 
 export default {
     title: "Entities/ProductCard",

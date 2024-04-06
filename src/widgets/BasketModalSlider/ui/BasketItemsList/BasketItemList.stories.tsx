@@ -1,28 +1,28 @@
 import { Story, Meta } from "@storybook/react"
-import { BasketItemsList, BasketItemsListProps } from "./BasketItemsList"
 import { StoreProvider } from "app/providers/StoreProvider"
 import { Product } from "entities/Product"
+import { BasketItemsList, BasketItemsListProps } from "./BasketItemsList"
 
 const mockProducts: Product[] = [
     {
         id: 1,
         name: "Product 1",
         price: 100,
-        images: ["path/to/image1.png"],
+        images: ["https://placehold.co/300x300"],
         quantity: 2,
     },
     {
         id: 2,
         name: "Product 2",
         price: 200,
-        images: ["path/to/image2.png"],
+        images: ["https://placehold.co/300x300"],
         quantity: 1,
     },
     {
         id: 3,
         name: "Product 3",
         price: 300,
-        images: ["path/to/image3.png"],
+        images: ["https://placehold.co/300x300"],
         quantity: 3,
     },
 ]

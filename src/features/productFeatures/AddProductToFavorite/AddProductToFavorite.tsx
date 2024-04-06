@@ -17,6 +17,7 @@ export function AddProductToFavorite({ className }: AddProductToFavoriteProps) {
 
     return (
         <Heart
+            data-testid="heart-icon"
             onClick={clickHandler}
             className={classNames(styles.heartIcon, { [styles.active]: isActive }, [className])}
         />

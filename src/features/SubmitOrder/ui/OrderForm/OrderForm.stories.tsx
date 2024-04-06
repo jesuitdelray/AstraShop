@@ -1,8 +1,8 @@
 import { Provider } from "react-redux"
 import { createStore, combineReducers } from "redux"
 import { Story, Meta } from "@storybook/react"
-import { OrderForm } from "./OrderForm"
 import { submitOrderReducer } from "features/SubmitOrder/model/slice/submitOrderSlice"
+import { OrderForm } from "./OrderForm"
 
 const basketReducer = () => ({
     products: [

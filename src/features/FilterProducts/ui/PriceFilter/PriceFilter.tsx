@@ -199,6 +199,7 @@ export function PriceFilter(props: PriceFilterProps) {
                         min={MINIMUM_PRICE}
                         max={MAXIMUM_PRICE}
                         onInput={() => sliderChangeHandler("min")}
+                        data-testid="minInput"
                     />
                     <input
                         type="range"
@@ -207,6 +208,7 @@ export function PriceFilter(props: PriceFilterProps) {
                         min={MINIMUM_PRICE}
                         max={MAXIMUM_PRICE}
                         onInput={() => sliderChangeHandler("max")}
+                        data-testid="maxInput"
                     />
                 </div>
             </div>

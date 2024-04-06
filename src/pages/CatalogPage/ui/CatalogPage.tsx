@@ -22,9 +22,9 @@ export function CatalogPage() {
             <Typography variant={TypographyVariant.H1} className={styles.title}>
                 {t("productsCatalog")}
             </Typography>
-            <CatalogLinks />
-            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} />
-            <BannersRow />
+            <CatalogLinks data-testid="catalog-links" />
+            <ProductsRow variant={ProducstRowVariant.TOP_PRODUCTS} data-testid="products-row" />
+            <BannersRow data-testid="banners-row" />
         </div>
     )
 }

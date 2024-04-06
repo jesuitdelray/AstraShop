@@ -1,6 +1,20 @@
 import { Story, Meta } from "@storybook/react"
+import { Provider } from "react-redux"
 import { MainPage } from "./MainPage"
-import { StoreProvider } from "app/providers/StoreProvider"
+
+const MockTimer = () => <div>00:00:00</div>
+
+jest.mock("./Timer", () => ({
+    __esModule: true,
+    default: MockTimer,
+}))
+
+const mockStore = {
+    getState: () => ({}),
+    dispatch: () => {},
+    subscribe: () => {},
+    replaceReducer: () => {},
+}
 
 export default {
     title: "Pages/MainPage",
@@ -8,9 +22,9 @@ export default {
 } as Meta
 
 const Template: Story = () => (
-    <StoreProvider>
+    <Provider store={mockStore as any}>
         <MainPage />
-    </StoreProvider>
+    </Provider>
 )
 
 export const Default = Template.bind({})

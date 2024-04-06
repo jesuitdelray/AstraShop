@@ -11,8 +11,7 @@ const mockProductsList = [
 ]
 
 const rootReducer = combineReducers({
-    searchProducts: (state = { list: mockProductsList, loading: false, error: null }, action) =>
-        state,
+    searchProducts: (state = { list: mockProductsList, loading: false, error: null }) => state,
 })
 const store = createStore(rootReducer)
 

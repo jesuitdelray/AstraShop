@@ -1,15 +1,9 @@
 import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
+import { ModalsList, modalsReducer } from "entities/ModalSlider"
 import { configureStore } from "@reduxjs/toolkit"
 import { FilterProducts, FilterProductsProps } from "./FilterProducts"
-import { ModalsList, modalsReducer } from "entities/ModalSlider"
 import { filterProductsReducer } from "../model/slice/filterProductsSlice"
-
-export default {
-    title: "Features/FilterProducts/FilterProducts",
-    component: FilterProducts,
-    decorators: [Story => <Provider store={store}>{<Story />}</Provider>],
-} as Meta
 
 const store = configureStore({
     reducer: {
@@ -44,6 +38,18 @@ const store = configureStore({
         },
     },
 })
+
+export default {
+    title: "Features/FilterProducts/FilterProducts",
+    component: FilterProducts,
+    decorators: [
+        Story => (
+            <Provider store={store}>
+                <Story />
+            </Provider>
+        ),
+    ],
+} as Meta
 
 const Template: Story<FilterProductsProps> = args => <FilterProducts {...args} />
 

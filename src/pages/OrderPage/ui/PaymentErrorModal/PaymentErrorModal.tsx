@@ -31,8 +31,9 @@ export function PaymentErrorModal() {
             onClose={onClose}
             className={isSlideTop ? styles.sliderWrapper : styles.wrapper}
             variant={isSlideTop ? ModalSliderVariant.SLIDER : ModalSliderVariant.MODAL}
+            data-testid="wrapper"
         >
-            <CrossIcon className={styles.closeBtn} onClick={onClose} />
+            <CrossIcon className={styles.closeBtn} onClick={onClose} data-testid="closeBtn" />
             <ShoppingBagIcon className={styles.shoppingBag} />
             <Typography
                 className={styles.title}

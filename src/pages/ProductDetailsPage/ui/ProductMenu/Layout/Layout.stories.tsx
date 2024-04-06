@@ -2,6 +2,10 @@ import React, { ReactNode } from "react"
 import { Story, Meta } from "@storybook/react"
 import { LayoutIsland } from "./Layout"
 
+interface TemplateProps {
+    children: ReactNode
+}
+
 const MockGetLayoutColumns = (children: ReactNode) => {
     const all = React.Children.toArray(children)
     const left = all.filter((child: any) => child.props.column === "left")
@@ -14,7 +18,8 @@ export default {
     component: LayoutIsland,
 } as Meta
 
-const Template: Story<{ children: ReactNode }> = ({ children }) => {
+// eslint-disable-next-line react/prop-types
+const Template: Story<TemplateProps> = ({ children }) => {
     const { left, right } = MockGetLayoutColumns(children)
 
     return (

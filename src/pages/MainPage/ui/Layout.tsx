@@ -49,6 +49,7 @@ export function Row({
                         gridTemplateColumns,
                         gap,
                     }}
+                    data-testid="row"
                 >
                     {value.map((_, index) => (
                         <div
@@ -72,5 +73,9 @@ export interface ILayoutProps {
 }
 
 export function Layout({ children, gap = 0 }: ILayoutProps) {
-    return <div style={{ display: "flex", flexDirection: "column", gap }}>{children}</div>
+    return (
+        <div style={{ display: "flex", flexDirection: "column", gap }} data-testid="layout">
+            {children}
+        </div>
+    )
 }

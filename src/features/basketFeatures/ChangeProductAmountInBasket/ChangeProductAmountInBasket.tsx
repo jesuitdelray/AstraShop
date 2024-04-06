@@ -34,7 +34,13 @@ export function ChangeProductAmountInBasket({ id }: ChangeProductAmountInBasketP
     return (
         <div className={styles.container}>
             <MinusIcon className={styles.icon} onClick={decrement} />
-            <input type="text" value={quantity} className={styles.input} onChange={setQuantity} />
+            <input
+                type="text"
+                value={quantity}
+                className={styles.input}
+                onChange={setQuantity}
+                data-testid="input"
+            />
             <PlusIcon className={styles.icon} onClick={increment} />
         </div>
     )

@@ -15,10 +15,15 @@ export function EmptyBasket({ onClose }: EmptyBasketProps) {
                 variant={TypographyVariant.H3}
                 color={TypographyColor.DARK_GRAY}
                 className={styles.emptyBasketText}
+                data-testid="empty-basket-text"
             >
                 {t("empty")}
             </Typography>
-            <Button variant={ButtonVariant.FILLED} onClick={onClose}>
+            <Button
+                variant={ButtonVariant.FILLED}
+                onClick={onClose}
+                data-testid="continue-shopping-button"
+            >
                 {t("continueShopping")}
             </Button>
         </div>

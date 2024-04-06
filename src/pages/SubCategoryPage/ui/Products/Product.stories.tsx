@@ -3,8 +3,20 @@ import { StoreProvider } from "app/providers/StoreProvider"
 import { Products, ProductsProps } from "./Products"
 
 const mockProducts = [
-    { id: 1, is_new: true, name: "Product 1", price: 100, images: ["url/to/image1.jpg"] },
-    { id: 2, is_new: false, name: "Product 2", price: 200, images: ["url/to/image2.jpg"] },
+    {
+        id: 1,
+        is_new: true,
+        name: "Product 1",
+        price: 100,
+        images: ["https://placehold.co/300x300"],
+    },
+    {
+        id: 2,
+        is_new: false,
+        name: "Product 2",
+        price: 200,
+        images: ["https://placehold.co/300x300"],
+    },
 ]
 
 export default {

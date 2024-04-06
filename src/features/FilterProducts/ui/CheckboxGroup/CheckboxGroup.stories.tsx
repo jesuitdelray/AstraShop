@@ -4,12 +4,6 @@ import { configureStore } from "@reduxjs/toolkit"
 import { filterProductsReducer } from "features/FilterProducts/model/slice/filterProductsSlice"
 import { CheckboxGroup, CheckboxGroupProps } from "./CheckboxGroup"
 
-export default {
-    title: "Features/CheckboxGroup",
-    component: CheckboxGroup,
-    decorators: [Story => <Provider store={store}>{<Story />}</Provider>],
-} as Meta
-
 const store = configureStore({
     reducer: {
         filterProducts: filterProductsReducer,
@@ -23,6 +17,18 @@ const store = configureStore({
         },
     },
 })
+
+export default {
+    title: "Features/CheckboxGroup",
+    component: CheckboxGroup,
+    decorators: [
+        Story => (
+            <Provider store={store}>
+                <Story />
+            </Provider>
+        ),
+    ],
+} as Meta
 
 const Template: Story<CheckboxGroupProps> = args => <CheckboxGroup {...args} />
 

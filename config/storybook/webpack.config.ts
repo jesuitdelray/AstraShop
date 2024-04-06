@@ -9,11 +9,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
         html: "",
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src"),
-        locales: "",
+        locales: path.resolve(__dirname, "..", "..", "public", "locales"),
         buildLocales: "",
         favicon: "",
     }
-    config!.resolve!.modules!.push(paths.src)
+    config!.resolve!.modules!.push(paths.src, paths.locales)
     config!.resolve!.extensions!.push(".ts", ".tsx")
 
     // eslint-disable-next-line no-param-reassign

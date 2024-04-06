@@ -33,9 +33,13 @@ export function Header(props: HeaderProps) {
                         className={styles.logo}
                     />
 
-                    <SearchProduct className={styles.search} />
+                    <SearchProduct className={styles.search} data-testid="search-product" />
 
-                    <HeaderLeft className={styles.headerLeft} isMainPage={fullHeader} />
+                    <HeaderLeft
+                        className={styles.headerLeft}
+                        isMainPage={fullHeader}
+                        data-testid="header-left"
+                    />
 
                     <NavigationList
                         ChangeLanguage={
@@ -52,9 +56,10 @@ export function Header(props: HeaderProps) {
                         color={
                             fullHeader ? NavigationListColor.INVERTED : NavigationListColor.NORMAL
                         }
+                        data-testid="navigation-list"
                     />
 
-                    <HeaderRight isMainPage={fullHeader} />
+                    <HeaderRight isMainPage={fullHeader} data-testid="header-right" />
                 </div>
             </div>
         </>

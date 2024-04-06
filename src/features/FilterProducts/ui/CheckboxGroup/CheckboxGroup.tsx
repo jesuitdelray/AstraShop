@@ -31,7 +31,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
             <div className={styles.list}>
                 {list?.map(item => {
                     const { name, id } = item
-                    const isChecked = attributes.some(item => item === id)
+                    const isChecked = attributes?.some(item => item === id)
 
                     return (
                         <div className={styles.item} key={id}>

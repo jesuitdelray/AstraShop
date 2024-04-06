@@ -5,6 +5,17 @@ import { changeLanguageReducer } from "../model/slice/changeLanguageSlice"
 import { ChangeLanguage, ChangeLanguageColor } from "./ChangeLanguage"
 import { Languages } from "../config/config"
 
+const store = configureStore({
+    reducer: {
+        changeLanguage: changeLanguageReducer,
+    },
+    preloadedState: {
+        changeLanguage: {
+            language: Languages.ENGLISH,
+        },
+    },
+})
+
 export default {
     title: "Features/ChangeLanguage",
     component: ChangeLanguage,
@@ -16,17 +27,6 @@ export default {
         },
     },
 } as Meta
-
-const store = configureStore({
-    reducer: {
-        changeLanguage: changeLanguageReducer,
-    },
-    preloadedState: {
-        changeLanguage: {
-            language: Languages.ENGLISH,
-        },
-    },
-})
 
 const Template: Story<{ color: ChangeLanguageColor }> = args => <ChangeLanguage {...args} />
 

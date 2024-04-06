@@ -68,6 +68,7 @@ export function BannerSlider() {
             onClick={() => navigate(slides[current].link)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            data-testid="slider-container"
         >
             <div
                 className={styles.carousel}
@@ -93,6 +94,7 @@ export function BannerSlider() {
                             [styles.active]: index === current,
                         })}
                         onClick={() => paginationClickHandler(index)}
+                        data-testid={`pagination-bullet-${index}`}
                     />
                 ))}
             </div>

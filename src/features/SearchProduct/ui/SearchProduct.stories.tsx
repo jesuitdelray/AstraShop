@@ -3,8 +3,8 @@ import { createStore, combineReducers } from "redux"
 import { SearchProduct } from "./SearchProduct"
 
 const mockReducer = combineReducers({
-    someReducer: (state = {}, action) => state,
-    anotherReducer: (state = {}, action) => state,
+    someReducer: (state = {}) => state,
+    anotherReducer: (state = {}) => state,
 })
 
 const mockStore = createStore(mockReducer, {})

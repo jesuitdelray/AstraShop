@@ -1,9 +1,9 @@
 import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
 import { configureStore, combineReducers } from "@reduxjs/toolkit"
+import { catalogNavigationReducer } from "entities/CatalogNavigation"
 import { CategoryPage } from "./CategoryPage"
 import { CategoryLinks } from "./CategoryLinks/CategoryLinks"
-import { catalogNavigationReducer } from "entities/CatalogNavigation"
 
 const initialState = {
     catalogNavigation: {
@@ -13,11 +13,11 @@ const initialState = {
                 id: 1,
                 icon: "",
                 categories: [
-                    { name: "Laptops", id: 11, image: "laptops.jpg", parent_category_id: 1 },
+                    { name: "Laptops", id: 11, image: "", parent_category_id: 1 },
                     {
                         name: "Smartphones",
                         id: 12,
-                        image: "smartphones.jpg",
+                        image: "",
                         parent_category_id: 1,
                     },
                 ],

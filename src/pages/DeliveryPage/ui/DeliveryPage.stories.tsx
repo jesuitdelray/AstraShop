@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
+import { Provider } from "react-redux"
 import { DeliveryPage } from "./DeliveryPage"
-import { StoreProvider } from "app/providers/StoreProvider"
 
 export default {
     title: "Pages/DeliveryPage",
@@ -8,10 +8,17 @@ export default {
     decorators: [(Story: Story) => <Story />],
 } as Meta
 
+const mockStore = {
+    getState: () => ({}),
+    dispatch: () => {},
+    subscribe: () => {},
+    replaceReducer: () => {},
+}
+
 const Template: Story = args => (
-    <StoreProvider>
+    <Provider store={mockStore as any}>
         <DeliveryPage {...args} />
-    </StoreProvider>
+    </Provider>
 )
 
 export const Default = Template.bind({})

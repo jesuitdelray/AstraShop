@@ -1,10 +1,10 @@
 import { Provider } from "react-redux"
 import { configureStore } from "@reduxjs/toolkit"
 import { Story, Meta } from "@storybook/react"
-import { ProductGallery } from "./ProductGallery"
 import { Args } from "@storybook/addons"
+import { ProductGallery } from "./ProductGallery"
 
-interface initialState {
+interface initialStateProps {
     productDetails: {
         data: {
             images: string[]
@@ -24,7 +24,7 @@ const initialState = {
     },
 }
 
-const createMockStore = (initialState: initialState) =>
+const createMockStore = (initialState: initialStateProps) =>
     configureStore({
         reducer: () => initialState,
     })

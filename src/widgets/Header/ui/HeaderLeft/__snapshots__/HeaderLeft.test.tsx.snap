@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderLeft component renders correctly with default props 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`HeaderLeft component renders correctly with isMainPage prop 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div />
+  </div>
+</div>
+`;

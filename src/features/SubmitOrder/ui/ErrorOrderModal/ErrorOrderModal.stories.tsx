@@ -2,8 +2,8 @@ import { Provider } from "react-redux"
 import { combineReducers, createStore } from "redux"
 import { Story, Meta } from "@storybook/react"
 
-import { ErrorOrderModal } from "./ErrorOrderModal"
 import { ModalsList, modalsReducer } from "entities/ModalSlider"
+import { ErrorOrderModal } from "./ErrorOrderModal"
 
 const rootReducer = combineReducers({
     modals: modalsReducer,

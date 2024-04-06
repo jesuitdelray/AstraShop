@@ -2,8 +2,8 @@ import { Story, Meta } from "@storybook/react"
 import { Provider } from "react-redux"
 import { createStore, combineReducers, applyMiddleware } from "@reduxjs/toolkit"
 import thunk from "redux-thunk"
-import { CatalogPage } from "./CatalogPage"
 import { catalogNavigationReducer } from "entities/CatalogNavigation"
+import { CatalogPage } from "./CatalogPage"
 
 const store = createStore(
     combineReducers({

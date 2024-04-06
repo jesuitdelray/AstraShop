@@ -38,6 +38,7 @@ export function RemoveProductFromBasket({ id }: RemoveProductFromBasketProps) {
                 onClose={closeModalHandler}
                 variant={ModalSliderVariant.MODAL}
                 className={styles.modal}
+                data-testid="remove-product-modal"
             >
                 <div className={styles.modalContainer}>
                     <CrossIcon className={styles.cross} onClick={closeModalHandler} />
@@ -45,16 +46,28 @@ export function RemoveProductFromBasket({ id }: RemoveProductFromBasketProps) {
                         Are you sure?
                     </Typography>
                     <div className={styles.buttons}>
-                        <Button onClick={confirmClickHandler} variant={ButtonVariant.FILLED}>
+                        <Button
+                            onClick={confirmClickHandler}
+                            variant={ButtonVariant.FILLED}
+                            data-testid="confirm-delete"
+                        >
                             Delete
                         </Button>
-                        <button className={styles.btnCancel} onClick={closeModalHandler}>
+                        <button
+                            className={styles.btnCancel}
+                            onClick={closeModalHandler}
+                            data-testid="cancel-delete"
+                        >
                             Cancel
                         </button>
                     </div>
                 </div>
             </ModalSlider>
-            <DeleteBucketIcon onClick={clickHandler} className={styles.delete} />
+            <DeleteBucketIcon
+                onClick={clickHandler}
+                className={styles.delete}
+                data-testid="delete-icon"
+            />
         </>
     )
 }

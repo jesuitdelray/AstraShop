@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
-import { CategoryLinks, CategoryLinksProps } from "./CategoryLinks"
 import productPlaceholder from "shared/assets/images/productPlaceholder.jpg"
+import { CategoryLinks, CategoryLinksProps } from "./CategoryLinks"
 
 export default {
     title: "Pages/Category/CategoryLinks",

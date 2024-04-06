@@ -10,7 +10,7 @@ const mockState = {
                 id: 1,
                 name: "Product 1",
                 is_new: true,
-                images: ["https://example.com/image1.jpg"],
+                images: ["https://placehold.co/300x300"],
                 price: 100,
                 description: "This is a mock description for Product 1",
                 attributes: [],
@@ -22,7 +22,7 @@ const mockState = {
                 id: 2,
                 name: "Product 2",
                 is_new: false,
-                images: ["https://example.com/image2.jpg"],
+                images: ["https://placehold.co/300x300"],
                 price: 150,
                 description: "This is a mock description for Product 2",
                 attributes: [],
@@ -46,7 +46,13 @@ const store = configureStore({
 export default {
     title: "Widgets/BannerWithProductsRow",
     component: BannerWithProductsRow,
-    decorators: [Story => <Provider store={store}>{<Story />}</Provider>],
+    decorators: [
+        Story => (
+            <Provider store={store}>
+                <Story />
+            </Provider>
+        ),
+    ],
 } as Meta
 
 const Template: Story = args => <BannerWithProductsRow {...args} id={1} />

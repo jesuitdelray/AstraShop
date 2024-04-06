@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { AsyncImage, ImageFit } from "./AsyncImage"
 
-const src = "https://developed-by.me:4000/uploads/images-1682078415893.png"
+const src = "https://placehold.co/300x300"
 
 export default {
     title: "shared/AsyncImage",

@@ -1,6 +1,5 @@
-import React from "react"
 import { Provider } from "react-redux"
-import { createStore, combineReducers, AnyAction } from "redux"
+import { createStore, combineReducers } from "redux"
 import { Story, Meta } from "@storybook/react"
 import { CatalogSidebarNav } from "./CatalogSidebarNav"
 
@@ -16,10 +15,7 @@ interface AppState {
     catalogNavigation: CatalogNavigationState
 }
 
-const catalogNavigationReducer = (
-    state: CatalogNavigationState = { tree: [] },
-    action: AnyAction
-): CatalogNavigationState => {
+function catalogNavigationReducer(state: CatalogNavigationState = { tree: [] }) {
     return state
 }
 
@@ -37,8 +33,8 @@ export default {
             const mockStore = createMockStore({
                 catalogNavigation: {
                     tree: [
-                        { id: 1, name: "Category 1", icon: "https://example.com/icon1.png" },
-                        { id: 2, name: "Category 2", icon: "https://example.com/icon2.png" },
+                        { id: 1, name: "Category 1", icon: "https://placehold.co/300x300" },
+                        { id: 2, name: "Category 2", icon: "https://placehold.co/300x300" },
                     ],
                 },
             })

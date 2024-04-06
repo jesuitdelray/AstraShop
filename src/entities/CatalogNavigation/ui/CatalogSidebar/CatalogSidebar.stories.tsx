@@ -1,16 +1,23 @@
-import { Story, Meta } from "@storybook/react"
-import { CatalogSidebar } from "./CatalogSidebar"
-import { StoreProvider } from "app/providers/StoreProvider"
+import { Meta, Story } from "@storybook/react"
+import { Provider } from "react-redux"
+import { CatalogSidebarNav } from "./CatalogSidebarNav/CatalogSidebarNav"
 
 export default {
-    title: "entities/CatalogSidebar",
-    component: CatalogSidebar,
+    title: "entities/CatalogSidebarNav",
+    component: CatalogSidebarNav,
 } as Meta
 
-const Template: Story = args => (
-    <StoreProvider>
-        <CatalogSidebar {...args} />
-    </StoreProvider>
+const mockStore = {
+    getState: () => ({}),
+    dispatch: () => {},
+    subscribe: () => {},
+    replaceReducer: () => {},
+}
+
+const Template: Story = () => (
+    <Provider store={mockStore as any}>
+        <CatalogSidebarNav />
+    </Provider>
 )
 
 export const Default = Template.bind({})

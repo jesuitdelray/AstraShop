@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { Story, Meta } from "@storybook/react"
+import { StoreProvider } from "app/providers/StoreProvider"
 import {
     ModalSlider,
     ModalSliderProps,
     ModalSliderVariant,
     ModalSliderDirection,
 } from "./ModalSlider"
-import { StoreProvider } from "app/providers/StoreProvider"
 
 export default {
     title: "Entities/ModalSlider",
@@ -27,7 +27,9 @@ export default {
 } as Meta
 
 const Template: Story<ModalSliderProps> = args => {
-    const [isOpen, setIsOpen] = useState(args.isOpen)
+    const { isOpen } = args
+
+    const [modalIsOpen, setIsOpen] = useState(isOpen)
     return (
         <StoreProvider>
             <ModalSlider {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>

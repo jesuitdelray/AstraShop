@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
-import { Header, HeaderProps } from "./Header"
 import { StoreProvider } from "app/providers/StoreProvider"
+import { Header, HeaderProps } from "./Header"
 
 export default {
     title: "Widgets/Header",
